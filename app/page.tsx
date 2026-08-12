@@ -1,3 +1,5 @@
+
+
 // app/page.tsx
 
 import Footer from "@/components/Footer";
@@ -97,162 +99,85 @@ export default function Home() {
               </p>
             </div>
             {/* Six Symptom Boxes */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#c6c6ce] border border-[#c6c6ce]">
-              {/* Symptom 01 */}
-              <div className="bg-[#f6f3f2] p-8 md:p-10 min-h-[280px] flex flex-col group hover:bg-[#141a32] transition-colors duration-300">
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-secondary group-hover:text-secondary mb-5">
-                  01 / DIAGNOSIS
-                </span>
-
-                <h2 className="group-hover:text-white transition-colors duration-300 text-3xl font-bold mb-4">
-                  Business OPD
-                </h2>
-
-                <p className="text-[18px] leading-[1.5] text-black group-hover:text-white transition-colors duration-300 mb-8">
-                  A deep-dive diagnostic to identify leakage and bottleneck
-                  points in your current operations.
-                </p>
-
-                <Link
-                  href="#"
-                  className="group/link inline-flex items-center gap-2 mt-auto text-sm font-bold uppercase tracking-wider text-primary/50 group-hover:text-secondary transition-colors duration-300"
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  n: "01",
+                  cat: "DIAGNOSIS",
+                  title: "Business OPD",
+                  text: "A deep-dive diagnostic to identify leakage and bottleneck points in your current operations.",
+                  href: "/services#service-01",
+                },
+                {
+                  n: "02",
+                  cat: "EDUCATION",
+                  title: "BWC Workshops",
+                  text: "Peer-led framework training designed specifically for the Indian SMB context.",
+                  href: "/services",
+                },
+                {
+                  n: "03",
+                  cat: "OPERATIONS",
+                  title: "NBBS CRM",
+                  text: "Custom-fitted sales tracking that your team will actually use, not ignore.",
+                  href: "/services#service-02",
+                },
+                {
+                  n: "04",
+                  cat: "OPERATIONS",
+                  title: "Incentiwise",
+                  text: "Transparent commission tracking that ends disputes and aligns your sales team.",
+                  href: "/services#service-03",
+                },
+                {
+                  n: "05",
+                  cat: "OPTIMIZATION",
+                  title: "Quotation",
+                  text: "Professional proposals in minutes. Standardize pricing and close faster.",
+                  href: "/services#service-04",
+                },
+                {
+                  n: "06",
+                  cat: "OPTIMIZATION",
+                  title: "Cashflow",
+                  text: "Predictive liquidity tracking so you never miss a payment or opportunity.",
+                  href: "/services#service-05",
+                },
+              ].map((item) => (
+                <div
+                  key={item.n}
+                  className="group relative flex min-h-[300px] flex-col overflow-hidden rounded-2xl border border-[#c6c6ce] bg-white p-8 shadow-[0_8px_24px_rgba(20,26,50,0.05)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#141a32] hover:bg-[#141a32] hover:shadow-[0_24px_48px_rgba(20,26,50,0.22)] md:p-9"
                 >
-                  Learn More
-                  <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover/link:translate-x-1">
-                    arrow_forward
-                  </span>
-                </Link>
-              </div>
+                  {/* Number badge */}
+                  <div className="mb-7 flex items-center gap-3">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#f6f3f2] text-[13px] font-bold text-[#141a32] transition-colors duration-300 group-hover:bg-[#e9c176] group-hover:text-[#141a32]">
+                      {item.n}
+                    </span>
 
-              {/* Symptom 02 */}
-              <div className="bg-[#f6f3f2] p-8 md:p-10 min-h-[280px] flex flex-col group hover:bg-[#141a32] transition-colors duration-300">
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-secondary group-hover:text-secondary mb-5">
-                  02 / EDUCATION
-                </span>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                      {item.cat}
+                    </span>
+                  </div>
 
-                <h2 className="group-hover:text-white transition-colors duration-300 text-3xl font-bold mb-4">
-                  BWC Workshops
-                </h2>
+                  <h2 className="mb-4 text-2xl font-bold text-black transition-colors duration-300 group-hover:text-white md:text-3xl">
+                    {item.title}
+                  </h2>
 
-                <p className="text-[18px] leading-[1.5] text-black group-hover:text-white transition-colors duration-300 mb-8">
-                  Peer-led framework training designed specifically for the
-                  Indian SMB context.
-                </p>
+                  <p className="mb-8 text-[16px] leading-[1.6] text-[#46464d] transition-colors duration-300 group-hover:text-white/70 md:text-[18px]">
+                    {item.text}
+                  </p>
 
-                <Link
-                  href="#"
-                  className="group/link inline-flex items-center gap-2 mt-auto text-sm font-bold uppercase tracking-wider text-primary/50 group-hover:text-secondary transition-colors duration-300"
-                >
-                  Learn More
-                  <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover/link:translate-x-1">
-                    arrow_forward
-                  </span>
-                </Link>
-              </div>
-
-              {/* Symptom 03 */}
-              <div className="bg-[#f6f3f2] p-8 md:p-10 min-h-[280px] flex flex-col group hover:bg-[#141a32] transition-colors duration-300">
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-secondary group-hover:text-secondary mb-5">
-                  03 / OPERATIONS
-                </span>
-
-                <h2 className="group-hover:text-white transition-colors duration-300 text-3xl font-bold mb-4">
-                  NBBS CRM
-                </h2>
-
-                <p className="text-[18px] leading-[1.5] text-black group-hover:text-white transition-colors duration-300 mb-8">
-                  Custom-fitted sales tracking that your team will actually use,
-                  not ignore.
-                </p>
-
-                <Link
-                  href="#"
-                  className="group/link inline-flex items-center gap-2 mt-auto text-sm font-bold uppercase tracking-wider text-primary/50 group-hover:text-secondary transition-colors duration-300"
-                >
-                  Learn More
-                  <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover/link:translate-x-1">
-                    arrow_forward
-                  </span>
-                </Link>
-              </div>
-
-              {/* Symptom 04 */}
-              <div className="bg-[#f6f3f2] p-8 md:p-10 min-h-[280px] flex flex-col group hover:bg-[#141a32] transition-colors duration-300">
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-secondary group-hover:text-secondary mb-5">
-                  04 / OPERATIONS
-                </span>
-
-                <h2 className="group-hover:text-white transition-colors duration-300 text-3xl font-bold mb-4">
-                  Incentiwise
-                </h2>
-
-                <p className="text-[18px] leading-[1.5] text-black group-hover:text-white transition-colors duration-300 mb-8">
-                  Transparent commission tracking that ends disputes and aligns
-                  your sales team.
-                </p>
-
-                <Link
-                  href="#"
-                  className="group/link inline-flex items-center gap-2 mt-auto text-sm font-bold uppercase tracking-wider text-primary/50 group-hover:text-secondary transition-colors duration-300"
-                >
-                  Learn More
-                  <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover/link:translate-x-1">
-                    arrow_forward
-                  </span>
-                </Link>
-              </div>
-
-              {/* Symptom 05 */}
-              <div className="bg-[#f6f3f2] p-8 md:p-10 min-h-[280px] flex flex-col group hover:bg-[#141a32] transition-colors duration-300">
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-secondary group-hover:text-secondary mb-5">
-                  05 / OPTIMIZATION
-                </span>
-
-                <h2 className="group-hover:text-white transition-colors duration-300 text-3xl font-bold mb-4">
-                  Quotation
-                </h2>
-
-                <p className="text-[18px] leading-[1.5] text-black group-hover:text-white transition-colors duration-300 mb-8">
-                  Professional proposals in minutes. Standardize pricing and
-                  close faster.
-                </p>
-
-                <Link
-                  href="#"
-                  className="group/link inline-flex items-center gap-2 mt-auto text-sm font-bold uppercase tracking-wider text-primary/50 group-hover:text-secondary transition-colors duration-300"
-                >
-                  Learn More
-                  <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover/link:translate-x-1">
-                    arrow_forward
-                  </span>
-                </Link>
-              </div>
-
-              {/* Symptom 06 */}
-              <div className="bg-[#f6f3f2] p-8 md:p-10 min-h-[280px] flex flex-col group hover:bg-[#141a32] transition-colors duration-300">
-                <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-secondary group-hover:text-secondary mb-5">
-                  06 / OPTIMIZATION
-                </span>
-
-                <h2 className="group-hover:text-white transition-colors duration-300 text-3xl font-bold mb-4">
-                  Cashflow
-                </h2>
-
-                <p className="text-[18px] leading-[1.5] text-black group-hover:text-white transition-colors duration-300 mb-8">
-                  Predictive liquidity tracking so you never miss a payment or
-                  opportunity.
-                </p>
-
-                <Link
-                  href="#"
-                  className="group/link inline-flex items-center gap-2 mt-auto text-sm font-bold uppercase tracking-wider text-primary/50 group-hover:text-secondary transition-colors duration-300"
-                >
-                  Learn More
-                  <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover/link:translate-x-1">
-                    arrow_forward
-                  </span>
-                </Link>
-              </div>
+                  <Link
+                    href={item.href}
+                    className="group/link mt-auto inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-primary/50 transition-colors duration-300 group-hover:text-[#e9c176]"
+                  >
+                    Learn More
+                    <span className="material-symbols-outlined text-[18px] transition-transform duration-300 group-hover/link:translate-x-1">
+                      arrow_forward
+                    </span>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </section>
