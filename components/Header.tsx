@@ -24,7 +24,7 @@ export default function Header() {
             priority
           />
 
-          <span className="font-display text-[24px] font-bold tracking-tight text-[#0f172a]">
+          <span className="font-display text-[24px] font-bold tracking-tight text-primary">
             NBBS
           </span>
         </Link>
@@ -34,28 +34,28 @@ export default function Header() {
 
           <Link
             href="/services"
-            className="relative text-[14px] font-medium text-[#0f172a] transition-colors duration-300 hover:text-[#c5a059]"
+            className="relative text-[14px] font-medium text-primary transition-colors duration-300 hover:text-primary"
           >
             Services
           </Link>
 
           <Link
-            href="/solutions"
-            className="relative text-[14px] font-medium text-[#0f172a] transition-colors duration-300 hover:text-[#c5a059]"
+            href="#"
+            className="relative text-[14px] font-medium text-primary transition-colors duration-300 hover:text-secondary"
           >
             Solutions
           </Link>
 
           <Link
             href="/about"
-            className="relative text-[14px] font-medium text-[#0f172a] transition-colors duration-300 hover:text-[#c5a059]"
+            className="relative text-[14px] font-medium text-primary transition-colors duration-300 hover:text-secondary"
           >
             About Us
           </Link>
 
           <Link
             href="/contacts"
-            className="relative text-[14px] font-medium text-[#0f172a] transition-colors duration-300 hover:text-[#c5a059]"
+            className="relative text-[14px] font-medium text-primary transition-colors duration-300 hover:text-secondary"
           >
             Contact
           </Link>
@@ -64,7 +64,7 @@ export default function Header() {
         {/* Get Started */}
         <Link
           href="/contacts"
-          className="hidden md:inline-flex items-center justify-center h-11 px-6 bg-[#0f172a] text-white text-[13px] font-semibold tracking-wide transition-all duration-300 hover:bg-[#c5a059] hover:text-[#0f172a]"
+          className="hidden md:inline-flex items-center rounded-xl justify-center h-11 px-6 bg-primary text-white text-[13px] font-semibold tracking-wide transition-all duration-300 hover:bg-primary hover:text-primary"
         >
           Get Started
         </Link>
@@ -72,7 +72,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="md:hidden p-2 text-[#0f172a]"
+          className="md:hidden p-2 text-primary"
           aria-label="Open menu"
         >
           <span className="material-symbols-outlined text-[26px]">
