@@ -25,8 +25,8 @@ export default function Contact() {
         <section className="relative overflow-hidden border-t border-[#c6c6ce] py-16 md:py-24">
           {/* Decorative background accents */}
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute -top-24 -right-24 h-[420px] w-[420px] rounded-full bg-[#e9c176]/10 blur-3xl" />
-            <div className="absolute top-1/3 -left-32 h-[360px] w-[360px] rounded-full bg-[#141a32]/5 blur-3xl" />
+            <div className="absolute -top-24 -right-24 h-105 w-105 rounded-full bg-[#e9c176]/10 blur-3xl" />
+            <div className="absolute top-1/3 -left-32 h-90 w-90 rounded-full bg-[#141a32]/5 blur-3xl" />
             <div
               className="absolute inset-0 opacity-[0.035]"
               style={{
@@ -170,14 +170,14 @@ export default function Contact() {
 
               <div className="relative rounded-3xl border border-[#c6c6ce] bg-white p-6 shadow-[0_30px_90px_rgba(20,26,50,0.10)] sm:p-8 md:p-10">
                 {/* Accent top bar */}
-                <div className="absolute inset-x-0 top-0 h-1.5 rounded-t-3xl bg-gradient-to-r from-[#141a32] via-[#e9c176] to-[#141a32]" />
+                <div className="absolute inset-x-0 top-0 h-1.5 rounded-t-3xl bg-linear-to-r from-[#141a32] via-[#e9c176] to-[#141a32]" />
 
                 {submitted ? (
                   /* ==========================================================
                      SUCCESS STATE
                   ========================================================== */
 
-                  <div className="flex min-h-[500px] flex-col items-center justify-center px-6 text-center">
+                  <div className="flex min-h-125 flex-col items-center justify-center px-6 text-center">
                     <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[#e9c176]/30 bg-[#e9c176]/10">
                       <span className="text-2xl text-[#c0923e]">✓</span>
                     </div>
@@ -221,7 +221,7 @@ export default function Contact() {
                           name="name"
                           type="text"
                           required
-                          className="h-14 w-full rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-[#c5a059] focus:bg-white focus:ring-4 focus:ring-[#c5a059]/10"
+                          className="h-14 w-full rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/10"
                         />
                       </div>
 
@@ -239,7 +239,7 @@ export default function Contact() {
                           name="company"
                           type="text"
                           required
-                          className="h-14 w-full rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-[#c5a059] focus:bg-white focus:ring-4 focus:ring-[#c5a059]/10"
+                          className="h-14 w-full rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/10"
                         />
                       </div>
                     </div>
@@ -258,7 +258,7 @@ export default function Contact() {
                           name="phone"
                           type="tel"
                           required
-                          className="h-14 w-full rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-[#c5a059] focus:bg-white focus:ring-4 focus:ring-[#c5a059]/10"
+                          className="h-14 w-full rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/10"
                         />
                       </div>
 
@@ -275,7 +275,7 @@ export default function Contact() {
                           name="email"
                           type="email"
                           required
-                          className="h-14 w-full rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-[#c5a059] focus:bg-white focus:ring-4 focus:ring-[#c5a059]/10"
+                          className="h-14 w-full rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/10"
                         />
                       </div>
                     </div>
@@ -293,7 +293,7 @@ export default function Contact() {
                         name="businessType"
                         required
                         defaultValue=""
-                        className="h-14 w-full appearance-none rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all focus:border-[#c5a059] focus:bg-white focus:ring-4 focus:ring-[#c5a059]/10"
+                        className="h-14 w-full appearance-none rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 text-sm text-[#141a32] outline-none transition-all focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/10"
                       >
                         <option value="" disabled>
                           Select business type
@@ -331,7 +331,7 @@ export default function Contact() {
                         required
                         rows={5}
                         placeholder="E.g. Sales team isn't updating the CRM. Commission disputes every month..."
-                        className="w-full resize-none rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 py-4 text-sm leading-6 text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-[#c5a059] focus:bg-white focus:ring-4 focus:ring-[#c5a059]/10"
+                        className="w-full resize-none rounded-2xl border border-[#c6c6ce] bg-[#fbf9f8] px-4 py-4 text-sm leading-6 text-[#141a32] outline-none transition-all placeholder:text-[#141a32]/25 focus:border-secondary focus:bg-white focus:ring-4 focus:ring-secondary/10"
                       />
                     </div>
 

@@ -129,7 +129,7 @@ export default function ServicesPage() {
       {/* Header */}
       <Header />
 
-      <main className="flex-grow">
+      <main className="grow">
         {/* Hero Section */}
         <section className="bg-[#141A32] relative overflow-hidden py-24 md:py-32">
           {/* Subtle Grid Pattern Overlay */}
@@ -144,9 +144,7 @@ export default function ServicesPage() {
 
           <div className="max-w-[1280px] mx-auto px-5 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-8 flex flex-col items-start space-y-8">
-              <span className="text-[#a17f3b] text-[12px] leading-none tracking-[0.1em] font-bold uppercase">
-                NBBS Business Solutions
-              </span>
+             
 
               <h1
                 className="text-[48px] md:text-[72px] leading-[1.1] font-semibold text-white tracking-tight"
@@ -172,7 +170,7 @@ export default function ServicesPage() {
               <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
                 <Link
                   href="/contacts"
-                  className="bg-[#ffdea5] text-[#261900] text-[12px] leading-none rounded-xl tracking-[0.1em] font-bold uppercase px-6 py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
+                  className="bg-[#ffdea5] text-[#261900] text-[12px] leading-none rounded-xl tracking-widest font-bold uppercase px-6 py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
                 >
                   Book a Business Diagnostic
                   <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
@@ -182,7 +180,7 @@ export default function ServicesPage() {
 
                 <Link
                   href="#solutions"
-                  className="border border-[#c7c5ce] text-white text-[12px] leading-none tracking-[0.1em] font-bold uppercase px-6 rounded-xl py-4 hover:bg-white hover:text-[#141a32] transition-colors flex items-center justify-center"
+                  className="border border-[#c7c5ce] text-white text-[12px] leading-none tracking-widest font-bold uppercase px-6 rounded-xl py-4 hover:bg-white hover:text-[#141a32] transition-colors flex items-center justify-center"
                 >
                   Explore Solutions
                 </Link>
@@ -190,34 +188,7 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
-
-        {/* Services Intro */}
-
-        <section
-          className="bg-[#fbf9f8] py-24 md:py-32 border-b border-[#c7c5ce]"
-          id="solutions"
-        >
-          <div className="max-w-[1280px] mx-auto px-5 md:px-16 grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-8 space-y-6">
-              <span className="text-[#a17f3b] text-[12px] leading-none tracking-[0.1em] font-bold uppercase block">
-                What We Do
-              </span>
-
-              <h2
-                className="text-[48px] leading-[1.2] font-medium text-[#141a32]"
-                style={{ fontFamily: "Bodoni Moda, serif" }}
-              >
-                Solutions built around the way your business actually works.
-              </h2>
-
-              <p className="text-[18px] leading-[1.6] text-[#46464d] md:w-5/6">
-                Move beyond fragmented tools. Our ecosystem is engineered for
-                strategic clarity, operational efficiency, and scalable growth.
-              </p>
-            </div>
-          </div>
-        </section>
-
+       
         {/* Service Cards */}
         <section className="bg-[#fbf9f8] py-16 md:py-32">
           <div className="max-w-[1280px] mx-auto px-5 md:px-16 space-y-16">
@@ -228,7 +199,7 @@ export default function ServicesPage() {
               >
                 {/* Start Here badge */}
                 {index === 0 && (
-                  <div className="absolute top-0 right-0 bg-[#ffdea5] text-[#261900] text-[10px] leading-none tracking-[0.1em] px-3 py-1.5 uppercase font-bold z-10 rounded-bl-lg">
+                  <div className="absolute top-0 right-0 bg-[#ffdea5] text-[#261900] text-[10px] leading-none tracking-widest px-3 py-1.5 uppercase font-bold z-10 rounded-bl-lg">
                     Start Here
                   </div>
                 )}
@@ -236,7 +207,7 @@ export default function ServicesPage() {
                 <div className="p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
                   {/* Category */}
                   <div className="lg:col-span-3">
-                    <span className="text-[12px] leading-none tracking-[0.1em] font-bold text-[#46464d] uppercase border-b border-[#c7c5ce] pb-2 inline-block mb-4">
+                    <span className="text-[12px] leading-none tracking-widest font-bold text-secondary uppercase border-b border-[#c7c5ce] pb-2 inline-block mb-4">
                       {service.number} / {service.category}
                     </span>
                   </div>
@@ -267,7 +238,7 @@ export default function ServicesPage() {
                         src={service.image}
                         alt={`${service.title} business solution`}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover/image:scale-105"
+                        className="object-cover transition-transform duration-500 w-full h-full group-hover/image:scale-105"
                       />
 
                       {/* Subtle overlay */}
@@ -300,7 +271,7 @@ export default function ServicesPage() {
                       {/* CTA */}
                       <Link
                         href="/contacts"
-                        className="inline-flex items-center gap-2 text-[12px] leading-none tracking-[0.1em] font-bold text-[#141a32] uppercase hover:text-[#e9c176] transition-colors group/link"
+                        className="inline-flex items-center gap-2 text-[12px] leading-none tracking-widest font-bold text-[#141a32] uppercase hover:text-[#e9c176] transition-colors group/link"
                       >
                         Book a Diagnostic
                         <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">
@@ -383,7 +354,7 @@ export default function ServicesPage() {
 
               <Link
                 href="/contacts"
-                className="bg-[#141A32]  text-white rounded-xl px-6 py-4 text-[12px] leading-none tracking-[0.1em] font-bold uppercase hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2 group"
+                className="bg-[#141A32]  text-white rounded-xl px-6 py-4 text-[12px] leading-none tracking-widest font-bold uppercase hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2 group"
               >
                 Book Your Business Diagnostic
                 <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
