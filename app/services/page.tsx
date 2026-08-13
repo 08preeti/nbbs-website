@@ -1,6 +1,15 @@
+"use client";
+
+import React from "react";
 import Link from "next/link";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import opd from "@/public/opd.avif";
+import crm from "@/public/crm.jpg";
+import cash from "@/public/cashflow.png";
+import quotation from "@/public/quot.jpg";
+import incentive from "@/public/incentive.png";
+import Image from "next/image";
 
 const services = [
   {
@@ -8,6 +17,7 @@ const services = [
     category: "DIAGNOSIS",
     title: "Business OPD",
     subtitle: "Diagnose before you prescribe.",
+    image: opd,
     problem:
       "Most SMB owners can feel something is off — but don't know where to start. Wrong diagnosis leads to expensive consulting and software that never sticks.",
     points: [
@@ -24,6 +34,7 @@ const services = [
     category: "OPERATIONS",
     title: "NBBS CRM",
     subtitle: "Make every opportunity visible.",
+    image: crm,
     problem:
       "Leads get lost, follow-ups are forgotten, and sales information remains scattered across spreadsheets, WhatsApp and individual team members.",
     points: [
@@ -40,6 +51,7 @@ const services = [
     category: "OPERATIONS",
     title: "Incentiwise",
     subtitle: "Turn commission chaos into clarity.",
+    image: incentive,
     problem:
       "Manual commission calculations create disputes, slow down payouts and make it difficult for sales teams to understand exactly what they have earned.",
     points: [
@@ -57,6 +69,7 @@ const services = [
     category: "OPTIMIZATION",
     title: "Quotation",
     subtitle: "Professional proposals. Faster decisions.",
+    image: quotation,
     problem:
       "Inconsistent quotations slow down sales, create pricing confusion and make businesses look less professional than they actually are.",
     points: [
@@ -73,6 +86,7 @@ const services = [
     category: "OPTIMIZATION",
     title: "Cashflow",
     subtitle: "Know what is coming before it arrives.",
+    image: cash,
     problem:
       "Businesses can be profitable on paper while still struggling to know when money will come in, when payments are due and where liquidity is going.",
     points: [
@@ -111,206 +125,278 @@ const stages = [
 
 export default function ServicesPage() {
   return (
-    <main className="bg-[#fbf9f8] text-[#141a32]">
+    <div className="bg-[#fbf9f8] text-[#1a1b22] antialiased flex flex-col min-h-screen font-sans">
+      {/* Header */}
       <Header />
 
-      {/* =========================================================
-          HERO / ECOSYSTEM
-      ========================================================= */}
-
-      <section className="relative overflow-hidden bg-[#141a32] text-white">
-        <div className="max-w-[1280px] mx-auto px-4 md:px-16 py-12 md:py-16">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Eyebrow */}
-            <div className="flex items-center justify-center gap-4 mb-6">
-              
-
-              
-
-              
-            </div>
-
-            {/* Heading */}
-            <h1 className="font-display text-[48px] sm:text-[60px] md:text-[80px] leading-[0.98] tracking-[-0.035em] font-semibold">
-              The Ecosystem
-            </h1>
-
-            <p className="font-display text-[22px] md:text-[28px] text-white/80 mt-4">
-              Six products. One connected journey.
-            </p>
-
-            <p className="max-w-2xl mx-auto mt-4 text-[15px] md:text-[17px] leading-[1.8] text-white/55">
-              From the first diagnostic conversation to a fully instrumented
-              business, every NBBS product is built to extend the next. Start
-              small. Compound.
-            </p>
-
-            {/* Product navigation */}
-            <div className="flex flex-wrap justify-center gap-2 mt-8">
-              {services.map((service) => (
-                <a
-                  key={service.number}
-                  href={`#service-${service.number}`}
-                  className="px-4 py-2 border border-white/15 text-[10px] uppercase tracking-[0.08em] text-white/70 hover:border-[#e9c176] hover:text-[#e9c176] transition-colors duration-300"
-                >
-                  <span className="text-[#e9c176] mr-2">{service.number}</span>
-
-                  {service.title}
-                </a>
-              ))}
-            </div>
-
-            {/* Journey */}
-            
-              <div className="flex justify-center items-center gap-3 text-[10px] uppercase tracking-[0.16em] text-white/50">
-                
-              </div>
-            
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          SERVICE SECTIONS
-      ========================================================= */}
-
-      <section className="bg-[#fbf9f8]">
-        {services.map((service, index) => (
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="bg-[#141A32] relative overflow-hidden py-24 md:py-32">
+          {/* Subtle Grid Pattern Overlay */}
           <div
-            key={service.number}
-            id={`service-${service.number}`}
-            className="scroll-mt-20 border-b border-[#c6c6ce]"
-          >
-            <div className="max-w-[1280px] mx-auto px-4 md:px-16 py-10 md:py-14">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
-                {/* LEFT */}
-                <div className="lg:col-span-7">
+            className="absolute inset-0 pointer-events-none opacity-20"
+            style={{
+              backgroundImage: `linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                                linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)`,
+              backgroundSize: "40px 40px",
+            }}
+          />
+
+          <div className="max-w-[1280px] mx-auto px-5 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-8 flex flex-col items-start space-y-8">
+              <span className="text-[#a17f3b] text-[12px] leading-none tracking-[0.1em] font-bold uppercase">
+                NBBS Business Solutions
+              </span>
+
+              <h1
+                className="text-[48px] md:text-[72px] leading-[1.1] font-semibold text-white tracking-tight"
+                style={{ fontFamily: "Bodoni Moda, serif" }}
+              >
+                The Ecosystem
+              </h1>
+
+              <p
+                className="text-[48px] leading-[1.2] font-medium text-[#e8e7f0] md:w-4/5"
+                style={{ fontFamily: "Bodoni Moda, serif" }}
+              >
+                Five solutions. One connected journey.
+              </p>
+
+              <p className="text-[18px] leading-[1.6] text-[#c0c5e5] md:w-3/4">
+                We don&apos;t just solve isolated problems. We identify root
+                causes and build integrated systems that scale with your
+                ambition. Professional solutions designed for high-performance
+                executives.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
+                <Link
+                  href="/contacts"
+                  className="bg-[#ffdea5] text-[#261900] text-[12px] leading-none rounded-xl tracking-[0.1em] font-bold uppercase px-6 py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
+                >
+                  Book a Business Diagnostic
+                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
+                    arrow_forward
+                  </span>
+                </Link>
+
+                <Link
+                  href="#solutions"
+                  className="border border-[#c7c5ce] text-white text-[12px] leading-none tracking-[0.1em] font-bold uppercase px-6 rounded-xl py-4 hover:bg-white hover:text-[#141a32] transition-colors flex items-center justify-center"
+                >
+                  Explore Solutions
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Intro */}
+
+        <section
+          className="bg-[#fbf9f8] py-24 md:py-32 border-b border-[#c7c5ce]"
+          id="solutions"
+        >
+          <div className="max-w-[1280px] mx-auto px-5 md:px-16 grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-8 space-y-6">
+              <span className="text-[#a17f3b] text-[12px] leading-none tracking-[0.1em] font-bold uppercase block">
+                What We Do
+              </span>
+
+              <h2
+                className="text-[48px] leading-[1.2] font-medium text-[#141a32]"
+                style={{ fontFamily: "Bodoni Moda, serif" }}
+              >
+                Solutions built around the way your business actually works.
+              </h2>
+
+              <p className="text-[18px] leading-[1.6] text-[#46464d] md:w-5/6">
+                Move beyond fragmented tools. Our ecosystem is engineered for
+                strategic clarity, operational efficiency, and scalable growth.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Service Cards */}
+        <section className="bg-[#fbf9f8] py-16 md:py-32">
+          <div className="max-w-[1280px] mx-auto px-5 md:px-16 space-y-16">
+            {services.map((service, index) => (
+              <div
+                key={service.number}
+                className="bg-[#EEF0F3] border border-[#C6C6CE] rounded-xl overflow-hidden relative transition-all duration-300 hover:-translate-y-1 hover:border-[#a17f3b] group"
+              >
+                {/* Start Here badge */}
+                {index === 0 && (
+                  <div className="absolute top-0 right-0 bg-[#ffdea5] text-[#261900] text-[10px] leading-none tracking-[0.1em] px-3 py-1.5 uppercase font-bold z-10 rounded-bl-lg">
+                    Start Here
+                  </div>
+                )}
+
+                <div className="p-8 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
                   {/* Category */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="text-[15px] font-bold tracking-[0.18em] text-[#e9c176]">
-                      {service.number}
-                    </span>
-
-                    <span className="w-10 h-px bg-[#e9c176]" />
-
-                    <span className="text-[15px] font-bold uppercase tracking-[0.16em] text-[#76767e]">
-                      {service.category}
+                  <div className="lg:col-span-3">
+                    <span className="text-[12px] leading-none tracking-[0.1em] font-bold text-[#46464d] uppercase border-b border-[#c7c5ce] pb-2 inline-block mb-4">
+                      {service.number} / {service.category}
                     </span>
                   </div>
 
-                  {/* Title */}
-                  <h2 className="font-display text-[44px] md:text-[64px] leading-[1] tracking-[-0.025em] font-semibold">
-                    {service.title}
-                  </h2>
+                  {/* Main Content */}
+                  <div className="lg:col-span-5 space-y-4">
+                    <h3
+                      className="text-[32px] leading-[1.3] font-medium text-[#141a32]"
+                      style={{ fontFamily: "Bodoni Moda, serif" }}
+                    >
+                      {service.title}
+                    </h3>
 
-                  {/* Subtitle */}
-                  <p className="mt-4 text-[18px] md:text-[20px] text-[#33446b]">
-                    {service.subtitle}
-                  </p>
-
-                  {/* Problem */}
-                  <div className="mt-8 border-l-[3px] border-[#e9c176] pl-6 md:pl-8 max-w-2xl">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#e9c176] mb-4">
-                      The Problem
+                    <p className="text-[18px] leading-[1.6] font-medium">
+                      {service.subtitle}
                     </p>
 
-                    <p className="text-[16px] md:text-[18px] leading-[1.75] text-[#33343b]">
+                    <p className="text-[16px] leading-[1.6] text-[#5e5e5e]">
                       {service.problem}
                     </p>
                   </div>
 
-                  {/* What you get */}
-                  <div className="mt-8">
-                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#76767e] mb-5">
-                      What You Get
-                    </p>
+                  {/* Right Content */}
+                  <div className="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-[#c7c5ce] pt-8 lg:pt-0 lg:pl-12 flex flex-col justify-between h-full space-y-6">
+                    {/* Service Image */}
+                    <div className="h-32 w-full bg-white border border-[#c7c5ce] rounded overflow-hidden relative group/image">
+                      <Image
+                        src={service.image}
+                        alt={`${service.title} business solution`}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover/image:scale-105"
+                      />
 
-                    <div className="space-y-3">
-                      {service.points.map((point) => (
-                        <div key={point} className="flex items-start gap-3">
-                          <span className="text-[#e9c176] mt-[2px]">→</span>
+                      {/* Subtle overlay */}
+                      <div className="absolute inset-0 bg-[#141A32]/5 group-hover/image:bg-transparent transition-colors duration-300" />
+                    </div>
 
-                          <span className="text-[15px] md:text-[16px] text-[#33446b]">
+                    <div>
+                      {/* Points */}
+                      <ul className="text-[16px] leading-[1.6] text-[#46464d] space-y-2 mb-6">
+                        {service.points.map((point) => (
+                          <li key={point} className="flex items-start gap-2">
+                            <span className="material-symbols-outlined text-[#e9c176] text-lg">
+                              check
+                            </span>
+
                             {point}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+                          </li>
+                        ))}
+                      </ul>
 
-                {/* RIGHT */}
-                <div className="lg:col-span-5">
-                  <div className="bg-[#eef0f3] p-5 md:p-6">
-                    {/* Preview */}
-                    <div className="relative h-[280px] md:h-[330px] bg-white border border-[#d9dadd] overflow-hidden">
-                      {/* Decorative lines */}
-                      <div className="absolute inset-x-0 top-1/2 h-px bg-[#e8e8ea]" />
-                      <div className="absolute inset-y-0 left-1/2 w-px bg-[#e8e8ea]" />
-
-                      {/* Letter */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 border border-[#d9dadd] bg-[#f7f7f7] flex items-center justify-center">
-                          <span className="font-display text-[22px] text-[#76767e]">
-                            {service.title.charAt(0)}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="absolute bottom-8 left-0 right-0 text-center">
-                        <span className="text-[9px] uppercase tracking-[0.18em] text-[#8a8b91]">
-                          {service.title} · Preview
+                      {/* Audience + Proof */}
+                      <p className="text-[13px] leading-[1.4] text-[#5e5e5e] mb-4 block">
+                        Perfect for: {service.audience}
+                        <br />
+                        <span className="font-bold text-[#141a32]">
+                          Proof: {service.proof}
                         </span>
-                      </div>
-                    </div>
-
-                    {/* Audience */}
-                    <div className="mt-6">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#76767e] mb-3">
-                        Who It's For
                       </p>
 
-                      <p className="text-[15px] leading-[1.6] text-[#33446b]">
-                        {service.audience}
-                      </p>
-                    </div>
-
-                    {/* Proof */}
-                    <div className="mt-5">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#76767e] mb-3">
-                        Proof
-                      </p>
-
-                      <p className="text-[14px] text-[#c0923e]">
-                        {service.proof}
-                      </p>
-                    </div>
-
-                    {/* Buttons */}
-                    <div className="mt-6 pt-5 border-t border-[#d4d5d8] flex flex-wrap gap-3">
+                      {/* CTA */}
                       <Link
                         href="/contacts"
-                        className="inline-flex items-center justify-center px-5 py-3 bg-[#141a32] text-white text-[10px] font-bold uppercase tracking-[0.12em] hover:bg-[#e9c176] hover:text-[#141a32] transition-colors duration-300"
+                        className="inline-flex items-center gap-2 text-[12px] leading-none tracking-[0.1em] font-bold text-[#141a32] uppercase hover:text-[#e9c176] transition-colors group/link"
                       >
                         Book a Diagnostic
-                      </Link>
-
-                      <Link
-                        href="#process"
-                        className="inline-flex items-center justify-center px-5 py-3 border border-[#c6c6ce] text-[#141a32] text-[10px] font-bold uppercase tracking-[0.12em] hover:border-[#141a32] transition-colors duration-300"
-                      >
-                        How It Works
+                        <span className="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">
+                          arrow_forward
+                        </span>
                       </Link>
                     </div>
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* How It Works */}
+        {/* <section className="bg-[#141A32] py-24 md:py-32">
+          <div className="max-w-[1280px] mx-auto px-5 md:px-16">
+            <div className="max-w-3xl mb-16">
+              <span className="text-[#e9c176] text-[12px] leading-none tracking-[0.1em] font-bold uppercase block mb-6">
+                How It Works
+              </span>
+
+              <h2
+                className="text-[44px] md:text-[60px] leading-[1.15] font-medium text-white"
+                style={{ fontFamily: "Bodoni Moda, serif" }}
+              >
+                From business problem to business system.
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-white/20">
+              {stages.map((stage, index) => (
+                <div
+                  key={stage.number}
+                  className={`p-8 md:p-10 ${
+                    index !== stages.length - 1
+                      ? "border-b lg:border-b-0 lg:border-r border-white/20"
+                      : ""
+                  }`}
+                >
+                  <span className="text-[#e9c176] text-[14px] tracking-[0.1em] font-bold">
+                    {stage.number}
+                  </span>
+
+                  <h3
+                    className="text-[28px] md:text-[32px] text-white mt-6 mb-4"
+                    style={{ fontFamily: "Bodoni Moda, serif" }}
+                  >
+                    {stage.title}
+                  </h3>
+
+                  <p className="text-[15px] md:text-[16px] leading-[1.7] text-[#c0c5e5]">
+                    {stage.text}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </section>
+        </section> */}
 
+        {/* Final CTA */}
+        <section
+          className="bg-[#fbf9f8] py-24 md:py-32 border-t border-[#c7c5ce] "
+          id="diagnostic"
+        >
+          <div className="max-w-[1280px] mx-auto px-5 md:px-16 flex justify-center">
+            <div className="border border-[#c7c5ce] bg-white p-12 md:p-16 text-center max-w-2xl w-full rounded-xl">
+              <h2
+                className="text-[48px] leading-[1.2] font-medium text-[#141a32] mb-6"
+                style={{ fontFamily: "Bodoni Moda, serif" }}
+              >
+                Start with clarity.
+              </h2>
+
+              <p className="text-[18px] leading-[1.6] text-[#46464d] mb-10 mx-auto max-w-lg">
+                A focused 30-minute conversation to understand your current
+                operational friction and determine if our ecosystem is the right
+                fit.
+              </p>
+
+              <Link
+                href="/contacts"
+                className="bg-[#141A32]  text-white rounded-xl px-6 py-4 text-[12px] leading-none tracking-[0.1em] font-bold uppercase hover:opacity-90 transition-opacity inline-flex items-center justify-center gap-2 group"
+              >
+                Book Your Business Diagnostic
+                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
+                  arrow_forward
+                </span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
       <Footer />
-    </main>
+    </div>
   );
 }

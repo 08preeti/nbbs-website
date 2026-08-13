@@ -40,7 +40,7 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/solutions"
+            href="#"
             className="relative text-[14px] font-medium text-[#0f172a] transition-colors duration-300 hover:text-[#c5a059]"
           >
             Solutions
@@ -64,7 +64,7 @@ export default function Header() {
         {/* Get Started */}
         <Link
           href="/contacts"
-          className="hidden md:inline-flex items-center justify-center h-11 px-6 bg-[#0f172a] text-white text-[13px] font-semibold tracking-wide transition-all duration-300 hover:bg-[#c5a059] hover:text-[#0f172a]"
+          className="hidden md:inline-flex items-center rounded-xl justify-center h-11 px-6 bg-[#0f172a] text-white text-[13px] font-semibold tracking-wide transition-all duration-300 hover:bg-[#c5a059] hover:text-[#0f172a]"
         >
           Get Started
         </Link>
