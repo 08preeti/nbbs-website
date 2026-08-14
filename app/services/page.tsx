@@ -8,7 +8,6 @@ import crm from "@/public/crm.jpg";
 import cash from "@/public/cashflow.png";
 import quotation from "@/public/quot.jpg";
 import incentive from "@/public/incentive.png";
-
 import Image from "next/image";
 
 import { useEffect, useRef } from "react";
