@@ -4,14 +4,7 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
-import opd from "@/public/opd.avif";
-import crm from "@/public/crm.jpg";
-import cash from "@/public/cashflow.png";
-import quotation from "@/public/quot.jpg";
-import incentive from "@/public/incentive.png";
-
 import Image from "next/image";
-
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -22,7 +15,7 @@ const services = [
     category: "DIAGNOSIS",
     title: "Business OPD",
     subtitle: "Diagnose before you prescribe.",
-    image: opd,
+    image: "/opd.avif",
     problem:
       "Most SMB owners can feel something is off — but don't know where to start. Wrong diagnosis leads to expensive consulting and software that never sticks.",
     points: [
@@ -39,7 +32,7 @@ const services = [
     category: "OPERATIONS",
     title: "NBBS CRM",
     subtitle: "Make every opportunity visible.",
-    image: crm,
+    image: "/crm.jpg",
     problem:
       "Leads get lost, follow-ups are forgotten, and sales information remains scattered across spreadsheets, WhatsApp and individual team members.",
     points: [
@@ -48,8 +41,7 @@ const services = [
       "Sales pipeline management",
       "Team accountability",
     ],
-    audience:
-      "Growing teams that need a simple CRM their people actually use.",
+    audience: "Growing teams that need a simple CRM their people actually use.",
     proof: "Designed around real SMB workflows",
   },
   {
@@ -57,7 +49,7 @@ const services = [
     category: "OPERATIONS",
     title: "Incentiwise",
     subtitle: "Turn commission chaos into clarity.",
-    image: incentive,
+    image: "/incentive.png",
     problem:
       "Manual commission calculations create disputes, slow down payouts and make it difficult for sales teams to understand exactly what they have earned.",
     points: [
@@ -75,7 +67,7 @@ const services = [
     category: "OPTIMIZATION",
     title: "Quotation",
     subtitle: "Professional proposals. Faster decisions.",
-    image: quotation,
+    image: "/quot.jpg",
     problem:
       "Inconsistent quotations slow down sales, create pricing confusion and make businesses look less professional than they actually are.",
     points: [
@@ -92,7 +84,7 @@ const services = [
     category: "OPTIMIZATION",
     title: "Cashflow",
     subtitle: "Know what is coming before it arrives.",
-    image: cash,
+    image: "/cashflow.png",
     problem:
       "Businesses can be profitable on paper while still struggling to know when money will come in, when payments are due and where liquidity is going.",
     points: [
@@ -241,7 +233,6 @@ export default function ServicesPage() {
                   className="bg-[#ffdea5] text-[#261900] text-[12px] leading-none rounded-xl tracking-widest font-bold uppercase px-6 py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
                 >
                   Book a Business Diagnostic
-
                   <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
@@ -280,16 +271,15 @@ export default function ServicesPage() {
               >
                 Business problems.
                 <br />
-
                 <span className="text-[#c49b55] italic">
                   Practical solutions.
                 </span>
               </h2>
 
               <p className="mt-7 max-w-2xl text-[16px] md:text-[18px] leading-[1.7] text-[#62626a]">
-                We diagnose how your business works today, identify where
-                things break down, and build practical systems that help you
-                operate, decide and grow better.
+                We diagnose how your business works today, identify where things
+                break down, and build practical systems that help you operate,
+                decide and grow better.
               </p>
             </div>
           </div>
@@ -341,7 +331,6 @@ export default function ServicesPage() {
                   <div className="w-full h-full flex items-center px-5 md:px-10 lg:px-16 pt-20 pb-10">
                     <div className="w-full h-full max-w-[1600px] mx-auto flex items-center">
                       <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-0">
-
                         {/* LEFT */}
                         <div className="lg:col-span-4 lg:pr-12 xl:pr-20 flex flex-col justify-center py-8">
                           <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#b08b4d]">
@@ -374,7 +363,6 @@ export default function ServicesPage() {
                             className="mt-10 inline-flex items-center gap-3 w-fit px-6 py-4 rounded-xl bg-[#141A32] text-white text-[10px] tracking-[0.18em] uppercase font-bold hover:bg-[#1d2642] transition-all group"
                           >
                             Book a Diagnostic
-
                             <span className="material-symbols-outlined text-[17px] group-hover:translate-x-1 transition-transform">
                               arrow_forward
                             </span>
@@ -519,8 +507,8 @@ export default function ServicesPage() {
 
               <p className="text-[17px] md:text-[18px] leading-[1.6] text-[#46464d] mb-10 mx-auto max-w-lg">
                 A focused 30-minute conversation to understand your current
-                operational friction and determine if our ecosystem is the
-                right fit.
+                operational friction and determine if our ecosystem is the right
+                fit.
               </p>
 
               <Link
@@ -528,7 +516,6 @@ export default function ServicesPage() {
                 className="bg-[#141A32] text-white rounded-xl px-6 py-4 text-[12px] leading-none tracking-widest font-bold uppercase hover:bg-[#1d2642] transition-all inline-flex items-center justify-center gap-2 group"
               >
                 Book Your Business Diagnostic
-
                 <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                   arrow_forward
                 </span>
