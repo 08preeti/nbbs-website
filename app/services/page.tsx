@@ -4,7 +4,6 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
-<<<<<<< HEAD
 import opd from "@/public/solution.jpg";
 import crm from "@/public/crm.jpg";
 import cash from "@/public/cashflow.jpg";
@@ -13,9 +12,6 @@ import incentive from "@/public/incentives.jpg";
 
 import Image from "next/image";
 
-=======
-import Image from "next/image";
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -26,11 +22,7 @@ const services = [
     category: "DIAGNOSIS",
     title: "Business OPD",
     subtitle: "Diagnose before you prescribe.",
-<<<<<<< HEAD
     image: opd,
-=======
-    image: "/opd.avif",
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
     problem:
       "Most SMB owners can feel something is off — but don't know where to start. Wrong diagnosis leads to expensive consulting and software that never sticks.",
     points: [
@@ -47,11 +39,7 @@ const services = [
     category: "OPERATIONS",
     title: "NBBS CRM",
     subtitle: "Make every opportunity visible.",
-<<<<<<< HEAD
     image: crm,
-=======
-    image: "/crm.jpg",
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
     problem:
       "Leads get lost, follow-ups are forgotten, and sales information remains scattered across spreadsheets, WhatsApp and individual team members.",
     points: [
@@ -60,7 +48,8 @@ const services = [
       "Sales pipeline management",
       "Team accountability",
     ],
-    audience: "Growing teams that need a simple CRM their people actually use.",
+    audience:
+      "Growing teams that need a simple CRM their people actually use.",
     proof: "Designed around real SMB workflows",
   },
   {
@@ -68,11 +57,7 @@ const services = [
     category: "OPERATIONS",
     title: "Incentiwise",
     subtitle: "Turn commission chaos into clarity.",
-<<<<<<< HEAD
     image: incentive,
-=======
-    image: "/incentive.png",
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
     problem:
       "Manual commission calculations create disputes, slow down payouts and make it difficult for sales teams to understand exactly what they have earned.",
     points: [
@@ -90,11 +75,7 @@ const services = [
     category: "OPTIMIZATION",
     title: "Quotation",
     subtitle: "Professional proposals. Faster decisions.",
-<<<<<<< HEAD
     image: quotation,
-=======
-    image: "/quot.jpg",
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
     problem:
       "Inconsistent quotations slow down sales, create pricing confusion and make businesses look less professional than they actually are.",
     points: [
@@ -111,11 +92,7 @@ const services = [
     category: "OPTIMIZATION",
     title: "Cashflow",
     subtitle: "Know what is coming before it arrives.",
-<<<<<<< HEAD
     image: cash,
-=======
-    image: "/cashflow.png",
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
     problem:
       "Businesses can be profitable on paper while still struggling to know when money will come in, when payments are due and where liquidity is going.",
     points: [
@@ -163,18 +140,10 @@ export default function ServicesPage() {
 
       if (!sections.length || !servicesSectionRef.current) return;
 
-<<<<<<< HEAD
-      // Initial position
-=======
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
       gsap.set(sections, {
         yPercent: 100,
       });
 
-<<<<<<< HEAD
-      // First section is already visible
-=======
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
       gsap.set(sections[0], {
         yPercent: 0,
       });
@@ -218,10 +187,7 @@ export default function ServicesPage() {
       <Header />
 
       <main className="grow">
-<<<<<<< HEAD
-=======
         {/* HERO */}
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
         <section className="bg-[#141A32] relative overflow-hidden py-24 md:py-32">
           <div
             className="absolute inset-0 pointer-events-none opacity-20"
@@ -242,11 +208,7 @@ export default function ServicesPage() {
             }}
           />
 
-<<<<<<< HEAD
-          <div className=" mx-auto px-5 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
-=======
           <div className="max-w-[1280px] mx-auto px-5 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
             <div className="md:col-span-8 flex flex-col items-start space-y-8">
               <h1
                 className="text-[48px] md:text-[72px] leading-[1.1] font-semibold text-white tracking-tight"
@@ -279,6 +241,7 @@ export default function ServicesPage() {
                   className="bg-[#ffdea5] text-[#261900] text-[12px] leading-none rounded-xl tracking-widest font-bold uppercase px-6 py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
                 >
                   Book a Business Diagnostic
+
                   <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
@@ -295,10 +258,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-<<<<<<< HEAD
-=======
         {/* SOLUTIONS INTRO */}
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
         <section id="solutions" className="bg-[#fbf9f8]">
           <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16 pt-24 md:pt-36 pb-16">
             <div className="max-w-3xl">
@@ -320,23 +280,21 @@ export default function ServicesPage() {
               >
                 Business problems.
                 <br />
+
                 <span className="text-[#c49b55] italic">
                   Practical solutions.
                 </span>
               </h2>
 
               <p className="mt-7 max-w-2xl text-[16px] md:text-[18px] leading-[1.7] text-[#62626a]">
-                We diagnose how your business works today, identify where things
-                break down, and build practical systems that help you operate,
-                decide and grow better.
+                We diagnose how your business works today, identify where
+                things break down, and build practical systems that help you
+                operate, decide and grow better.
               </p>
             </div>
           </div>
 
-<<<<<<< HEAD
-=======
           {/* FULL WIDTH SCROLLING SERVICES */}
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
           <div
             ref={servicesSectionRef}
             className="services-scroll relative w-full"
@@ -350,17 +308,10 @@ export default function ServicesPage() {
                     zIndex: index + 1,
                   }}
                 >
-<<<<<<< HEAD
-                  {/* Top Gold Line */}
-                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#e9c176]" />
-
-                  {/* Service Number */}
-=======
                   {/* TOP GOLD LINE */}
                   <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#e9c176]" />
 
                   {/* SERVICE NUMBER */}
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                   <div className="absolute top-8 left-5 md:left-10 lg:left-16 z-20">
                     <span className="text-[10px] tracking-[0.25em] uppercase text-[#8a8a91]">
                       Service
@@ -379,59 +330,26 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-<<<<<<< HEAD
-                  {/* Top Right Label */}
-=======
                   {/* TOP RIGHT */}
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                   <div className="absolute top-8 right-5 md:right-10 lg:right-16 z-20">
                     <span className="text-[9px] tracking-[0.2em] uppercase text-[#8a8a91]">
                       NBBS BUSINESS SOLUTIONS
                     </span>
                   </div>
 
-<<<<<<< HEAD
-                  {/* Main Content */}
-=======
                   {/* MAIN CONTENT */}
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                   <div className="w-full h-full flex items-center px-5 md:px-10 lg:px-16 pt-20 pb-10">
                     <div className="w-full h-full max-w-[1600px] mx-auto flex items-center">
                       <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-0">
+
                         {/* LEFT */}
-<<<<<<< HEAD
-                        <div
-                          className="
-                  lg:col-span-4
-                  lg:pr-12
-                  xl:pr-20
-                  flex
-                  flex-col
-                  justify-center
-                  py-8
-                "
-                        >
-=======
                         <div className="lg:col-span-4 lg:pr-12 xl:pr-20 flex flex-col justify-center py-8">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                           <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#b08b4d]">
                             {service.category}
                           </span>
 
                           <h3
-<<<<<<< HEAD
-                            className="
-                    mt-5
-                    text-[42px]
-                    md:text-[54px]
-                    lg:text-[60px]
-                    xl:text-[72px]
-                    leading-[1]
-                    text-[#141A32]
-                  "
-=======
                             className="mt-5 text-[42px] md:text-[54px] lg:text-[60px] xl:text-[72px] leading-[1] text-[#141A32]"
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                             style={{
                               fontFamily: "Bodoni Moda, serif",
                             }}
@@ -439,22 +357,7 @@ export default function ServicesPage() {
                             {service.title}
                           </h3>
 
-<<<<<<< HEAD
-                          <p
-                            className="
-                    mt-7
-                    text-[18px]
-                    md:text-[20px]
-                    lg:text-[22px]
-                    leading-[1.5]
-                    font-medium
-                    text-[#252a3e]
-                    max-w-xl
-                  "
-                          >
-=======
                           <p className="mt-7 text-[18px] md:text-[20px] lg:text-[22px] leading-[1.5] font-medium text-[#252a3e] max-w-xl">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                             {service.subtitle}
                           </p>
 
@@ -468,31 +371,10 @@ export default function ServicesPage() {
 
                           <Link
                             href="/contacts"
-<<<<<<< HEAD
-                            className="
-                    mt-10
-                    inline-flex
-                    items-center
-                    gap-3
-                    w-fit
-                    px-6
-                    py-4
-                    rounded-xl
-                    bg-[#141A32]
-                    text-white
-                    text-[10px]
-                    tracking-[0.18em]
-                    uppercase
-                    font-bold
-                    hover:bg-[#1d2642]
-                    transition-all
-                    group
-                  "
-=======
                             className="mt-10 inline-flex items-center gap-3 w-fit px-6 py-4 rounded-xl bg-[#141A32] text-white text-[10px] tracking-[0.18em] uppercase font-bold hover:bg-[#1d2642] transition-all group"
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                           >
                             Book a Diagnostic
+
                             <span className="material-symbols-outlined text-[17px] group-hover:translate-x-1 transition-transform">
                               arrow_forward
                             </span>
@@ -500,63 +382,18 @@ export default function ServicesPage() {
                         </div>
 
                         {/* MIDDLE */}
-<<<<<<< HEAD
-                        <div
-                          className="
-                  lg:col-span-4
-                  lg:border-l
-                  lg:border-r
-                  border-[#c6c6ce]
-                  px-0
-                  lg:px-10
-                  xl:px-14
-                  flex
-                  flex-col
-                  justify-center
-                  py-8
-                "
-                        >
-=======
                         <div className="lg:col-span-4 lg:border-l lg:border-r border-[#c6c6ce] px-0 lg:px-10 xl:px-14 flex flex-col justify-center py-8">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                           <span className="text-[10px] tracking-[0.22em] uppercase font-bold text-[#b08b4d]">
                             The Business Problem
                           </span>
 
-<<<<<<< HEAD
-                          <p
-                            className="
-                    mt-6
-                    text-[16px]
-                    md:text-[17px]
-                    lg:text-[18px]
-                    leading-[1.75]
-                    text-[#62626a]
-                  "
-                          >
-=======
                           <p className="mt-6 text-[16px] md:text-[17px] lg:text-[18px] leading-[1.75] text-[#62626a]">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                             {service.problem}
                           </p>
 
                           <div className="w-16 h-px bg-[#e9c176] my-8" />
 
-<<<<<<< HEAD
-                          <span
-                            className="
-                    block
-                    text-[10px]
-                    tracking-[0.22em]
-                    uppercase
-                    font-bold
-                    text-[#141A32]
-                    mb-6
-                  "
-                          >
-=======
                           <span className="block text-[10px] tracking-[0.22em] uppercase font-bold text-[#141A32] mb-6">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                             What changes
                           </span>
 
@@ -566,24 +403,7 @@ export default function ServicesPage() {
                                 key={point}
                                 className="flex items-start gap-3"
                               >
-<<<<<<< HEAD
-                                <span
-                                  className="
-                          flex
-                          shrink-0
-                          items-center
-                          justify-center
-                          w-5
-                          h-5
-                          rounded-full
-                          bg-[#e9c176]
-                          text-[#141A32]
-                          mt-0.5
-                        "
-                                >
-=======
                                 <span className="flex shrink-0 items-center justify-center w-5 h-5 rounded-full bg-[#e9c176] text-[#141A32] mt-0.5">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                                   <span className="material-symbols-outlined text-[12px]">
                                     check
                                   </span>
@@ -598,93 +418,14 @@ export default function ServicesPage() {
                         </div>
 
                         {/* RIGHT */}
-<<<<<<< HEAD
-                        <div
-                          className="
-                  lg:col-span-4
-                  lg:pl-10
-                  xl:pl-14
-                  flex
-                  flex-col
-                  justify-center
-                  py-8
-                "
-                        >
-                          {/* Image */}
-                          <div
-                            className="
-                    relative
-                    w-full
-                    h-[220px]
-                    md:h-[280px]
-                    lg:h-[330px]
-                    xl:h-[380px]
-                    overflow-hidden
-                    bg-[#fbf9f8]
-                    border
-                    border-[#c6c6ce]
-                  "
-                          >
-=======
                         <div className="lg:col-span-4 lg:pl-10 xl:pl-14 flex flex-col justify-center py-8">
                           {/* IMAGE */}
                           <div className="relative w-full h-[220px] md:h-[280px] lg:h-[330px] xl:h-[380px] overflow-hidden bg-[#fbf9f8] border border-[#c6c6ce]">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                             <Image
                               src={service.image}
                               alt={`${service.title} business solution`}
                               fill
                               sizes="(max-width: 768px) 100vw, 500px"
-<<<<<<< HEAD
-                              className="
-                      object-cover
-                      transition-transform
-                      duration-700
-                      ease-out
-                      hover:scale-105
-                    "
-                            />
-
-                            <div
-                              className="
-                      absolute
-                      inset-0
-                      bg-gradient-to-t
-                      from-[#141A32]/50
-                      via-transparent
-                      to-transparent
-                    "
-                            />
-
-                            <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
-                              <span
-                                className="
-                        px-3
-                        py-1.5
-                        bg-[#141A32]
-                        text-white
-                        text-[8px]
-                        tracking-[0.16em]
-                        uppercase
-                        font-bold
-                      "
-                              >
-                                NBBS Solution
-                              </span>
-
-                              <div
-                                className="
-                        w-10
-                        h-10
-                        rounded-full
-                        bg-[#e9c176]
-                        flex
-                        items-center
-                        justify-center
-                        text-[#141A32]
-                      "
-                              >
-=======
                               className="object-cover transition-transform duration-700 ease-out hover:scale-105"
                             />
 
@@ -696,7 +437,6 @@ export default function ServicesPage() {
                               </span>
 
                               <div className="w-10 h-10 rounded-full bg-[#e9c176] flex items-center justify-center text-[#141A32]">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                                 <span className="material-symbols-outlined text-[18px]">
                                   north_east
                                 </span>
@@ -704,33 +444,6 @@ export default function ServicesPage() {
                             </div>
                           </div>
 
-<<<<<<< HEAD
-                          {/* Information */}
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-                            <div className="p-5 bg-[#fbf9f8] border border-[#c6c6ce]">
-                              <span
-                                className="
-                        block
-                        text-[8px]
-                        tracking-[0.16em]
-                        uppercase
-                        text-[#8a8a91]
-                        font-bold
-                      "
-                              >
-                                Perfect For
-                              </span>
-
-                              <p
-                                className="
-                        mt-3
-                        text-[12px]
-                        leading-[1.5]
-                        font-medium
-                        text-[#141A32]
-                      "
-                              >
-=======
                           {/* INFORMATION */}
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
                             <div className="p-5 bg-[#fbf9f8] border border-[#c6c6ce]">
@@ -739,42 +452,16 @@ export default function ServicesPage() {
                               </span>
 
                               <p className="mt-3 text-[12px] leading-[1.5] font-medium text-[#141A32]">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                                 {service.audience}
                               </p>
                             </div>
 
                             <div className="p-5 bg-[#fbf9f8] border border-[#c6c6ce]">
-<<<<<<< HEAD
-                              <span
-                                className="
-                        block
-                        text-[8px]
-                        tracking-[0.16em]
-                        uppercase
-                        text-[#8a8a91]
-                        font-bold
-                      "
-                              >
-                                Business Proof
-                              </span>
-
-                              <p
-                                className="
-                        mt-3
-                        text-[12px]
-                        leading-[1.5]
-                        font-bold
-                        text-[#141A32]
-                      "
-                              >
-=======
                               <span className="block text-[8px] tracking-[0.16em] uppercase text-[#8a8a91] font-bold">
                                 Business Proof
                               </span>
 
                               <p className="mt-3 text-[12px] leading-[1.5] font-bold text-[#141A32]">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                                 {service.proof}
                               </p>
                             </div>
@@ -784,11 +471,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-<<<<<<< HEAD
-                  {/* Bottom Progress */}
-=======
                   {/* BOTTOM PROGRESS */}
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                   <div className="absolute bottom-0 left-0 right-0 px-5 md:px-10 lg:px-16 py-4 border-t border-[#c6c6ce] flex items-center justify-between">
                     <p className="text-[9px] tracking-[0.16em] uppercase text-[#777780]">
                       Diagnose
@@ -808,33 +491,6 @@ export default function ServicesPage() {
           </div>
         </section>
 
-<<<<<<< HEAD
-        <section
-          className="
-            bg-[#fbf9f8]
-            py-24
-            md:py-32
-            border-t
-            border-[#c7c5ce]
-          "
-          id="diagnostic"
-        >
-          <div className="max-w-[1280px] mx-auto px-5 md:px-16 flex justify-center">
-            <div
-              className="
-                border
-                border-[#c7c5ce]
-                bg-white
-                p-10
-                md:p-16
-                text-center
-                max-w-2xl
-                w-full
-                rounded-[20px]
-                shadow-[0_15px_50px_rgba(20,26,50,0.05)]
-              "
-            >
-=======
         {/* FINAL CTA */}
         <section
           className="bg-[#fbf9f8] py-24 md:py-32 border-t border-[#c7c5ce]"
@@ -842,7 +498,6 @@ export default function ServicesPage() {
         >
           <div className="max-w-[1280px] mx-auto px-5 md:px-16 flex justify-center">
             <div className="border border-[#c7c5ce] bg-white p-10 md:p-16 text-center max-w-2xl w-full rounded-[20px] shadow-[0_15px_50px_rgba(20,26,50,0.05)]">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
               <div className="flex items-center justify-center gap-4 mb-7">
                 <span className="w-10 h-px bg-[#e9c176]" />
 
@@ -854,18 +509,7 @@ export default function ServicesPage() {
               </div>
 
               <h2
-<<<<<<< HEAD
-                className="
-                  text-[42px]
-                  md:text-[48px]
-                  leading-[1.2]
-                  font-medium
-                  text-[#141a32]
-                  mb-6
-                "
-=======
                 className="text-[42px] md:text-[48px] leading-[1.2] font-medium text-[#141a32] mb-6"
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                 style={{
                   fontFamily: "Bodoni Moda, serif",
                 }}
@@ -873,64 +517,19 @@ export default function ServicesPage() {
                 Start with clarity.
               </h2>
 
-<<<<<<< HEAD
-              <p
-                className="
-                  text-[17px]
-                  md:text-[18px]
-                  leading-[1.6]
-                  text-[#46464d]
-                  mb-10
-                  mx-auto
-                  max-w-lg
-                "
-              >
-=======
               <p className="text-[17px] md:text-[18px] leading-[1.6] text-[#46464d] mb-10 mx-auto max-w-lg">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                 A focused 30-minute conversation to understand your current
-                operational friction and determine if our ecosystem is the right
-                fit.
+                operational friction and determine if our ecosystem is the
+                right fit.
               </p>
 
               <Link
                 href="/contacts"
-<<<<<<< HEAD
-                className="
-                  bg-[#141A32]
-                  text-white
-                  rounded-xl
-                  px-6
-                  py-4
-                  text-[12px]
-                  leading-none
-                  tracking-widest
-                  font-bold
-                  uppercase
-                  hover:bg-[#1d2642]
-                  transition-all
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2
-                  group
-                "
-              >
-                Book Your Business Diagnostic
-                <span
-                  className="
-                    material-symbols-outlined
-                    text-sm
-                    group-hover:translate-x-1
-                    transition-transform
-                  "
-                >
-=======
                 className="bg-[#141A32] text-white rounded-xl px-6 py-4 text-[12px] leading-none tracking-widest font-bold uppercase hover:bg-[#1d2642] transition-all inline-flex items-center justify-center gap-2 group"
               >
                 Book Your Business Diagnostic
+
                 <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
->>>>>>> 70702c38b5c045aefe2db4aafef5e0ddd291c81a
                   arrow_forward
                 </span>
               </Link>
