@@ -1,11 +1,3 @@
-// components/HeroDiagram.tsx
-// Abstract "chaos → structure" illustration: a tangled network of nodes
-// on the left (representing operational chaos, noise, inefficiency)
-// resolving into a clean geometric grid on the right (diagnostic
-// analytics → optimization → growth strategy). Matches the hero
-// headline's "From Diagnosis to Solution Implementation" narrative.
-// Coordinates are precomputed/deterministic so the SVG renders
-// identically on server and client (no hydration mismatch).
 
 export default function HeroDiagram() {
   return (
@@ -179,3 +171,12 @@ export default function HeroDiagram() {
     </svg>
   );
 }
+
+
+
+
+
+
+
+
+
