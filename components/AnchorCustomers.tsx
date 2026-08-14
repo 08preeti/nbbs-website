@@ -135,7 +135,7 @@ export default function AnchorCustomers() {
                     group
                     relative
                     overflow-hidden
-                    rounded-[24px]
+                    rounded-3xl
                     border
                     border-navy/[0.07]
                     bg-white
@@ -158,7 +158,7 @@ export default function AnchorCustomers() {
 
                       {/* Company */}
 
-                      <h3 className="mt-7 max-w-[600px] font-display text-3xl font-black leading-[0.98] tracking-[-0.04em] text-navy sm:text-4xl md:text-[2.8rem]">
+                      <h3 className="mt-7 max-w-150 font-display text-3xl font-black leading-[0.98] tracking-[-0.04em] text-navy sm:text-4xl md:text-[2.8rem]">
                         {customer.company}
                       </h3>
 
@@ -182,7 +182,7 @@ export default function AnchorCustomers() {
                           <span className="h-px w-10 bg-navy/10" />
                         </div>
 
-                        <p className="max-w-[560px] text-sm leading-6 text-navy/65 md:text-[15px] md:leading-7">
+                        <p className="max-w-140 text-sm leading-6 text-navy/65 md:text-[15px] md:leading-7">
                           {customer.challenge}
                         </p>
                       </div>
@@ -198,7 +198,7 @@ export default function AnchorCustomers() {
                           <span className="h-px w-10 bg-gold/40" />
                         </div>
 
-                        <p className="max-w-[560px] text-sm font-medium leading-6 text-navy md:text-[15px] md:leading-7">
+                        <p className="max-w-140 text-sm font-medium leading-6 text-navy md:text-[15px] md:leading-7">
                           {customer.solution}
                         </p>
                       </div>
@@ -228,7 +228,7 @@ export default function AnchorCustomers() {
                                 {result.value}
                               </div>
 
-                              <p className="mt-2 max-w-[130px] text-[8px] font-bold uppercase leading-[1.45] tracking-[0.07em] text-navy/40 sm:text-[9px]">
+                              <p className="mt-2 max-w-32.5 text-[8px] font-bold uppercase leading-[1.45] tracking-[0.07em] text-navy/40 sm:text-[9px]">
                                 {result.label}
                               </p>
                             </div>
@@ -293,7 +293,7 @@ export default function AnchorCustomers() {
 
                   {/* Bottom accent */}
 
-                  <div className="h-[2px] w-full bg-navy/[0.04]">
+                  <div className="h-0.5 w-full bg-navy/[0.04]">
                     <div className="h-full w-16 bg-gold" />
                   </div>
                 </article>
