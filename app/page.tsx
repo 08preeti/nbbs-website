@@ -1287,13 +1287,7 @@ export default function Home() {
 
                 <span>to Solution</span>
 
-<<<<<<< HEAD
                 <br />
-=======
-        <span>
-          to solution
-        </span>
->>>>>>> 3da95687f58ad6c087f8bf18d3550d9a62f2b3a3
 
                 <span>Implementation.</span>
               </h1>
@@ -1337,18 +1331,10 @@ export default function Home() {
           justify-center
           gap-2
         "
-<<<<<<< HEAD
               >
                 <Link
                   href="/contacts"
                   className="
-=======
-      >
-
-        <Link
-          href="/#contact"
-          className="
->>>>>>> 3da95687f58ad6c087f8bf18d3550d9a62f2b3a3
             group
             inline-flex
             items-center
@@ -1396,18 +1382,9 @@ export default function Home() {
                   </span>
                 </Link>
 
-<<<<<<< HEAD
                 <Link
                   href="/services"
                   className="
-=======
-        </Link>
-
-
-        <Link
-          href="/#services"
-          className="
->>>>>>> 3da95687f58ad6c087f8bf18d3550d9a62f2b3a3
             inline-flex
             items-center
             justify-center
@@ -1510,7 +1487,6 @@ export default function Home() {
           </div>
         </section>
 
-<<<<<<< HEAD
         {/* ============================================================
             NBBS ECOSYSTEM
         ============================================================ */}
@@ -1590,20 +1566,10 @@ export default function Home() {
             </div>
           </div>
         </section>
-=======
-        
-
-        
-
-        
-
-        
->>>>>>> 3da95687f58ad6c087f8bf18d3550d9a62f2b3a3
 
         {/* ============================================================
             SERVICES
         ============================================================ */}
-<<<<<<< HEAD
         <section className="w-full border-b border-[#c6c6ce] bg-[#fbf9f8] px-4 py-12 sm:px-6 md:px-8 md:py-16 lg:px-10">
           <div className="mx-auto w-full max-w-[1200px]">
             <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-12">
@@ -1777,13 +1743,6 @@ export default function Home() {
 
         {/* ============================================================
             PATH TO PERFORMANCE
-=======
-
-        <ServicesSection />
-
-        {/* ============================================================
-            ABOUT US
->>>>>>> 3da95687f58ad6c087f8bf18d3550d9a62f2b3a3
         ============================================================ */}
         <section className="w-full bg-[#141a32] px-4 py-12 text-center sm:px-6 md:px-8 md:py-16 lg:px-10">
           <div className="mx-auto w-full max-w-[1200px]">
@@ -1792,7 +1751,6 @@ export default function Home() {
                 Our Process
               </span>
 
-<<<<<<< HEAD
               <h2 className="mb-4 font-display text-[34px] font-bold leading-[1.1] tracking-[-0.02em] text-white sm:text-[42px] md:text-[48px]">
                 The Path to Performance
               </h2>
@@ -1951,23 +1909,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-=======
-        <AboutSection />
-
-        {/* ============================================================
-            CONTACT
-        ============================================================ */}
-
-        <ContactSection />
-
->>>>>>> 3da95687f58ad6c087f8bf18d3550d9a62f2b3a3
       </main>
 
       <Footer />
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 3da95687f58ad6c087f8bf18d3550d9a62f2b3a3

@@ -4,11 +4,11 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
-import opd from "@/public/solution.jpg";
+import opd from "@/public/opd.jpg";
 import crm from "@/public/crm.jpg";
-import cash from "@/public/cashflow.jpg";
-import quotation from "@/public/quotation.jpg";
-import incentive from "@/public/incentives.jpg";
+import cash from "@/public/cash.jpg";
+import quotation from "@/public/quo.jpg";
+import incentive from "@/public/incentive.jpg";
 
 import Image from "next/image";
 
@@ -48,8 +48,7 @@ const services = [
       "Sales pipeline management",
       "Team accountability",
     ],
-    audience:
-      "Growing teams that need a simple CRM their people actually use.",
+    audience: "Growing teams that need a simple CRM their people actually use.",
     proof: "Designed around real SMB workflows",
   },
   {
@@ -242,7 +241,6 @@ export default function ServicesPage() {
                   className="bg-[#ffdea5] text-[#261900] text-[12px] leading-none rounded-xl tracking-widest font-bold uppercase px-6 py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
                 >
                   Book a Business Diagnostic
-
                   <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
@@ -280,16 +278,15 @@ export default function ServicesPage() {
               >
                 Business problems.
                 <br />
-
                 <span className="text-[#c49b55] italic">
                   Practical solutions.
                 </span>
               </h2>
 
               <p className="mt-7 max-w-2xl text-[16px] md:text-[18px] leading-[1.7] text-[#62626a]">
-                We diagnose how your business works today, identify where
-                things break down, and build practical systems that help you
-                operate, decide and grow better.
+                We diagnose how your business works today, identify where things
+                break down, and build practical systems that help you operate,
+                decide and grow better.
               </p>
             </div>
           </div>
@@ -340,7 +337,6 @@ export default function ServicesPage() {
                   <div className="w-full h-full flex items-center px-5 md:px-10 lg:px-16 pt-20 pb-10">
                     <div className="w-full h-full max-w-[1600px] mx-auto flex items-center">
                       <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-0">
-
                         {/* LEFT */}
                         <div
                           className="
@@ -420,7 +416,6 @@ export default function ServicesPage() {
                   "
                           >
                             Book a Diagnostic
-
                             <span className="material-symbols-outlined text-[17px] group-hover:translate-x-1 transition-transform">
                               arrow_forward
                             </span>
@@ -740,8 +735,8 @@ export default function ServicesPage() {
                 "
               >
                 A focused 30-minute conversation to understand your current
-                operational friction and determine if our ecosystem is the
-                right fit.
+                operational friction and determine if our ecosystem is the right
+                fit.
               </p>
 
               <Link
@@ -767,8 +762,14 @@ export default function ServicesPage() {
                 "
               >
                 Book Your Business Diagnostic
-
-                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
+                <span
+                  className="
+                    material-symbols-outlined
+                    text-sm
+                    group-hover:translate-x-1
+                    transition-transform
+                  "
+                >
                   arrow_forward
                 </span>
               </Link>
