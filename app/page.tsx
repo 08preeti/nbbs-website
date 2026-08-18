@@ -17,7 +17,7 @@ export default function Home() {
     <div className="antialiased min-h-screen flex flex-col bg-[#fbf9f8] text-[#1b1c1c]">
       <Header />
 
-      <main className="flex-grow">
+      <main className="">
 
         {/* ============================================================
     HERO

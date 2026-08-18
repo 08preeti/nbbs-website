@@ -140,10 +140,12 @@ export default function ServicesPage() {
 
       if (!sections.length || !servicesSectionRef.current) return;
 
+      // Initial position
       gsap.set(sections, {
         yPercent: 100,
       });
 
+      // First section is already visible
       gsap.set(sections[0], {
         yPercent: 0,
       });
@@ -187,7 +189,6 @@ export default function ServicesPage() {
       <Header />
 
       <main className="grow">
-        {/* HERO */}
         <section className="bg-[#141A32] relative overflow-hidden py-24 md:py-32">
           <div
             className="absolute inset-0 pointer-events-none opacity-20"
@@ -208,7 +209,7 @@ export default function ServicesPage() {
             }}
           />
 
-          <div className="max-w-[1280px] mx-auto px-5 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
+          <div className=" mx-auto px-5 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-8 flex flex-col items-start space-y-8">
               <h1
                 className="text-[48px] md:text-[72px] leading-[1.1] font-semibold text-white tracking-tight"
@@ -258,7 +259,6 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* SOLUTIONS INTRO */}
         <section id="solutions" className="bg-[#fbf9f8]">
           <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16 pt-24 md:pt-36 pb-16">
             <div className="max-w-3xl">
@@ -294,7 +294,6 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          {/* FULL WIDTH SCROLLING SERVICES */}
           <div
             ref={servicesSectionRef}
             className="services-scroll relative w-full"
@@ -308,10 +307,10 @@ export default function ServicesPage() {
                     zIndex: index + 1,
                   }}
                 >
-                  {/* TOP GOLD LINE */}
+                  {/* Top Gold Line */}
                   <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#e9c176]" />
 
-                  {/* SERVICE NUMBER */}
+                  {/* Service Number */}
                   <div className="absolute top-8 left-5 md:left-10 lg:left-16 z-20">
                     <span className="text-[10px] tracking-[0.25em] uppercase text-[#8a8a91]">
                       Service
@@ -330,26 +329,44 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  {/* TOP RIGHT */}
+                  {/* Top Right Label */}
                   <div className="absolute top-8 right-5 md:right-10 lg:right-16 z-20">
                     <span className="text-[9px] tracking-[0.2em] uppercase text-[#8a8a91]">
                       NBBS BUSINESS SOLUTIONS
                     </span>
                   </div>
 
-                  {/* MAIN CONTENT */}
+                  {/* Main Content */}
                   <div className="w-full h-full flex items-center px-5 md:px-10 lg:px-16 pt-20 pb-10">
                     <div className="w-full h-full max-w-[1600px] mx-auto flex items-center">
                       <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-0">
 
                         {/* LEFT */}
-                        <div className="lg:col-span-4 lg:pr-12 xl:pr-20 flex flex-col justify-center py-8">
+                        <div
+                          className="
+                  lg:col-span-4
+                  lg:pr-12
+                  xl:pr-20
+                  flex
+                  flex-col
+                  justify-center
+                  py-8
+                "
+                        >
                           <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#b08b4d]">
                             {service.category}
                           </span>
 
                           <h3
-                            className="mt-5 text-[42px] md:text-[54px] lg:text-[60px] xl:text-[72px] leading-[1] text-[#141A32]"
+                            className="
+                    mt-5
+                    text-[42px]
+                    md:text-[54px]
+                    lg:text-[60px]
+                    xl:text-[72px]
+                    leading-[1]
+                    text-[#141A32]
+                  "
                             style={{
                               fontFamily: "Bodoni Moda, serif",
                             }}
@@ -357,7 +374,18 @@ export default function ServicesPage() {
                             {service.title}
                           </h3>
 
-                          <p className="mt-7 text-[18px] md:text-[20px] lg:text-[22px] leading-[1.5] font-medium text-[#252a3e] max-w-xl">
+                          <p
+                            className="
+                    mt-7
+                    text-[18px]
+                    md:text-[20px]
+                    lg:text-[22px]
+                    leading-[1.5]
+                    font-medium
+                    text-[#252a3e]
+                    max-w-xl
+                  "
+                          >
                             {service.subtitle}
                           </p>
 
@@ -371,7 +399,25 @@ export default function ServicesPage() {
 
                           <Link
                             href="/contacts"
-                            className="mt-10 inline-flex items-center gap-3 w-fit px-6 py-4 rounded-xl bg-[#141A32] text-white text-[10px] tracking-[0.18em] uppercase font-bold hover:bg-[#1d2642] transition-all group"
+                            className="
+                    mt-10
+                    inline-flex
+                    items-center
+                    gap-3
+                    w-fit
+                    px-6
+                    py-4
+                    rounded-xl
+                    bg-[#141A32]
+                    text-white
+                    text-[10px]
+                    tracking-[0.18em]
+                    uppercase
+                    font-bold
+                    hover:bg-[#1d2642]
+                    transition-all
+                    group
+                  "
                           >
                             Book a Diagnostic
 
@@ -382,18 +428,51 @@ export default function ServicesPage() {
                         </div>
 
                         {/* MIDDLE */}
-                        <div className="lg:col-span-4 lg:border-l lg:border-r border-[#c6c6ce] px-0 lg:px-10 xl:px-14 flex flex-col justify-center py-8">
+                        <div
+                          className="
+                  lg:col-span-4
+                  lg:border-l
+                  lg:border-r
+                  border-[#c6c6ce]
+                  px-0
+                  lg:px-10
+                  xl:px-14
+                  flex
+                  flex-col
+                  justify-center
+                  py-8
+                "
+                        >
                           <span className="text-[10px] tracking-[0.22em] uppercase font-bold text-[#b08b4d]">
                             The Business Problem
                           </span>
 
-                          <p className="mt-6 text-[16px] md:text-[17px] lg:text-[18px] leading-[1.75] text-[#62626a]">
+                          <p
+                            className="
+                    mt-6
+                    text-[16px]
+                    md:text-[17px]
+                    lg:text-[18px]
+                    leading-[1.75]
+                    text-[#62626a]
+                  "
+                          >
                             {service.problem}
                           </p>
 
                           <div className="w-16 h-px bg-[#e9c176] my-8" />
 
-                          <span className="block text-[10px] tracking-[0.22em] uppercase font-bold text-[#141A32] mb-6">
+                          <span
+                            className="
+                    block
+                    text-[10px]
+                    tracking-[0.22em]
+                    uppercase
+                    font-bold
+                    text-[#141A32]
+                    mb-6
+                  "
+                          >
                             What changes
                           </span>
 
@@ -403,7 +482,20 @@ export default function ServicesPage() {
                                 key={point}
                                 className="flex items-start gap-3"
                               >
-                                <span className="flex shrink-0 items-center justify-center w-5 h-5 rounded-full bg-[#e9c176] text-[#141A32] mt-0.5">
+                                <span
+                                  className="
+                          flex
+                          shrink-0
+                          items-center
+                          justify-center
+                          w-5
+                          h-5
+                          rounded-full
+                          bg-[#e9c176]
+                          text-[#141A32]
+                          mt-0.5
+                        "
+                                >
                                   <span className="material-symbols-outlined text-[12px]">
                                     check
                                   </span>
@@ -418,25 +510,85 @@ export default function ServicesPage() {
                         </div>
 
                         {/* RIGHT */}
-                        <div className="lg:col-span-4 lg:pl-10 xl:pl-14 flex flex-col justify-center py-8">
-                          {/* IMAGE */}
-                          <div className="relative w-full h-[220px] md:h-[280px] lg:h-[330px] xl:h-[380px] overflow-hidden bg-[#fbf9f8] border border-[#c6c6ce]">
+                        <div
+                          className="
+                  lg:col-span-4
+                  lg:pl-10
+                  xl:pl-14
+                  flex
+                  flex-col
+                  justify-center
+                  py-8
+                "
+                        >
+                          {/* Image */}
+                          <div
+                            className="
+                    relative
+                    w-full
+                    h-[220px]
+                    md:h-[280px]
+                    lg:h-[330px]
+                    xl:h-[380px]
+                    overflow-hidden
+                    bg-[#fbf9f8]
+                    border
+                    border-[#c6c6ce]
+                  "
+                          >
                             <Image
                               src={service.image}
                               alt={`${service.title} business solution`}
                               fill
                               sizes="(max-width: 768px) 100vw, 500px"
-                              className="object-cover transition-transform duration-700 ease-out hover:scale-105"
+                              className="
+                      object-cover
+                      transition-transform
+                      duration-700
+                      ease-out
+                      hover:scale-105
+                    "
                             />
 
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#141A32]/50 via-transparent to-transparent" />
+                            <div
+                              className="
+                      absolute
+                      inset-0
+                      bg-gradient-to-t
+                      from-[#141A32]/50
+                      via-transparent
+                      to-transparent
+                    "
+                            />
 
                             <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
-                              <span className="px-3 py-1.5 bg-[#141A32] text-white text-[8px] tracking-[0.16em] uppercase font-bold">
+                              <span
+                                className="
+                        px-3
+                        py-1.5
+                        bg-[#141A32]
+                        text-white
+                        text-[8px]
+                        tracking-[0.16em]
+                        uppercase
+                        font-bold
+                      "
+                              >
                                 NBBS Solution
                               </span>
 
-                              <div className="w-10 h-10 rounded-full bg-[#e9c176] flex items-center justify-center text-[#141A32]">
+                              <div
+                                className="
+                        w-10
+                        h-10
+                        rounded-full
+                        bg-[#e9c176]
+                        flex
+                        items-center
+                        justify-center
+                        text-[#141A32]
+                      "
+                              >
                                 <span className="material-symbols-outlined text-[18px]">
                                   north_east
                                 </span>
@@ -444,24 +596,58 @@ export default function ServicesPage() {
                             </div>
                           </div>
 
-                          {/* INFORMATION */}
+                          {/* Information */}
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
                             <div className="p-5 bg-[#fbf9f8] border border-[#c6c6ce]">
-                              <span className="block text-[8px] tracking-[0.16em] uppercase text-[#8a8a91] font-bold">
+                              <span
+                                className="
+                        block
+                        text-[8px]
+                        tracking-[0.16em]
+                        uppercase
+                        text-[#8a8a91]
+                        font-bold
+                      "
+                              >
                                 Perfect For
                               </span>
 
-                              <p className="mt-3 text-[12px] leading-[1.5] font-medium text-[#141A32]">
+                              <p
+                                className="
+                        mt-3
+                        text-[12px]
+                        leading-[1.5]
+                        font-medium
+                        text-[#141A32]
+                      "
+                              >
                                 {service.audience}
                               </p>
                             </div>
 
                             <div className="p-5 bg-[#fbf9f8] border border-[#c6c6ce]">
-                              <span className="block text-[8px] tracking-[0.16em] uppercase text-[#8a8a91] font-bold">
+                              <span
+                                className="
+                        block
+                        text-[8px]
+                        tracking-[0.16em]
+                        uppercase
+                        text-[#8a8a91]
+                        font-bold
+                      "
+                              >
                                 Business Proof
                               </span>
 
-                              <p className="mt-3 text-[12px] leading-[1.5] font-bold text-[#141A32]">
+                              <p
+                                className="
+                        mt-3
+                        text-[12px]
+                        leading-[1.5]
+                        font-bold
+                        text-[#141A32]
+                      "
+                              >
                                 {service.proof}
                               </p>
                             </div>
@@ -471,7 +657,7 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  {/* BOTTOM PROGRESS */}
+                  {/* Bottom Progress */}
                   <div className="absolute bottom-0 left-0 right-0 px-5 md:px-10 lg:px-16 py-4 border-t border-[#c6c6ce] flex items-center justify-between">
                     <p className="text-[9px] tracking-[0.16em] uppercase text-[#777780]">
                       Diagnose
@@ -491,13 +677,31 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* FINAL CTA */}
         <section
-          className="bg-[#fbf9f8] py-24 md:py-32 border-t border-[#c7c5ce]"
+          className="
+            bg-[#fbf9f8]
+            py-24
+            md:py-32
+            border-t
+            border-[#c7c5ce]
+          "
           id="diagnostic"
         >
           <div className="max-w-[1280px] mx-auto px-5 md:px-16 flex justify-center">
-            <div className="border border-[#c7c5ce] bg-white p-10 md:p-16 text-center max-w-2xl w-full rounded-[20px] shadow-[0_15px_50px_rgba(20,26,50,0.05)]">
+            <div
+              className="
+                border
+                border-[#c7c5ce]
+                bg-white
+                p-10
+                md:p-16
+                text-center
+                max-w-2xl
+                w-full
+                rounded-[20px]
+                shadow-[0_15px_50px_rgba(20,26,50,0.05)]
+              "
+            >
               <div className="flex items-center justify-center gap-4 mb-7">
                 <span className="w-10 h-px bg-[#e9c176]" />
 
@@ -509,7 +713,14 @@ export default function ServicesPage() {
               </div>
 
               <h2
-                className="text-[42px] md:text-[48px] leading-[1.2] font-medium text-[#141a32] mb-6"
+                className="
+                  text-[42px]
+                  md:text-[48px]
+                  leading-[1.2]
+                  font-medium
+                  text-[#141a32]
+                  mb-6
+                "
                 style={{
                   fontFamily: "Bodoni Moda, serif",
                 }}
@@ -517,7 +728,17 @@ export default function ServicesPage() {
                 Start with clarity.
               </h2>
 
-              <p className="text-[17px] md:text-[18px] leading-[1.6] text-[#46464d] mb-10 mx-auto max-w-lg">
+              <p
+                className="
+                  text-[17px]
+                  md:text-[18px]
+                  leading-[1.6]
+                  text-[#46464d]
+                  mb-10
+                  mx-auto
+                  max-w-lg
+                "
+              >
                 A focused 30-minute conversation to understand your current
                 operational friction and determine if our ecosystem is the
                 right fit.
@@ -525,7 +746,25 @@ export default function ServicesPage() {
 
               <Link
                 href="/contacts"
-                className="bg-[#141A32] text-white rounded-xl px-6 py-4 text-[12px] leading-none tracking-widest font-bold uppercase hover:bg-[#1d2642] transition-all inline-flex items-center justify-center gap-2 group"
+                className="
+                  bg-[#141A32]
+                  text-white
+                  rounded-xl
+                  px-6
+                  py-4
+                  text-[12px]
+                  leading-none
+                  tracking-widest
+                  font-bold
+                  uppercase
+                  hover:bg-[#1d2642]
+                  transition-all
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  group
+                "
               >
                 Book Your Business Diagnostic
 
