@@ -1,479 +1,950 @@
+// // "use client";
 
-// // components/HeroScribble.tsx
+// // import { useMemo } from "react";
+
+// // const round = (value: number, decimals = 2) => {
+// //   const factor = 10 ** decimals;
+// //   return Math.round(value * factor) / factor;
+// // };
+
+// // export default function HeroScribble() {
+// //   /*
+// //    * ============================================================
+// //    * SCRIBBLE
+// //    * ============================================================
+// //    *
+// //    * Important:
+// //    * All generated coordinates are rounded.
+// //    * This prevents React hydration mismatches caused by tiny
+// //    * floating-point differences between server and browser.
+// //    */
+
+// //   const scribbles = useMemo(() => {
+// //     const paths: string[] = [];
+
+// //     const cx = 178;
+// //     const cy = 175;
+
+// //     for (let i = 0; i < 72; i++) {
+// //       const angle = i * 0.71;
+
+// //       const localCx = round(cx + Math.sin(i * 1.71) * 7);
+// //       const localCy = round(cy + Math.cos(i * 1.23) * 7);
+
+// //       const rx = round(72 + Math.sin(i * 0.83) * 25);
+// //       const ry = round(68 + Math.cos(i * 1.11) * 24);
+
+// //       const x1 = round(localCx - rx);
+// //       const y1 = round(localCy);
+
+// //       const x2 = round(localCx - rx * 0.38);
+// //       const y2 = round(localCy - ry);
+
+// //       const x3 = round(localCx + rx * 0.72);
+// //       const y3 = round(localCy - ry * 0.78);
+
+// //       const x4 = round(localCx + rx);
+// //       const y4 = round(
+// //         localCy + Math.sin(i * 0.79) * 12
+// //       );
+
+// //       const x5 = round(localCx + rx * 0.34);
+// //       const y5 = round(localCy + ry);
+
+// //       const x6 = round(localCx - rx * 0.78);
+// //       const y6 = round(localCy + ry * 0.68);
+
+// //       const path = `
+// //         M ${x1} ${y1}
+
+// //         C
+// //           ${round(x1 - 15)}
+// //           ${round(y1 - ry * 0.42)}
+// //           ${round(x2 - 15)}
+// //           ${round(y2 - 15)}
+// //           ${x2}
+// //           ${y2}
+
+// //         C
+// //           ${round(x2 + 30)}
+// //           ${round(y2 - 22)}
+// //           ${round(x3 - 18)}
+// //           ${round(y3 - 10)}
+// //           ${x3}
+// //           ${y3}
+
+// //         C
+// //           ${round(x3 + 30)}
+// //           ${round(y3 + 25)}
+// //           ${round(x4 + 8)}
+// //           ${round(y4 - 18)}
+// //           ${x4}
+// //           ${y4}
+
+// //         C
+// //           ${round(x4 - 20)}
+// //           ${round(y4 + 38)}
+// //           ${round(x5 + 20)}
+// //           ${round(y5 + 18)}
+// //           ${x5}
+// //           ${y5}
+
+// //         C
+// //           ${round(x5 - 38)}
+// //           ${round(y5 + 20)}
+// //           ${round(x6 - 18)}
+// //           ${round(y6 + 16)}
+// //           ${x6}
+// //           ${y6}
+
+// //         C
+// //           ${round(x6 - 32)}
+// //           ${round(y6 - 38)}
+// //           ${round(x1 + 12)}
+// //           ${round(y1 + 24)}
+// //           ${x1}
+// //           ${y1}
+// //       `;
+
+// //       paths.push(path);
+// //     }
+
+// //     return paths;
+// //   }, []);
+
+// //   /*
+// //    * ============================================================
+// //    * INNER CIRCULAR SCRIBBLES
+// //    * ============================================================
+// //    */
+
+// //   const innerScribbles = useMemo(() => {
+// //     return Array.from({ length: 42 }).map((_, i) => {
+// //       const radius = round(17 + i * 1.75);
+
+// //       const cx = round(
+// //         178 +
+// //           Math.sin(i * 1.43) * 4
+// //       );
+
+// //       const cy = round(
+// //         175 +
+// //           Math.cos(i * 1.17) * 4
+// //       );
+
+// //       const rx = round(
+// //         radius * (1.04 + Math.sin(i * 0.71) * 0.08)
+// //       );
+
+// //       const ry = round(
+// //         radius * (0.98 + Math.cos(i * 0.83) * 0.1)
+// //       );
+
+// //       const rotation = round(
+// //         -22 + i * 8.5
+// //       );
+
+// //       return {
+// //         cx,
+// //         cy,
+// //         rx,
+// //         ry,
+// //         rotation,
+// //       };
+// //     });
+// //   }, []);
+
+// //   /*
+// //    * ============================================================
+// //    * GOLD CIRCUIT LINES
+// //    * ============================================================
+// //    *
+// //    * These are intentionally uneven.
+// //    * The reference image has branching circuit-like lines.
+// //    */
+
+// //   const circuitLines = [
+// //     "M 238 138 H 300 L 318 122 H 375 L 394 106 H 470",
+// //     "M 238 147 H 330 L 350 130 H 405 L 424 114 H 505",
+// //     "M 238 156 H 290 L 310 141 H 365 L 384 124 H 535",
+
+// //     "M 238 165 H 320 L 340 150 H 420 L 438 134 H 565",
+
+// //     "M 238 174 H 650",
+
+// //     "M 238 183 H 302 L 320 197 H 375 L 395 214 H 470",
+// //     "M 238 193 H 325 L 345 208 H 410 L 430 225 H 520",
+// //     "M 238 203 H 290 L 312 220 H 370 L 390 237 H 480",
+// //     "M 238 213 H 320 L 340 230 H 405 L 425 247 H 530",
+// //     "M 238 223 H 300 L 320 240 H 385 L 405 257 H 500",
+
+// //     /*
+// //      * Additional horizontal runs
+// //      */
+
+// //     "M 238 133 H 278 L 295 119 H 345",
+// //     "M 238 143 H 290 L 308 128 H 360",
+// //     "M 238 153 H 305",
+// //     "M 238 188 H 300 L 318 202 H 355",
+// //     "M 238 198 H 310 L 328 214 H 370",
+// //     "M 238 208 H 300",
+// //     "M 238 218 H 315 L 335 235 H 375",
+// //   ];
+
+// //   /*
+// //    * ============================================================
+// //    * BRANCHES
+// //    * ============================================================
+// //    */
+
+// //   const branchLines = [
+// //     "M 300 138 V 126 H 330",
+// //     "M 318 122 V 112 H 350",
+
+// //     "M 350 130 V 118 H 382",
+// //     "M 394 106 V 96 H 430",
+
+// //     "M 340 150 V 137 H 365",
+// //     "M 420 134 V 121 H 455",
+
+// //     "M 320 197 V 210 H 350",
+// //     "M 345 208 V 221 H 380",
+// //     "M 395 214 V 228 H 430",
+
+// //     "M 430 225 V 240 H 465",
+// //     "M 425 247 V 260 H 460",
+// //   ];
+
+// //   /*
+// //    * ============================================================
+// //    * RIGHT-SIDE VERTICAL GRID
+// //    * ============================================================
+// //    */
+
+// //   const verticalLines = [
+// //     675,
+// //     684,
+// //     693,
+// //     702,
+// //     711,
+// //     720,
+// //     729,
+// //     738,
+// //     747,
+// //     756,
+// //     765,
+// //     774,
+// //   ];
+
+// //   return (
+// //     <div
+// //       className="
+// //         relative
+// //         w-full
+// //         max-w-[850px]
+// //         aspect-[850/350]
+// //         select-none
+// //       "
+// //       aria-hidden="true"
+// //     >
+// //       <svg
+// //         viewBox="0 0 850 350"
+// //         className="
+// //           absolute
+// //           inset-0
+// //           h-full
+// //           w-full
+// //           overflow-visible
+// //         "
+// //         xmlns="http://www.w3.org/2000/svg"
+// //       >
+// //         {/* ======================================================
+// //             OUTER HAND-DRAWN SCRIBBLE
+// //         ====================================================== */}
+
+// //         <g
+// //           fill="none"
+// //           stroke="#172039"
+// //           strokeWidth="1.15"
+// //           strokeLinecap="round"
+// //           strokeLinejoin="round"
+// //           opacity="0.92"
+// //         >
+// //           {scribbles.map((path, index) => (
+// //             <path
+// //               key={`scribble-${index}`}
+// //               d={path}
+// //               transform={`
+// //                 rotate(
+// //                   ${round(-12 + index * 0.55)}
+// //                   178
+// //                   175
+// //                 )
+// //               `}
+// //             />
+// //           ))}
+// //         </g>
+
+// //         {/* ======================================================
+// //             INNER CIRCULAR TANGLES
+// //         ====================================================== */}
+
+// //         <g
+// //           fill="none"
+// //           stroke="#172039"
+// //           strokeWidth="0.95"
+// //           strokeLinecap="round"
+// //           opacity="0.92"
+// //         >
+// //           {innerScribbles.map((shape, index) => (
+// //             <ellipse
+// //               key={`inner-${index}`}
+// //               cx={shape.cx}
+// //               cy={shape.cy}
+// //               rx={shape.rx}
+// //               ry={shape.ry}
+// //               transform={`
+// //                 rotate(
+// //                   ${shape.rotation}
+// //                   ${shape.cx}
+// //                   ${shape.cy}
+// //                 )
+// //               `}
+// //             />
+// //           ))}
+// //         </g>
+
+// //         {/* ======================================================
+// //             GOLD CIRCUIT LINES
+// //         ====================================================== */}
+
+// //         <g
+// //           fill="none"
+// //           stroke="#c9a86a"
+// //           strokeWidth="1.25"
+// //           strokeLinecap="square"
+// //           strokeLinejoin="miter"
+// //           opacity="0.9"
+// //         >
+// //           {circuitLines.map((path, index) => (
+// //             <path
+// //               key={`circuit-${index}`}
+// //               d={path}
+// //             />
+// //           ))}
+
+// //           {branchLines.map((path, index) => (
+// //             <path
+// //               key={`branch-${index}`}
+// //               d={path}
+// //             />
+// //           ))}
+// //         </g>
+
+// //         {/* ======================================================
+// //             GOLD CONNECTION DOTS
+// //         ====================================================== */}
+
+// //         <g fill="#c9a86a">
+// //           <circle cx="300" cy="138" r="2.2" />
+// //           <circle cx="318" cy="122" r="2.2" />
+// //           <circle cx="394" cy="106" r="2.2" />
+// //           <circle cx="350" cy="130" r="2.2" />
+
+// //           <circle cx="340" cy="150" r="2.2" />
+// //           <circle cx="438" cy="134" r="2.2" />
+
+// //           <circle cx="320" cy="197" r="2.2" />
+// //           <circle cx="345" cy="208" r="2.2" />
+// //           <circle cx="395" cy="214" r="2.2" />
+
+// //           <circle cx="430" cy="225" r="2.2" />
+// //           <circle cx="425" cy="247" r="2.2" />
+
+// //           <circle cx="650" cy="174" r="2.4" />
+// //         </g>
+
+// //         {/* ======================================================
+// //             RIGHT PROCESSOR / GRID
+// //         ====================================================== */}
+
+// //         <g
+// //           fill="none"
+// //           stroke="#c9a86a"
+// //           strokeWidth="1.35"
+// //           strokeLinecap="square"
+// //           strokeLinejoin="miter"
+// //           opacity="0.92"
+// //         >
+// //           {verticalLines.map((x, index) => {
+// //             const offset =
+// //               index % 3 === 0
+// //                 ? 0
+// //                 : index % 3 === 1
+// //                 ? -6
+// //                 : 6;
+
+// //             return (
+// //               <path
+// //                 key={`vertical-${index}`}
+// //                 d={`
+// //                   M ${x} 72
+// //                   V 128
+// //                   L ${x + offset} 138
+// //                   V 212
+// //                   L ${x} 222
+// //                   V 286
+// //                 `}
+// //               />
+// //             );
+// //           })}
+// //         </g>
+
+// //         {/* ======================================================
+// //             CROSS CONNECTIONS
+// //         ====================================================== */}
+
+// //         <g
+// //           fill="none"
+// //           stroke="#c9a86a"
+// //           strokeWidth="1"
+// //           opacity="0.82"
+// //         >
+// //           <path d="M 650 138 H 790" />
+// //           <path d="M 650 147 H 800" />
+// //           <path d="M 650 156 H 810" />
+
+// //           <path d="M 650 165 H 820" />
+
+// //           <path d="M 650 174 H 830" />
+
+// //           <path d="M 650 183 H 820" />
+// //           <path d="M 650 193 H 810" />
+// //           <path d="M 650 203 H 800" />
+// //           <path d="M 650 213 H 790" />
+
+// //           <path d="M 650 223 H 800" />
+
+// //           <path d="M 660 128 V 222" />
+// //           <path d="M 670 120 V 230" />
+// //         </g>
+
+// //         {/* ======================================================
+// //             SMALL DECORATIVE GOLD DOTS
+// //         ====================================================== */}
+
+// //         <g fill="#c9a86a">
+// //           <circle cx="460" cy="96" r="2.4" />
+// //           <circle cx="525" cy="121" r="2.2" />
+// //           <circle cx="565" cy="174" r="2.2" />
+// //           <circle cx="500" cy="238" r="2.2" />
+// //         </g>
+// //       </svg>
+// //     </div>
+// //   );
+// // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /////////////////////////////////
+
+
+
+
+// "use client";
+
+// /* ================================================================
+//    HERO SCRIBBLE
+
+//    Design:
+//    - Dense irregular navy tangled circle on the left
+//    - Clean parallel gold circuit lines
+//    - Controlled diagonal transitions
+//    - Dense vertical gold circuit grid on the right
+//    - Deterministic SVG values to avoid hydration mismatch
+//    ================================================================ */
+
+// /* ================================================================
+//    HELPERS
+//    ================================================================ */
+
+// function round(value: number, decimals = 2) {
+//   const factor = 10 ** decimals;
+//   return Math.round(value * factor) / factor;
+// }
+
+// /* ================================================================
+//    CREATE TANGLED SCRIBBLE
+//    ================================================================ */
+
+// function createScribble(index: number): string {
+//   const cx = round(178 + Math.sin(index * 2.37) * 6);
+//   const cy = round(175 + Math.cos(index * 1.83) * 6);
+
+//   const rx = round(
+//   120 +
+//     Math.sin(index * 1.71) * 35 +
+//     Math.cos(index * 0.73) * 25
+// );
+
+// const ry = round(
+//   120 +
+//     Math.cos(index * 1.29) * 35 +
+//     Math.sin(index * 0.91) * 25
+// );
+
+//   const rotation = round(
+//     -25 +
+//       Math.sin(index * 1.41) * 38 +
+//       index * 4.7
+//   );
+
+//   const points: { x: number; y: number }[] = [];
+
+//   for (let p = 0; p < 12; p++) {
+//     const angle =
+//       (Math.PI * 2 * p) / 12 +
+//       Math.sin(index * 0.91 + p * 1.73) * 0.14;
+
+//     const radiusX =
+//       rx *
+//       (
+//         0.82 +
+//         Math.sin(index * 1.17 + p * 2.11) * 0.17 +
+//         Math.cos(index * 0.63 + p) * 0.07
+//       );
+
+//     const radiusY =
+//       ry *
+//       (
+//         0.82 +
+//         Math.cos(index * 1.31 + p * 1.77) * 0.17 +
+//         Math.sin(index * 0.71 + p) * 0.07
+//       );
+
+//     const localX = Math.cos(angle) * radiusX;
+//     const localY = Math.sin(angle) * radiusY;
+
+//     const radians = (rotation * Math.PI) / 180;
+
+//     const rotatedX =
+//       localX * Math.cos(radians) -
+//       localY * Math.sin(radians);
+
+//     const rotatedY =
+//       localX * Math.sin(radians) +
+//       localY * Math.cos(radians);
+
+//     points.push({
+//       x: round(cx + rotatedX),
+//       y: round(cy + rotatedY),
+//     });
+//   }
+
+//   const midpoint = (
+//     a: { x: number; y: number },
+//     b: { x: number; y: number }
+//   ) => ({
+//     x: round((a.x + b.x) / 2),
+//     y: round((a.y + b.y) / 2),
+//   });
+
+//   let path = "";
+
+//   const firstMid = midpoint(points[0], points[1]);
+
+//   path += `M ${firstMid.x} ${firstMid.y} `;
+
+//   for (let i = 1; i <= points.length; i++) {
+//     const current = points[i % points.length];
+//     const next = points[(i + 1) % points.length];
+
+//     const mid = midpoint(current, next);
+
+//     path += `Q ${current.x} ${current.y} ${mid.x} ${mid.y} `;
+//   }
+
+//   path += "Z";
+
+//   return path;
+// }
+
+// /* ================================================================
+//    SECONDARY INNER LOOPS
+//    ================================================================ */
+
+// function createInnerLoop(index: number) {
+//   const cx = round(
+//     178 +
+//       Math.sin(index * 2.17) * 7
+//   );
+
+//   const cy = round(
+//     175 +
+//       Math.cos(index * 1.73) * 7
+//   );
+
+//   const rx = round(
+//   65 +
+//     Math.sin(index * 1.19) * 39
+// );
+
+// const ry = round(
+//   65 +
+//     Math.cos(index * 1.43) * 39
+// );
+
+//   const rotation = Math.round(index * 19 - 35);
+
+//   return {
+//     cx,
+//     cy,
+//     rx,
+//     ry,
+//     rotation,
+//   };
+// }
+
+// /* ================================================================
+//    COMPONENT
+//    ================================================================ */
 
 // export default function HeroScribble() {
+//   const scribbles = Array.from(
+//     { length: 72 },
+//     (_, index) => createScribble(index)
+//   );
+
 //   return (
-//     <svg
-//       viewBox="0 0 1600 760"
-//       xmlns="http://www.w3.org/2000/svg"
-//       className="h-full w-full"
-//       preserveAspectRatio="xMidYMid slice"
-//       fill="none"
+//     <div
+//       className="
+//         relative
+//         w-full
+//         max-w-[1050px]
+// aspect-[1050/430]
+//         select-none
+//       "
 //       aria-hidden="true"
 //     >
-      
-// //LEFT — HAND-DRAWN BUSINESS CHAOS     
-//       <g
-//         stroke="#172039"
-//         strokeWidth="1.15"
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//         opacity="0.62"
-//       >
-//         <path
-//           d="
-//             M-20 530
-//             C35 320 145 280 250 315
-//             C445 347 380 450 325 535
-//             C270 620 145 620 70 550
-//             C-5 480 5 365 85 310
-//             C170 252 295 295 335 390
-//             C375 486 315 585 215 600
-//             C110 615 25 540 35 440
-//             C45 340 145 290 245 330
-//             C340 370 355 480 290 545
-//             C220 610 105 580 70 490
-//             C35 400 95 325 185 315
-//             C275 305 340 380 320 460
-//             C300 540 210 570 140 520
-//             C70 470 85 375 155 345
-//             C225 315 300 365 295 435
-//             C290 505 215 540 160 500
-//             C105 460 115 390 170 365
-//             C225 340 275 375 275 425
-//             C275 475 225 505 185 480
-//             C145 455 150 405 185 385
-//             C220 365 255 390 255 420
-//             C255 450 230 470 205 460
-//           "
-//         />
-
-//         <path
-//           d="
-//             M-10 400
-//             C55 285 185 260 285 325
-//             C385 390 370 525 275 585
-//             C180 645 40 600 15 490
-//             C-10 380 65 285 170 285
-//             C280 285 355 365 350 460
-//             C345 555 250 620 155 590
-//             C60 560 20 470 55 390
-//             C90 310 185 280 270 330
-//             C350 380 350 480 290 535
-//             C230 590 135 565 95 500
-//             C55 435 80 355 145 330
-//             C210 305 285 350 300 410
-//             C315 470 270 525 215 530
-//             C160 535 115 490 120 440
-//             C125 390 175 355 220 370
-//             C265 385 280 430 260 465
-//             C240 500 195 505 170 475
-//             C145 445 155 405 185 390
-//             C215 375 245 395 245 420
-//           "
-//         />
-
-//         <path
-//           d="
-//             M30 470
-//             C80 350 210 300 305 360
-//             C400 420 355 555 250 590
-//             C145 625 40 560 45 460
-//             C50 360 155 305 250 345
-//             C345 385 360 490 290 550
-//             C220 610 105 570 80 485
-//             C55 400 125 330 205 340
-//             C285 350 330 430 295 490
-//             C260 550 170 555 120 500
-//             C70 445 100 370 165 350
-//             C230 330 295 370 305 425
-//             C315 480 270 525 220 520
-//             C170 515 135 475 145 430
-//             C155 385 205 365 240 390
-//             C275 415 270 460 245 480
-//           "
-//         />
-
-//         <path
-//           d="
-//             M10 350
-//             C120 245 300 275 350 405
-//             C400 535 290 640 160 610
-//             C30 580 -20 440 60 335
-//             C140 230 305 275 350 400
-//             C395 525 300 620 180 600
-//             C60 580 10 465 70 370
-//             C130 275 280 290 335 390
-//           "
-//         />
-
-//         <path
-//           d="
-//             M70 550
-//             C150 620 290 595 335 500
-//             C380 405 320 320 230 305
-//             C140 290 65 350 55 430
-//           "
-//         />
-
-//         <path
-//           d="
-//             M115 300
-//             C210 245 330 305 355 395
-//             C380 485 315 570 225 575
-//           "
-//         />
-//       </g>
-
-      
-// //GOLD THREAD — CHAOS TRANSITION
-
-//       <g
-//         fill="none"
-//         stroke="#c9a86a"
-//         strokeLinecap="round"
-//       >
-//         <path
-//           d="
-//             M250 410
-//             C295 390 330 400 360 430
-//             C385 455 390 485 375 510
-//           "
-//           strokeWidth="1.2"
-//           opacity="0.8"
-//         />
-
-//         <path
-//           d="
-//             M265 430
-//             C305 415 335 425 355 450
-//           "
-//           strokeWidth="0.9"
-//           opacity="0.55"
-//         />
-//       </g>
-
-//       <circle
-//         cx="375"
-//         cy="510"
-//         r="3.5"
-//         fill="#c9a86a"
-//         opacity="0.85"
-//       />
-
-//       {/* =====================================================
-//           FLOWING LINES
-//           CHAOS → ORDER → CLARITY
-
-//           IMPORTANT:
-//           These lines now START INSIDE the tangled circle.
-//           They emerge from the inner/right side of the chaos
-//           and gradually become clean horizontal lines.
-//           ===================================================== */}
-
-//       <g
-//         fill="none"
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//       >
-        
-// //NAVY FLOW 1
-// //Starts deep inside the tangled circle 
-            
-
-//         <path
-//           d="
-//             M205 465
-
-//             C230 475 245 495 275 515
-//             C315 545 355 560 430 570
-
-//             C570 590 760 595 930 595
-//             C1080 595 1210 595 1300 595
-
-//             C1360 595 1380 565 1390 510
-//             C1400 440 1400 330 1400 220
-//             C1400 175 1400 135 1400 105
-//           "
-//           stroke="#172039"
-//           strokeWidth="1.25"
-//           opacity="0.55"
-//         />
-
-
-// //NAVY FLOW 2
-
-
-//         <path
-//           d="
-//             M195 485
-
-//             C225 495 250 515 285 535
-//             C330 565 380 580 455 585
-
-//             C600 605 790 610 965 610
-//             C1110 610 1230 610 1320 610
-
-//             C1380 610 1410 575 1420 515
-//             C1430 440 1430 330 1430 215
-//             C1430 170 1430 130 1430 115
-//           "
-//           stroke="#172039"
-//           strokeWidth="1"
-//           opacity="0.42"
-//         />
-
-// // FLOW 3
-
-//         <path
-//           d="
-//             M185 505
-
-//             C220 515 255 535 295 555
-//             C345 585 400 595 475 600
-
-//             C625 620 815 625 990 625
-//             C1135 625 1250 625 1340 625
-
-//             C1400 625 1430 590 1440 525
-//             C1450 450 1450 330 1450 210
-//             C1450 165 1450 125 1450 100
-//           "
-//           stroke="#172039"
-//           strokeWidth="0.85"
-//           opacity="0.32"
-//         />
-
-// //GOLD FLOW 1
-
-
-//         <path
-//           d="
-//             M215 490
-
-//             C245 500 270 520 305 545
-//             C350 575 410 610 490 615
-
-//             C650 635 830 638 1000 638
-//             C1150 638 1260 638 1350 638
-
-//             C1410 638 1440 600 1450 535
-//             C1460 465 1460 345 1460 230
-//             C1460 180 1460 140 1460 125
-//           "
-//           stroke="#c9a86a"
-//           strokeWidth="1.15"
-//           opacity="0.72"
-//         />
-
-
-// // GOLD FLOW 2
-
-
-//         <path
-//           d="
-//             M230 505
-
-//             C260 515 290 540 325 560
-//             C375 595 430 625 510 630
-
-//             C670 650 850 652 1020 652
-//             C1170 652 1280 652 1370 652
-
-//             C1430 652 1460 615 1470 550
-//             C1480 480 1480 360 1480 245
-//             C1480 195 1480 155 1480 135
-//           "
-//           stroke="#c9a86a"
-//           strokeWidth="0.95"
-//           opacity="0.52"
-//         />
-
-// //GOLD FLOW 3
-
-//         <path
-//           d="
-//             M245 520
-
-//             C275 530 305 555 345 575
-//             C400 610 455 640 530 645
-
-//             C690 665 870 668 1040 668
-//             C1190 668 1300 668 1390 668
-
-//             C1450 668 1480 630 1490 565
-//             C1500 495 1500 375 1500 260
-//             C1500 210 1500 170 1500 150
-//           "
-//           stroke="#c9a86a"
-//           strokeWidth="0.75"
-//           opacity="0.38"
-//         />
-//       </g>
-
-// //SMALL INNER GOLD ACCENT
-// //This helps visually connect the scribble to the
-// //organized lines.
-
-
-//       <path
-//         d="
-//           M235 455
-//           C265 440 300 445 325 465
-//           C350 485 360 505 355 530
+//       <svg
+//         viewBox="0 0 850 350"
+//         className="
+//           absolute
+//           inset-0
+//           h-full
+//           w-full
+//           overflow-visible
 //         "
-//         fill="none"
-//         stroke="#c9a86a"
-//         strokeWidth="1"
-//         opacity="0.65"
-//         strokeLinecap="round"
-//       />
-
-//       <circle
-//         cx="355"
-//         cy="530"
-//         r="3"
-//         fill="#c9a86a"
-//         opacity="0.75"
-//       />
-
-// //RIGHT — VERTICAL ARROWS
-// //these remain separate so the arrowheads stay sharp.
-
-//       <g
-//         fill="none"
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
+//         xmlns="http://www.w3.org/2000/svg"
 //       >
-// // Navy arrow 1 
 
-//         <path
-//           d="M1400 105 L1400 70"
-//           stroke="#172039"
-//           strokeWidth="1.25"
-//           opacity="0.55"
-//         />
+//         {/* ==========================================================
+//     TANGLED CHAOTIC CIRCLE
+//     Shifted right so the circuit lines begin underneath it.
+// ========================================================== */}
 
-//         <path
-//           d="M1395 77 L1400 70 L1405 77"
-//           stroke="#172039"
-//           strokeWidth="1.25"
-//           opacity="0.55"
-//         />
+// <g
+//   transform="translate(165 0)"
+//   fill="none"
+//   stroke="#172039"
+//   strokeWidth="1.05"
+//   strokeLinecap="round"
+//   strokeLinejoin="round"
+//   opacity="0.9"
+// >
+//   {scribbles.map((path, index) => (
+//     <path
+//       key={index}
+//       d={path}
+//     />
+//   ))}
+// </g>
 
-// //Navy arrow 2 
+//         {/* ==========================================================
+//             2. INNER DENSE LOOPS
+//             ========================================================== */}
 
-//         <path
-//           d="M1430 115 L1430 70"
-//           stroke="#172039"
-//           strokeWidth="1"
-//           opacity="0.42"
-//         />
+//         <g
+//   transform="translate(165 0)"
+//   fill="none"
+//   stroke="#172039"
+//   strokeWidth="0.80"
+//   strokeLinecap="round"
+//   strokeLinejoin="round"
+//   opacity="0.82"
+// >
+//           {Array.from({ length: 28 }).map((_, index) => {
+//             const loop = createInnerLoop(index);
 
-//         <path
-//           d="M1426 77 L1430 70 L1434 77"
-//           stroke="#172039"
-//           strokeWidth="1"
-//           opacity="0.42"
-//         />
+//             return (
+//               <ellipse
+//                 key={`inner-${index}`}
+//                 cx={loop.cx}
+//                 cy={loop.cy}
+//                 rx={loop.rx}
+//                 ry={loop.ry}
+//                 transform={`rotate(${loop.rotation} ${loop.cx} ${loop.cy})`}
+//               />
+//             );
+//           })}
+//         </g>
 
-// // Navy arrow 3 
+//         {/* ==========================================================
+//             3. GOLD CIRCUIT SYSTEM
 
-//         <path
-//           d="M1450 100 L1450 55"
-//           stroke="#172039"
-//           strokeWidth="0.85"
-//           opacity="0.32"
-//         />
+//             IMPORTANT:
+//             These are intentionally much cleaner than before.
 
-//         <path
-//           d="M1446 62 L1450 55 L1454 62"
-//           stroke="#172039"
-//           strokeWidth="0.85"
-//           opacity="0.32"
-//         />
-// //Gold arrow 1 
+//             The reference has:
+//             - mostly horizontal lines
+//             - small controlled steps
+//             - diagonal bends only near the right
+//             - no chaotic branching
+//             ========================================================== */}
 
-//         <path
-//           d="M1460 125 L1460 78"
+//         <g
+//           fill="none"
 //           stroke="#c9a86a"
 //           strokeWidth="1.15"
-//           opacity="0.72"
-//         />
+//           strokeLinecap="square"
+//           strokeLinejoin="miter"
+//           opacity="0.9"
+//         >
 
-//         <path
-//           d="M1455 85 L1460 78 L1465 85"
+//           <g
+//   fill="none"
+//   stroke="#c9a86a"
+//   strokeWidth="1.15"
+//   strokeLinecap="square"
+//   strokeLinejoin="miter"
+//   opacity="0.9"
+// >
+//   {/* ==========================================================
+//       UPPER CIRCUIT LINES
+//       ========================================================== */}
+  
+//   <path d="M 430 115 H 560" />
+
+//   <path d="M 429 125 H 580" />
+
+//   <path d="M 429 135 H 600" />
+
+//   <path d="M 428 145 H 620" />
+
+//   <path d="M 429 155 H 635" />
+
+//   <path d="M 430 165 H 645" />
+
+//   <path d="M 429 175 H 650" />
+
+//   {/* ==========================================================
+//       CENTER
+//       ========================================================== */}
+
+//   <path d="M 430 185 H 650" />
+
+//   <path d="M 428 195 H 650" />
+
+//   <path d="M 429 205 H 645" />
+
+//   <path d="M 430 215 H 635" />
+
+//   {/* ==========================================================
+//       LOWER CIRCUIT LINES
+//       ========================================================== */}
+
+//   <path d="M 430 225 H 620" />
+
+//   <path d="M 428 235 H 600" />
+
+//   <path d="M 428 245 H 580" />
+
+//   <path d="M 430 255 H 560" />
+
+//   {/* ==========================================================
+//       TOP DIAGONAL TRANSITIONS
+//       ========================================================== */}
+
+//   <path d="M 560 115 L 585 100 H 680" />
+
+//   <path d="M 580 125 L 605 108 H 690" />
+
+//   <path d="M 600 135 L 625 116 H 700" />
+
+//   <path d="M 620 145 L 645 124 H 710" />
+
+//   <path d="M 635 155 L 660 132 H 720" />
+
+//   <path d="M 645 165 L 670 140 H 730" />
+
+//   {/* ==========================================================
+//       CENTER TRANSITION
+//       ========================================================== */}
+
+//   <path d="M 650 175 H 735" />
+
+//   <path d="M 650 185 H 735" />
+
+//   <path d="M 650 195 H 735" />
+
+//   {/* ==========================================================
+//       LOWER DIAGONAL TRANSITIONS
+//       ========================================================== */}
+
+//   <path d="M 645 205 L 670 220 H 730" />
+
+//   <path d="M 635 215 L 660 228 H 720" />
+
+//   <path d="M 620 225 L 645 236 H 710" />
+
+//   <path d="M 600 235 L 625 244 H 700" />
+
+//   <path d="M 580 245 L 605 252 H 690" />
+
+//   <path d="M 560 255 L 585 260 H 680" />
+// </g>
+
+//           {/* ========================================================
+//               CONTROLLED TOP DIAGONAL TRANSITIONS
+//               ======================================================== */}
+
+//           <path d="M 590 145 L 615 128 H 690" />
+
+//           <path d="M 610 153 L 632 136 H 700" />
+
+//           <path d="M 625 161 L 645 145 H 710" />
+
+//           <path d="M 635 169 L 655 153 H 720" />
+
+//           <path d="M 640 177 L 662 161 H 730" />
+
+//           {/* ========================================================
+//               CONTROLLED LOWER DIAGONAL TRANSITIONS
+//               ======================================================== */}
+
+//           <path d="M 635 201 L 655 217 H 720" />
+
+//           <path d="M 625 209 L 645 225 H 710" />
+
+//           <path d="M 610 217 L 632 234 H 700" />
+
+//           <path d="M 590 225 L 615 242 H 690" />
+
+//           {/* ========================================================
+//               CENTER TRANSITIONS
+//               ======================================================== */}
+
+//           <path d="M 640 185 H 730" />
+
+//           <path d="M 640 193 H 730" />
+
+//         </g>
+
+        
+//         {/* ==========================================================
+//             5. RIGHT-SIDE VERTICAL CIRCUIT GRID
+
+//             This is the part that makes it visually match Image 2.
+
+//             The vertical lines begin around x=690 instead of being
+//             pushed too far to the right.
+//             ========================================================== */}
+
+//         <g
+//   fill="none"
+//   stroke="#c9a86a"
+//   strokeWidth="1.25"
+//   strokeLinecap="square"
+//   strokeLinejoin="miter"
+//   opacity="0.92"
+// >
+//   <path d="M 690 25 V 105 L 680 120 V 250 L 690 265 V 325" />
+
+//   <path d="M 700 25 V 105 L 690 120 V 250 L 700 265 V 325" />
+
+//   <path d="M 710 25 V 105 L 700 120 V 250 L 710 265 V 325" />
+
+//   <path d="M 720 25 V 105 L 710 120 V 250 L 720 265 V 325" />
+
+//   <path d="M 730 25 V 105 L 720 120 V 250 L 730 265 V 325" />
+
+//   <path d="M 740 25 V 105 L 730 120 V 250 L 740 265 V 325" />
+
+//   <path d="M 750 25 V 105 L 740 120 V 250 L 750 265 V 325" />
+
+//   <path d="M 760 25 V 105 L 750 120 V 250 L 760 265 V 325" />
+
+//   <path d="M 770 25 V 105 L 760 120 V 250 L 770 265 V 325" />
+
+//   <path d="M 780 25 V 105 L 770 120 V 250 L 780 265 V 325" />
+
+//   <path d="M 790 25 V 105 L 780 120 V 250 L 790 265 V 325" />
+
+//   <path d="M 800 25 V 105 L 790 120 V 250 L 800 265 V 325" />
+
+//   <path d="M 810 25 V 105 L 800 120 V 250 L 810 265 V 325" />
+
+//   <path d="M 820 25 V 105 L 810 120 V 250 L 820 265 V 325" />
+// </g>
+
+//         {/* ==========================================================
+//             6. HORIZONTAL CROSS CONNECTIONS
+
+//             These make the right side feel like a real circuit board,
+//             similar to the reference.
+//             ========================================================== */}
+
+//         <g
+//           fill="none"
 //           stroke="#c9a86a"
-//           strokeWidth="1.15"
-//           opacity="0.72"
-//         />
+//           strokeWidth="1"
+//           strokeLinecap="square"
+//           opacity="0.82"
+//         >
 
-// //Gold arrow 2
+//           <path d="M 640 138 H 850" />
 
-//         <path
-//           d="M1480 135 L1480 82"
-//           stroke="#c9a86a"
-//           strokeWidth="0.95"
-//           opacity="0.52"
-//         />
+//           <path d="M 640 146 H 850" />
 
-//         <path
-//           d="M1476 89 L1480 82 L1484 89"
-//           stroke="#c9a86a"
-//           strokeWidth="0.95"
-//           opacity="0.52"
-//         />
+//           <path d="M 640 154 H 850" />
 
-// //Navy arrow 4
+//           <path d="M 640 162 H 850" />
 
-//         <path
-//           d="M1500 150 L1500 90"
-//           stroke="#172039"
-//           strokeWidth="0.75"
-//           opacity="0.30"
-//         />
+//           <path d="M 640 170 H 850" />
 
-//         <path
-//           d="M1497 97 L1500 90 L1503 97"
-//           stroke="#172039"
-//           strokeWidth="0.75"
-//           opacity="0.30"
-//         />
-//       </g>
+//           <path d="M 640 178 H 850" />
 
-// //RIGHT-SIDE GOLD DOTS
+//           <path d="M 640 186 H 850" />
 
+//           <path d="M 640 194 H 850" />
 
-//       <circle
-//         cx="1400"
-//         cy="105"
-//         r="3.2"
-//         fill="#c9a86a"
-//         opacity="0.82"
-//       />
+//           <path d="M 640 202 H 850" />
 
-//       <circle
-//         cx="1460"
-//         cy="125"
-//         r="3"
-//         fill="#c9a86a"
-//         opacity="0.72"
-//       />
+//           <path d="M 640 210 H 850" />
 
-// //RIGHT SIDE LABEL
+//           <path d="M 640 218 H 850" />
 
+//           <path d="M 640 226 H 850" />
 
-//       <text
-//         x="1510"
-//         y="700"
-//         fontSize="10"
-//         letterSpacing="2"
-//         fill="#172039"
-//         fontWeight="700"
-//         opacity="0.9"
-//       >
-//       </text>
-//     </svg>
+//         </g>
+
+        
+
+//       </svg>
+//     </div>
 //   );
 // }
 
@@ -482,313 +953,988 @@
 
 
 
-// components/HeroScribble.tsx
 
-export default function HeroScribble() {
-  return (
-    <svg
-      viewBox="0 0 1600 760"
-      xmlns="http://www.w3.org/2000/svg"
-      className="absolute inset-0 h-full w-full pointer-events-none"
-      preserveAspectRatio="xMidYMid slice"
-      fill="none"
-      aria-hidden="true"
-    >
-      <defs>
-        {/* Soft glow used around the process circles */}
-        <filter
-          id="softGlow"
-          x="-50%"
-          y="-50%"
-          width="200%"
-          height="200%"
-        >
-          <feGaussianBlur stdDeviation="2.5" />
-        </filter>
 
-        {/* Subtle scribble blur */}
-        <filter
-          id="scribbleBlur"
-          x="-20%"
-          y="-20%"
-          width="140%"
-          height="140%"
-        >
-          <feGaussianBlur stdDeviation="0.15" />
-        </filter>
-      </defs>
 
-      {/* =========================================================
-          COLORS
-          ========================================================= */}
 
-      {/* Navy  : #172039 */}
-      {/* Gold  : #C9A86A */}
-      {/* Cream : #FDFBF7 */}
 
-      {/* =========================================================
-          LEFT SIDE — BUSINESS PROBLEM ICONS
-          ========================================================= */}
 
-      <g>
-        {/* -------------------------------------------------------
-            ICON 1 — PEOPLE / TEAM
-            ------------------------------------------------------- */}
+// // components/HeroScribble.tsx
+// "use client";
 
-        <circle
-          cx="95"
-          cy="140"
-          r="31"
-          fill="#fffdf9"
-          stroke="#c9a86a"
-          strokeWidth="1.3"
-        />
+// import { useMemo } from "react";
 
-        <circle
-          cx="95"
-          cy="140"
-          r="36"
-          stroke="#c9a86a"
-          strokeWidth="0.6"
-          opacity="0.35"
-        />
+// function round(value: number, decimals = 2) {
+//   const factor = 10 ** decimals;
+//   return Math.round(value * factor) / factor;
+// }
 
-        {/* People icon */}
-        <g
-          stroke="#172039"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="95" cy="132" r="7" />
-          <circle cx="82" cy="137" r="6" />
-          <circle cx="108" cy="137" r="6" />
+// function createScribble(index: number): string {
+//   const cx = round(178 + Math.sin(index * 2.37) * 6);
+//   const cy = round(175 + Math.cos(index * 1.83) * 6);
 
-          <path d="M82 151 C82 143 88 140 95 140 C102 140 108 143 108 151" />
-          <path d="M72 151 C72 144 76 141 82 141" />
-          <path d="M118 151 C118 144 114 141 108 141" />
-        </g>
 
-        {/* -------------------------------------------------------
-            ICON 2 — GROWTH
-            ------------------------------------------------------- */}
 
-        <circle
-          cx="95"
-          cy="265"
-          r="35"
-          fill="#fffdf9"
-          stroke="#c9a86a"
-          strokeWidth="1.2"
-        />
 
-        <circle
-          cx="95"
-          cy="265"
-          r="40"
-          stroke="#c9a86a"
-          strokeWidth="0.55"
-          opacity="0.3"
-        />
+//   //controll of outer size of tangle
+//   const rx = round(
+//     120 + Math.sin(index * 1.71) * 35 + Math.cos(index * 0.73) * 25
+//   );
+//   const ry = round(
+//     120 + Math.cos(index * 1.29) * 35 + Math.sin(index * 0.91) * 25
+//   );
 
-        <g
-          stroke="#172039"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M76 282 V273" />
-          <path d="M86 282 V266" />
-          <path d="M96 282 V257" />
-          <path d="M106 282 V250" />
+//   const rotation = round(-25 + Math.sin(index * 1.41) * 38 + index * 4.7);
+//   const points: { x: number; y: number }[] = [];
 
-          <path d="M73 282 H112" />
+//   for (let p = 0; p < 12; p++) {
+//     const angle =
+//       (Math.PI * 2 * p) / 12 + Math.sin(index * 0.91 + p * 1.73) * 0.14;
 
-          <path d="M76 263 L88 254 L97 258 L113 245" />
+//     const radiusX =
+//       rx *
+//       (0.82 +
+//         Math.sin(index * 1.17 + p * 2.11) * 0.17 +
+//         Math.cos(index * 0.63 + p) * 0.07);
 
-          <path d="M106 245 H113 V252" />
-        </g>
+//     const radiusY =
+//       ry *
+//       (0.82 +
+//         Math.cos(index * 1.31 + p * 1.77) * 0.17 +
+//         Math.sin(index * 0.71 + p) * 0.07);
 
-        {/* -------------------------------------------------------
-            ICON 3 — SETTINGS
-            ------------------------------------------------------- */}
+//     const localX = Math.cos(angle) * radiusX;
+//     const localY = Math.sin(angle) * radiusY;
 
-        <circle
-          cx="70"
-          cy="390"
-          r="34"
-          fill="#fffdf9"
-          stroke="#c9a86a"
-          strokeWidth="1.2"
-        />
+//     const radians = (rotation * Math.PI) / 180;
+//     const rotatedX = localX * Math.cos(radians) - localY * Math.sin(radians);
+//     const rotatedY = localX * Math.sin(radians) + localY * Math.cos(radians);
 
-        <circle
-          cx="70"
-          cy="390"
-          r="39"
-          stroke="#c9a86a"
-          strokeWidth="0.55"
-          opacity="0.3"
-        />
+//     points.push({
+//       x: round(cx + rotatedX),
+//       y: round(cy + rotatedY),
+//     });
+//   }
 
-        <g
-          stroke="#172039"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="70" cy="390" r="10" />
+//   const midpoint = (
+//     a: { x: number; y: number },
+//     b: { x: number; y: number }
+//   ) => ({
+//     x: round((a.x + b.x) / 2),
+//     y: round((a.y + b.y) / 2),
+//   });
 
-          <path d="M70 370 V376" />
-          <path d="M70 404 V410" />
+//   let path = "";
+//   const firstMid = midpoint(points[0], points[1]);
+//   path += `M ${firstMid.x} ${firstMid.y} `;
 
-          <path d="M50 390 H56" />
-          <path d="M84 390 H90" />
+//   for (let i = 1; i <= points.length; i++) {
+//     const current = points[i % points.length];
+//     const next = points[(i + 1) % points.length];
+//     const mid = midpoint(current, next);
+//     path += `Q ${current.x} ${current.y} ${mid.x} ${mid.y} `;
+//   }
 
-          <path d="M56 376 L60 380" />
-          <path d="M80 400 L84 404" />
+//   path += "Z";
+//   return path;
+// }
 
-          <path d="M84 376 L80 380" />
-          <path d="M60 400 L56 404" />
+// function createInnerLoop(index: number) {
+//   const cx = round(180 + Math.sin(index * 2.17) * 9);
+//   const cy = round(180 + Math.cos(index * 1.73) * 17);
+//   const rx = round(79 + Math.sin(index * 1.19) * 60);  //contro the size of inner tangale
+//   const ry = round(69 + Math.cos(index * 1.43) * 50);
+//   const rotation = Math.round(index * 19 - 35);
 
-          <path d="M65 372 L68 368 L72 368 L75 372" />
-          <path d="M65 408 L68 412 L72 412 L75 408" />
-        </g>
+//   return { cx, cy, rx, ry, rotation };
+// }
 
-        {/* -------------------------------------------------------
-            ICON 4 — MONEY / FINANCE
-            ------------------------------------------------------- */}
+// const g1 = [590, 598, 606, 614];
+// const g2 = [642, 650, 658];
+// const g3 = [686, 694, 702];
+// const g4 = [730, 738, 746];
+// const g5 = [774, 782, 790];
+// const LAST_VERTICAL_X = 848;
+// const g6 = [,,,];   //832, 840, LAST_VERTICAL_X
 
-        <circle
-          cx="95"
-          cy="525"
-          r="34"
-          fill="#fffdf9"
-          stroke="#c9a86a"
-          strokeWidth="1.2"
-        />
+// const verticalLines = [...g1, ...g2, ...g3, ...g4, ...g5, ...g6];
 
-        <circle
-          cx="95"
-          cy="525"
-          r="38"
-          stroke="#c9a86a"
-          strokeWidth="0.55"
-          opacity="0.3"
-        />
+// const startX = 385;
+// const endX = LAST_VERTICAL_X;
+// const vTop = 1;
+// const vBottom = 355;
 
-        <g
-          stroke="#172039"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect
-            x="74"
-            y="511"
-            width="42"
-            height="28"
-            rx="2"
-          />
+// const goldCircuitPaths = [
+//   // --- TOP 3 THROUGH-LINES ---
+//   `M ${startX} 106 H ${endX}`,
+//   `M ${startX} 113 H ${endX}`,
+//   `M ${startX} 120 H ${endX}`,
 
-          <circle cx="95" cy="525" r="7" />
+//   // --- UPPER 5-STEPPED 45° RAMPS ---
+//   `M ${startX} 143 H ${g1[0] - (143 - 127)} L ${g1[0]} 127 H ${endX}`,
+//   `M ${startX} 149 H ${g1[1] - (149 - 133)} L ${g1[1]} 133 H ${endX}`,
+//   `M ${startX} 155 H ${g1[2] - (155 - 139)} L ${g1[2]} 139 H ${endX}`,
+//   `M ${startX} 161 H ${g1[3] - (161 - 145)} L ${g1[3]} 145 H ${endX}`,
+//   `M ${startX} 167 H ${g2[0] - (167 - 151)} L ${g2[0]} 151 H ${endX}`,
 
-          <path d="M79 516 L84 512" />
-          <path d="M111 516 L106 512" />
-          <path d="M79 534 L84 538" />
-          <path d="M111 534 L106 538" />
+//   // --- CENTER CHEVRON ARROW (<) ---
+//   `M ${g2[0]} 150 L ${g2[0] - 30} 175 L ${g2[0]} 193`,
 
-          <path d="M95 520 V530" />
-          <path d="M92 522 C92 519 98 519 98 522" />
-          <path d="M92 528 C92 531 98 531 98 528" />
-        </g>
+//   // --- CENTER THROUGH-LINE ---
+//   `M ${startX} 175 H ${endX}`,
 
-        {/* -------------------------------------------------------
-            ICON 5 — DOCUMENT
-            ------------------------------------------------------- */}
+//   // --- LOWER 5-STEPPED 45° RAMPS ---
+//   `M ${startX} 183 H ${g2[0] - (199 - 183)} L ${g2[0]} 199 H ${endX}`,
+//   `M ${startX} 189 H ${g1[3] - (205 - 189)} L ${g1[3]} 205 H ${endX}`,
+//   `M ${startX} 195 H ${g1[2] - (211 - 195)} L ${g1[2]} 211 H ${endX}`,
+//   `M ${startX} 201 H ${g1[1] - (217 - 201)} L ${g1[1]} 217 H ${endX}`,
+//   `M ${startX} 207 H ${g1[0] - (223 - 207)} L ${g1[0]} 223 H ${endX}`,
 
-        <circle
-          cx="95"
-          cy="675"
-          r="35"
-          fill="#fffdf9"
-          stroke="#c9a86a"
-          strokeWidth="1.2"
-        />
+//   // --- BOTTOM 3 THROUGH-LINES ---
+//   `M ${startX} 230 H ${endX}`,
+//   `M ${startX} 237 H ${endX}`,
+//   `M ${startX} 244 H ${endX}`,
+// ];
 
-        <circle
-          cx="95"
-          cy="675"
-          r="41"
-          stroke="#c9a86a"
-          strokeWidth="0.55"
-          opacity="0.3"
-        />
+// export default function HeroScribble() {
+//   const scribbles = useMemo(
+//     () => Array.from({ length: 72 }, (_, index) => createScribble(index)),
+//     []
+//   );
 
-        <g
-          stroke="#172039"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M82 656 H101 L108 663 V694 H82 Z" />
-          <path d="M101 656 V664 H108" />
+//   return (
+//     <div
+//       className="
+//         relative
+//         w-full
+//         max-w-[1050px]
+//         aspect-[850/350]
+//         select-none
+//         border-none
+//         outline-none
+//       "
+//       aria-hidden="true"
+//     >
+//       <svg
+//         viewBox="0 0 850 350"
+//         className="
+//           absolute
+//           inset-0
+//           h-full
+//           w-full
+//           border-none
+//           outline-none
+//         "
+//         xmlns="http://www.w3.org/2000/svg"
+//       >
+//         {/* LAYER 1: GOLD CIRCUIT LINES */}
+//         <g
+//           fill="none"
+//           stroke="#c9a86a"
+//           strokeWidth="1.35"
+//           strokeLinecap="round"
+//           strokeLinejoin="miter"
+//           opacity="1"
+//         >
+//           {goldCircuitPaths.map((d, index) => (
+//             <path key={`circuit-${index}`} d={d} />
+//           ))}
+//         </g>
 
-          <path d="M87 671 H102" />
-          <path d="M87 678 H102" />
-          <path d="M87 685 H99" />
-        </g>
-      </g>
+//         {/* LAYER 2: VERTICAL BUS */}
+//         <g
+//           fill="none"
+//           stroke="#c9a86a"
+//           strokeWidth="1.35"
+//           strokeLinecap="round"
+//           strokeLinejoin="miter"
+//           opacity="1"
+//         >
+//           {verticalLines.map((x) => (
+//             <path key={`bus-${x}`} d={`M ${x} ${vTop} V ${vBottom}`} />
+//           ))}
+//         </g>
 
-      {/* =========================================================
-          LEFT — DOTTED CONNECTION PATHS
-          ========================================================= */}
+//         {/* LAYER 3: ORIGINAL TANGLED SCRIBBLE */}
+//         <g
+//           transform="translate(165 0)"
+//           fill="none"
+//           stroke="#172039"
+//           strokeWidth="1.05"
+//           strokeLinecap="round"
+//           strokeLinejoin="round"
+//           opacity="0.9"
+//         >
+//           {scribbles.map((path, index) => (
+//             <path key={index} d={path} />
+//           ))}
+//         </g>
 
-      <g
-        fill="none"
-        stroke="#172039"
-        strokeWidth="1"
-        strokeDasharray="2 4"
-        opacity="0.28"
-        strokeLinecap="round"
-      >
-        <path d="M136 140 C205 145 205 260 220 330" />
-        <path d="M133 265 C190 270 190 315 220 350" />
-        <path d="M108 390 C170 390 190 385 220 375" />
-        <path d="M133 525 C190 520 195 440 230 410" />
-        <path d="M133 675 C195 650 205 475 245 430" />
-      </g>
+//         {/* LAYER 4: ORIGINAL INNER DENSE LOOPS */}
+//         <g
+//           transform="translate(165 0)"
+//           fill="none"
+//           stroke="#172039"
+//           strokeWidth="0.8"
+//           strokeLinecap="round"
+//           strokeLinejoin="round"
+//           opacity="0.82"
+//         >
+//           {Array.from({ length: 28 }).map((_, index) => {
+//             const loop = createInnerLoop(index);
+//             return (
+//               <ellipse
+//                 key={`inner-${index}`}
+//                 cx={loop.cx}
+//                 cy={loop.cy}
+//                 rx={loop.rx}
+//                 ry={loop.ry}
+//                 transform={`rotate(${loop.rotation} ${loop.cx} ${loop.cy})`}
+//               />
+//             );
+//           })}
+//         </g>
+//       </svg>
+//     </div>
+//   );
+// }
 
-      {/* Gold dotted connection paths */}
 
-      <g
-        fill="none"
-        stroke="#c9a86a"
-        strokeWidth="0.9"
-        strokeDasharray="1 5"
-        opacity="0.4"
-        strokeLinecap="round"
-      >
-        <path d="M136 140 C225 155 215 275 235 340" />
-        <path d="M133 265 C200 280 210 325 240 360" />
-        <path d="M108 390 C180 400 205 390 245 385" />
-        <path d="M133 525 C200 510 220 450 250 420" />
-        <path d="M133 675 C210 640 225 500 260 435" />
-      </g>
 
-      {/* Small dots on connection paths */}
 
-      <g fill="#c9a86a" opacity="0.7">
-        <circle cx="188" cy="154" r="2" />
-        <circle cx="177" cy="278" r="2" />
-        <circle cx="165" cy="390" r="2" />
-        <circle cx="178" cy="504" r="2" />
-        <circle cx="185" cy="642" r="2" />
-      </g>
 
-      {/* =========================================================
-          LEFT — TANGLED BUSINESS CHAOS
-          ========================================================= */}
+
+
+
+
+
+
+// "use client";
+
+// import { useMemo } from "react";
+
+// function round(value: number, decimals = 2) {
+//   const factor = 10 ** decimals;
+//   return Math.round(value * factor) / factor;
+// }
+
+// function createScribble(index: number): string {
+//   const cx = round(178 + Math.sin(index * 2.37) * 6);
+//   const cy = round(175 + Math.cos(index * 1.83) * 6);
+
+//   // Control of outer size of tangle
+//   const rx = round(
+//     120 + Math.sin(index * 1.71) * 35 + Math.cos(index * 0.73) * 25
+//   );
+
+//   const ry = round(
+//     120 + Math.cos(index * 1.29) * 35 + Math.sin(index * 0.91) * 25
+//   );
+
+//   const rotation = round(
+//     -25 + Math.sin(index * 1.41) * 38 + index * 4.7
+//   );
+
+//   const points: { x: number; y: number }[] = [];
+
+//   for (let p = 0; p < 12; p++) {
+//     const angle =
+//       (Math.PI * 2 * p) / 12 +
+//       Math.sin(index * 0.91 + p * 1.73) * 0.14;
+
+//     const radiusX =
+//       rx *
+//       (0.82 +
+//         Math.sin(index * 1.17 + p * 2.11) * 0.17 +
+//         Math.cos(index * 0.63 + p) * 0.07);
+
+//     const radiusY =
+//       ry *
+//       (0.82 +
+//         Math.cos(index * 1.31 + p * 1.77) * 0.17 +
+//         Math.sin(index * 0.71 + p) * 0.07);
+
+//     const localX = Math.cos(angle) * radiusX;
+//     const localY = Math.sin(angle) * radiusY;
+
+//     const radians = (rotation * Math.PI) / 180;
+
+//     const rotatedX =
+//       localX * Math.cos(radians) -
+//       localY * Math.sin(radians);
+
+//     const rotatedY =
+//       localX * Math.sin(radians) +
+//       localY * Math.cos(radians);
+
+//     points.push({
+//       x: round(cx + rotatedX),
+//       y: round(cy + rotatedY),
+//     });
+//   }
+
+//   const midpoint = (
+//     a: { x: number; y: number },
+//     b: { x: number; y: number }
+//   ) => ({
+//     x: round((a.x + b.x) / 2),
+//     y: round((a.y + b.y) / 2),
+//   });
+
+//   let path = "";
+
+//   const firstMid = midpoint(points[0], points[1]);
+
+//   path += `M ${firstMid.x} ${firstMid.y} `;
+
+//   for (let i = 1; i <= points.length; i++) {
+//     const current = points[i % points.length];
+//     const next = points[(i + 1) % points.length];
+
+//     const mid = midpoint(current, next);
+
+//     path += `Q ${current.x} ${current.y} ${mid.x} ${mid.y} `;
+//   }
+
+//   path += "Z";
+
+//   return path;
+// }
+
+// function createInnerLoop(index: number) {
+//   const cx = round(180 + Math.sin(index * 2.17) * 9);
+//   const cy = round(180 + Math.cos(index * 1.73) * 17);
+
+//   // Control the size of inner tangle
+//   const rx = round(79 + Math.sin(index * 1.19) * 60);
+//   const ry = round(69 + Math.cos(index * 1.43) * 50);
+
+//   const rotation = Math.round(index * 19 - 35);
+
+//   return {
+//     cx,
+//     cy,
+//     rx,
+//     ry,
+//     rotation,
+//   };
+// }
+
+// /* ============================================================
+//    GOLD CIRCUIT LINE GROUPS
+//    ============================================================ */
+
+// const g1 = [590, 598, 606, 614];
+// const g2 = [642, 650, 658];
+// const g3 = [686, 694, 702];
+// const g4 = [730, 738, 746];
+
+
+// const LAST_VERTICAL_X = 848;
+
+
+
+// const verticalLines = [
+//   ...g1,
+//   ...g2,
+//   ...g3,
+//   ...g4,
+
+
+// ];
+
+// const startX = 385;
+
+// /*
+//  * IMPORTANT:
+//  * Every horizontal circuit line stops at the same
+//  * coordinate as the final vertical line.
+//  */
+// const endX = LAST_VERTICAL_X;
+
+// /*
+//  * Taller vertical lines.
+//  */
+// const vTop = -15;
+// const vBottom = 365;
+
+// /* ============================================================
+//    GOLD CIRCUIT PATHS
+//    ============================================================ */
+
+// const goldCircuitPaths = [
+//   // ----------------------------------------------------------
+//   // TOP 3 THROUGH-LINES
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 106 H ${endX}`,
+//   `M ${startX} 113 H ${endX}`,
+//   `M ${startX} 120 H ${endX}`,
+
+//   // ----------------------------------------------------------
+//   // UPPER 5-STEPPED 45° RAMPS
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 143 H ${
+//     g1[0] - (143 - 127)
+//   } L ${g1[0]} 127 H ${endX}`,
+
+//   `M ${startX} 149 H ${
+//     g1[1] - (149 - 133)
+//   } L ${g1[1]} 133 H ${endX}`,
+
+//   `M ${startX} 155 H ${
+//     g1[2] - (155 - 139)
+//   } L ${g1[2]} 139 H ${endX}`,
+
+//   `M ${startX} 161 H ${
+//     g1[3] - (161 - 145)
+//   } L ${g1[3]} 145 H ${endX}`,
+
+//   `M ${startX} 167 H ${
+//     g2[0] - (167 - 151)
+//   } L ${g2[0]} 151 H ${endX}`,
+
+//   // ----------------------------------------------------------
+//   // CENTER CHEVRON ARROW
+//   // ----------------------------------------------------------
+
+//   `M ${g2[0]} 150 L ${g2[0] - 30} 175 L ${g2[0]} 193`,
+
+//   // ----------------------------------------------------------
+//   // CENTER THROUGH-LINE
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 175 H ${endX}`,
+
+//   // ----------------------------------------------------------
+//   // LOWER 5-STEPPED 45° RAMPS
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 183 H ${
+//     g2[0] - (199 - 183)
+//   } L ${g2[0]} 199 H ${endX}`,
+
+//   `M ${startX} 189 H ${
+//     g1[3] - (205 - 189)
+//   } L ${g1[3]} 205 H ${endX}`,
+
+//   `M ${startX} 195 H ${
+//     g1[2] - (211 - 195)
+//   } L ${g1[2]} 211 H ${endX}`,
+
+//   `M ${startX} 201 H ${
+//     g1[1] - (217 - 201)
+//   } L ${g1[1]} 217 H ${endX}`,
+
+//   `M ${startX} 207 H ${
+//     g1[0] - (223 - 207)
+//   } L ${g1[0]} 223 H ${endX}`,
+
+//   // ----------------------------------------------------------
+//   // BOTTOM 3 THROUGH-LINES
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 230 H ${endX}`,
+//   `M ${startX} 237 H ${endX}`,
+//   `M ${startX} 244 H ${endX}`,
+// ];
+
+// /* ============================================================
+//    HERO SCRIBBLE
+//    ============================================================ */
+
+// export default function HeroScribble() {
+//   const scribbles = useMemo(
+//     () =>
+//       Array.from(
+//         { length: 72 },
+//         (_, index) => createScribble(index)
+//       ),
+//     []
+//   );
+
+//   return (
+//     <div
+//       className="
+//         relative
+//         w-full
+//         max-w-[1050px]
+//         aspect-[850/350]
+//         select-none
+//         overflow-hidden
+//         border-none
+//         outline-none
+//       "
+//       aria-hidden="true"
+//     >
+//       <svg
+//         viewBox="0 0 850 350"
+//         preserveAspectRatio="xMidYMid meet"
+//         className="
+//           absolute
+//           inset-0
+//           h-full
+//           w-full
+//           border-none
+//           outline-none
+//         "
+//         xmlns="http://www.w3.org/2000/svg"
+//       >
+//         {/* =====================================================
+//             CLIP EVERYTHING TO THE SVG BOUNDARY
+//             ===================================================== */}
+
+//         <defs>
+//           <clipPath id="hero-circuit-clip">
+//             <rect
+//               x="0"
+//               y="0"
+//               width="850"
+//               height="350"
+//             />
+//           </clipPath>
+//         </defs>
+
+//         <g clipPath="url(#hero-circuit-clip)">
+//           {/* ===================================================
+//               LAYER 1: GOLD CIRCUIT LINES
+//               =================================================== */}
+
+//           <g
+//             fill="none"
+//             stroke="#c9a86a"
+//             strokeWidth="1.35"
+//             strokeLinecap="round"
+//             strokeLinejoin="miter"
+//             opacity="1"
+//           >
+//             {goldCircuitPaths.map((d, index) => (
+//               <path
+//                 key={`circuit-${index}`}
+//                 d={d}
+//               />
+//             ))}
+//           </g>
+
+//           {/* ===================================================
+//               LAYER 2: VERTICAL BUS
+//               =================================================== */}
+
+//           <g
+//             fill="none"
+//             stroke="#c9a86a"
+//             strokeWidth="1.35"
+//             strokeLinecap="round"
+//             strokeLinejoin="miter"
+//             opacity="1"
+//           >
+//             {verticalLines.map((x) => (
+//               <path
+//                 key={`bus-${x}`}
+//                 d={`M ${x} ${vTop} V ${vBottom}`}
+//               />
+//             ))}
+//           </g>
+
+//           {/* ===================================================
+//               LAYER 3: TANGLED SCRIBBLE
+//               =================================================== */}
+
+//           <g
+//             transform="translate(165 0)"
+//             fill="none"
+//             stroke="#172039"
+//             strokeWidth="1.05"
+//             strokeLinecap="round"
+//             strokeLinejoin="round"
+//             opacity="0.9"
+//           >
+//             {scribbles.map((path, index) => (
+//               <path
+//                 key={index}
+//                 d={path}
+//               />
+//             ))}
+//           </g>
+
+//           {/* ===================================================
+//               LAYER 4: INNER DENSE LOOPS
+//               =================================================== */}
+
+//           <g
+//             transform="translate(165 0)"
+//             fill="none"
+//             stroke="#172039"
+//             strokeWidth="0.8"
+//             strokeLinecap="round"
+//             strokeLinejoin="round"
+//             opacity="0.82"
+//           >
+//             {Array.from({ length: 28 }).map(
+//               (_, index) => {
+//                 const loop = createInnerLoop(index);
+
+//                 return (
+//                   <ellipse
+//                     key={`inner-${index}`}
+//                     cx={loop.cx}
+//                     cy={loop.cy}
+//                     rx={loop.rx}
+//                     ry={loop.ry}
+//                     transform={`rotate(
+//                       ${loop.rotation}
+//                       ${loop.cx}
+//                       ${loop.cy}
+//                     )`}
+//                   />
+//                 );
+//               }
+//             )}
+//           </g>
+//         </g>
+//       </svg>
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// "use client";
+
+// import { useMemo } from "react";
+
+// function round(value: number, decimals = 2) {
+//   const factor = 10 ** decimals;
+//   return Math.round(value * factor) / factor;
+// }
+
+// function createScribble(index: number): string {
+//   const cx = round(178 + Math.sin(index * 2.37) * 6);
+//   const cy = round(175 + Math.cos(index * 1.83) * 6);
+
+//   // Control of outer size of tangle
+//   const rx = round(
+//     120 + Math.sin(index * 1.71) * 35 + Math.cos(index * 0.73) * 25
+//   );
+
+//   const ry = round(
+//     120 + Math.cos(index * 1.29) * 35 + Math.sin(index * 0.91) * 25
+//   );
+
+//   const rotation = round(
+//     -25 + Math.sin(index * 1.41) * 38 + index * 4.7
+//   );
+
+//   const points: { x: number; y: number }[] = [];
+
+//   for (let p = 0; p < 12; p++) {
+//     const angle =
+//       (Math.PI * 2 * p) / 12 +
+//       Math.sin(index * 0.91 + p * 1.73) * 0.14;
+
+//     const radiusX =
+//       rx *
+//       (0.82 +
+//         Math.sin(index * 1.17 + p * 2.11) * 0.17 +
+//         Math.cos(index * 0.63 + p) * 0.07);
+
+//     const radiusY =
+//       ry *
+//       (0.82 +
+//         Math.cos(index * 1.31 + p * 1.77) * 0.17 +
+//         Math.sin(index * 0.71 + p) * 0.07);
+
+//     const localX = Math.cos(angle) * radiusX;
+//     const localY = Math.sin(angle) * radiusY;
+
+//     const radians = (rotation * Math.PI) / 180;
+
+//     const rotatedX =
+//       localX * Math.cos(radians) -
+//       localY * Math.sin(radians);
+
+//     const rotatedY =
+//       localX * Math.sin(radians) +
+//       localY * Math.cos(radians);
+
+//     points.push({
+//       x: round(cx + rotatedX),
+//       y: round(cy + rotatedY),
+//     });
+//   }
+
+//   const midpoint = (
+//     a: { x: number; y: number },
+//     b: { x: number; y: number }
+//   ) => ({
+//     x: round((a.x + b.x) / 2),
+//     y: round((a.y + b.y) / 2),
+//   });
+
+//   let path = "";
+
+//   const firstMid = midpoint(points[0], points[1]);
+
+//   path += `M ${firstMid.x} ${firstMid.y} `;
+
+//   for (let i = 1; i <= points.length; i++) {
+//     const current = points[i % points.length];
+//     const next = points[(i + 1) % points.length];
+
+//     const mid = midpoint(current, next);
+
+//     path += `Q ${current.x} ${current.y} ${mid.x} ${mid.y} `;
+//   }
+
+//   path += "Z";
+
+//   return path;
+// }
+
+// function createInnerLoop(index: number) {
+//   const cx = round(180 + Math.sin(index * 2.17) * 9);
+//   const cy = round(180 + Math.cos(index * 1.73) * 17);
+
+//   // Control the size of inner tangle
+//   const rx = round(79 + Math.sin(index * 1.19) * 60);
+//   const ry = round(69 + Math.cos(index * 1.43) * 50);
+
+//   const rotation = Math.round(index * 19 - 35);
+
+//   return {
+//     cx,
+//     cy,
+//     rx,
+//     ry,
+//     rotation,
+//   };
+// }
+
+// /* ============================================================
+//    GOLD CIRCUIT LINE GROUPS
+//    ============================================================ */
+
+// const g1 = [590, 598, 606, 614];
+// const g2 = [642, 650, 658];
+// const g3 = [686, 694, 702];
+// const g4 = [730, 738, 746];
+
+// /*
+//  * FINAL VERTICAL LINE
+//  *
+//  * This is now exactly at the right edge
+//  * of the 850px SVG.
+//  */
+// const LAST_VERTICAL_X = 850;
+
+
+// /*
+//  * All vertical lines.
+//  *
+//  * The final line is included here so the
+//  * horizontal circuit terminates exactly on it.
+//  */
+// const verticalLines = [
+//   ...g1,
+//   ...g2,
+//   ...g3,
+//   ...g4,
+//   LAST_VERTICAL_X,
+// ];
+
+// const startX = 385;
+
+// /*
+//  * IMPORTANT:
+//  * Horizontal circuit lines end exactly where
+//  * the final vertical line is located.
+//  */
+// const endX = LAST_VERTICAL_X;
+
+// /*
+//  * Taller vertical lines.
+//  */
+// const vTop = -15;
+// const vBottom = 365;
+
+// /* ============================================================
+//    GOLD CIRCUIT PATHS
+//    ============================================================ */
+
+// const goldCircuitPaths = [
+//   // ----------------------------------------------------------
+//   // TOP 3 THROUGH-LINES
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 106 H ${endX}`,
+//   `M ${startX} 113 H ${endX}`,
+//   `M ${startX} 120 H ${endX}`,
+
+//   // ----------------------------------------------------------
+//   // UPPER 5-STEPPED 45° RAMPS
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 143 H ${
+//     g1[0] - (143 - 127)
+//   } L ${g1[0]} 127 H ${endX}`,
+
+//   `M ${startX} 149 H ${
+//     g1[1] - (149 - 133)
+//   } L ${g1[1]} 133 H ${endX}`,
+
+//   `M ${startX} 155 H ${
+//     g1[2] - (155 - 139)
+//   } L ${g1[2]} 139 H ${endX}`,
+
+//   `M ${startX} 161 H ${
+//     g1[3] - (161 - 145)
+//   } L ${g1[3]} 145 H ${endX}`,
+
+//   `M ${startX} 167 H ${
+//     g2[0] - (167 - 151)
+//   } L ${g2[0]} 151 H ${endX}`,
+
+//   // ----------------------------------------------------------
+//   // CENTER CHEVRON ARROW
+//   // ----------------------------------------------------------
+
+//   `M ${g2[0]} 150 L ${g2[0] - 30} 175 L ${g2[0]} 193`,
+
+//   // ----------------------------------------------------------
+//   // CENTER THROUGH-LINE
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 175 H ${endX}`,
+
+//   // ----------------------------------------------------------
+//   // LOWER 5-STEPPED 45° RAMPS
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 183 H ${
+//     g2[0] - (199 - 183)
+//   } L ${g2[0]} 199 H ${endX}`,
+
+//   `M ${startX} 189 H ${
+//     g1[3] - (205 - 189)
+//   } L ${g1[3]} 205 H ${endX}`,
+
+//   `M ${startX} 195 H ${
+//     g1[2] - (211 - 195)
+//   } L ${g1[2]} 211 H ${endX}`,
+
+//   `M ${startX} 201 H ${
+//     g1[1] - (217 - 201)
+//   } L ${g1[1]} 217 H ${endX}`,
+
+//   `M ${startX} 207 H ${
+//     g1[0] - (223 - 207)
+//   } L ${g1[0]} 223 H ${endX}`,
+
+//   // ----------------------------------------------------------
+//   // BOTTOM 3 THROUGH-LINES
+//   // ----------------------------------------------------------
+
+//   `M ${startX} 230 H ${endX}`,
+//   `M ${startX} 237 H ${endX}`,
+//   `M ${startX} 244 H ${endX}`,
+// ];
+
+// /* ============================================================
+//    HERO SCRIBBLE
+//    ============================================================ */
+
+// export default function HeroScribble() {
+//   const scribbles = useMemo(
+//     () =>
+//       Array.from(
+//         { length: 72 },
+//         (_, index) => createScribble(index)
+//       ),
+//     []
+//   );
+
+//   return (
+//     <div
+//       className="
+//         relative
+//         w-full
+//         max-w-[1050px]
+//         aspect-[850/350]
+//         select-none
+//         overflow-hidden
+//         border-none
+//         outline-none
+//       "
+//       aria-hidden="true"
+//     >
+//       <svg
+//         viewBox="0 0 850 350"
+//         preserveAspectRatio="xMidYMid meet"
+//         className="
+//           absolute
+//           inset-0
+//           h-full
+//           w-full
+//           border-none
+//           outline-none
+//         "
+//         xmlns="http://www.w3.org/2000/svg"
+//       >
+//         {/* =====================================================
+//             CLIP TO SVG BOUNDARY
+//             ===================================================== */}
+
+//         <defs>
+//           <clipPath id="hero-circuit-clip">
+//             <rect
+//               x="0"
+//               y="0"
+//               width="850"
+//               height="350"
+//             />
+//           </clipPath>
+//         </defs>
+
+//         <g clipPath="url(#hero-circuit-clip)">
+//           {/* ===================================================
+//               LAYER 1: GOLD CIRCUIT LINES
+//               =================================================== */}
+
+//           <g
+//             fill="none"
+//             stroke="#c9a86a"
+//             strokeWidth="1.35"
+//             strokeLinecap="round"
+//             strokeLinejoin="miter"
+//             opacity="1"
+//           >
+//             {goldCircuitPaths.map((d, index) => (
+//               <path
+//                 key={`circuit-${index}`}
+//                 d={d}
+//               />
+//             ))}
+//           </g>
+
+//           {/* ===================================================
+//               LAYER 2: VERTICAL BUS
+//               =================================================== */}
 
       <g
         fill="none"
@@ -1458,152 +2604,115 @@ export default function HeroScribble() {
           RIGHT SIDE — ARROWHEADS
           ========================================================= */}
 
-      <g
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        {/* Arrow 1 */}
+        <defs>
+          <clipPath id="hero-circuit-clip">
+            <rect
+              x="0"
+              y="0"
+              width="850"
+              height="350"
+            />
+          </clipPath>
+        </defs>
 
-        <path
-          d="M1380 265 L1380 248"
-          stroke="#172039"
-          strokeWidth="1.15"
-          opacity="0.58"
-        />
+        <g clipPath="url(#hero-circuit-clip)">
+          {/* ===================================================
+              LAYER 1: GOLD CIRCUIT LINES
+              =================================================== */}
 
-        <path
-          d="M1373 256 L1380 248 L1387 256"
-          stroke="#172039"
-          strokeWidth="1.15"
-          opacity="0.58"
-        />
+          <g
+            fill="none"
+            stroke="#c9a86a"
+            strokeWidth="1.35"
+            strokeLinecap="butt"
+            strokeLinejoin="miter"
+            opacity="1"
+          >
+            {goldCircuitPaths.map((d, index) => (
+              <path
+                key={`circuit-${index}`}
+                d={d}
+              />
+            ))}
+          </g>
 
-        {/* Arrow 2 */}
+          {/* ===================================================
+              LAYER 2: VERTICAL BUS
+              =================================================== */}
 
-        <path
-          d="M1410 210 L1410 192"
-          stroke="#172039"
-          strokeWidth="0.95"
-          opacity="0.45"
-        />
+          <g
+            fill="none"
+            stroke="#c9a86a"
+            strokeWidth="1.35"
+            strokeLinecap="butt"
+            strokeLinejoin="miter"
+            opacity="1"
+          >
+            {verticalLines.map((x) => (
+              <path
+                key={`bus-${x}`}
+                d={`M ${x} ${vTop} V ${vBottom}`}
+              />
+            ))}
+          </g>
 
-        <path
-          d="M1404 200 L1410 192 L1416 200"
-          stroke="#172039"
-          strokeWidth="0.95"
-          opacity="0.45"
-        />
+          {/* ===================================================
+              LAYER 3: OUTER TANGLED SCRIBBLE
+              =================================================== */}
 
-        {/* Gold arrow 1 */}
+          <g
+            transform="translate(165 0)"
+            fill="none"
+            stroke="#172039"
+            strokeWidth="1.05"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.9"
+          >
+            {scribbles.map((path, index) => (
+              <path
+                key={index}
+                d={path}
+              />
+            ))}
+          </g>
 
-        <path
-          d="M1430 150 L1430 132"
-          stroke="#c9a86a"
-          strokeWidth="1.15"
-          opacity="0.75"
-        />
+          {/* ===================================================
+              LAYER 4: INNER DENSE LOOPS
+              =================================================== */}
 
-        <path
-          d="M1423 140 L1430 132 L1437 140"
-          stroke="#c9a86a"
-          strokeWidth="1.15"
-          opacity="0.75"
-        />
+          <g
+            transform="translate(165 0)"
+            fill="none"
+            stroke="#172039"
+            strokeWidth="0.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            opacity="0.82"
+          >
+            {Array.from({ length: 28 }).map(
+              (_, index) => {
+                const loop = createInnerLoop(index);
 
-        {/* Gold arrow 2 */}
-
-        <path
-          d="M1450 105 L1450 87"
-          stroke="#c9a86a"
-          strokeWidth="0.95"
-          opacity="0.58"
-        />
-
-        <path
-          d="M1444 95 L1450 87 L1456 95"
-          stroke="#c9a86a"
-          strokeWidth="0.95"
-          opacity="0.58"
-        />
-
-        {/* Gold arrow 3 */}
-
-        <path
-          d="M1470 145 L1470 127"
-          stroke="#c9a86a"
-          strokeWidth="0.75"
-          opacity="0.38"
-        />
-
-        <path
-          d="M1465 135 L1470 127 L1475 135"
-          stroke="#c9a86a"
-          strokeWidth="0.75"
-          opacity="0.38"
-        />
-      </g>
-
-      {/* =========================================================
-          RIGHT SIDE GOLD DOTS
-          ========================================================= */}
-
-      <g fill="#c9a86a">
-        <circle
-          cx="1430"
-          cy="280"
-          r="3.2"
-          opacity="0.78"
-        />
-
-        <circle
-          cx="1430"
-          cy="350"
-          r="3"
-          opacity="0.62"
-        />
-
-        <circle
-          cx="1450"
-          cy="410"
-          r="3"
-          opacity="0.55"
-        />
-      </g>
-
-      {/* =========================================================
-          TOP CENTER GOLD DOT
-          ========================================================= */}
-
-      <circle
-        cx="800"
-        cy="42"
-        r="4"
-        fill="#c9a86a"
-        opacity="0.85"
-      />
-
-      {/* =========================================================
-          BOTTOM SUBTLE FLOW EXTENSION
-          ========================================================= */}
-
-      <g
-        fill="none"
-        strokeLinecap="round"
-        opacity="0.28"
-      >
-        <path
-          d="M480 655 C700 670 950 670 1245 655"
-          stroke="#172039"
-          strokeWidth="0.65"
-        />
-
-        <path
-          d="M480 665 C700 680 950 680 1245 665"
-          stroke="#c9a86a"
-          strokeWidth="0.6"
-        />
-      </g>
-    </svg>
+                return (
+                  <ellipse
+                    key={`inner-${index}`}
+                    cx={loop.cx}
+                    cy={loop.cy}
+                    rx={loop.rx}
+                    ry={loop.ry}
+                    transform={`rotate(
+                      ${loop.rotation}
+                      ${loop.cx}
+                      ${loop.cy}
+                    )`}
+                  />
+                );
+              }
+            )}
+          </g>
+        </g>
+      </svg>
+    </div>
   );
 }

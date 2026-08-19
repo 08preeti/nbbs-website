@@ -48,7 +48,7 @@ export default function DiagnosticCTA() {
         </h2>
         <p className="text-2xl font-display font-light text-white/50">start with a free 30-minute diagnostic. We&apos;ll tell you honestly whether NBBS is the right fit for your business</p>
         <Link
-          className="inline-flex items-center justify-center h-15 mt-4 px-8 bg-white text-2xl font-bold text-primary rounded font-button hover:bg-white transition-colors"
+          className="inline-flex items-center justify-center h-15 mt-4 px-8 bg-white text-2xl font-bold text-primary rounded font-button  transition-colors hover:bg-secondary "
           href="/#contact"
         >
           Book your diagnostic
