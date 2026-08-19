@@ -1430,9 +1430,9 @@ export default function HeroScribble() {
         <path
           d="
             M1245 638
-            C1330 630 1390 600 1420 550
+            C1340 630 1390 600 1420 550
             C1450 500 1450 410 1450 320
-            L1450 105
+            L1450 100
           "
           stroke="#c9a86a"
           strokeWidth="0.95"
