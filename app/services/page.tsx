@@ -4,11 +4,11 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
-import opd from "@/public/solution.jpg";
+import opd from "@/public/opd.jpg";
 import crm from "@/public/crm.jpg";
-import cash from "@/public/cashflow.jpg";
-import quotation from "@/public/quotation.jpg";
-import incentive from "@/public/incentives.jpg";
+import cash from "@/public/cash.jpg";
+import quotation from "@/public/quo.jpg";
+import incentive from "@/public/incentive.jpg";
 
 import Image from "next/image";
 
@@ -48,8 +48,7 @@ const services = [
       "Sales pipeline management",
       "Team accountability",
     ],
-    audience:
-      "Growing teams that need a simple CRM their people actually use.",
+    audience: "Growing teams that need a simple CRM their people actually use.",
     proof: "Designed around real SMB workflows",
   },
   {
@@ -106,73 +105,59 @@ const services = [
   },
 ];
 
-const stages = [
-  {
-    number: "01",
-    title: "Diagnostic",
-    text: "Identify your unique operational challenges in a focused 30-minute session.",
-  },
-  {
-    number: "02",
-    title: "Prescription",
-    text: "Turn the diagnosis into a practical roadmap built around your actual business.",
-  },
-  {
-    number: "03",
-    title: "Instrumentation",
-    text: "Introduce the systems, tools and workflows needed to make improvement measurable.",
-  },
-  {
-    number: "04",
-    title: "Scale",
-    text: "Build repeatable processes that reduce dependency and create controlled growth.",
-  },
-];
-
 export default function ServicesPage() {
   const servicesSectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Mobile browsers resize the viewport (and refire resize events) when
+    // the address bar collapses/expands during scroll. Without this,
+    // ScrollTrigger can recalculate pin positions mid-scroll and briefly
+    // misalign panels, which shows as a gap/see-through flash.
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
     const ctx = gsap.context(() => {
+      // Pinned, layered slide animation runs at ALL screen sizes now.
+      // Each panel is capped to the viewport height and scrolls
+      // internally if its content is taller than the screen, so the
+      // slide mechanic (panel N+1 sliding up to cover panel N) stays
+      // identical on mobile and desktop.
       const sections = gsap.utils.toArray<HTMLElement>(".service-panel");
 
-      if (!sections.length || !servicesSectionRef.current) return;
+      if (sections.length && servicesSectionRef.current) {
+        // Force every panel fully opaque and GPU-composited so the slide
+        // is a clean, solid transform with zero bleed-through from the
+        // panel underneath.
+        gsap.set(sections, {
+          yPercent: 100,
+          opacity: 1,
+          force3D: true,
+        });
+        gsap.set(sections[0], { yPercent: 0 });
 
-      gsap.set(sections, {
-        yPercent: 100,
-      });
-
-      gsap.set(sections[0], {
-        yPercent: 0,
-      });
-
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: servicesSectionRef.current,
-          start: "top top",
-          end: `+=${sections.length * 100}%`,
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      sections.forEach((section, index) => {
-        if (index === 0) return;
-
-        timeline.to(
-          section,
-          {
-            yPercent: 0,
-            duration: 1,
-            ease: "none",
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: servicesSectionRef.current,
+            start: "top top",
+            end: `+=${sections.length * 100}%`,
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
           },
-          `service-${index}`,
-        );
-      });
+        });
+
+        sections.forEach((section, index) => {
+          if (index === 0) return;
+
+          timeline.to(
+            section,
+            { yPercent: 0, duration: 1, ease: "none" },
+            `service-${index}`,
+          );
+        });
+      }
 
       ScrollTrigger.refresh();
     }, servicesSectionRef);
@@ -187,8 +172,7 @@ export default function ServicesPage() {
       <Header />
 
       <main className="grow">
-        {/* HERO */}
-        <section className="bg-[#141A32] relative overflow-hidden py-24 md:py-32">
+        <section className="bg-[#141A32] relative overflow-hidden py-16 sm:py-20 md:py-28 lg:py-32">
           <div
             className="absolute inset-0 pointer-events-none opacity-20"
             style={{
@@ -208,10 +192,12 @@ export default function ServicesPage() {
             }}
           />
 
-          <div className="max-w-[1280px] mx-auto px-5 md:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
-            <div className="md:col-span-8 flex flex-col items-start space-y-8">
+          <div className="mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
+            <div className="md:col-span-9 lg:col-span-8 flex flex-col items-start space-y-6 sm:space-y-8">
+           
+
               <h1
-                className="text-[48px] md:text-[72px] leading-[1.1] font-semibold text-white tracking-tight"
+                className="text-[34px] xs:text-[40px] sm:text-[52px] md:text-[62px] lg:text-[72px] leading-[1.1] font-semibold text-white tracking-tight"
                 style={{
                   fontFamily: "Bodoni Moda, serif",
                 }}
@@ -220,7 +206,7 @@ export default function ServicesPage() {
               </h1>
 
               <p
-                className="text-[40px] md:text-[48px] leading-[1.2] font-medium text-[#e8e7f0] md:w-4/5"
+                className="text-[26px] xs:text-[30px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.2] font-medium text-[#e8e7f0] md:w-4/5"
                 style={{
                   fontFamily: "Bodoni Moda, serif",
                 }}
@@ -228,20 +214,19 @@ export default function ServicesPage() {
                 Five solutions. One connected journey.
               </p>
 
-              <p className="text-[18px] leading-[1.6] text-[#c0c5e5] md:w-3/4">
+              <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.6] text-[#c0c5e5] md:w-4/5 lg:w-3/4">
                 We don&apos;t just solve isolated problems. We identify root
                 causes and build integrated systems that scale with your
                 ambition. Professional solutions designed for high-performance
                 executives.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 w-full sm:w-auto">
                 <Link
                   href="/contacts"
-                  className="bg-[#ffdea5] text-[#261900] text-[12px] leading-none rounded-xl tracking-widest font-bold uppercase px-6 py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
+                  className="bg-[#ffdea5] text-[#261900] text-[11px] sm:text-[12px] leading-none rounded-xl tracking-widest font-bold uppercase px-6 py-3.5 sm:py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
                 >
                   Book a Business Diagnostic
-
                   <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
@@ -249,7 +234,7 @@ export default function ServicesPage() {
 
                 <Link
                   href="#solutions"
-                  className="border border-[#c7c5ce] text-white text-[12px] leading-none tracking-widest font-bold uppercase px-6 rounded-xl py-4 hover:bg-white hover:text-[#141a32] transition-colors flex items-center justify-center"
+                  className="border border-[#c7c5ce] text-white text-[11px] sm:text-[12px] leading-none tracking-widest font-bold uppercase px-6 rounded-xl py-3.5 sm:py-4 hover:bg-white hover:text-[#141a32] transition-colors flex items-center justify-center"
                 >
                   Explore Solutions
                 </Link>
@@ -258,258 +243,530 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* SOLUTIONS INTRO */}
+        {/* ============================================================
+            SOLUTIONS INTRO
+        ============================================================ */}
         <section id="solutions" className="bg-[#fbf9f8]">
-          <div className="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-16 pt-24 md:pt-36 pb-16">
+          <div className="max-w-320 mx-auto px-5 sm:px-8 md:px-10 lg:px-16 pt-16 sm:pt-20 md:pt-28 lg:pt-36 pb-12 sm:pb-16">
             <div className="max-w-3xl">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="w-12 h-px bg-[#e9c176]" />
-
-                <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#141A32]">
-                  Our Solutions
-                </span>
-
-                <span className="w-12 h-px bg-[#e9c176]" />
-              </div>
-
               <h2
-                className="text-[#141A32] text-[42px] md:text-[58px] lg:text-[68px] leading-[1.02]"
+                className="text-[#141A32] text-[32px] xs:text-[36px] sm:text-[44px] md:text-[54px] lg:text-[64px] xl:text-[68px] leading-[1.05]"
                 style={{
                   fontFamily: "Bodoni Moda, serif",
                 }}
               >
                 Business problems.
                 <br />
-
                 <span className="text-[#c49b55] italic">
                   Practical solutions.
                 </span>
               </h2>
 
-              <p className="mt-7 max-w-2xl text-[16px] md:text-[18px] leading-[1.7] text-[#62626a]">
-                We diagnose how your business works today, identify where
-                things break down, and build practical systems that help you
-                operate, decide and grow better.
+              <p className="mt-5 sm:mt-7 max-w-2xl text-[14.5px] sm:text-[16px] md:text-[18px] leading-[1.65] sm:leading-[1.7] text-[#4b4b54]">
+                We diagnose how your business works today, identify where things
+                break down, and build practical systems that help you operate,
+                decide and grow better.
               </p>
             </div>
           </div>
 
-          {/* FULL WIDTH SCROLLING SERVICES */}
+          {/* ==========================================================
+              SERVICE PANELS
+              lg+ : pinned / layered scroll animation (fits one screen)
+              below lg : normal stacked sections, natural scroll
+
+              Panel background is a navy-tinted neutral (#e4e6ee), kept far
+              enough from the #fbf9f8 page background to read as a distinct
+              solid surface at every breakpoint, on top of and during the
+              slide transition.
+          ========================================================== */}
           <div
             ref={servicesSectionRef}
             className="services-scroll relative w-full"
           >
-            <div className="relative h-screen overflow-hidden">
+            <div className="relative h-dvh overflow-hidden">
               {services.map((service, index) => (
-                <article
+                <div
                   key={service.number}
-                  className="service-panel absolute inset-0 w-full min-h-screen bg-[#EEF0F3]"
+                  className="service-panel absolute inset-0 w-full h-full bg-[#e4e6ee] overflow-hidden"
                   style={{
                     zIndex: index + 1,
+                    backfaceVisibility: "hidden",
+                    willChange: "transform",
                   }}
                 >
-                  {/* TOP GOLD LINE */}
-                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#e9c176]" />
+                  {/* Scroll container is a SEPARATE element from the one
+                      GSAP transforms above. Combining `overflow-y: auto`
+                      and a CSS `transform` on the same element causes a
+                      known WebKit/iOS Safari bug where the background
+                      fails to paint opaquely mid-transform/mid-scroll,
+                      producing a see-through flicker between panels. */}
+                  <article className="h-full w-full overflow-y-auto overscroll-contain">
+                    {/* Top Gold Line */}
+                    <div className="sticky top-0 left-0 right-0 h-0.75 bg-[#e9c176] z-30" />
 
-                  {/* SERVICE NUMBER */}
-                  <div className="absolute top-8 left-5 md:left-10 lg:left-16 z-20">
-                    <span className="text-[10px] tracking-[0.25em] uppercase text-[#8a8a91]">
-                      Service
-                    </span>
+                    {/* Service Number */}
+                    <div className="pt-7 sm:pt-8 px-5 sm:px-8 md:px-10 lg:px-16 lg:absolute lg:top-8 lg:left-16 lg:pt-0  z-20 flex items-center justify-between lg:block">
+                      <div>
+                        <span className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-semibold text-[#5c5c68]">
+                          Service
+                        </span>
 
-                    <div className="mt-2 flex items-center gap-3">
-                      <span className="text-[13px] font-bold text-[#141A32]">
-                        {service.number}
-                      </span>
+                        <div className="mt-2 flex items-center gap-3">
+                          <span className="text-[12px] sm:text-[13px] font-bold text-[#141A32]">
+                            {service.number}
+                          </span>
 
-                      <span className="w-8 h-px bg-[#e9c176]" />
+                          <span className="w-8 h-px bg-[#e9c176]" />
 
-                      <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-[#141A32]">
-                        {service.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* TOP RIGHT */}
-                  <div className="absolute top-8 right-5 md:right-10 lg:right-16 z-20">
-                    <span className="text-[9px] tracking-[0.2em] uppercase text-[#8a8a91]">
-                      NBBS BUSINESS SOLUTIONS
-                    </span>
-                  </div>
-
-                  {/* MAIN CONTENT */}
-                  <div className="w-full h-full flex items-center px-5 md:px-10 lg:px-16 pt-20 pb-10">
-                    <div className="w-full h-full max-w-[1600px] mx-auto flex items-center">
-                      <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-0">
-
-                        {/* LEFT */}
-                        <div className="lg:col-span-4 lg:pr-12 xl:pr-20 flex flex-col justify-center py-8">
-                          <span className="text-[10px] tracking-[0.25em] uppercase font-bold text-[#b08b4d]">
+                          <span className="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-bold text-[#141A32]">
                             {service.category}
                           </span>
+                        </div>
+                      </div>
 
-                          <h3
-                            className="mt-5 text-[42px] md:text-[54px] lg:text-[60px] xl:text-[72px] leading-[1] text-[#141A32]"
-                            style={{
-                              fontFamily: "Bodoni Moda, serif",
-                            }}
+                      {/* Top Right Label (inline on mobile/tablet, absolute on lg) */}
+                      <span className="hidden sm:inline-block lg:absolute lg:top-8 lg:right-16 text-[8px] sm:text-[9px] tracking-[0.2em] uppercase font-medium text-[#5c5c68]">
+                        NBBS BUSINESS SOLUTIONS
+                      </span>
+                    </div>
+
+                    {/* Main Content */}
+                    <div className="w-full lg:h-full flex items-start lg:items-center px-5 sm:px-8 md:px-10 lg:px-16 pt-6 sm:pt-8 lg:pt-20 pb-10 sm:pb-12">
+                      <div className="w-full lg:h-full max-w-400 mx-auto flex items-center">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-8 sm:gap-10 lg:gap-0">
+                          {/* LEFT */}
+                          <div
+                            className="
+                            lg:col-span-4
+                            lg:pr-12
+                            xl:pr-20
+                            flex
+                            flex-col
+                            justify-center
+                            py-2
+                            lg:py-8
+                          "
                           >
-                            {service.title}
-                          </h3>
-
-                          <p className="mt-7 text-[18px] md:text-[20px] lg:text-[22px] leading-[1.5] font-medium text-[#252a3e] max-w-xl">
-                            {service.subtitle}
-                          </p>
-
-                          <div className="mt-8 flex items-center gap-3">
-                            <span className="w-2 h-2 rounded-full bg-[#e9c176]" />
-
-                            <span className="text-[10px] tracking-[0.18em] uppercase text-[#777780]">
-                              Business Solution
+                            <span className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-bold text-[#a3763a]">
+                              {service.category}
                             </span>
+
+                            <h3
+                              className="
+                              mt-4
+                              sm:mt-5
+                              text-[32px]
+                              xs:text-[36px]
+                              sm:text-[44px]
+                              md:text-[50px]
+                              lg:text-[54px]
+                              xl:text-[64px]
+                              leading-[1.05]
+                              lg:leading-none
+                              text-[#141A32]
+                            "
+                              style={{
+                                fontFamily: "Bodoni Moda, serif",
+                              }}
+                            >
+                              {service.title}
+                            </h3>
+
+                            <p
+                              className="
+                              mt-5
+                              sm:mt-7
+                              text-[16px]
+                              sm:text-[18px]
+                              md:text-[20px]
+                              lg:text-[20px]
+                              xl:text-[22px]
+                              leading-normal
+                              font-medium
+                              text-[#1f2333]
+                              max-w-xl
+                            "
+                            >
+                              {service.subtitle}
+                            </p>
+
+                            <div className="mt-6 sm:mt-8 flex items-center gap-3">
+                              <span className="w-2 h-2 rounded-full bg-[#e9c176] shrink-0" />
+
+                              <span className="text-[9px] sm:text-[10px] tracking-[0.18em] uppercase font-semibold text-[#4b4b58]">
+                                Business Solution
+                              </span>
+                            </div>
+
+                            <Link
+                              href="/contacts"
+                              className="
+                              mt-7
+                              sm:mt-10
+                              inline-flex
+                              items-center
+                              gap-3
+                              w-fit
+                              px-5
+                              sm:px-6
+                              py-3.5
+                              sm:py-4
+                              rounded-xl
+                              bg-[#141A32]
+                              text-white
+                              text-[9px]
+                              sm:text-[10px]
+                              tracking-[0.18em]
+                              uppercase
+                              font-bold
+                              hover:bg-[#1d2642]
+                              transition-all
+                              group
+                            "
+                            >
+                              Book a Diagnostic
+                              <span className="material-symbols-outlined text-[16px] sm:text-[17px] group-hover:translate-x-1 transition-transform">
+                                arrow_forward
+                              </span>
+                            </Link>
                           </div>
 
-                          <Link
-                            href="/contacts"
-                            className="mt-10 inline-flex items-center gap-3 w-fit px-6 py-4 rounded-xl bg-[#141A32] text-white text-[10px] tracking-[0.18em] uppercase font-bold hover:bg-[#1d2642] transition-all group"
+                          {/* MIDDLE */}
+                          <div
+                            className="
+                            lg:col-span-4
+                            lg:border-l
+                            lg:border-r
+                            border-t
+                            lg:border-t-0
+                            border-[#b7bad0]
+                            pt-8
+                            lg:pt-8
+                            px-0
+                            lg:px-10
+                            xl:px-14
+                            flex
+                            flex-col
+                            justify-center
+                            py-2
+                            lg:py-8
+                          "
                           >
-                            Book a Diagnostic
-
-                            <span className="material-symbols-outlined text-[17px] group-hover:translate-x-1 transition-transform">
-                              arrow_forward
+                            <span className="text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase font-bold text-[#a3763a]">
+                              The Business Problem
                             </span>
-                          </Link>
-                        </div>
 
-                        {/* MIDDLE */}
-                        <div className="lg:col-span-4 lg:border-l lg:border-r border-[#c6c6ce] px-0 lg:px-10 xl:px-14 flex flex-col justify-center py-8">
-                          <span className="text-[10px] tracking-[0.22em] uppercase font-bold text-[#b08b4d]">
-                            The Business Problem
-                          </span>
+                            <p
+                              className="
+                              mt-5
+                              sm:mt-6
+                              text-[15px]
+                              sm:text-[16px]
+                              md:text-[17px]
+                              lg:text-[18px]
+                              leading-[1.7]
+                              sm:leading-[1.75]
+                              text-[#3a3d4b]
+                            "
+                            >
+                              {service.problem}
+                            </p>
 
-                          <p className="mt-6 text-[16px] md:text-[17px] lg:text-[18px] leading-[1.75] text-[#62626a]">
-                            {service.problem}
-                          </p>
+                            <div className="w-16 h-px bg-[#e9c176] my-6 sm:my-8" />
 
-                          <div className="w-16 h-px bg-[#e9c176] my-8" />
+                            <span
+                              className="
+                              block
+                              text-[9px]
+                              sm:text-[10px]
+                              tracking-[0.2em]
+                              sm:tracking-[0.22em]
+                              uppercase
+                              font-bold
+                              text-[#141A32]
+                              mb-5
+                              sm:mb-6
+                            "
+                            >
+                              What changes
+                            </span>
 
-                          <span className="block text-[10px] tracking-[0.22em] uppercase font-bold text-[#141A32] mb-6">
-                            What changes
-                          </span>
-
-                          <div className="space-y-4">
-                            {service.points.map((point) => (
-                              <div
-                                key={point}
-                                className="flex items-start gap-3"
-                              >
-                                <span className="flex shrink-0 items-center justify-center w-5 h-5 rounded-full bg-[#e9c176] text-[#141A32] mt-0.5">
-                                  <span className="material-symbols-outlined text-[12px]">
-                                    check
+                            <div className="space-y-3.5 sm:space-y-4">
+                              {service.points.map((point) => (
+                                <div
+                                  key={point}
+                                  className="flex items-start gap-3"
+                                >
+                                  <span
+                                    className="
+                                    flex
+                                    shrink-0
+                                    items-center
+                                    justify-center
+                                    w-5
+                                    h-5
+                                    rounded-full
+                                    bg-[#e9c176]
+                                    text-[#141A32]
+                                    mt-0.5
+                                  "
+                                  >
+                                    <span className="material-symbols-outlined text-[12px]">
+                                      check
+                                    </span>
                                   </span>
-                                </span>
 
-                                <span className="text-[13px] md:text-[14px] leading-[1.5] text-[#46464d]">
-                                  {point}
-                                </span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* RIGHT */}
-                        <div className="lg:col-span-4 lg:pl-10 xl:pl-14 flex flex-col justify-center py-8">
-                          {/* IMAGE */}
-                          <div className="relative w-full h-[220px] md:h-[280px] lg:h-[330px] xl:h-[380px] overflow-hidden bg-[#fbf9f8] border border-[#c6c6ce]">
-                            <Image
-                              src={service.image}
-                              alt={`${service.title} business solution`}
-                              fill
-                              sizes="(max-width: 768px) 100vw, 500px"
-                              className="object-cover transition-transform duration-700 ease-out hover:scale-105"
-                            />
-
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#141A32]/50 via-transparent to-transparent" />
-
-                            <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
-                              <span className="px-3 py-1.5 bg-[#141A32] text-white text-[8px] tracking-[0.16em] uppercase font-bold">
-                                NBBS Solution
-                              </span>
-
-                              <div className="w-10 h-10 rounded-full bg-[#e9c176] flex items-center justify-center text-[#141A32]">
-                                <span className="material-symbols-outlined text-[18px]">
-                                  north_east
-                                </span>
-                              </div>
+                                  <span className="text-[13px] md:text-[14px] leading-normal text-[#2c2f3c] font-medium">
+                                    {point}
+                                  </span>
+                                </div>
+                              ))}
                             </div>
                           </div>
 
-                          {/* INFORMATION */}
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-                            <div className="p-5 bg-[#fbf9f8] border border-[#c6c6ce]">
-                              <span className="block text-[8px] tracking-[0.16em] uppercase text-[#8a8a91] font-bold">
-                                Perfect For
-                              </span>
+                          {/* RIGHT */}
+                          <div
+                            className="
+                            lg:col-span-4
+                            lg:pl-10
+                            xl:pl-14
+                            border-t
+                            lg:border-t-0
+                            border-[#b7bad0]
+                            pt-8
+                            lg:pt-8
+                            flex
+                            flex-col
+                            justify-center
+                            py-2
+                            lg:py-8
+                          "
+                          >
+                            {/* Image */}
+                            <div
+                              className="
+                              relative
+                              w-full
+                              h-50
+                              xs:h-[230px]
+                              sm:h-65
+                              md:h-75
+                              lg:h-75
+                              xl:h-90
+                              overflow-hidden
+                              rounded-lg
+                              bg-[#fbf9f8]
+                              border
+                              border-[#b7bad0]
+                            "
+                            >
+                              <Image
+                                src={service.image}
+                                alt={`${service.title} business solution`}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 500px"
+                                className="
+                                object-cover
+                                transition-transform
+                                duration-700
+                                ease-out
+                                hover:scale-105
+                              "
+                              />
 
-                              <p className="mt-3 text-[12px] leading-[1.5] font-medium text-[#141A32]">
-                                {service.audience}
-                              </p>
+                              <div
+                                className="
+                                absolute
+                                inset-0
+                                bg-linear-to-t
+                                from-[#141A32]/60
+                                via-transparent
+                                to-transparent
+                              "
+                              />
+
+                              <div className="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 right-4 sm:right-5 flex items-center justify-between">
+                                <span
+                                  className="
+                                  px-2.5
+                                  sm:px-3
+                                  py-1.5
+                                  bg-[#141A32]
+                                  text-white
+                                  text-[7px]
+                                  sm:text-[8px]
+                                  tracking-[0.16em]
+                                  uppercase
+                                  font-bold
+                                "
+                                >
+                                  NBBS Solution
+                                </span>
+
+                                <div
+                                  className="
+                                  w-9
+                                  h-9
+                                  sm:w-10
+                                  sm:h-10
+                                  rounded-full
+                                  bg-[#e9c176]
+                                  flex
+                                  items-center
+                                  justify-center
+                                  text-[#141A32]
+                                  shrink-0
+                                "
+                                >
+                                  <span className="material-symbols-outlined text-[16px] sm:text-[18px]">
+                                    north_east
+                                  </span>
+                                </div>
+                              </div>
                             </div>
 
-                            <div className="p-5 bg-[#fbf9f8] border border-[#c6c6ce]">
-                              <span className="block text-[8px] tracking-[0.16em] uppercase text-[#8a8a91] font-bold">
-                                Business Proof
-                              </span>
+                            {/* Information */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 mt-4 sm:mt-5">
+                              <div className="p-4 sm:p-5 bg-white rounded-lg border border-[#c3c6d6]">
+                                <span
+                                  className="
+                                  block
+                                  text-[7px]
+                                  sm:text-[8px]
+                                  tracking-[0.16em]
+                                  uppercase
+                                  text-[#5c5c68]
+                                  font-bold
+                                "
+                                >
+                                  Perfect For
+                                </span>
 
-                              <p className="mt-3 text-[12px] leading-[1.5] font-bold text-[#141A32]">
-                                {service.proof}
-                              </p>
+                                <p
+                                  className="
+                                  mt-2.5
+                                  sm:mt-3
+                                  text-[11.5px]
+                                  sm:text-[12px]
+                                  leading-normal
+                                  font-medium
+                                  text-[#141A32]
+                                "
+                                >
+                                  {service.audience}
+                                </p>
+                              </div>
+
+                              <div className="p-4 sm:p-5 bg-white rounded-lg border border-[#c3c6d6]">
+                                <span
+                                  className="
+                                  block
+                                  text-[7px]
+                                  sm:text-[8px]
+                                  tracking-[0.16em]
+                                  uppercase
+                                  text-[#5c5c68]
+                                  font-bold
+                                "
+                                >
+                                  Business Proof
+                                </span>
+
+                                <p
+                                  className="
+                                  mt-2.5
+                                  sm:mt-3
+                                  text-[11.5px]
+                                  sm:text-[12px]
+                                  leading-normal
+                                  font-bold
+                                  text-[#141A32]
+                                "
+                                >
+                                  {service.proof}
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* BOTTOM PROGRESS */}
-                  <div className="absolute bottom-0 left-0 right-0 px-5 md:px-10 lg:px-16 py-4 border-t border-[#c6c6ce] flex items-center justify-between">
-                    <p className="text-[9px] tracking-[0.16em] uppercase text-[#777780]">
-                      Diagnose
-                      <span className="mx-2 text-[#e9c176]">→</span>
-                      Design
-                      <span className="mx-2 text-[#e9c176]">→</span>
-                      Implement
-                    </p>
+                    {/* Bottom Progress */}
+                    <div className="relative left-0 right-0 px-5 sm:px-8 md:px-10 lg:px-16 py-4 border-t border-[#b7bad0] flex flex-col sm:flex-row gap-2 sm:gap-0 items-center justify-between">
+                      <p className="text-[8px] sm:text-[9px] tracking-[0.14em] sm:tracking-[0.16em] uppercase font-medium text-[#4b4b58] text-center sm:text-left">
+                        Diagnose
+                        <span className="mx-2 text-[#c49b55]">→</span>
+                        Design
+                        <span className="mx-2 text-[#c49b55]">→</span>
+                        Implement
+                      </p>
 
-                    <p className="text-[9px] tracking-[0.16em] uppercase text-[#8a8a91]">
-                      {service.number} / {service.category}
-                    </p>
-                  </div>
-                </article>
+                      <p className="text-[8px] sm:text-[9px] tracking-[0.14em] sm:tracking-[0.16em] uppercase font-medium text-[#5c5c68]">
+                        {service.number} / {service.category}
+                      </p>
+                    </div>
+                  </article>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FINAL CTA */}
+        {/* ============================================================
+            CTA
+        ============================================================ */}
         <section
-          className="bg-[#fbf9f8] py-24 md:py-32 border-t border-[#c7c5ce]"
+          className="
+            bg-[#fbf9f8]
+            py-16
+            sm:py-20
+            md:py-28
+            lg:py-32
+            border-t
+            border-[#c7c5ce]
+          "
           id="diagnostic"
         >
-          <div className="max-w-[1280px] mx-auto px-5 md:px-16 flex justify-center">
-            <div className="border border-[#c7c5ce] bg-white p-10 md:p-16 text-center max-w-2xl w-full rounded-[20px] shadow-[0_15px_50px_rgba(20,26,50,0.05)]">
-              <div className="flex items-center justify-center gap-4 mb-7">
-                <span className="w-10 h-px bg-[#e9c176]" />
+          <div className="max-w-320 mx-auto px-5 sm:px-8 md:px-16 flex justify-center">
+            <div
+              className="
+                border
+                border-[#c7c5ce]
+                bg-white
+                p-6
+                sm:p-10
+                md:p-16
+                text-center
+                max-w-2xl
+                w-full
+                rounded-[20px]
+                shadow-[0_15px_50px_rgba(20,26,50,0.05)]
+              "
+            >
+              <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-7">
+                <span className="w-8 sm:w-10 h-px bg-[#e9c176]" />
 
-                <span className="text-[9px] tracking-[0.2em] uppercase font-bold text-[#141A32]">
+                <span className="text-[8px] sm:text-[9px] tracking-[0.18em] sm:tracking-[0.2em] uppercase font-bold text-[#141A32]">
                   Start Here
                 </span>
 
-                <span className="w-10 h-px bg-[#e9c176]" />
+                <span className="w-8 sm:w-10 h-px bg-[#e9c176]" />
               </div>
 
               <h2
-                className="text-[42px] md:text-[48px] leading-[1.2] font-medium text-[#141a32] mb-6"
+                className="
+                  text-[30px]
+                  xs:text-[34px]
+                  sm:text-[40px]
+                  md:text-[48px]
+                  leading-[1.2]
+                  font-medium
+                  text-[#141a32]
+                  mb-5
+                  sm:mb-6
+                "
                 style={{
                   fontFamily: "Bodoni Moda, serif",
                 }}
@@ -517,19 +774,60 @@ export default function ServicesPage() {
                 Start with clarity.
               </h2>
 
-              <p className="text-[17px] md:text-[18px] leading-[1.6] text-[#46464d] mb-10 mx-auto max-w-lg">
+              <p
+                className="
+                  text-[15px]
+                  sm:text-[17px]
+                  md:text-[18px]
+                  leading-[1.6]
+                  text-[#3a3d4b]
+                  mb-8
+                  sm:mb-10
+                  mx-auto
+                  max-w-lg
+                "
+              >
                 A focused 30-minute conversation to understand your current
-                operational friction and determine if our ecosystem is the
-                right fit.
+                operational friction and determine if our ecosystem is the right
+                fit.
               </p>
 
               <Link
                 href="/contacts"
-                className="bg-[#141A32] text-white rounded-xl px-6 py-4 text-[12px] leading-none tracking-widest font-bold uppercase hover:bg-[#1d2642] transition-all inline-flex items-center justify-center gap-2 group"
+                className="
+                  bg-[#141A32]
+                  text-white
+                  rounded-xl
+                  px-5
+                  sm:px-6
+                  py-3.5
+                  sm:py-4
+                  text-[10px]
+                  sm:text-[12px]
+                  leading-none
+                  tracking-widest
+                  font-bold
+                  uppercase
+                  hover:bg-[#1d2642]
+                  transition-all
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  group
+                  w-full
+                  sm:w-auto
+                "
               >
                 Book Your Business Diagnostic
-
-                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
+                <span
+                  className="
+                    material-symbols-outlined
+                    text-sm
+                    group-hover:translate-x-1
+                    transition-transform
+                  "
+                >
                   arrow_forward
                 </span>
               </Link>
