@@ -18,110 +18,87 @@ const stats = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#fbf9f8] text-[#172039] antialiased">
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#fbf9f8] text-[#172039] antialiased">
       <Header />
 
-      <main className="grow">
-        {/* ============================================================
-            HERO — locked to viewport height minus header, no scroll
-        ============================================================ */}
-
-
+      <main className="w-full grow overflow-x-hidden">
 
         {/* ============================================================
-            STATS
+            HERO
         ============================================================ */}
 
-        <section className="w-full border-y border-black/5 bg-[#fbf9f8]">
-          {/* <div className="mx-auto grid max-w-350 grid-cols-2 md:grid-cols-4">
-            {stats.map(([value, label], index) => (
-              <div
-                key={label}
-                className={`
-                  flex min-h-28
-                  sm:min-h-32
-                  md:min-h-34
-                  lg:min-h-37.5
-                  flex-col
-                  items-center
-                  justify-center
-                  px-4
-                  sm:px-5
-                  py-6
-                  sm:py-7
-                  md:py-8
-                  text-center
-                  ${index % 2 === 0 ? "border-r border-black/8" : ""}
-                  ${index < 2 ? "border-b border-black/8 md:border-b-0" : ""}
-                  ${index < 3 ? "md:border-r md:border-black/8" : ""}
-                  ${index === 3 ? "border-r-0" : ""}
-                `}
-              >
-                <span className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-display mb-2 text-[#141a32]">
-                  {value}
-                </span>
-
-                <span className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-[#141a32]/50 font-sans font-medium">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div> */}
+        <section
+          id="home"
+          className="
+            relative
+            w-full
+            overflow-hidden
+            border-y
+            border-black/5
+            bg-[#fbf9f8]
+          "
+        >
 
           {/* ==========================================================
               DESKTOP SCRIBBLE / CIRCUIT
-
-              The component itself controls the exact right edge.
           ========================================================== */}
 
           <div
             className="
               pointer-events-none
               absolute
-              right-0
+              right-[-80px]
               top-1/2
               z-10
               hidden
-              w-[674vw]
-              max-w-[970px]
-              -translate-y-[45%]
+              w-[700px]
+              max-w-[55vw]
+              -translate-y-1/2
               lg:block
+              xl:right-[-30px]
+              xl:w-[760px]
+              2xl:right-0
+              2xl:w-[850px]
             "
           >
             <HeroScribble />
           </div>
 
           {/* ==========================================================
-              MAIN HERO CONTENT
+              HERO CONTENT CONTAINER
           ========================================================== */}
 
           <div
             className="
               relative
+              z-20
               mx-auto
               w-full
               max-w-[1500px]
-              px-6
-              sm:px-10
-              md:px-14
+              px-5
+              sm:px-8
+              md:px-10
               lg:min-h-[calc(100vh-72px)]
-              lg:px-[8%]
+              lg:px-[7%]
               xl:px-[7.5%]
+              2xl:px-[8%]
             "
           >
+
             <div
               className="
-                relative
                 flex
+                min-h-[auto]
                 flex-col
                 justify-center
-                pt-8
-                pb-8
+                py-10
+                sm:py-12
+                md:py-14
                 lg:min-h-[calc(100vh-72px)]
-                lg:pt-8
-                lg:pb-8
+                lg:py-8
               "
             >
+
               {/* ======================================================
                   LEFT TEXT CONTENT
               ====================================================== */}
@@ -131,33 +108,68 @@ export default function Home() {
                   relative
                   z-30
                   w-full
-                  lg:w-[56%]
-                  xl:w-[54%]
+                  lg:w-[58%]
+                  xl:w-[56%]
+                  2xl:w-[54%]
                 "
               >
+
                 {/* ==================================================
                     EYEBROW
                 ================================================== */}
 
-                <div className="mb-5 flex items-center gap-3 sm:mb-8 sm:gap-4">
-                  <span className="h-px w-9 bg-[#c9a86a] sm:w-12" />
+                <div
+                  className="
+                    mb-5
+                    flex
+                    w-full
+                    items-center
+                    justify-center
+                    gap-2
+                    sm:mb-7
+                    sm:gap-3
+                    md:justify-start
+                    md:gap-4
+                  "
+                >
+                  <span
+                    className="
+                      h-px
+                      w-6
+                      shrink-0
+                      bg-[#c9a86a]
+                      sm:w-9
+                      md:w-12
+                    "
+                  />
 
                   <span
                     className="
                       whitespace-nowrap
-                      text-[9px]
+                      text-[7px]
                       font-bold
                       uppercase
-                      tracking-[0.24em]
+                      tracking-[0.16em]
                       text-[#172039]
-                      sm:text-[10px]
-                      sm:tracking-[0.27em]
+                      sm:text-[9px]
+                      sm:tracking-[0.21em]
+                      md:text-[10px]
+                      md:tracking-[0.27em]
                     "
                   >
                     INTEGRATED BUSINESS SOLUTIONS
                   </span>
 
-                  <span className="h-px w-9 bg-[#c9a86a] sm:w-12" />
+                  <span
+                    className="
+                      h-px
+                      w-6
+                      shrink-0
+                      bg-[#c9a86a]
+                      sm:w-9
+                      md:w-12
+                    "
+                  />
                 </div>
 
                 {/* ==================================================
@@ -168,16 +180,21 @@ export default function Home() {
                   className="
                     relative
                     z-20
+                    mx-auto
                     max-w-[780px]
+                    text-center
                     font-display
+                    text-[42px]
                     font-semibold
-                    leading-[0.95]
-                    tracking-[-0.052em]
+                    leading-[0.96]
+                    tracking-[-0.045em]
                     text-[#172039]
-                    text-[38px]
-                    sm:text-[61px]
-                    sm:leading-[0.91]
-                    md:text-[68px]
+                    sm:text-[54px]
+                    sm:leading-[0.93]
+                    md:text-[62px]
+                    md:tracking-[-0.05em]
+                    lg:mx-0
+                    lg:text-left
                     lg:text-[67px]
                     xl:text-[76px]
                     2xl:text-[84px]
@@ -204,35 +221,40 @@ export default function Home() {
 
                 <p
                   className="
+                    mx-auto
                     mt-5
                     max-w-[590px]
+                    text-center
                     text-[13px]
-                    leading-[1.6]
+                    leading-[1.65]
                     text-[#34415c]
-                    sm:mt-8
+                    sm:mt-7
                     sm:text-[14px]
                     sm:leading-[1.7]
                     md:text-[15px]
+                    lg:mx-0
+                    lg:text-left
                   "
                 >
-
-
-                  NB Business Solutions helps MSME leaders identify what is holding their business back, gain clarity on what needs attention, and implement practical solutions for sustainable growth.
+                  NB Business Solutions helps MSME leaders identify what is
+                  holding their business back, gain clarity on what needs
+                  attention, and implement practical solutions for sustainable
+                  growth.
                 </p>
 
                 {/* ==================================================
-                    BUTTONS
+                    CTA
                 ================================================== */}
 
                 <div
                   className="
                     mt-6
                     flex
-                    flex-col
-                    items-start
-                    gap-3
-                    sm:mt-9
-                    sm:flex-row
+                    w-full
+                    justify-center
+                    sm:mt-8
+                    md:mt-9
+                    lg:justify-start
                   "
                 >
                   <Link
@@ -241,15 +263,19 @@ export default function Home() {
                       group
                       inline-flex
                       min-h-[48px]
+                      w-full
+                      max-w-[330px]
                       items-center
                       justify-center
                       gap-3
                       rounded-[6px]
                       bg-[#172039]
-                      px-6
-                      text-[10px]
+                      px-5
+                      py-3
+                      text-center
+                      text-[9px]
                       font-bold
-                      tracking-[0.13em]
+                      tracking-[0.11em]
                       text-white
                       shadow-[0_12px_30px_rgba(23,32,57,0.12)]
                       transition-all
@@ -257,6 +283,8 @@ export default function Home() {
                       hover:-translate-y-0.5
                       hover:bg-[#c9a86a]
                       hover:text-[#172039]
+                      sm:w-auto
+                      sm:max-w-none
                       sm:px-7
                       sm:text-[11px]
                     "
@@ -265,6 +293,7 @@ export default function Home() {
 
                     <span
                       className="
+                        shrink-0
                         text-[17px]
                         leading-none
                         transition-transform
@@ -275,24 +304,60 @@ export default function Home() {
                       →
                     </span>
                   </Link>
-
-
                 </div>
 
-                <div className="mt-6 text-[11px] font-bold flex gap-4">
-                  <span className="text-secondary">STRATEGY   </span>
-                  <span className="text-secondary">  •   </span>
-
-                  <span className="text-secondary">   EXECUTION   </span>
-                  <span className="text-secondary">    •   </span>
-                  <span className="text-secondary">   GROWTH</span>
-
-                </div>
                 {/* ==================================================
-                    STATS
+                    STRATEGY / EXECUTION / GROWTH
                 ================================================== */}
 
-                {/* <div
+                <div
+                  className="
+                    mt-6
+                    flex
+                    flex-wrap
+                    items-center
+                    justify-center
+                    gap-x-3
+                    gap-y-2
+                    text-center
+                    text-[9px]
+                    font-bold
+                    tracking-[0.08em]
+                    sm:mt-7
+                    sm:gap-x-4
+                    sm:text-[10px]
+                    md:text-[11px]
+                    lg:justify-start
+                    lg:text-left
+                  "
+                >
+                  <span className="text-secondary">
+                    STRATEGY
+                  </span>
+
+                  <span className="text-secondary/60">
+                    •
+                  </span>
+
+                  <span className="text-secondary">
+                    EXECUTION
+                  </span>
+
+                  <span className="text-secondary/60">
+                    •
+                  </span>
+
+                  <span className="text-secondary">
+                    GROWTH
+                  </span>
+                </div>
+
+                {/* ==================================================
+                    OPTIONAL STATS
+                ================================================== */}
+
+                {/*
+                <div
                   className="
                     mt-10
                     w-full
@@ -314,13 +379,14 @@ export default function Home() {
                           min-h-[60px]
                           flex-col
                           justify-center
-                          px-4
+                          px-3
                           first:pl-0
                           sm:px-5
                           lg:px-6
-                          ${index !== 0
-                            ? "border-l border-[#c9a86a]/35"
-                            : ""
+                          ${
+                            index !== 0
+                              ? "border-l border-[#c9a86a]/35"
+                              : ""
                           }
                         `}
                       >
@@ -356,27 +422,39 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                </div> */}
+                </div>
+                */}
               </div>
+
               {/* ======================================================
-                  MOBILE SCRIBBLE
+                  MOBILE / TABLET SCRIBBLE
               ====================================================== */}
 
               <div
                 className="
                   relative
                   z-10
-                  mt-5
+                  mt-8
                   flex
                   w-full
                   justify-center
+                  sm:mt-10
+                  md:mt-12
                   lg:hidden
                 "
               >
-                <div className="w-[95%] max-w-[480px] sm:w-[115%] sm:max-w-[620px]">
+                <div
+                  className="
+                    w-full
+                    max-w-[360px]
+                    sm:max-w-[500px]
+                    md:max-w-[620px]
+                  "
+                >
                   <HeroScribble />
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -396,20 +474,31 @@ export default function Home() {
             "
           />
         </section>
-<StatsSection/>
 
+        {/* ============================================================
+            STATS
+        ============================================================ */}
+
+        <section className="w-full overflow-hidden">
+          <StatsSection />
+        </section>
 
         {/* ============================================================
             VISION & MISSION
         ============================================================ */}
 
-        <VisionMissionSection />
+        <section className="w-full overflow-hidden">
+          <VisionMissionSection />
+        </section>
 
         {/* ============================================================
             SERVICES
         ============================================================ */}
 
-        <section id="services">
+        <section
+          id="services"
+          className="w-full overflow-hidden"
+        >
           <ServicesSection />
         </section>
 
@@ -417,7 +506,13 @@ export default function Home() {
             ABOUT
         ============================================================ */}
 
-        <AboutSection />
+        <section
+          id="about"
+          className="w-full overflow-hidden"
+        >
+          <AboutSection />
+        </section>
+
       </main>
 
       <Footer />
