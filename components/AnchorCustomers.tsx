@@ -55,8 +55,7 @@ const customers: Customer[] = [
     challenge:
       "Inconsistent quotes were causing pricing leaks and slow close cycles.",
 
-    solution:
-      "Standardized templates and approval workflow via Quotation.",
+    solution: "Standardized templates and approval workflow via Quotation.",
 
     results: [
       {
@@ -106,7 +105,7 @@ export default function AnchorCustomers() {
           onUpdate: (self) => {
             const slide = Math.min(
               totalCards - 1,
-              Math.max(0, Math.round(self.progress * (totalCards - 1)))
+              Math.max(0, Math.round(self.progress * (totalCards - 1))),
             );
 
             setCurrentSlide((previousSlide) =>
@@ -174,16 +173,12 @@ export default function AnchorCustomers() {
       <div className="w-full px-5 sm:px-8 md:px-12 lg:px-16">
         <div className="flex items-center gap-3">
           <span className="h-px w-10 bg-gold" />
-
-
         </div>
 
         <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <h2 className="font-display max-w-3xl text-3xl font-black leading-[0.92] tracking-[-0.045em] text-navy sm:text-4xl md:text-5xl">
             Anchor Customers
           </h2>
-
-
         </div>
       </div>
 
@@ -193,10 +188,7 @@ export default function AnchorCustomers() {
 
       <div className="w-full mt-14">
         <div className="overflow-hidden">
-          <div
-            ref={trackRef}
-            className="flex"
-          >
+          <div ref={trackRef} className="flex">
             {customers.map((customer, index) => (
               <div
                 key={`${customer.company}-${index}`}
@@ -225,8 +217,6 @@ export default function AnchorCustomers() {
                     <div className="flex flex-col px-7 pb-8 pt-8 sm:px-9 sm:pt-9 md:px-11 md:pb-10 md:pt-10">
                       {/* Label */}
 
-
-
                       {/* Company */}
 
                       <h3 className="mt-7 max-w-150 font-display text-3xl font-black leading-[0.98] tracking-[-0.04em] text-navy sm:text-4xl md:text-[2.8rem]">
@@ -236,7 +226,6 @@ export default function AnchorCustomers() {
                       {/* Founder */}
 
                       <div className="mt-4 flex items-center gap-3">
-
                         <span className="text-[14px] text-left font-bold uppercase tracking-[0.18em] text-secondary">
                           {customer.founder}
                         </span>
@@ -283,14 +272,12 @@ export default function AnchorCustomers() {
                             <div
                               key={result.label}
                               className={`
-                                ${resultIndex > 0
-                                  ? "border-l border-navy/10 pl-4 sm:pl-5"
-                                  : ""
+                                ${
+                                  resultIndex > 0
+                                    ? "border-l border-navy/10 pl-4 sm:pl-5"
+                                    : ""
                                 }
-                                ${resultIndex < 2
-                                  ? "pr-4 sm:pr-5"
-                                  : ""
-                                }
+                                ${resultIndex < 2 ? "pr-4 sm:pr-5" : ""}
                               `}
                             >
                               <div className="font-display text-2xl font-black leading-none tracking-tighter text-navy sm:text-3xl md:text-4xl">
@@ -350,11 +337,7 @@ export default function AnchorCustomers() {
                         <div className="mt-10 flex items-end justify-between gap-5">
                           <div>
                             <div className="mb-2 h-px w-8 bg-[#e9c176]" />
-
-
                           </div>
-
-
                         </div>
                       </div>
                     </div>
@@ -378,16 +361,12 @@ export default function AnchorCustomers() {
         <div className="mt-8 flex items-center justify-between">
           {/* Left */}
 
-          <span className="hidden text-[9px] font-bold uppercase tracking-[0.2em] text-navy/30 sm:block">
-            Explore customer stories
-          </span>
+          
 
           {/* Controls */}
 
           <div className="flex items-center gap-3">
             {/* Previous */}
-
-
 
             {/* Progress */}
 
@@ -403,9 +382,10 @@ export default function AnchorCustomers() {
                     rounded-full
                     transition-all
                     duration-500
-                    ${currentSlide === index
-                      ? "w-10 bg-gold"
-                      : "w-2 bg-navy/15 hover:bg-navy/30"
+                    ${
+                      currentSlide === index
+                        ? "w-10 bg-gold"
+                        : "w-2 bg-navy/15 hover:bg-navy/30"
                     }
                   `}
                 />
@@ -413,8 +393,6 @@ export default function AnchorCustomers() {
             </div>
 
             {/* Next */}
-
-
           </div>
         </div>
       </div>

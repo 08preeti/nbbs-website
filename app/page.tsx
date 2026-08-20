@@ -5,8 +5,9 @@ import Header from "@/components/Header";
 import HeroScribble from "@/components/HeroScribble";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
-import ContactSection from "@/components/ContactSection";
 import Link from "next/link";
+import StatsSection from "@/components/StatsStatics";
+import VisionMissionSection from "@/components/Visionmissionsection";
 
 const stats = [
   ["50+", "SMBs IN NASHIK"],
@@ -22,54 +23,13 @@ export default function Home() {
 
       <main className="grow">
         {/* ============================================================
-            HERO — locked to viewport height minus header, no scroll
+            HERO
         ============================================================ */}
 
- 
-        {/* ============================================================
-            STATS
-        ============================================================ */}
-
-        <section className="w-full border-y border-black/5 bg-[#fbf9f8]">
-          {/* <div className="mx-auto grid max-w-350 grid-cols-2 md:grid-cols-4">
-            {stats.map(([value, label], index) => (
-              <div
-                key={label}
-                className={`
-                  flex min-h-28
-                  sm:min-h-32
-                  md:min-h-34
-                  lg:min-h-37.5
-                  flex-col
-                  items-center
-                  justify-center
-                  px-4
-                  sm:px-5
-                  py-6
-                  sm:py-7
-                  md:py-8
-                  text-center
-                  ${index % 2 === 0 ? "border-r border-black/8" : ""}
-                  ${index < 2 ? "border-b border-black/8 md:border-b-0" : ""}
-                  ${index < 3 ? "md:border-r md:border-black/8" : ""}
-                  ${index === 3 ? "border-r-0" : ""}
-                `}
-              >
-                <span className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-display mb-2 text-[#141a32]">
-                  {value}
-                </span>
-
-                <span className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-[#141a32]/50 font-sans font-medium">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div> */}
+        <section className="relative w-full border-y border-black/5 bg-[#fbf9f8]">
 
           {/* ==========================================================
-              DESKTOP SCRIBBLE / CIRCUIT
-
-              The component itself controls the exact right edge.
+              DESKTOP / TABLET SCRIBBLE
           ========================================================== */}
 
           <div
@@ -81,9 +41,12 @@ export default function Home() {
               z-10
               hidden
               w-[674vw]
-              max-w-[970px]
-              -translate-y-[55%]
-              lg:block
+              max-w-[520px]
+              -translate-y-[45%]
+              md:block
+              md:max-w-[560px]
+              lg:max-w-[590px]
+              xl:max-w-[970px]
             "
           >
             <HeroScribble />
@@ -97,12 +60,12 @@ export default function Home() {
             className="
               relative
               mx-auto
-              min-h-[calc(100vh-72px)]
               w-full
               max-w-[1500px]
-              px-6
-              sm:px-10
-              md:px-14
+              px-5
+              sm:px-8
+              md:px-10
+              lg:min-h-[calc(100vh-72px)]
               lg:px-[8%]
               xl:px-[7.5%]
             "
@@ -111,11 +74,15 @@ export default function Home() {
               className="
                 relative
                 flex
-                min-h-[calc(100vh-72px)]
                 flex-col
                 justify-center
-                pt-12
-                pb-12
+                pt-8
+                pb-8
+                sm:pt-10
+                sm:pb-10
+                md:pt-12
+                md:pb-12
+                lg:min-h-[calc(100vh-72px)]
                 lg:pt-8
                 lg:pb-8
               "
@@ -129,6 +96,7 @@ export default function Home() {
                   relative
                   z-30
                   w-full
+                  md:max-w-[680px]
                   lg:w-[56%]
                   xl:w-[54%]
                 "
@@ -137,7 +105,16 @@ export default function Home() {
                     EYEBROW
                 ================================================== */}
 
-                <div className="mb-7 flex items-center gap-3 sm:mb-8 sm:gap-4">
+                <div
+                  className="
+                    mb-5
+                    flex
+                    items-center
+                    gap-3
+                    sm:mb-8
+                    sm:gap-4
+                  "
+                >
                   <span className="h-px w-9 bg-[#c9a86a] sm:w-12" />
 
                   <span
@@ -169,12 +146,13 @@ export default function Home() {
                     max-w-[780px]
                     font-display
                     font-semibold
-                    leading-[0.91]
+                    leading-[0.95]
                     tracking-[-0.052em]
                     text-[#172039]
-                    text-[52px]
-                    sm:text-[61px]
-                    md:text-[68px]
+                    text-[38px]
+                    sm:text-[48px]
+                    sm:leading-[0.93]
+                    md:text-[56px]
                     lg:text-[67px]
                     xl:text-[76px]
                     2xl:text-[84px]
@@ -201,23 +179,24 @@ export default function Home() {
 
                 <p
                   className="
-                    mt-7
+                    mt-5
                     max-w-[590px]
                     text-[13px]
-                    leading-[1.7]
+                    leading-[1.6]
                     text-[#34415c]
-                    sm:mt-8
+                    sm:mt-6
                     sm:text-[14px]
+                    sm:leading-[1.7]
+                    md:mt-7
+                    md:max-w-[560px]
                     md:text-[15px]
+                    lg:mt-8
                   "
                 >
-                  Integrated business solutions for Nashik&apos;s SMB
-                  leaders.
-
-                  <br className="hidden sm:block" />
-
-                  Consulting when you need a guide. Software built for your
-                  sustainable growth.
+                  NB Business Solutions helps MSME leaders identify what is
+                  holding their business back, gain clarity on what needs
+                  attention, and implement practical solutions for sustainable
+                  growth.
                 </p>
 
                 {/* ==================================================
@@ -226,13 +205,16 @@ export default function Home() {
 
                 <div
                   className="
-                    mt-8
+                    mt-6
                     flex
                     flex-col
                     items-start
                     gap-3
-                    sm:mt-9
-                    sm:flex-row
+                    sm:mt-8
+                    md:flex-row
+                    md:items-center
+                    md:gap-4
+                    lg:mt-9
                   "
                 >
                   <Link
@@ -249,7 +231,6 @@ export default function Home() {
                       px-6
                       text-[10px]
                       font-bold
-                      uppercase
                       tracking-[0.13em]
                       text-white
                       shadow-[0_12px_30px_rgba(23,32,57,0.12)]
@@ -262,7 +243,7 @@ export default function Home() {
                       sm:text-[11px]
                     "
                   >
-                    <span>Book Free Diagnostic</span>
+                    <span>Explore the NBBS Ecosystem</span>
 
                     <span
                       className="
@@ -276,40 +257,42 @@ export default function Home() {
                       →
                     </span>
                   </Link>
+                </div>
 
-                  <Link
-                    href="/#services"
-                    className="
-                      inline-flex
-                      min-h-[48px]
-                      items-center
-                      justify-center
-                      rounded-[6px]
-                      border
-                      border-[#172039]/30
-                      bg-transparent
-                      px-7
-                      text-[10px]
-                      font-bold
-                      uppercase
-                      tracking-[0.13em]
-                      text-[#172039]
-                      transition-all
-                      duration-300
-                      hover:-translate-y-0.5
-                      hover:border-[#c9a86a]
-                      hover:bg-white
-                      sm:text-[11px]
-                    "
-                  >
-                    Explore Services
-                  </Link>
+                {/* ==================================================
+                    STRATEGY / EXECUTION / GROWTH
+                ================================================== */}
+
+                <div
+                  className="
+                    mt-6
+                    flex
+                    flex-wrap
+                    gap-x-3
+                    gap-y-2
+                    text-[10px]
+                    font-bold
+                    sm:mt-7
+                    sm:gap-x-4
+                    sm:text-[11px]
+                  "
+                >
+                  <span className="text-secondary">STRATEGY</span>
+
+                  <span className="text-secondary">•</span>
+
+                  <span className="text-secondary">EXECUTION</span>
+
+                  <span className="text-secondary">•</span>
+
+                  <span className="text-secondary">GROWTH</span>
                 </div>
 
                 {/* ==================================================
                     STATS
                 ================================================== */}
 
+                {/* 
                 <div
                   className="
                     mt-10
@@ -376,6 +359,7 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
+                */}
               </div>
 
               {/* ======================================================
@@ -386,14 +370,21 @@ export default function Home() {
                 className="
                   relative
                   z-10
-                  mt-12
+                  mt-6
                   flex
                   w-full
                   justify-center
-                  lg:hidden
+                  md:hidden
                 "
               >
-                <div className="w-[115%] max-w-[620px]">
+                <div
+                  className="
+                    w-full
+                    max-w-[360px]
+                    sm:w-[105%]
+                    sm:max-w-[480px]
+                  "
+                >
                   <HeroScribble />
                 </div>
               </div>
@@ -418,6 +409,18 @@ export default function Home() {
         </section>
 
         {/* ============================================================
+            STATS
+        ============================================================ */}
+
+        <StatsSection />
+
+        {/* ============================================================
+            VISION & MISSION
+        ============================================================ */}
+
+        <VisionMissionSection />
+
+        {/* ============================================================
             SERVICES
         ============================================================ */}
 
@@ -430,12 +433,6 @@ export default function Home() {
         ============================================================ */}
 
         <AboutSection />
-
-        {/* ============================================================
-            CONTACT
-        ============================================================ */}
-
-        <ContactSection />
       </main>
 
       <Footer />

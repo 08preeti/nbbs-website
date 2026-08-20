@@ -1,33 +1,23 @@
-
 // components/Philosophy.tsx
 const principles = [
   {
-    id:0,
+    number: "01",
     title: "Transparency",
-    description:
-      "Diagnosis precedes prescription. We map the entire operational ecosystem before introducing new variables.",
-    delayClass: "",
+    tagline: "See the business as it is.",
+    description: "We start with facts, not assumptions.",
   },
   {
-    id:1,
-    title: "Pragmatism",
-    description:
-      "We ship what works, not what wins design awards",
-    delayClass: "delay-100",
-  },
-  {
-    id:2,
+    number: "02",
     title: "Real Results",
-    description:
-      "Every product has a metric attached. We track it with you",
-    delayClass: "",
+    tagline: "Measure what changes.",
+    description: "Activity is not the outcome. Business improvement is.",
   },
   {
-    id:3,
+    number: "03",
     title: "Founder Mindset",
+    tagline: "Think like an owner.",
     description:
-      "We think like owners because we are owners.",
-    delayClass: "delay-100",
+      "We approach every problem with ownership, accountability and long-term thinking.",
   },
 ];
 
@@ -35,23 +25,38 @@ export default function Philosophy() {
   return (
     <section className="bg-primary text-surface py-16 md:py-20">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 reveal">
-          <div>
-            
-            <h2 className="font-display text-display text-secondary">
-              Our Philosophy
-            </h2>
-          </div>
+        {/* Eyebrow */}
+        <div className="mb-6 flex items-center gap-3 reveal">
+          <span className="h-px w-9 bg-secondary sm:w-12" />
+          <span className="text-[9px] font-bold uppercase tracking-[0.24em] text-secondary sm:text-[10px] sm:tracking-[0.27em]">
+            Core Values
+          </span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-          {principles.map((p) => (
-            <div key={p.id}
-              className={`border-t border-secondary/30 pt-8 reveal ${p.delayClass}`}
-            >
 
-              <h3 className="font-headline-md text-headline-md text-surface mb-4">
+        {/* Heading */}
+        <h2 className="font-display text-display text-surface leading-tight mb-8 max-w-2xl reveal">
+          How we work matters as much as what we deliver.
+        </h2>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-surface/15 reveal">
+          {principles.map((p) => (
+            <div
+              key={p.number}
+              className="border-r border-b border-surface/15 px-6 py-8 sm:px-8 sm:py-10"
+            >
+              <span className="block text-[10px] font-bold tracking-[0.15em] text-surface/40">
+                {p.number}
+              </span>
+
+              <h3 className="font-display text-headline-md text-surface mt-4 mb-3">
                 {p.title}
               </h3>
+
+              <p className="font-body-md font-semibold text-surface-variant mb-2">
+                {p.tagline}
+              </p>
+
               <p className="font-body-md text-surface-variant opacity-80">
                 {p.description}
               </p>
