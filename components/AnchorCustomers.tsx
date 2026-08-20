@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 
 type Result = {
   value: string;
@@ -78,26 +80,98 @@ const customers: Customer[] = [
 
 export default function AnchorCustomers() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      if (!sectionRef.current || !trackRef.current || customers.length < 2) {
+        return;
+      }
+
+      const totalCards = customers.length;
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: () => `+=${(totalCards - 1) * window.innerHeight}`,
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const slide = Math.min(
+              totalCards - 1,
+              Math.max(0, Math.round(self.progress * (totalCards - 1)))
+            );
+
+            setCurrentSlide((previousSlide) =>
+              previousSlide === slide ? previousSlide : slide,
+            );
+          },
+        },
+      });
+
+      timeline.to(trackRef.current, {
+        xPercent: -100 * (totalCards - 1),
+        ease: "none",
+      });
+
+      timelineRef.current = timeline;
+    }, sectionRef);
+
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 150);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      timelineRef.current = null;
+      ctx.revert();
+    };
+  }, []);
+
+  const moveToSlide = (slide: number) => {
+    const targetSlide = Math.max(0, Math.min(customers.length - 1, slide));
+    const timeline = timelineRef.current;
+
+    if (!timeline || !timeline.scrollTrigger) {
+      setCurrentSlide(targetSlide);
+      return;
+    }
+
+    const scrollTrigger = timeline.scrollTrigger;
+    const progress =
+      customers.length > 1 ? targetSlide / (customers.length - 1) : 0;
+    const targetScroll =
+      scrollTrigger.start +
+      (scrollTrigger.end - scrollTrigger.start) * progress;
+
+    window.scrollTo({
+      top: targetScroll,
+      behavior: "smooth",
+    });
+  };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === customers.length - 1 ? 0 : prev + 1
-    );
+    moveToSlide(currentSlide + 1);
   };
 
   const previousSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? customers.length - 1 : prev - 1
-    );
+    moveToSlide(currentSlide - 1);
   };
 
   return (
-    <section className="bg-paper py-16 md:py-20">
+    <section ref={sectionRef} className="bg-paper py-16 md:py-20">
       {/* ============================================================
           HEADER
       ============================================================ */}
 
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <div className="w-full px-5 sm:px-8 md:px-12 lg:px-16">
         <div className="flex items-center gap-3">
           <span className="h-px w-10 bg-gold" />
 
@@ -117,13 +191,11 @@ export default function AnchorCustomers() {
           SLIDER
       ============================================================ */}
 
-      <div className="mx-auto mt-14 max-w-7xl px-6 md:px-10">
+      <div className="w-full mt-14">
         <div className="overflow-hidden">
           <div
-            className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-            style={{
-              transform: `translateX(-${currentSlide * 100}%)`,
-            }}
+            ref={trackRef}
+            className="flex"
           >
             {customers.map((customer, index) => (
               <div
@@ -136,7 +208,6 @@ export default function AnchorCustomers() {
                     relative
                     overflow-hidden
                     rounded-3xl
-                    border
                     border-navy/[0.07]
                     bg-white
                     shadow-[0_18px_60px_rgba(15,23,42,0.07)]
@@ -206,21 +277,19 @@ export default function AnchorCustomers() {
                       {/* Results */}
 
                       <div className="mt-10">
-<hr className="text-primary/50 mb-3"/>
+                        <hr className="text-primary/50 mb-3" />
                         <div className="grid grid-cols-3">
                           {customer.results.map((result, resultIndex) => (
                             <div
                               key={result.label}
                               className={`
-                                ${
-                                  resultIndex > 0
-                                    ? "border-l border-navy/10 pl-4 sm:pl-5"
-                                    : ""
+                                ${resultIndex > 0
+                                  ? "border-l border-navy/10 pl-4 sm:pl-5"
+                                  : ""
                                 }
-                                ${
-                                  resultIndex < 2
-                                    ? "pr-4 sm:pr-5"
-                                    : ""
+                                ${resultIndex < 2
+                                  ? "pr-4 sm:pr-5"
+                                  : ""
                                 }
                               `}
                             >
@@ -318,24 +387,7 @@ export default function AnchorCustomers() {
           <div className="flex items-center gap-3">
             {/* Previous */}
 
-            <button
-              type="button"
-              onClick={previousSlide}
-              aria-label="Previous customer"
-              className="
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-navy/10
-                text-navy
-              "
-            >
-              <span className="text-lg leading-none">←</span>
-            </button>
+
 
             {/* Progress */}
 
@@ -344,17 +396,16 @@ export default function AnchorCustomers() {
                 <button
                   key={index}
                   type="button"
-                  onClick={() => setCurrentSlide(index)}
+                  onClick={() => moveToSlide(index)}
                   aria-label={`Go to customer ${index + 1}`}
                   className={`
                     h-1.5
                     rounded-full
                     transition-all
                     duration-500
-                    ${
-                      currentSlide === index
-                        ? "w-10 bg-gold"
-                        : "w-2 bg-navy/15 hover:bg-navy/30"
+                    ${currentSlide === index
+                      ? "w-10 bg-gold"
+                      : "w-2 bg-navy/15 hover:bg-navy/30"
                     }
                   `}
                 />
@@ -363,24 +414,7 @@ export default function AnchorCustomers() {
 
             {/* Next */}
 
-            <button
-              type="button"
-              onClick={nextSlide}
-              aria-label="Next customer"
-              className="
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-navy/10
-                text-navy
-              "
-            >
-              <span className="text-lg leading-none">→</span>
-            </button>
+
           </div>
         </div>
       </div>
