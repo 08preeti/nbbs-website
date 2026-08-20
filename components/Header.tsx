@@ -14,6 +14,7 @@ export default function Header() {
       <div className="max-w-[1280px] mx-auto px-5 md:px-16 h-20 flex items-center justify-between">
         {/* Logo */}
         <ScrollLink
+        onClick={()=>setActive("home")}
           smooth={true}
           duration={700}
           offset={-80}

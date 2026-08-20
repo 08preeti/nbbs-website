@@ -26,7 +26,7 @@ export default function Home() {
             HERO
         ============================================================ */}
 
-        <section className="relative w-full border-y border-black/5 bg-[#fbf9f8]">
+        <section id="home" className="relative w-full border-y border-black/5 bg-[#fbf9f8]">
 
           {/* ==========================================================
               DESKTOP / TABLET SCRIBBLE
