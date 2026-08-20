@@ -110,20 +110,9 @@ const g3 = [686, 694, 702];
 const g4 = [730, 738, 746];
 
 /*
- * FINAL VERTICAL LINE
- *
- * 848.5 keeps the stroke completely inside the SVG
- * while visually touching the right screen edge.
- */
-const LAST_VERTICAL_X = 848.5;
-
-/*
  * All vertical lines.
- *
- * The final vertical line is the absolute right-most
- * circuit line.
  */
-const verticalLines = [...g1, ...g2, ...g3, ...g4, LAST_VERTICAL_X];
+const verticalLines = [...g1, ...g2, ...g3, ...g4];
 
 /*
  * Circuit starts here.
@@ -133,12 +122,11 @@ const startX = 385;
 /*
  * IMPORTANT:
  *
- * Every horizontal line ends at exactly the same
- * coordinate as the FINAL vertical line.
- *
- * Therefore nothing can extend beyond it.
+ * Every horizontal line now ends at the same coordinate as the
+ * last remaining vertical bus line (the last entry in g4), so
+ * nothing extends past it.
  */
-const endX = LAST_VERTICAL_X;
+const endX = g4[g4.length - 1];
 
 /*
  * Vertical bus height.
@@ -224,7 +212,7 @@ export default function HeroScribble() {
         relative
         w-full
         max-w-[1050px]
-        aspect-[850/350]
+        aspect-[748/350]
         select-none
         overflow-hidden
         border-none
@@ -233,7 +221,7 @@ export default function HeroScribble() {
       aria-hidden="true"
     >
       <svg
-        viewBox="0 0 850 350"
+        viewBox="0 0 748 350"
         preserveAspectRatio="xMidYMid meet"
         className="
           absolute
@@ -251,7 +239,7 @@ export default function HeroScribble() {
 
         <defs>
           <clipPath id="hero-circuit-clip">
-            <rect x="0" y="0" width="850" height="350" />
+            <rect x="0" y="0" width="748" height="350" />
           </clipPath>
         </defs>
 

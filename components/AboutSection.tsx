@@ -13,7 +13,6 @@ export default function AboutSection() {
     <section id="about">
       <ScrollReveal>
         <Hero />
-        <StatsSection />
         <Philosophy />
         <AnchorCustomers />
         <DiagnosticCTA />
