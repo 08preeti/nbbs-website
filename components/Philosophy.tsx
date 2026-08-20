@@ -29,7 +29,7 @@ export default function Philosophy() {
         <div className="mb-6 flex items-center gap-3 reveal">
           <span className="h-px w-9 bg-secondary sm:w-12" />
           <span className="text-[9px] font-bold uppercase tracking-[0.24em] text-secondary sm:text-[10px] sm:tracking-[0.27em]">
-            What We Believe
+            Core Values
           </span>
         </div>
 
