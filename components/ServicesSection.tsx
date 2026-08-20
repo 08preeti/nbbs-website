@@ -31,26 +31,9 @@ const services = [
     audience: "Owners who want clarity before committing to a solution.",
     proof: "50+ diagnostics delivered across Nashik",
   },
+ 
   {
     number: "02",
-    category: "OPERATIONS",
-    title: "NBBS CRM",
-    subtitle: "Make every opportunity visible.",
-    image: crm,
-    problem:
-      "Leads get lost, follow-ups are forgotten, and sales information remains scattered across spreadsheets, WhatsApp and individual team members.",
-    points: [
-      "Centralized lead tracking",
-      "Follow-up visibility",
-      "Sales pipeline management",
-      "Team accountability",
-    ],
-    audience:
-      "Growing teams that need a simple CRM their people actually use.",
-    proof: "Designed around real SMB workflows",
-  },
-  {
-    number: "03",
     category: "OPERATIONS",
     title: "Incentiwise",
     subtitle: "Turn commission chaos into clarity.",
@@ -67,28 +50,11 @@ const services = [
       "Sales-driven businesses with field teams and incentive structures.",
     proof: "30% reduction in commission disputes",
   },
+ 
   {
-    number: "04",
+    number: "03",
     category: "OPTIMIZATION",
-    title: "Quotation",
-    subtitle: "Professional proposals. Faster decisions.",
-    image: quotation,
-    problem:
-      "Inconsistent quotations slow down sales, create pricing confusion and make businesses look less professional than they actually are.",
-    points: [
-      "Standardized quotations",
-      "Faster proposal creation",
-      "Pricing consistency",
-      "Professional customer experience",
-    ],
-    audience:
-      "Businesses that generate frequent quotations and proposals.",
-    proof: "Designed to reduce manual proposal work",
-  },
-  {
-    number: "05",
-    category: "OPTIMIZATION",
-    title: "Cashflow",
+    title: "Workshop",
     subtitle: "Know what is coming before it arrives.",
     image: cash,
     problem:
@@ -267,44 +233,16 @@ export default function ServicesSection() {
                 </span>
               </Link>
 
-              <Link
-                href="#solutions"
-                className="border border-[#c7c5ce] text-white text-[11px] sm:text-[12px] leading-none tracking-[0.14em] sm:tracking-widest font-bold uppercase px-5 sm:px-6 rounded-xl py-4 hover:bg-white hover:text-[#141a32] transition-colors flex items-center justify-center w-full sm:w-auto"
-              >
-                Explore Solutions
-              </Link>
+            
             </div>
           </div>
         </div>
       </section>
 
       {/* =========================================================
-          SOLUTIONS INTRO
+          SOLUTIONS
       ========================================================= */}
       <section id="solutions" className="bg-[#fbf9f8]">
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 md:px-10 lg:px-16 pt-20 sm:pt-24 md:pt-36 pb-12 sm:pb-16">
-          <div className="max-w-3xl">
-            <h2
-              className="text-[#141A32] text-[40px] sm:text-[48px] md:text-[58px] lg:text-[68px] leading-[1.04]"
-              style={{
-                fontFamily: "Bodoni Moda, serif",
-              }}
-            >
-              Business problems.
-              <br />
-              <span className="text-[#c49b55] italic">
-                Practical solutions.
-              </span>
-            </h2>
-
-            <p className="mt-6 sm:mt-7 max-w-2xl text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#62626a]">
-              We diagnose how your business works today, identify where things
-              break down, and build practical systems that help you operate,
-              decide and grow better.
-            </p>
-          </div>
-        </div>
-
         {/* =========================================================
             FULL WIDTH GSAP SERVICES
         ========================================================= */}
@@ -534,57 +472,6 @@ export default function ServicesSection() {
         </div>
       </section>
 
-      {/* =========================================================
-          FINAL CTA
-      ========================================================= */}
-      <section
-        className="bg-[#fbf9f8] py-20 sm:py-24 md:py-32 border-t border-[#c7c5ce]"
-        id="diagnostic"
-      >
-        <div className="max-w-[1280px] mx-auto px-5 sm:px-8 md:px-16 flex justify-center">
-          <div className="border border-[#c7c5ce] bg-white p-7 sm:p-10 md:p-16 text-center max-w-2xl w-full rounded-[20px] shadow-[0_15px_50px_rgba(20,26,50,0.05)]">
-            {/* Label */}
-            <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-7">
-              <span className="w-7 sm:w-10 h-px bg-[#e9c176]" />
-
-              <span className="text-[8px] sm:text-[9px] tracking-[0.18em] sm:tracking-[0.2em] uppercase font-bold text-[#141A32]">
-                Start Here
-              </span>
-
-              <span className="w-7 sm:w-10 h-px bg-[#e9c176]" />
-            </div>
-
-            {/* Heading */}
-            <h2
-              className="text-[36px] sm:text-[42px] md:text-[48px] leading-[1.15] font-medium text-[#141a32] mb-5 sm:mb-6"
-              style={{
-                fontFamily: "Bodoni Moda, serif",
-              }}
-            >
-              Start with clarity.
-            </h2>
-
-            {/* Description */}
-            <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.6] text-[#46464d] mb-8 sm:mb-10 mx-auto max-w-lg">
-              A focused 30-minute conversation to understand your current
-              operational friction and determine if our ecosystem is the right
-              fit.
-            </p>
-
-            {/* CTA */}
-            <Link
-              href="/#contact"
-              className="bg-[#141A32] text-white rounded-xl px-5 sm:px-6 py-4 text-[10px] sm:text-[12px] leading-none tracking-[0.14em] sm:tracking-widest font-bold uppercase hover:bg-[#1d2642] transition-all inline-flex items-center justify-center gap-2 group w-full sm:w-auto"
-            >
-              Book Your Business Diagnostic
-
-              <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
     </section>
   );
 }
