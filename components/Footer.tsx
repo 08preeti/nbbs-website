@@ -29,7 +29,7 @@ export default function Footer() {
                 className="object-contain"
                 priority
               />
-              <span className="font-display text-[24px] font-bold tracking-tight text-">
+              <span className="font-display text-[24px] font-bold tracking-tight text-white">
                 NBBS
               </span>
             </Link>
