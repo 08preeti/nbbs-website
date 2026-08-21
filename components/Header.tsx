@@ -61,27 +61,28 @@ export default function Header() {
           </ScrollLink>
 
           <ScrollLink
-            to="contact"
+            to="vision"
             smooth={true}
             duration={700}
             offset={-80}
-            onClick={() => setActive("contact")}
-            className={`relative text-[14px] font-medium text-primary cursor-pointer transition-colors duration-300 hover:text-secondary ${active === "contact" ? "text-secondary underline underline-offset-4" : "text-primary hover:text-secondary"}`}
+            onClick={() => setActive("vision")}
+            className={`relative text-[14px] font-medium text-primary cursor-pointer transition-colors duration-300 hover:text-secondary ${active === "vision" ? "text-secondary underline underline-offset-4" : "text-primary hover:text-secondary"}`}
           >
-            Contact
+            Vision
+          </ScrollLink>
+           <ScrollLink
+            to="mission"
+            smooth={true}
+            duration={700}
+            offset={-80}
+            onClick={() => setActive("mission")}
+            className={`relative text-[14px] font-medium text-primary cursor-pointer transition-colors duration-300 hover:text-secondary ${active === "mission" ? "text-secondary underline underline-offset-4" : "text-primary hover:text-secondary"}`}
+          >
+            Mission
           </ScrollLink>
         </nav>
 
-        {/* Get Started */}
-        <ScrollLink
-          to="contact"
-          smooth={true}
-          duration={700}
-          offset={-80}
-          className="hidden md:inline-flex items-center rounded-xl justify-center h-11 px-6 bg-primary text-white text-[13px] font-semibold tracking-wide cursor-pointer transition-all duration-300 hover:bg-secondary"
-        >
-          Get Started
-        </ScrollLink>
+     
 
         {/* Mobile Menu Button */}
         <button
@@ -145,19 +146,7 @@ export default function Header() {
             Contact
           </ScrollLink>
 
-          {/* Get Started */}
-          <ScrollLink
-            to="contact"
-            smooth={true}
-            duration={700}
-            offset={-80}
-            onClick={() => {
-              setMenuOpen(false);
-            }}
-            className="mt-2 flex items-center justify-center cursor-pointer rounded-xl h-11 bg-primary text-white text-[13px] font-semibold hover:bg-secondary "
-          >
-            Get Started
-          </ScrollLink>
+      
         </nav>
       </div>
     </header>
