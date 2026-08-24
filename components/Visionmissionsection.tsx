@@ -25,7 +25,7 @@ export default function VisionMissionSection() {
           OUR VISION
       ============================================================ */}
 
-      <section className="w-full border-y border-black/5 bg-[#fbf9f8]">
+      <section id="vision" className="w-full border-y border-black/5 bg-[#fbf9f8]">
         <div
           className="
             mx-auto
@@ -111,7 +111,7 @@ export default function VisionMissionSection() {
           OUR MISSION
       ============================================================ */}
 
-      <section className="w-full bg-[#fbf9f8]">
+      <section id="mission" className="w-full bg-[#fbf9f8]">
         <div
           className="
             mx-auto

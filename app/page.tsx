@@ -231,6 +231,8 @@ export default function Home() {
                     sm:mt-7
                     sm:text-[14px]
                     sm:leading-[1.7]
+                    md:mt-7
+                    md:max-w-[560px]
                     md:text-[15px]
                     lg:mx-0
                     lg:text-left
