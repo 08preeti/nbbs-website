@@ -1,51 +1,54 @@
+"use client";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { ScrollLink } from "react-scroll";
 
 export default function Footer() {
+  const [active, setActive] = useState("footerItems");
+
   return (
     <footer className="w-full border-t border-[#141a32] bg-[#141a32]">
       <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4 lg:gap-16">
+
           {/* Brand */}
           <div className="md:col-span-1">
             <Link
-              href="/"
-              className="inline-block text-2xl font-bold tracking-tight text-white transition-colors hover:text-white"
+            href="/#home"
+              onClick={() => setActive("home")}
+              className="group flex w-fit cursor-pointer items-center gap-3"
+              aria-label="NBBS Home"
             >
-              NBBS
+              <Image
+                src="/nbbs-logo.webp"
+                alt="NBBS Logo"
+                width={50}
+                height={30}
+                className="object-contain"
+                priority
+              />
+              <span className="font-display text-[24px] font-bold tracking-tight text-white">
+                NBBS
+              </span>
             </Link>
 
             <p className="mt-5 max-w-xs text-sm leading-6 text-slate-300">
-              Serving the amibitious SMB community in Tier-2 India. Diagnosis
-              before prescription.Results over hype.
+              Serving the ambitious SMB community in Tier-2 India. Diagnosis
+              before prescription. Results over hype.
             </p>
 
             <p className="mt-6 text-xs text-slate-400">
-              Nashik,Maharashtra hello@nbbs.in.
-
+              Nashik, Maharashtra · hello@nbbs.in
             </p>
           </div>
 
           {/* Navigation */}
           <div className="md:col-span-3">
             <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
-              {/* Services */}
+
+              {/* Solutions */}
               <div>
                 <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-white">
                   Solutions
@@ -72,48 +75,77 @@ export default function Footer() {
                   >
                     Incentiwise
                   </Link>
-
-               
                 </div>
               </div>
 
-              {/* Contact */}
+              {/* Company */}
               <div>
                 <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-white">
                   Company
                 </h3>
 
                 <div className="flex flex-col gap-4">
-                  <Link
-                    href="#"
-                    className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
-                  >
-                    About Us
-                  </Link>
-                   <Link
-                    href="#"
-                    className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
-                  >
-                    Our Vision
-                  </Link>
-                   <Link
-                    href="#"
-                    className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
-                  >
-                    Our mission
-                  </Link>
-                   <Link
-                    href="#"
-                    className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
-                  >
-                    Core values
-                  </Link>
+               <Link
+  href="#about"
+  onClick={(e) => {
+    e.preventDefault();
+    document.getElementById("about")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }}
+  className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
+>
+  About Us
+</Link>
+
+<Link
+  href="#vision"
+  onClick={(e) => {
+    e.preventDefault();
+    document.getElementById("vision")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }}
+  className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
+>
+  Our Vision
+</Link>
+
+<Link
+  href="#mission"
+  onClick={(e) => {
+    e.preventDefault();
+    document.getElementById("mission")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }}
+  className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
+>
+  Our Mission
+</Link>
+
+<Link
+  href="#services"
+  onClick={(e) => {
+    e.preventDefault();
+    document.getElementById("services")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }}
+  className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
+>
+  Services
+</Link>
                 </div>
               </div>
 
-              {/* CTA */}
+              {/* Contact */}
               <div className="flex flex-col gap-4">
-                <h3 className=" text-sm font-semibold uppercase tracking-wider text-white">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
                   Contact
                 </h3>
 
@@ -121,14 +153,16 @@ export default function Footer() {
                   href="#"
                   className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
                 >
-                  Nashik,Maharashtra
+                  Nashik, Maharashtra
                 </Link>
+
                 <Link
                   href="#"
                   className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
                 >
                   Phone
                 </Link>
+
                 <Link
                   href="/#contact"
                   className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
@@ -143,28 +177,55 @@ export default function Footer() {
         {/* Bottom Divider */}
         <div className="mt-12 border-t border-white/10 pt-6">
           <div className="flex flex-col gap-3 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-            <span>© 2026 NB Business Solutions,Nashik.</span>
 
-            <div className="flex gap-2">
-              <Link href={"#"}>
+            <span>
+              © 2026 NB Business Solutions, Nashik.
+            </span>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="#"
+                className="transition-colors hover:text-white"
+              >
                 Privacy
               </Link>
-              <Link href={"#"}>
+
+              <Link
+                href="#"
+                className="transition-colors hover:text-white"
+              >
                 Terms
               </Link>
-              <Link href={"#"}>
+
+              <Link
+                href="#"
+                className="transition-colors hover:text-white"
+              >
                 Refunds
               </Link>
-              <Link href={"#"}>
-                Disclamer
+
+              <Link
+                href="#"
+                className="transition-colors hover:text-white"
+              >
+                Disclaimer
               </Link>
-              <Link href={"#"}>
+
+              <Link
+                href="#"
+                className="transition-colors hover:text-white"
+              >
                 IP
               </Link>
-              <Link href={"#"}>
+
+              <Link
+                href="#"
+                className="transition-colors hover:text-white"
+              >
                 Cookies
               </Link>
             </div>
+
           </div>
         </div>
       </div>
