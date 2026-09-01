@@ -4,81 +4,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 
-type Result = {
-  value: string;
-  label: string;
-};
-
-type Customer = {
-  company: string;
-  founder: string;
-  challenge: string;
-  solution: string;
-  results: Result[];
-  quote: string;
-};
-
-const customers: Customer[] = [
-  {
-    company: "Shree Sales Corporation",
-    founder: "SANJAY DIGHE, FOUNDER",
-
-    challenge:
-      "Manual commission tracking caused constant disputes and eroded field-team trust.",
-
-    solution:
-      "Business OPD diagnostic + Incentiwise rollout across 3 territories.",
-
-    results: [
-      {
-        value: "30%",
-        label: "Fewer commission disputes",
-      },
-      {
-        value: "40%",
-        label: "Revenue growth in 12 months",
-      },
-      {
-        value: "100%",
-        label: "Field rep adoption",
-      },
-    ],
-
-    quote:
-      "NBBS didn't just sell us a tool. They fixed how we think about our sales team first.",
-  },
-
-  {
-    company: "Customer Two",
-    founder: "SUMIT GANDHI, DIRECTOR",
-
-    challenge:
-      "Inconsistent quotes were causing pricing leaks and slow close cycles.",
-
-    solution: "Standardized templates and approval workflow via Quotation.",
-
-    results: [
-      {
-        value: "50%",
-        label: "Faster quote turnaround",
-      },
-      {
-        value: "18%",
-        label: "Higher average tickets",
-      },
-      {
-        value: "2x",
-        label: "Conversion on pitches",
-      },
-    ],
-
-    quote:
-      "We look like a multinational firm now, even though we operate from a tier-2 city.",
-  },
-];
+import { customers } from "../data/customers";
 
 export default function AnchorCustomers() {
   const [currentSlide, setCurrentSlide] = useState(0);
+
   const sectionRef = useRef<HTMLElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
@@ -102,10 +32,11 @@ export default function AnchorCustomers() {
           scrub: 1,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+
           onUpdate: (self) => {
             const slide = Math.min(
               totalCards - 1,
-              Math.max(0, Math.round(self.progress * (totalCards - 1)))
+              Math.max(0, Math.round(self.progress * (totalCards - 1))),
             );
 
             setCurrentSlide((previousSlide) =>
@@ -136,6 +67,7 @@ export default function AnchorCustomers() {
 
   const moveToSlide = (slide: number) => {
     const targetSlide = Math.max(0, Math.min(customers.length - 1, slide));
+
     const timeline = timelineRef.current;
 
     if (!timeline || !timeline.scrollTrigger) {
@@ -144,8 +76,10 @@ export default function AnchorCustomers() {
     }
 
     const scrollTrigger = timeline.scrollTrigger;
+
     const progress =
       customers.length > 1 ? targetSlide / (customers.length - 1) : 0;
+
     const targetScroll =
       scrollTrigger.start +
       (scrollTrigger.end - scrollTrigger.start) * progress;
@@ -165,12 +99,9 @@ export default function AnchorCustomers() {
   };
 
   return (
-    <section ref={sectionRef} className="bg-paper py-16 md:py-20">
-      {/* ============================================================
-          HEADER
-      ============================================================ */}
-
-      <div className="w-full px-5 sm:px-8 md:px-12 lg:px-16">
+    <section ref={sectionRef} className="bg-paper py-6 md:py-8">
+      {/* HEADER */}
+      <div className="w-full px-5 sm:px-8 md:px-10 lg:px-12">
         <div className="flex items-center gap-3">
           <span className="h-px w-10 bg-gold" />
         </div>
@@ -182,16 +113,10 @@ export default function AnchorCustomers() {
         </div>
       </div>
 
-      {/* ============================================================
-          SLIDER
-      ============================================================ */}
-
-      <div className="w-full mt-14">
+      {/* SLIDER */}
+      <div className="mt-8 w-full">
         <div className="overflow-hidden">
-          <div
-            ref={trackRef}
-            className="flex"
-          >
+          <div ref={trackRef} className="flex">
             {customers.map((customer, index) => (
               <div
                 key={`${customer.company}-${index}`}
@@ -208,34 +133,23 @@ export default function AnchorCustomers() {
                     shadow-[0_18px_60px_rgba(15,23,42,0.07)]
                   "
                 >
-                  {/* ==================================================
-                      MAIN CONTENT
-                  ================================================== */}
-
+                  {/* MAIN CONTENT */}
                   <div className="grid md:grid-cols-[1.08fr_0.92fr]">
-                    {/* =================================================
-                        LEFT CONTENT
-                    ================================================= */}
-
+                    {/* LEFT CONTENT */}
                     <div className="flex flex-col px-7 pb-8 pt-8 sm:px-9 sm:pt-9 md:px-11 md:pb-10 md:pt-10">
-                      {/* Label */}
-
-                      {/* Company */}
-
+                      {/* COMPANY */}
                       <h3 className="mt-7 max-w-150 font-display text-3xl font-black leading-[0.98] tracking-[-0.04em] text-navy sm:text-4xl md:text-[2.8rem]">
                         {customer.company}
                       </h3>
 
-                      {/* Founder */}
-
+                      {/* FOUNDER */}
                       <div className="mt-4 flex items-center gap-3">
-                        <span className="text-[14px] text-left font-bold uppercase tracking-[0.18em] text-secondary">
+                        <span className="text-left text-[14px] font-bold uppercase tracking-[0.18em] text-secondary">
                           {customer.founder}
                         </span>
                       </div>
 
-                      {/* Challenge */}
-
+                      {/* CHALLENGE */}
                       <div className="mt-10">
                         <div className="mb-3 flex items-center gap-4">
                           <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/50">
@@ -250,8 +164,7 @@ export default function AnchorCustomers() {
                         </p>
                       </div>
 
-                      {/* Solution */}
-
+                      {/* SOLUTION */}
                       <div className="mt-7">
                         <div className="mb-3 flex items-center gap-4">
                           <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/50">
@@ -266,25 +179,23 @@ export default function AnchorCustomers() {
                         </p>
                       </div>
 
-                      {/* Results */}
+                      {/* RESULTS */}
+                     <div className="mt-6">
+                        <hr className="mb-3 text-primary/50" />
 
-                      <div className="mt-10">
-                        <hr className="text-primary/50 mb-3" />
                         <div className="grid grid-cols-3">
                           {customer.results.map((result, resultIndex) => (
                             <div
-                              key={result.label}
+                              key={`${result.label}-${resultIndex}`}
                               className={`
-                                ${resultIndex > 0
-                                  ? "border-l border-navy/10 pl-4 sm:pl-5"
-                                  : ""
-                                }
-                                ${resultIndex < 2
-                                  ? "pr-4 sm:pr-5"
-                                  : ""
-                                }
-                                ${resultIndex < 2 ? "pr-4 sm:pr-5" : ""}
-                              `}
+                                  ${
+                                    resultIndex > 0
+                                      ? "border-l border-navy/10 pl-4 sm:pl-5"
+                                      : ""
+                                  }
+
+                                  ${resultIndex < 2 ? "pr-4 sm:pr-5" : ""}
+                                `}
                             >
                               <div className="font-display text-2xl font-black leading-none tracking-tighter text-navy sm:text-3xl md:text-4xl">
                                 {result.value}
@@ -299,10 +210,7 @@ export default function AnchorCustomers() {
                       </div>
                     </div>
 
-                    {/* =================================================
-                        RIGHT QUOTE
-                    ================================================= */}
-
+                    {/* RIGHT QUOTE */}
                     <div className="flex items-center justify-center bg-[#f4f0e8] px-6 py-8 sm:px-9 md:px-10">
                       <div
                         className="
@@ -322,24 +230,20 @@ export default function AnchorCustomers() {
                           group-hover:scale-[1.03]
                         "
                       >
-                        {/* Gold accent */}
-
+                        {/* GOLD ACCENT */}
                         <span className="absolute bottom-7 left-0 top-7 w-0.75 bg-[#e9c176]" />
 
-                        {/* Quote mark */}
-
+                        {/* QUOTE MARK */}
                         <div className="font-serif text-6xl leading-none text-[#e9c176]">
                           “
                         </div>
 
-                        {/* Quote */}
-
+                        {/* QUOTE */}
                         <blockquote className="mt-5 font-serif text-2xl italic leading-9 text-white sm:text-[26px]">
                           {customer.quote}
                         </blockquote>
 
-                        {/* Footer */}
-
+                        {/* FOOTER */}
                         <div className="mt-10 flex items-end justify-between gap-5">
                           <div>
                             <div className="mb-2 h-px w-8 bg-[#e9c176]" />
@@ -349,8 +253,7 @@ export default function AnchorCustomers() {
                     </div>
                   </div>
 
-                  {/* Bottom accent */}
-
+                  {/* BOTTOM ACCENT */}
                   <div className="h-0.5 w-full bg-navy/[0.04]">
                     <div className="h-full w-16 bg-gold" />
                   </div>
@@ -360,24 +263,13 @@ export default function AnchorCustomers() {
           </div>
         </div>
 
-        {/* ============================================================
-            SLIDER CONTROLS
-        ============================================================ */}
-
+        {/* SLIDER CONTROLS */}
         <div className="mt-8 flex items-center justify-between">
-          {/* Left */}
+         
 
-          
-
-          {/* Controls */}
-
+          {/* CONTROLS */}
           <div className="flex items-center gap-3">
-            {/* Previous */}
-
-
-
-            {/* Progress */}
-
+            {/* PROGRESS */}
             <div className="flex items-center gap-2">
               {customers.map((_, index) => (
                 <button
@@ -390,6 +282,7 @@ export default function AnchorCustomers() {
                     rounded-full
                     transition-all
                     duration-500
+
                     ${
                       currentSlide === index
                         ? "w-10 bg-gold"
@@ -399,11 +292,9 @@ export default function AnchorCustomers() {
                 />
               ))}
             </div>
-
-            {/* Next */}
-
-
           </div>
+
+         
         </div>
       </div>
     </section>

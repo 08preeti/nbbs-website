@@ -1,5 +1,5 @@
 "use client";
-
+import { footerData } from "@/data/footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -10,8 +10,8 @@ export default function Footer() {
 
   return (
     <footer className="w-full border-t border-[#141a32] bg-[#141a32]">
-      <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8 lg:px-10">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-4 lg:gap-16">
+      <div className="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:px-10">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4 lg:gap-12">
 
           {/* Brand */}
           <div className="md:col-span-1">
@@ -144,32 +144,36 @@ export default function Footer() {
               </div>
 
               {/* Contact */}
-              <div className="flex flex-col gap-4">
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-                  Contact
-                </h3>
+<div className="flex flex-col gap-4">
+  <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+    Contact
+  </h3>
 
-                <Link
-                  href="#"
-                  className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
-                >
-                  Nashik, Maharashtra
-                </Link>
+  <a
+    href={`https://www.google.com/maps/place/NB+Business+Solutions/@20.00577,73.768974,3a,75y,89.18h,90t/data=!3m7!1e1!3m5!1sfTWCNlzWH7mpZaUUCa-u8A!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DfTWCNlzWH7mpZaUUCa-u8A%26yaw%3D89.17774!7i16384!8i8192!4m10!1m2!2m1!1snbbs+solution!3m6!1s0x3bddebece0e0085b:0x723bcd9f9798b5c3!8m2!3d20.0057655!4d73.7690401!15sCg1uYmJzIHNvbHV0aW9uWg8iDW5iYnMgc29sdXRpb26SAR5idXNpbmVzc19tYW5hZ2VtZW50X2NvbnN1bHRhbnTgAQA!16s%2Fg%2F11wpm7fbps?entry=ttu&g_ep=EgoyMDI2MDgyNi4wIKXMDSoASAFQAw%3D%3D=${encodeURIComponent(
+      footerData.contact.location
+    )}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
+  >
+    {footerData.contact.location}
+  </a>
 
-                <Link
-                  href="#"
-                  className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
-                >
-                  Phone
-                </Link>
+  <a
+    href={`tel:${footerData.contact.phone}`}
+    className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
+  >
+    {footerData.contact.phone}
+  </a>
 
-                <Link
-                  href="/#contact"
-                  className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
-                >
-                  Email
-                </Link>
-              </div>
+  <a
+    href={`mailto:${footerData.contact.email}`}
+    className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
+  >
+    {footerData.contact.email}
+  </a>
+</div>
             </div>
           </div>
         </div>
@@ -183,26 +187,7 @@ export default function Footer() {
             </span>
 
             <div className="flex flex-wrap gap-3">
-              <Link
-                href="#"
-                className="transition-colors hover:text-white"
-              >
-                Privacy
-              </Link>
-
-              <Link
-                href="#"
-                className="transition-colors hover:text-white"
-              >
-                Terms
-              </Link>
-
-              <Link
-                href="#"
-                className="transition-colors hover:text-white"
-              >
-                Refunds
-              </Link>
+              
 
               <Link
                 href="#"
