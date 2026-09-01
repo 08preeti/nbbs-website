@@ -8,6 +8,7 @@ import AboutSection from "@/components/AboutSection";
 import Link from "next/link";
 import StatsSection from "@/components/StatsStatics";
 import VisionMissionSection from "@/components/Visionmissionsection";
+import ContactSection from "@/components/ContactSection";
 
 const stats = [
   ["50+", "SMBs IN NASHIK"],
@@ -513,6 +514,10 @@ export default function Home() {
           className="w-full overflow-hidden"
         >
           <AboutSection />
+        </section>
+
+        <section>
+          <ContactSection/>
         </section>
 
       </main>
