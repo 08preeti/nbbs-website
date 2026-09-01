@@ -1,10 +1,9 @@
-
 // components/Hero.tsx
-const processSteps = ["EXPERIENCE", "DIAGNOSIS", "STRATEGY", "IMPLEMENTATION"];
+// const processSteps = ["EXPERIENCE", "DIAGNOSIS", "STRATEGY", "IMPLEMENTATION"];
 
 export default function Hero() {
   return (
-    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-32 pb-24 md:pt-22 md:pb-32">
+    <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-16 pb-12 md:pt-16 md:pb-16">
       <div className="max-w-4xl reveal">
         {/* Eyebrow */}
         <div className="mb-6 flex items-center gap-3">
@@ -35,7 +34,7 @@ export default function Hero() {
         </p>
 
         {/* Process line */}
-        <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-bold tracking-[0.08em] text-primary sm:text-[12px]">
+        {/* <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-bold tracking-[0.08em] text-primary sm:text-[12px]">
           {processSteps.map((step, index) => (
             <span key={step} className="flex items-center gap-x-3">
               {step}
@@ -44,7 +43,7 @@ export default function Hero() {
               )}
             </span>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -14,8 +14,26 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const services = [
-  {
+   {
     number: "01",
+    category: "OPTIMIZATION",
+    title: "Workshop",
+    subtitle: "Know what is coming before it arrives.",
+    image: cash,
+    problem:
+      "Businesses can be profitable on paper while still struggling to know when money will come in, when payments are due and where liquidity is going.",
+    points: [
+      "Cashflow visibility",
+      "Payment tracking",
+      "Liquidity planning",
+      "Better financial decisions",
+    ],
+    audience:
+      "Owners who need a clearer view of business cash movement.",
+    proof: "Built for practical day-to-day financial visibility",
+  },
+  {
+    number: "02",
     category: "DIAGNOSIS",
     title: "Business OPD",
     subtitle: "Diagnose before you prescribe.",
@@ -33,7 +51,7 @@ const services = [
   },
  
   {
-    number: "02",
+    number: "03",
     category: "OPERATIONS",
     title: "Incentiwise",
     subtitle: "Turn commission chaos into clarity.",
@@ -51,24 +69,7 @@ const services = [
     proof: "30% reduction in commission disputes",
   },
  
-  {
-    number: "03",
-    category: "OPTIMIZATION",
-    title: "Workshop",
-    subtitle: "Know what is coming before it arrives.",
-    image: cash,
-    problem:
-      "Businesses can be profitable on paper while still struggling to know when money will come in, when payments are due and where liquidity is going.",
-    points: [
-      "Cashflow visibility",
-      "Payment tracking",
-      "Liquidity planning",
-      "Better financial decisions",
-    ],
-    audience:
-      "Owners who need a clearer view of business cash movement.",
-    proof: "Built for practical day-to-day financial visibility",
-  },
+ 
 ];
 
 const stages = [
@@ -158,7 +159,7 @@ export default function ServicesSection() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="bg-[#141A32] relative overflow-hidden py-20 sm:py-24 md:py-32">
+      <section className="bg-[#141A32] relative overflow-hidden py-14 sm:py-16 md:py-20">
         {/* Grid background */}
         <div
           className="absolute inset-0 pointer-events-none opacity-20"

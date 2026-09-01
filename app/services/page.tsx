@@ -172,7 +172,7 @@ export default function ServicesPage() {
       <Header />
 
       <main className="grow">
-        <section className="bg-[#141A32] relative overflow-hidden py-16 sm:py-20 md:py-28 lg:py-32">
+        <section className="bg-[#141A32] relative overflow-hidden py-12 sm:py-14 md:py-18 lg:py-20">
           <div
             className="absolute inset-0 pointer-events-none opacity-20"
             style={{
@@ -194,8 +194,6 @@ export default function ServicesPage() {
 
           <div className="mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-9 lg:col-span-8 flex flex-col items-start space-y-6 sm:space-y-8">
-           
-
               <h1
                 className="text-[34px] xs:text-[40px] sm:text-[52px] md:text-[62px] lg:text-[72px] leading-[1.1] font-semibold text-white tracking-tight"
                 style={{
@@ -247,7 +245,7 @@ export default function ServicesPage() {
             SOLUTIONS INTRO
         ============================================================ */}
         <section id="solutions" className="bg-[#fbf9f8]">
-          <div className="max-w-320 mx-auto px-5 sm:px-8 md:px-10 lg:px-16 pt-16 sm:pt-20 md:pt-28 lg:pt-36 pb-12 sm:pb-16">
+          <div className="max-w-320 mx-auto px-5 sm:px-8 md:px-10 lg:px-16 pt-12 sm:pt-14 md:pt-16 lg:pt-20 pb-10 sm:pb-12">
             <div className="max-w-3xl">
               <h2
                 className="text-[#141A32] text-[32px] xs:text-[36px] sm:text-[44px] md:text-[54px] lg:text-[64px] xl:text-[68px] leading-[1.05]"
@@ -720,10 +718,10 @@ export default function ServicesPage() {
         <section
           className="
             bg-[#fbf9f8]
-            py-16
-            sm:py-20
-            md:py-28
-            lg:py-32
+            py-12
+            sm:py-14
+            md:py-18
+            lg:py-20
             border-t
             border-[#c7c5ce]
           "

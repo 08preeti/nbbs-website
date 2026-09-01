@@ -23,7 +23,7 @@ const principles = [
 
 export default function Philosophy() {
   return (
-    <section className="bg-primary text-surface py-16 md:py-20">
+    <section className="bg-primary text-surface py-12 md:py-14">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         {/* Eyebrow */}
         <div className="mb-6 flex items-center gap-3 reveal">
