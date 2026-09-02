@@ -75,7 +75,7 @@ export default function VisionMissionSection() {
                   sm:tracking-[0.27em]
                 "
               >
-                OUR VISION
+                VISION
               </span>
             </div>
 
@@ -96,12 +96,11 @@ export default function VisionMissionSection() {
                 lg:text-[38px]
                 xl:text-[44px]
               "
-
-               style={{
+              style={{
                 fontFamily: "Bodoni Moda, serif",
               }}
             >
-              A business should not have to grow through guesswork.
+              Building businesses that grow with clarity.
             </h2>
 
             <p
@@ -116,9 +115,9 @@ export default function VisionMissionSection() {
                 md:text-[15px]
               "
             >
-              We envision a future where MSME leaders can make confident
-              business decisions because they understand their business, know
-              what needs attention, and have the right systems to act on it.
+              To build a business ecosystem where MSMEs move from uncertainty to
+              clarity, from clarity to action, and from action to sustainable
+              growth.
             </p>
           </div>
 
@@ -166,7 +165,7 @@ export default function VisionMissionSection() {
                   sm:tracking-[0.27em]
                 "
               >
-                OUR MISSION
+                MISSION
               </span>
             </div>
 
@@ -187,13 +186,11 @@ export default function VisionMissionSection() {
                 lg:text-[38px]
                 xl:text-[44px]
               "
-
               style={{
                 fontFamily: "Bodoni Moda, serif",
               }}
             >
-              Make business problems easier to understand and business decisions
-              easier to act on.
+              Turning business complexity into clear, actionable decisions.
             </h2>
 
             <p
@@ -209,8 +206,8 @@ export default function VisionMissionSection() {
               "
             >
               NBBS combines business diagnosis, strategic thinking, practical
-              frameworks and technology to help MSME leaders move from
-              uncertainty to clarity, and from clarity to implementation.
+              frameworks and technology to help MSME founders move from
+              uncertainty to clarity and from clarity to implementation.
             </p>
           </div>
         </div>
