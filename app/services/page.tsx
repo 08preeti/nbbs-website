@@ -111,24 +111,14 @@ export default function ServicesPage() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Mobile browsers resize the viewport (and refire resize events) when
-    // the address bar collapses/expands during scroll. Without this,
-    // ScrollTrigger can recalculate pin positions mid-scroll and briefly
-    // misalign panels, which shows as a gap/see-through flash.
     ScrollTrigger.config({ ignoreMobileResize: true });
 
     const ctx = gsap.context(() => {
-      // Pinned, layered slide animation runs at ALL screen sizes now.
-      // Each panel is capped to the viewport height and scrolls
-      // internally if its content is taller than the screen, so the
-      // slide mechanic (panel N+1 sliding up to cover panel N) stays
-      // identical on mobile and desktop.
+    
       const sections = gsap.utils.toArray<HTMLElement>(".service-panel");
 
       if (sections.length && servicesSectionRef.current) {
-        // Force every panel fully opaque and GPU-composited so the slide
-        // is a clean, solid transform with zero bleed-through from the
-        // panel underneath.
+       
         gsap.set(sections, {
           yPercent: 100,
           opacity: 1,
@@ -241,9 +231,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* ============================================================
-            SOLUTIONS INTRO
-        ============================================================ */}
+{/* solution  */}
         <section id="solutions" className="bg-[#fbf9f8]">
           <div className="max-w-320 mx-auto px-5 sm:px-8 md:px-10 lg:px-16 pt-12 sm:pt-14 md:pt-16 lg:pt-20 pb-10 sm:pb-12">
             <div className="max-w-3xl">
@@ -268,16 +256,7 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          {/* ==========================================================
-              SERVICE PANELS
-              lg+ : pinned / layered scroll animation (fits one screen)
-              below lg : normal stacked sections, natural scroll
-
-              Panel background is a navy-tinted neutral (#e4e6ee), kept far
-              enough from the #fbf9f8 page background to read as a distinct
-              solid surface at every breakpoint, on top of and during the
-              slide transition.
-          ========================================================== */}
+      
           <div
             ref={servicesSectionRef}
             className="services-scroll relative w-full"
@@ -293,12 +272,7 @@ export default function ServicesPage() {
                     willChange: "transform",
                   }}
                 >
-                  {/* Scroll container is a SEPARATE element from the one
-                      GSAP transforms above. Combining `overflow-y: auto`
-                      and a CSS `transform` on the same element causes a
-                      known WebKit/iOS Safari bug where the background
-                      fails to paint opaquely mid-transform/mid-scroll,
-                      producing a see-through flicker between panels. */}
+              
                   <article className="h-full w-full overflow-y-auto overscroll-contain">
                     {/* Top Gold Line */}
                     <div className="sticky top-0 left-0 right-0 h-0.75 bg-[#e9c176] z-30" />
@@ -711,11 +685,8 @@ export default function ServicesPage() {
             </div>
           </div>
         </section>
-
-        {/* ============================================================
-            CTA
-        ============================================================ */}
-        <section
+        {/* cta  */}
+<section
           className="
             bg-[#fbf9f8]
             py-12
