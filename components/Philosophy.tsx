@@ -2,22 +2,38 @@
 const principles = [
   {
     number: "01",
-    title: "Transparency",
-    tagline: "See the business as it is.",
-    description: "We start with facts, not assumptions.",
+    title: "INTEGRITY",
+    tagline: "Do what is right for the business. ",
+    description:
+      "We give honest advice, even when it isn’t the easiest answer. Our recommendations are driven by what genuinely serves the business. We start with facts, not assumptions.",
   },
   {
     number: "02",
-    title: "Real Results",
-    tagline: "Measure what changes.",
-    description: "Activity is not the outcome. Business improvement is.",
+    title: " TRUST ",
+    tagline: "Earn it through every interaction. ",
+    description:
+      "Business decisions require confidence. We build trust through consistency, accountability, and standing by our commitments.",
   },
   {
     number: "03",
-    title: "Founder Mindset",
-    tagline: "Think like an owner.",
+    title: " TRANSPARENCY ",
+    tagline: "Clarity starts with the truth. ",
     description:
-      "We approach every problem with ownership, accountability and long-term thinking.",
+      "We believe you cannot solve what you cannot see. We work with facts, open conversations, and a clear understanding of the business before recommending what comes next. ",
+  },
+  {
+    number: "04",
+    title: "  RESULTS  ",
+    tagline: "Make every action count.  ",
+    description:
+      "      Ideas have value only when they create change. We focus on practical actions, measurable progress, and outcomes that strengthen the business. ",
+  },
+  {
+    number: "05",
+    title: "  SOLUTIONS  ",
+    tagline: "Solve the real problem. ",
+    description:
+      "     We don't believe in one-size-fits-all answers. We diagnose the root cause, find the right approach, and build solutions that can actually work.  ",
   },
 ];
 
@@ -34,20 +50,21 @@ export default function Philosophy() {
         </div>
 
         {/* Heading */}
-        <h2 className="font-medium text-display text-surface leading-tight mb-8 max-w-2xl reveal"
-         style={{
-                fontFamily: "Bodoni Moda, serif",
-              }}
+        <h2
+          className="font-medium text-display text-surface leading-tight mb-8 max-w-2xl reveal"
+          style={{
+            fontFamily: "Bodoni Moda, serif",
+          }}
         >
-          How we work matters as much as what we deliver.
+          What we believe shapes how we work.
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-surface/15 reveal">
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-surface/15 reveal ">
           {principles.map((p) => (
             <div
               key={p.number}
-              className="border-r border-b border-surface/15 px-6 py-8 sm:px-8 sm:py-10"
+              className="border-r border-b border-surface/15 px-6 py-8 sm:px-8 sm:py-10 hover:bg-secondary/5"
             >
               <span className="block text-[10px] font-bold tracking-[0.15em] text-surface/40">
                 {p.number}

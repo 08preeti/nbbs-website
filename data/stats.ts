@@ -1,15 +1,15 @@
 export const stats = [
   {
-    value: "50+",
-    label: "SMBs Trust NBBS",
+    value: "350+",
+    label: "MSMEs TRUST NBBS",
   },
   {
-    value: "3Cr+",
-    label: "Consulting Delivered",
+    value: "40%",
+    label: "Faster bottleneck processes",
   },
   {
-    value: "94%",
-    label: "Client Retention",
+    value: "20+ Years",
+    label: "Experience",
   },
   {
     value: "6 mo.",

@@ -114,11 +114,9 @@ export default function ServicesPage() {
     ScrollTrigger.config({ ignoreMobileResize: true });
 
     const ctx = gsap.context(() => {
-    
       const sections = gsap.utils.toArray<HTMLElement>(".service-panel");
 
       if (sections.length && servicesSectionRef.current) {
-       
         gsap.set(sections, {
           yPercent: 100,
           opacity: 1,
@@ -190,7 +188,7 @@ export default function ServicesPage() {
                   fontFamily: "Bodoni Moda, serif",
                 }}
               >
-                The Ecosystem
+                NBBS Ecosystem
               </h1>
 
               <p
@@ -199,14 +197,13 @@ export default function ServicesPage() {
                   fontFamily: "Bodoni Moda, serif",
                 }}
               >
-                Five solutions. One connected journey.
+                One connected journey. From diagnosis to implementation.
               </p>
 
               <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.6] text-[#c0c5e5] md:w-4/5 lg:w-3/4">
-                We don&apos;t just solve isolated problems. We identify root
-                causes and build integrated systems that scale with your
-                ambition. Professional solutions designed for high-performance
-                executives.
+                We look beyond symptoms to understand the real challenge,
+                identify the right priorities, and connect strategy with
+                practical implementation for sustainable business growth.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 w-full sm:w-auto">
@@ -214,7 +211,7 @@ export default function ServicesPage() {
                   href="/contacts"
                   className="bg-[#ffdea5] text-[#261900] text-[11px] sm:text-[12px] leading-none rounded-xl tracking-widest font-bold uppercase px-6 py-3.5 sm:py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
                 >
-                  Book a Business Diagnostic
+                  EXPLORE The Business OPD™
                   <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
@@ -231,7 +228,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-{/* solution  */}
+        {/* solution  */}
         <section id="solutions" className="bg-[#fbf9f8]">
           <div className="max-w-320 mx-auto px-5 sm:px-8 md:px-10 lg:px-16 pt-12 sm:pt-14 md:pt-16 lg:pt-20 pb-10 sm:pb-12">
             <div className="max-w-3xl">
@@ -256,7 +253,6 @@ export default function ServicesPage() {
             </div>
           </div>
 
-      
           <div
             ref={servicesSectionRef}
             className="services-scroll relative w-full"
@@ -272,7 +268,6 @@ export default function ServicesPage() {
                     willChange: "transform",
                   }}
                 >
-              
                   <article className="h-full w-full overflow-y-auto overscroll-contain">
                     {/* Top Gold Line */}
                     <div className="sticky top-0 left-0 right-0 h-0.75 bg-[#e9c176] z-30" />
@@ -686,7 +681,7 @@ export default function ServicesPage() {
           </div>
         </section>
         {/* cta  */}
-<section
+        <section
           className="
             bg-[#fbf9f8]
             py-12
