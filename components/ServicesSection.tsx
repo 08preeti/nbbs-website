@@ -195,7 +195,7 @@ export default function ServicesSection() {
 
             {/* Heading */}
             <h1
-              className="text-[44px] xs:text-[48px] sm:text-[56px] md:text-[72px] leading-[1.05] font-semibold text-white tracking-tight"
+              className="text-[44px] xs:text-[48px] sm:text-[56px] md:text-[72px] leading-[1.05] font-medium text-white tracking-tight"
               style={{
                 fontFamily: "Bodoni Moda, serif",
               }}

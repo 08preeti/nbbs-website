@@ -34,7 +34,11 @@ export default function Philosophy() {
         </div>
 
         {/* Heading */}
-        <h2 className="font-display text-display text-surface leading-tight mb-8 max-w-2xl reveal">
+        <h2 className="font-medium text-display text-surface leading-tight mb-8 max-w-2xl reveal"
+         style={{
+                fontFamily: "Bodoni Moda, serif",
+              }}
+        >
           How we work matters as much as what we deliver.
         </h2>
 

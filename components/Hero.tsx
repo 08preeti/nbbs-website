@@ -12,27 +12,28 @@ export default function Hero() {
             About NBBS
           </span>
         </div>
-
-        {/* Heading */}
-        <h1 className="font-display text-display text-primary leading-tight mb-8">
+        +{/* Heading */}
+        <h1
+          className="font-medium text-display text-primary leading-tight mb-8"
+          style={{
+            fontFamily: "Bodoni Moda, serif",
+          }}
+        >
           We don&apos;t just tell you what to do.
           <br />
           We help you understand why it needs to change.
         </h1>
-
         {/* Description */}
         <p className="font-body-lg text-body-lg text-primary/50 max-w-2xl leading-relaxed mb-6">
           NB Business Solutions works with MSME leaders to bring clarity to
           business decisions and turn strategy into practical action.
         </p>
-
         <p className="font-body-lg text-body-lg text-primary/50 max-w-2xl leading-relaxed">
           With more than two decades of business experience, NBBS brings
           together strategic thinking, practical business frameworks and
-          implementation-focused solutions to address the realities of
-          growing businesses.
+          implementation-focused solutions to address the realities of growing
+          businesses.
         </p>
-
         {/* Process line */}
         {/* <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-bold tracking-[0.08em] text-primary sm:text-[12px]">
           {processSteps.map((step, index) => (
