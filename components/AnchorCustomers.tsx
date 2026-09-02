@@ -217,12 +217,13 @@ export default function AnchorCustomers() {
                     </div>
 
                     {/* RIGHT QUOTE */}
-                    <div className="flex items-center justify-center bg-[#f4f0e8] px-6 py-8 sm:px-9 md:px-10">
+                    <div className="flex items-center justify-center bg-[#f4f0e8] px-6 h-[500px] sm:px-9 md:px-10">
                       <div
                         className="
                           relative
                           w-full
                           max-w-102.5
+                          
                           rounded-[20px]
                           bg-[#141a32]
                           px-7

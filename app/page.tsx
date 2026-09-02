@@ -23,8 +23,7 @@ export default function Home() {
     <div className="min-h-screen w-full overflow-x-hidden bg-[#fbf9f8] text-[#172039] antialiased">
       <Header />
 
-      <main className="w-full grow overflow-x-hidden">
-
+      <main className="w-full grow overflow-x-hidden ">
         {/* ============================================================
             HERO
         ============================================================ */}
@@ -38,9 +37,9 @@ export default function Home() {
             border-y
             border-black/5
             bg-[#fbf9f8]
+            mt-10
           "
         >
-
           {/* ==========================================================
               DESKTOP SCRIBBLE / CIRCUIT
           ========================================================== */}
@@ -86,7 +85,6 @@ export default function Home() {
               2xl:px-[8%]
             "
           >
-
             <div
               className="
                 flex
@@ -100,7 +98,6 @@ export default function Home() {
                 lg:py-8
               "
             >
-
               {/* ======================================================
                   LEFT TEXT CONTENT
               ====================================================== */}
@@ -115,7 +112,6 @@ export default function Home() {
                   2xl:w-[54%]
                 "
               >
-
                 {/* ==================================================
                     EYEBROW
                 ================================================== */}
@@ -240,10 +236,10 @@ export default function Home() {
                     lg:text-left
                   "
                 >
-                  NB Business Solutions helps MSME leaders identify what is
-                  holding their business back, gain clarity on what needs
-                  attention, and implement practical solutions for sustainable
-                  growth.
+                  NB Business Solutions helps MSME founders identify what is
+                  holding their business back, create clarity on what needs
+                  attention, and implement practical business solutions for
+                  sustainable growth.
                 </p>
 
                 {/* ==================================================
@@ -293,7 +289,7 @@ export default function Home() {
                       sm:text-[11px]
                     "
                   >
-                    <span>Explore the NBBS Ecosystem</span>
+                    <span>Explore NBBS Ecosystem</span>
 
                     <span
                       className="
@@ -335,28 +331,16 @@ export default function Home() {
                     lg:text-left
                   "
                 >
-                  <span className="text-secondary">
-                    STRATEGY
-                  </span>
+                  <span className="text-secondary">STRATEGY</span>
 
-                  <span className="text-secondary/60">
-                    •
-                  </span>
+                  <span className="text-secondary/60">•</span>
 
-                  <span className="text-secondary">
-                    EXECUTION
-                  </span>
+                  <span className="text-secondary">EXECUTION</span>
 
-                  <span className="text-secondary/60">
-                    •
-                  </span>
+                  <span className="text-secondary/60">•</span>
 
-                  <span className="text-secondary">
-                    GROWTH
-                  </span>
+                  <span className="text-secondary">GROWTH</span>
                 </div>
-
-           
               </div>
 
               {/* ======================================================
@@ -387,7 +371,6 @@ export default function Home() {
                   <HeroScribble />
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -436,10 +419,7 @@ export default function Home() {
             SERVICES
         ============================================================ */}
 
-        <section
-          id="services"
-          className="w-full overflow-hidden"
-        >
+        <section id="services" className="w-full overflow-hidden">
           <ServicesSection />
         </section>
 
@@ -447,17 +427,13 @@ export default function Home() {
             ABOUT
         ============================================================ */}
 
-        <section
-          id="about"
-          className="w-full overflow-hidden"
-        >
+        <section id="about" className="w-full overflow-hidden">
           <AboutSection />
         </section>
 
         <section>
-          <ContactSection/>
+          <ContactSection />
         </section>
-
       </main>
 
       <Footer />
