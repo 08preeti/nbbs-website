@@ -52,7 +52,9 @@ export default function ContactSection() {
               </div>
 
               {/* Heading */}
-              <h2 className="max-w-xl font-display text-4xl font-black leading-[0.95] tracking-[-0.045em] text-[#141a32] sm:text-5xl md:text-6xl">
+              <h2 className="max-w-xl font-medium text-4xl font-black leading-[0.95] tracking-[-0.045em] text-[#141a32] sm:text-5xl md:text-6xl"  style={{
+                fontFamily: "Bodoni Moda, serif",
+              }}>
                 Let&apos;s understand your business.
               </h2>
 
