@@ -143,6 +143,24 @@
 
 
 /* ================================================================
+   MARQUEE (Industries We Serve strip)
+================================================================ */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
+
+/* ================================================================
    SCROLL ANIMATIONS
 ================================================================ */
 

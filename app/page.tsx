@@ -7,6 +7,7 @@ import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
 import Link from "next/link";
 import StatsSection from "@/components/StatsStatics";
+import IndustriesMarquee from "@/components/IndustriesMarquee";
 import VisionMissionSection from "@/components/Visionmissionsection";
 import ContactSection from "@/components/ContactSection";
 
@@ -484,6 +485,14 @@ export default function Home() {
 
         <section className="w-full overflow-hidden">
           <StatsSection />
+        </section>
+
+        {/* ============================================================
+            INDUSTRIES WE SERVE (auto-scrolling marquee)
+        ============================================================ */}
+
+        <section className="w-full overflow-hidden">
+          <IndustriesMarquee />
         </section>
 
         {/* ============================================================
