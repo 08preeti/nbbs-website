@@ -1,17 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // components/DiagnosticCTA.tsx
 import Link from "next/link";
 

@@ -4,9 +4,7 @@
 import { industries } from "@/data/industries";
 
 export default function IndustriesMarquee() {
-  // Duplicate the list so the CSS animation can loop seamlessly
-  // (as soon as the first copy scrolls fully out, the second is
-  // in the exact same position, so the loop is invisible).
+ 
   const track = [...industries, ...industries];
 
   return (
