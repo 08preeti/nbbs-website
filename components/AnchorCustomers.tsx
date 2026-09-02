@@ -107,7 +107,11 @@ export default function AnchorCustomers() {
         </div>
 
         <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h2 className="font-display max-w-3xl text-3xl font-black leading-[0.92] tracking-[-0.045em] text-navy sm:text-4xl md:text-5xl">
+          <h2 className="font-medium max-w-3xl text-3xl font-black leading-[0.92] tracking-[-0.045em] text-navy sm:text-4xl md:text-5xl"
+           style={{
+                fontFamily: "Bodoni Moda, serif",
+              }}
+          >
             Anchor Customers
           </h2>
         </div>
@@ -138,7 +142,9 @@ export default function AnchorCustomers() {
                     {/* LEFT CONTENT */}
                     <div className="flex flex-col px-7 pb-8 pt-8 sm:px-9 sm:pt-9 md:px-11 md:pb-10 md:pt-10">
                       {/* COMPANY */}
-                      <h3 className="mt-7 max-w-150 font-display text-3xl font-black leading-[0.98] tracking-[-0.04em] text-navy sm:text-4xl md:text-[2.8rem]">
+                      <h3 className="mt-7 max-w-150 font-medium text-3xl font-black leading-[0.98] tracking-[-0.04em] text-navy sm:text-4xl md:text-[2.8rem]"  style={{
+                fontFamily: "Bodoni Moda, serif",
+              }}>
                         {customer.company}
                       </h3>
 

@@ -83,8 +83,7 @@ export default function VisionMissionSection() {
               className="
                 mt-7
                 max-w-[820px]
-                font-display
-                font-semibold
+                font-medium
                 leading-[1.05]
                 tracking-[-0.03em]
                 text-[#172039]
@@ -97,6 +96,10 @@ export default function VisionMissionSection() {
                 lg:text-[38px]
                 xl:text-[44px]
               "
+
+               style={{
+                fontFamily: "Bodoni Moda, serif",
+              }}
             >
               A business should not have to grow through guesswork.
             </h2>
@@ -171,8 +174,7 @@ export default function VisionMissionSection() {
               className="
                 mt-7
                 max-w-[820px]
-                font-display
-                font-semibold
+                font-medium
                 leading-[1.05]
                 tracking-[-0.03em]
                 text-primary
@@ -185,6 +187,10 @@ export default function VisionMissionSection() {
                 lg:text-[38px]
                 xl:text-[44px]
               "
+
+              style={{
+                fontFamily: "Bodoni Moda, serif",
+              }}
             >
               Make business problems easier to understand and business decisions
               easier to act on.
