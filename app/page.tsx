@@ -356,78 +356,7 @@ export default function Home() {
                   </span>
                 </div>
 
-                {/* ==================================================
-                    OPTIONAL STATS
-                ================================================== */}
-
-                {/*
-                <div
-                  className="
-                    mt-10
-                    w-full
-                    max-w-[735px]
-                    border-t
-                    border-[#c9a86a]/35
-                    pt-5
-                    sm:mt-12
-                    sm:pt-6
-                    lg:mt-14
-                  "
-                >
-                  <div className="grid grid-cols-2 sm:grid-cols-4">
-                    {stats.map(([value, label], index) => (
-                      <div
-                        key={label}
-                        className={`
-                          flex
-                          min-h-[60px]
-                          flex-col
-                          justify-center
-                          px-3
-                          first:pl-0
-                          sm:px-5
-                          lg:px-6
-                          ${
-                            index !== 0
-                              ? "border-l border-[#c9a86a]/35"
-                              : ""
-                          }
-                        `}
-                      >
-                        <span
-                          className="
-                            font-display
-                            text-[26px]
-                            font-semibold
-                            leading-none
-                            tracking-[-0.035em]
-                            text-[#172039]
-                            sm:text-[28px]
-                            lg:text-[30px]
-                          "
-                        >
-                          {value}
-                        </span>
-
-                        <span
-                          className="
-                            mt-2
-                            text-[7px]
-                            font-semibold
-                            uppercase
-                            leading-[1.35]
-                            tracking-[0.1em]
-                            text-[#172039]/55
-                            sm:text-[8px]
-                          "
-                        >
-                          {label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                */}
+           
               </div>
 
               {/* ======================================================

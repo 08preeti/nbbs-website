@@ -1,6 +1,3 @@
-// components/Hero.tsx
-// const processSteps = ["EXPERIENCE", "DIAGNOSIS", "STRATEGY", "IMPLEMENTATION"];
-
 export default function Hero() {
   return (
     <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-16 pb-12 md:pt-16 md:pb-16">
@@ -12,7 +9,6 @@ export default function Hero() {
             About NBBS
           </span>
         </div>
-        +{/* Heading */}
         <h1
           className="font-medium text-display text-primary leading-tight mb-8"
           style={{
@@ -34,17 +30,7 @@ export default function Hero() {
           implementation-focused solutions to address the realities of growing
           businesses.
         </p>
-        {/* Process line */}
-        {/* <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-[11px] font-bold tracking-[0.08em] text-primary sm:text-[12px]">
-          {processSteps.map((step, index) => (
-            <span key={step} className="flex items-center gap-x-3">
-              {step}
-              {index < processSteps.length - 1 && (
-                <span className="text-[#c9a86a]">→</span>
-              )}
-            </span>
-          ))}
-        </div> */}
+    
       </div>
     </section>
   );
