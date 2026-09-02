@@ -10,7 +10,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-[#e5e5e5]">
+    <header className="fixed   top-0 z-50 w-full  bg-white border-b border-[#e5e5e5] ">
       <div className="max-w-[1280px] mx-auto px-5 md:px-16 h-20 flex items-center justify-between">
         {/* Logo */}
         <ScrollLink

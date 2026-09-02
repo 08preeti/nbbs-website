@@ -3,16 +3,16 @@
 // (components/IndustriesMarquee.tsx) renders this list dynamically.
 
 export const industries: string[] = [
-  "Logistics & Warehousing",
-  "Manufacturing & Industrial",
-  "Automotive & Auto Components",
-  "Food & Beverage",
-  "Textiles & Apparel",
-  "Pharmaceuticals & Healthcare",
-  "Retail & E-commerce",
-  "Construction & Real Estate",
-  "IT & Technology Services",
-  "Chemicals & Plastics",
+  "Agriculture  ",
+"Manufacturing ",
+ "Pharmaceuticals & Healthcare I", 
+ "T & SaaS · Logistics & Warehousing ",
+ "FMCG  ",
+ "Retail & Trading" ,
+" Professional Services",  
+ "Jewellery  ",
+ "Education & Training",  
+ "Creative & Media ",
 ];
 
 
