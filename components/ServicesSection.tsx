@@ -43,7 +43,7 @@ const services = [
 
   {
     number: "02",
-    category: "The Business OPD™ DIAGNOSIS",
+    category: "The Business OPD™ ",
     title: "A Structured Clarity Diagnosis for Founders & Entrepreneurs",
     subtitle: "Diagnose before you prescribe.",
     image: opd,
