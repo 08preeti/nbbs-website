@@ -3,7 +3,7 @@ import { stats } from "@/data/stats";
 export default function StatsSection() {
   return (
     <section className="w-full border-y border-black/8 bg-primary">
-      <div className="mx-auto grid max-w-350 grid-cols-2 md:grid-cols-4">
+      <div className="mx-auto grid max-w-350 grid-cols-1 md:grid-cols-3">
         {stats.map(({ value, label }, index) => (
           <div
             key={label}

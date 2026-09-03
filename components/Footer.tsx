@@ -3,10 +3,30 @@ import { footerData } from "@/data/footer";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { ScrollLink } from "react-scroll";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const [active, setActive] = useState("footerItems");
+  const pathname = usePathname();
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setActive("home");
+
+    // Already on the home page: smooth-scroll up to the hero instead of
+    // relying on Next.js's default (instant) hash jump. On any other page,
+    // let the Link navigate there normally so it lands at the top.
+    if (pathname === "/") {
+      e.preventDefault();
+
+      const homeSection = document.getElementById("home");
+      const headerOffset = 80;
+      const targetTop = homeSection
+        ? homeSection.getBoundingClientRect().top + window.scrollY - headerOffset
+        : 0;
+
+      window.scrollTo({ top: targetTop, behavior: "smooth" });
+    }
+  };
 
   return (
     <footer className="w-full border-t border-[#141a32] bg-[#141a32]">
@@ -17,7 +37,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <Link
             href="/#home"
-              onClick={() => setActive("home")}
+              onClick={handleLogoClick}
               className="group flex w-fit cursor-pointer items-center gap-3"
               aria-label="NBBS Home"
             >
@@ -26,7 +46,7 @@ export default function Footer() {
                 alt="NBBS Logo"
                 width={50}
                 height={30}
-                className="object-contain"
+                className="object-contain brightness-0 invert"
                 priority
               />
               <span className="font-display text-[24px] font-bold tracking-tight text-white">
