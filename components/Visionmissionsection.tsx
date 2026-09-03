@@ -62,20 +62,20 @@ export default function VisionMissionSection() {
                     sm:group-hover/vision:w-16
                   "
                 />
-              <span
-                className="
+                <span
+                  className="
                   whitespace-nowrap
-                  text-[9px]
+                  md:text-[14px]
                   font-bold
                   uppercase
                   tracking-[0.24em]
-                  text-[#c9a86a]
+                  text-primary
                   sm:text-[10px]
                   sm:tracking-[0.27em]
                 "
-              >
-                VISION
-              </span>
+                >
+                  VISION
+                </span>
               </div>
             </div>
 
@@ -152,20 +152,20 @@ export default function VisionMissionSection() {
                     sm:group-hover/mission:w-16
                   "
                 />
-              <span
-                className="
+                <span
+                  className="
                   whitespace-nowrap
-                  text-[9px]
+md:text-[14px]
                   font-bold
                   uppercase
                   tracking-[0.24em]
-                  text-[#c9a86a]
+                  text-primary
                   sm:text-[10px]
                   sm:tracking-[0.27em]
                 "
-              >
-                MISSION
-              </span>
+                >
+                  MISSION
+                </span>
               </div>
             </div>
 

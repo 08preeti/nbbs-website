@@ -11,7 +11,7 @@ export default function IndustriesMarquee() {
     <section className="w-full overflow-hidden border-y border-black/8 bg-primary py-8 md:py-10">
       {/* HEADING */}
       <div className="mb-6 text-center md:mb-8">
-        <span className="text-label-caps text-secondary">
+        <span className="text-label-caps text-secondary text-2xl">
           Industries We Serve
         </span>
       </div>
