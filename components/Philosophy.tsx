@@ -64,21 +64,21 @@ export default function Philosophy() {
           {principles.map((p) => (
             <div
               key={p.number}
-              className="group aspect-square flex flex-col overflow-hidden border-r border-b border-surface/15 px-5 py-6 sm:px-6 sm:py-8 hover:bg-secondary/5"
+              className="group flex flex-col min-h-[340px] sm:min-h-[380px] md:min-h-[440px] border-r border-b border-surface/15 px-5 py-6 sm:px-6 sm:py-8 hover:bg-secondary/5"
             >
               <span className="block text-[10px] font-bold tracking-[0.15em] text-surface/40">
                 {p.number}
               </span>
 
-              <h3 className="font-display text-headline-md text-surface mt-4 mb-1">
+              <h3 className="font-display text-headline-md text-[28px] text-surface mt-4 mb-2">
                 {p.title}
               </h3>
 
-              <p className="font-body-md font-semibold text-surface-variant text-[14px] mb-1 line-clamp-2">
+              <p className="font-body-md font-semibold text-surface-variant text-[24px] mb-2 ">
                 {p.tagline}
               </p>
 
-              <p className="font-body-md text-surface-variant text-[14px] opacity-80 ">
+              <p className="font-body-md text-surface-variant text-[18px] opacity-80 ">
                 {p.description}
               </p>
             </div>

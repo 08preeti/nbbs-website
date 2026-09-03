@@ -60,7 +60,7 @@ export default function Footer() {
             </p>
 
             <p className="mt-6 text-xs text-slate-400">
-              Nashik, Maharashtra · hello@nbbs.in
+              Nashik, Maharashtra · connect@nbbs.in
             </p>
           </div>
 

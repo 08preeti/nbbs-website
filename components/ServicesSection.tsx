@@ -60,11 +60,11 @@ const services = [
       "In a focused 90-minute Business OPD™, we look beyond the symptoms to understand what’s really happening in your business, where the gaps are, and what deserves your attention first.",
 
     points: [
-      "✓ Business check-in & current situation analysis",
-      "✓ Business symptom analysis",
-      "✓ Root cause diagnosis",
-      "✓ One-Page Business Diagnosis Report",
-      "✓ Actionable next-step roadmap",
+      " Business check-in & current situation analysis",
+      " Business symptom analysis",
+      " Root cause diagnosis",
+      " One-Page Business Diagnosis Report",
+      " Actionable next-step roadmap",
     ],
 
     title2:
@@ -397,17 +397,7 @@ export default function ServicesSection() {
                     Service
                   </span>
 
-                  <div className="mt-1.5 flex items-center gap-2 sm:mt-2 sm:gap-3">
-                    {/* <span className="text-[11px] font-bold text-[#141A32] sm:text-[13px]">
-                      {service.number}
-                    </span>
-
-                    <span className="h-px w-5 bg-[#e9c176] sm:w-8" /> */}
-
-                    {/* <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#141A32] sm:text-[10px] sm:tracking-[0.2em]">
-                      {service.category}
-                    </span> */}
-                  </div>
+                  <div className="mt-1.5 flex items-center gap-2 sm:mt-2 sm:gap-3" />
                 </div>
 
                 {/* =================================================
@@ -418,10 +408,15 @@ export default function ServicesSection() {
                   <div className="mx-auto flex w-full max-w-[1600px] items-start lg:h-full lg:items-center">
                     <div className="grid w-full grid-cols-1 gap-8 sm:gap-10 lg:max-h-[calc(100vh-130px)] lg:grid-cols-12 lg:gap-0 lg:overflow-hidden">
                       {/* =================================================
-                          LEFT COLUMN
+                          LEFT COLUMN — `order-1` pins it to the top of
+                          the mobile stack. On lg+ it keeps its original
+                          side-by-side width (col-span-4), just top-
+                          aligned (`lg:justify-start` instead of
+                          center) so the heading + CTA sit at the top
+                          of the column instead of vertically centered.
                       ================================================= */}
 
-                      <div className="flex flex-col justify-center py-2 lg:col-span-4 lg:pr-10 xl:pr-20">
+                      <div className="order-1 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:justify-start lg:pr-10 xl:pr-20">
                         <h3
                           className="mb-3 text-[34px] font-medium leading-[0.98] text-secondary sm:mt-4 sm:text-[40px] md:text-[48px] lg:mt-5 lg:text-[54px] xl:text-[52px]"
                           style={{
@@ -431,7 +426,7 @@ export default function ServicesSection() {
                           {service.category}
                         </h3>
                         <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-primary sm:text-[10px] sm:tracking-[0.25em]">
-                          {service.title}
+                          {service.title1}
                         </span>
 
                         <Link
@@ -452,11 +447,11 @@ export default function ServicesSection() {
                           MIDDLE COLUMN
                       ================================================= */}
 
-                      <div className="flex flex-col justify-start py-2 lg:col-span-4 lg:max-h-full lg:overflow-y-auto lg:border-l lg:border-r lg:border-[#c6c6ce] lg:px-8 lg:py-6 lg:scrollbar-hide xl:px-14">
+                      <div className="order-2 flex flex-col justify-start py-2 lg:order-none lg:col-span-4 lg:max-h-full lg:overflow-y-auto lg:border-l lg:border-r lg:border-[#c6c6ce] lg:px-8 lg:py-6 lg:scrollbar-hide xl:px-14">
                         {/* TITLE */}
 
                         <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#b08b4d] sm:text-[10px] sm:tracking-[0.22em]">
-                          {service.title1}
+                          {service.title}
                         </span>
 
                         {/* PROBLEM */}
@@ -464,22 +459,13 @@ export default function ServicesSection() {
                         <p className="mt-3 text-[12px] leading-[1.5] text-[#62626a] sm:mt-4 sm:text-[14px] sm:leading-[1.65] md:text-[15px] lg:mt-5">
                           {service.problem}
                         </p>
-
-                        {/* GOLD DIVIDER */}
-
-                        <div className="my-4 h-px w-10 bg-[#e9c176] sm:my-5 sm:w-16 lg:my-6" />
-
-                        {/* =================================================
-                            WE IDENTIFY
-                        ================================================= */}
-
                         {service.identity1 && (
                           <>
-                            <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:text-[10px] sm:tracking-[0.22em]">
-                              {service.identity1}
-                            </span>
+                              {/* <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:text-[10px] sm:tracking-[0.22em]">
+                                {service.identity1}
+                              </span> */}
 
-                            <div className="space-y-2 sm:space-y-2.5 lg:space-y-3">
+                            <div className="space-y-2 sm:space-y-2.5 mt-2 lg:space-y-3">
                               {service.points2?.map((point) => (
                                 <div
                                   key={point}
@@ -500,11 +486,19 @@ export default function ServicesSection() {
                           </>
                         )}
 
+                        {/* GOLD DIVIDER */}
+
+                        <div className="my-4 h-px w-10 bg-[#e9c176] sm:my-5 sm:w-16 lg:my-6" />
+
+                        {/* =================================================
+                            WE IDENTIFY
+                        ================================================= */}
+
                         {/* =================================================
                             KEY TAKEAWAYS
                         ================================================= */}
 
-                        <span className="mb-2 mt-8 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:mt-10 sm:text-[10px] sm:tracking-[0.22em] lg:mt-12">
+                        <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:mt-3 sm:text-[10px] sm:tracking-[0.22em] lg:mt-3">
                           {service.identity}
                         </span>
 
@@ -540,7 +534,7 @@ export default function ServicesSection() {
                           RIGHT COLUMN
                       ================================================= */}
 
-                      <div className="flex flex-col justify-center py-2 lg:col-span-4 lg:pl-8 xl:pl-14">
+                      <div className="order-3 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:pl-8 xl:pl-14">
                         {/* IMAGE */}
 
                         <div className="relative h-36 w-full overflow-hidden border border-[#c6c6ce] bg-[#fbf9f8] sm:h-48 md:h-56 lg:h-[330px] xl:h-[380px]">
@@ -555,10 +549,6 @@ export default function ServicesSection() {
                           <div className="absolute inset-0 bg-gradient-to-t from-[#141A32]/50 via-transparent to-transparent" />
 
                           <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between sm:bottom-5 sm:left-5 sm:right-5">
-                            <span className="bg-[#141A32] px-2 py-1 text-[7px] font-bold uppercase tracking-[0.12em] text-white sm:px-3 sm:py-1.5 sm:text-[8px] sm:tracking-[0.16em]">
-                              NBBS Solution
-                            </span>
-
                             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-10 sm:w-10">
                               <span className="material-symbols-outlined text-[15px] sm:text-[18px]">
                                 north_east

@@ -5,7 +5,7 @@ export default function Hero() {
         {/* Eyebrow */}
         <div className="mb-6 flex items-center gap-3">
           <span className="h-px w-9 bg-[#c9a86a] sm:w-12" />
-          <span className="text-[9px] font-bold uppercase tracking-[0.24em] text-[#c9a86a] sm:text-[10px] sm:tracking-[0.27em]">
+          <span className="md:text-[12px] font-bold uppercase tracking-[0.24em] text-[#c9a86a] sm:text-[10px] sm:tracking-[0.27em]">
             About NBBS
           </span>
         </div>
