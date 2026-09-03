@@ -17,6 +17,7 @@ const services = [
     subtitle: "Know what is coming before it arrives.",
     image: cash,
     cta: "Explore Workshop",
+    ctaUrl: "https://workshop.nbbs.in/",
     identity: "Key Takeaways",
 
     title1:
@@ -42,11 +43,12 @@ const services = [
 
   {
     number: "02",
-    category: "The Business OPD™ DIAGNOSIS",
+    category: "The Business OPD™ ",
     title: "A Structured Clarity Diagnosis for Founders & Entrepreneurs",
     subtitle: "Diagnose before you prescribe.",
     image: opd,
     cta: "Book a Diagnostic",
+    ctaUrl: "https://businessopd.nbbs.in/",
 
     title1:
       "One focused diagnosis. A clear prescription. Actionable next steps.",
@@ -58,21 +60,21 @@ const services = [
       "In a focused 90-minute Business OPD™, we look beyond the symptoms to understand what’s really happening in your business, where the gaps are, and what deserves your attention first.",
 
     points: [
-      "Where you’re stuck",
-      "What’s not working",
-      "What’s costing you",
-      "What needs fixing first",
+      " Business check-in & current situation analysis",
+      " Business symptom analysis",
+      " Root cause diagnosis",
+      " One-Page Business Diagnosis Report",
+      " Actionable next-step roadmap",
     ],
 
     title2:
       "A focused diagnosis that moves you from understanding the problem to knowing what to do next.",
 
     points2: [
-      "✓ Business check-in & current situation analysis",
-      "✓ Business symptom analysis",
-      "✓ Root cause diagnosis",
-      "✓ One-Page Business Diagnosis Report",
-      "✓ Actionable next-step roadmap",
+      "Where you’re stuck",
+      "What’s not working",
+      "What’s costing you",
+      "What needs fixing first",
     ],
 
     audience:
@@ -89,8 +91,9 @@ const services = [
       "Track sales, tasks, targets, and incentive programs from one transparent platform - with live dashboards every role can trust.",
     image: incentive,
     cta: "Explore Incentiwise",
+    ctaUrl: "https://incentiwise.nbbs.in/",
 
-    identity: "Why Incentiwise?",
+    identity: "Key Takeaways",
 
     problem:
       "Incentive management becomes complicated as teams, targets, rules, and payouts grow. Manual calculations and scattered data create errors, disputes, and a lack of visibility for both managers and employees.",
@@ -141,50 +144,108 @@ const stages = [
 export default function ServicesSection() {
   const servicesSectionRef = useRef<HTMLDivElement | null>(null);
 
+  // Scrolls the pinned GSAP carousel to a specific service card by index,
+  // since the cards are stacked (position: absolute) and normal anchor
+  // scrolling can't reach them on its own.
+  //
+  // Note: each card's reveal animation is scheduled immediately after the
+  // previous one ends, so the scroll position where card N is "fully shown"
+  // is the exact same instant card N+1 starts sliding on top of it (higher
+  // z-index). We back off by a small buffer so we land solidly inside card
+  // N's visible window instead of right on that boundary, and we jump
+  // instantly (no native smooth-scroll) so it doesn't race with GSAP's own
+  // scrub animation.
+  const scrollToServiceIndex = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetIndex: number,
+  ) => {
+    e.preventDefault();
+
+    // Make sure GSAP has up-to-date measurements before we read them.
+    ScrollTrigger.refresh();
+
+    const trigger = ScrollTrigger.getById("services-pin");
+    const targetId = `service-${services[targetIndex]?.number}`;
+
+    if (trigger && services.length > 1) {
+      const totalDuration = services.length - 1;
+      const buffer = 0.15; // stay clear of the next card's reveal
+      const targetTime = Math.max(targetIndex - buffer, 0);
+      const progress = targetTime / totalDuration;
+      const targetScroll =
+        trigger.start + (trigger.end - trigger.start) * progress;
+
+      window.scrollTo({ top: targetScroll, behavior: "auto" });
+    } else {
+      document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      const sections = gsap.utils.toArray<HTMLElement>(".service-panel");
+      // The pinned "cards stack on top of each other" scroll-jack effect
+      // only makes sense when there's enough viewport height to show a
+      // full card. On phones/tablets it was forcing every card (title,
+      // points, image, Perfect For / Business Proof boxes) to be squashed
+      // into one screen-height box, which is why it only looked right at
+      // 80% browser zoom. So we scope the pin animation to lg (1024px)
+      // and up via matchMedia; below that, cards render in normal
+      // document flow (see JSX) and the browser scrolls through them
+      // naturally at full, unclipped size.
+      const mm = gsap.matchMedia();
 
-      if (!sections.length || !servicesSectionRef.current) {
-        return;
-      }
+      mm.add("(min-width: 1024px)", () => {
+        const sections = gsap.utils.toArray<HTMLElement>(".service-panel");
 
-      // Initial position of all cards
-      gsap.set(sections, {
-        yPercent: 100,
-      });
+        if (!sections.length || !servicesSectionRef.current) {
+          return;
+        }
 
-      // First card stays visible
-      gsap.set(sections[0], {
-        yPercent: 0,
-      });
+        // Initial position of all cards
+        gsap.set(sections, {
+          yPercent: 100,
+        });
 
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: servicesSectionRef.current,
-          start: "top top",
-          end: `+=${sections.length * 100}%`,
-          pin: true,
-          scrub: 1,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
+        // First card stays visible
+        gsap.set(sections[0], {
+          yPercent: 0,
+        });
 
-      sections.forEach((section, index) => {
-        if (index === 0) return;
-
-        timeline.to(
-          section,
-          {
-            yPercent: 0,
-            duration: 1,
-            ease: "none",
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            id: "services-pin",
+            trigger: servicesSectionRef.current,
+            start: "top top",
+            end: `+=${sections.length * 100}%`,
+            pin: true,
+            scrub: 1,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
           },
-          `service-${index}`,
-        );
+        });
+
+        sections.forEach((section, index) => {
+          if (index === 0) return;
+
+          timeline.to(
+            section,
+            {
+              yPercent: 0,
+              duration: 1,
+              ease: "none",
+            },
+            `service-${index}`,
+          );
+        });
+
+        // gsap.matchMedia cleanup: reset inline styles this breakpoint set
+        // so cards look right in normal flow if the viewport is resized
+        // down past 1024px without a full remount.
+        return () => {
+          gsap.set(sections, { clearProps: "transform" });
+        };
       });
 
       ScrollTrigger.refresh();
@@ -274,7 +335,8 @@ export default function ServicesSection() {
 
             <div className="flex w-full flex-col gap-3 pt-7 sm:w-auto sm:flex-row sm:gap-4 sm:pt-8">
               <Link
-                href="/#contact"
+                href="/#service-02"
+                onClick={(e) => scrollToServiceIndex(e, 1)}
                 className="group flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-[#261900] transition-colors hover:bg-gray-300 sm:w-auto sm:px-6 sm:text-[12px] sm:tracking-widest"
               >
                 Not sure where to start?
@@ -284,7 +346,9 @@ export default function ServicesSection() {
               </Link>
 
               <Link
-                href="/#contact"
+                href="https://businessopd.nbbs.in/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#ffdea5] px-5 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-[#261900] transition-colors hover:bg-[#e9c176] sm:w-auto sm:px-6 sm:text-[12px] sm:tracking-widest"
               >
                 EXPLORE The Business OPD™
@@ -310,12 +374,12 @@ export default function ServicesSection() {
           ref={servicesSectionRef}
           className="services-scroll relative w-full"
         >
-          <div className="relative h-screen overflow-hidden">
+          <div className="relative overflow-visible lg:h-screen lg:overflow-hidden">
             {services.map((service, index) => (
               <article
                 key={service.number}
                 id={`service-${service.number}`}
-                className="service-panel absolute inset-0 h-screen w-full overflow-hidden bg-[#EEF0F3]"
+                className="service-panel relative mb-10 w-full overflow-visible bg-[#EEF0F3] last:mb-0 lg:absolute lg:inset-0 lg:mb-0 lg:h-screen lg:overflow-hidden"
                 style={{
                   zIndex: index + 1,
                 }}
@@ -333,68 +397,42 @@ export default function ServicesSection() {
                     Service
                   </span>
 
-                  <div className="mt-1.5 flex items-center gap-2 sm:mt-2 sm:gap-3">
-                    <span className="text-[11px] font-bold text-[#141A32] sm:text-[13px]">
-                      {service.number}
-                    </span>
-
-                    <span className="h-px w-5 bg-[#e9c176] sm:w-8" />
-
-                    <span className="text-[8px] font-bold uppercase tracking-[0.15em] text-[#141A32] sm:text-[10px] sm:tracking-[0.2em]">
-                      {service.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* =================================================
-                    TOP RIGHT
-                ================================================= */}
-
-                <div className="absolute right-5 top-6 z-20 sm:right-8 sm:top-8 md:right-10 lg:right-16">
-                  <span className="text-[7px] uppercase tracking-[0.15em] text-[#8a8a91] sm:text-[9px] sm:tracking-[0.2em]">
-                    NBBS BUSINESS SOLUTIONS
-                  </span>
+                  <div className="mt-1.5 flex items-center gap-2 sm:mt-2 sm:gap-3" />
                 </div>
 
                 {/* =================================================
                     MAIN CONTENT
                 ================================================= */}
 
-                <div className="h-full w-full px-5 pb-14 pt-16 sm:px-8 sm:pb-14 sm:pt-20 md:px-10 lg:px-16">
-                  <div className="mx-auto flex h-full w-full max-w-[1600px] items-center">
-                    <div className="grid max-h-[calc(100vh-130px)] w-full grid-cols-1 gap-0 overflow-hidden lg:grid-cols-12">
+                <div className="w-full px-5 pb-14 pt-16 sm:px-8 sm:pb-14 sm:pt-20 md:px-10 lg:h-full lg:px-16">
+                  <div className="mx-auto flex w-full max-w-[1600px] items-start lg:h-full lg:items-center">
+                    <div className="grid w-full grid-cols-1 gap-8 sm:gap-10 lg:max-h-[calc(100vh-130px)] lg:grid-cols-12 lg:gap-0 lg:overflow-hidden">
                       {/* =================================================
-                          LEFT COLUMN
+                          LEFT COLUMN — `order-1` pins it to the top of
+                          the mobile stack. On lg+ it keeps its original
+                          side-by-side width (col-span-4), just top-
+                          aligned (`lg:justify-start` instead of
+                          center) so the heading + CTA sit at the top
+                          of the column instead of vertically centered.
                       ================================================= */}
 
-                      <div className="flex flex-col justify-center py-2 lg:col-span-4 lg:pr-10 xl:pr-20">
-                        <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#b08b4d] sm:text-[10px] sm:tracking-[0.25em]">
-                          {service.category}
-                        </span>
-
+                      <div className="order-1 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:justify-start lg:pr-10 xl:pr-20">
                         <h3
-                          className="mt-2 text-[34px] font-medium leading-[0.98] text-[#141A32] sm:mt-4 sm:text-[40px] md:text-[48px] lg:mt-5 lg:text-[54px] xl:text-[52px]"
+                          className="mb-3 text-[34px] font-medium leading-[0.98] text-secondary sm:mt-4 sm:text-[40px] md:text-[48px] lg:mt-5 lg:text-[54px] xl:text-[52px]"
                           style={{
                             fontFamily: "Bodoni Moda, serif",
                           }}
                         >
-                          {service.title}
+                          {service.category}
                         </h3>
-
-                        <p className="mt-3 max-w-xl text-[14px] font-medium leading-[1.4] text-[#252a3e] sm:mt-5 sm:text-[16px] md:text-[18px] lg:mt-6">
-                          {service.subtitle}
-                        </p>
-
-                        <div className="mt-4 flex items-center gap-2 sm:mt-6 sm:gap-3 lg:mt-7">
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#e9c176] sm:h-2 sm:w-2" />
-
-                          <span className="text-[8px] uppercase tracking-[0.15em] text-[#777780] sm:text-[10px] sm:tracking-[0.18em]">
-                            Business Solution
-                          </span>
-                        </div>
+                        <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-primary sm:text-[10px] sm:tracking-[0.25em]">
+                          {service.title1}
+                        </span>
 
                         <Link
-                          href="/#contact"
+                          href={service.ctaUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#141A32] px-5 py-3.5 text-[9px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#1d2642] sm:mt-7 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-[10px] sm:tracking-[0.18em] lg:mt-8"
                         >
                           {service.cta}
@@ -409,11 +447,11 @@ export default function ServicesSection() {
                           MIDDLE COLUMN
                       ================================================= */}
 
-                      <div className="flex max-h-full flex-col justify-start overflow-y-auto py-2 scrollbar-hide lg:col-span-4 lg:border-l lg:border-r lg:border-[#c6c6ce] lg:px-8 lg:py-6 xl:px-14">
+                      <div className="order-2 flex flex-col justify-start py-2 lg:order-none lg:col-span-4 lg:max-h-full lg:overflow-y-auto lg:border-l lg:border-r lg:border-[#c6c6ce] lg:px-8 lg:py-6 lg:scrollbar-hide xl:px-14">
                         {/* TITLE */}
 
                         <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#b08b4d] sm:text-[10px] sm:tracking-[0.22em]">
-                          {service.title1}
+                          {service.title}
                         </span>
 
                         {/* PROBLEM */}
@@ -421,22 +459,13 @@ export default function ServicesSection() {
                         <p className="mt-3 text-[12px] leading-[1.5] text-[#62626a] sm:mt-4 sm:text-[14px] sm:leading-[1.65] md:text-[15px] lg:mt-5">
                           {service.problem}
                         </p>
-
-                        {/* GOLD DIVIDER */}
-
-                        <div className="my-4 h-px w-10 bg-[#e9c176] sm:my-5 sm:w-16 lg:my-6" />
-
-                        {/* =================================================
-                            WE IDENTIFY
-                        ================================================= */}
-
                         {service.identity1 && (
                           <>
-                            <span className="mb-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:text-[10px] sm:tracking-[0.22em]">
-                              {service.identity1}
-                            </span>
+                              {/* <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:text-[10px] sm:tracking-[0.22em]">
+                                {service.identity1}
+                              </span> */}
 
-                            <div className="space-y-2 sm:space-y-2.5 lg:space-y-3">
+                            <div className="space-y-2 sm:space-y-2.5 mt-2 lg:space-y-3">
                               {service.points2?.map((point) => (
                                 <div
                                   key={point}
@@ -457,11 +486,19 @@ export default function ServicesSection() {
                           </>
                         )}
 
+                        {/* GOLD DIVIDER */}
+
+                        <div className="my-4 h-px w-10 bg-[#e9c176] sm:my-5 sm:w-16 lg:my-6" />
+
+                        {/* =================================================
+                            WE IDENTIFY
+                        ================================================= */}
+
                         {/* =================================================
                             KEY TAKEAWAYS
                         ================================================= */}
 
-                        <span className="mb-2 mt-8 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:mt-10 sm:text-[10px] sm:tracking-[0.22em] lg:mt-12">
+                        <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:mt-3 sm:text-[10px] sm:tracking-[0.22em] lg:mt-3">
                           {service.identity}
                         </span>
 
@@ -497,7 +534,7 @@ export default function ServicesSection() {
                           RIGHT COLUMN
                       ================================================= */}
 
-                      <div className="flex flex-col justify-center py-2 lg:col-span-4 lg:pl-8 xl:pl-14">
+                      <div className="order-3 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:pl-8 xl:pl-14">
                         {/* IMAGE */}
 
                         <div className="relative h-36 w-full overflow-hidden border border-[#c6c6ce] bg-[#fbf9f8] sm:h-48 md:h-56 lg:h-[330px] xl:h-[380px]">
@@ -512,10 +549,6 @@ export default function ServicesSection() {
                           <div className="absolute inset-0 bg-gradient-to-t from-[#141A32]/50 via-transparent to-transparent" />
 
                           <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between sm:bottom-5 sm:left-5 sm:right-5">
-                            <span className="bg-[#141A32] px-2 py-1 text-[7px] font-bold uppercase tracking-[0.12em] text-white sm:px-3 sm:py-1.5 sm:text-[8px] sm:tracking-[0.16em]">
-                              NBBS Solution
-                            </span>
-
                             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-10 sm:w-10">
                               <span className="material-symbols-outlined text-[15px] sm:text-[18px]">
                                 north_east
@@ -554,34 +587,6 @@ export default function ServicesSection() {
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* =================================================
-                    BOTTOM PROGRESS
-                ================================================= */}
-
-                <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between gap-4 border-t border-[#c6c6ce] bg-[#EEF0F3]/95 px-5 py-2.5 backdrop-blur-sm sm:px-8 sm:py-3 md:px-10 lg:px-16 lg:py-4">
-                  <p className="text-[7px] uppercase tracking-widest text-[#777780] sm:text-[8px] sm:tracking-[0.16em] lg:text-[9px]">
-                    <span className="hidden sm:inline">Diagnose</span>
-
-                    <span className="sm:hidden">D</span>
-
-                    <span className="mx-1 text-[#e9c176] sm:mx-2">→</span>
-
-                    <span className="hidden sm:inline">Design</span>
-
-                    <span className="sm:hidden">D</span>
-
-                    <span className="mx-1 text-[#e9c176] sm:mx-2">→</span>
-
-                    <span className="hidden sm:inline">Implement</span>
-
-                    <span className="sm:hidden">I</span>
-                  </p>
-
-                  <p className="text-right text-[7px] uppercase tracking-widest text-[#8a8a91] sm:text-[8px] sm:tracking-[0.16em] lg:text-[9px]">
-                    {service.number} / {service.category}
-                  </p>
                 </div>
               </article>
             ))}
