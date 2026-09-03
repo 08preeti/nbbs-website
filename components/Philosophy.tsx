@@ -40,7 +40,7 @@ const principles = [
 export default function Philosophy() {
   return (
     <section className="bg-primary text-surface py-12 md:py-14">
-      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+      <div className="max-w-[1720px] mx-auto px-margin-mobile md:px-margin-desktop">
         {/* Eyebrow */}
         <div className="mb-6 flex items-center gap-3 reveal">
           <span className="h-px w-9 bg-secondary sm:w-12" />
@@ -60,25 +60,25 @@ export default function Philosophy() {
         </h2>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-surface/15 reveal ">
+        <div className="grid grid-cols-1 md:grid-cols-5 border-t border-l border-surface/15 reveal ">
           {principles.map((p) => (
             <div
               key={p.number}
-              className="border-r border-b border-surface/15 px-6 py-8 sm:px-8 sm:py-10 hover:bg-secondary/5"
+              className="group flex flex-col min-h-[340px] sm:min-h-[380px] md:min-h-[440px] border-r border-b border-surface/15 px-5 py-6 sm:px-6 sm:py-8 hover:bg-secondary/5"
             >
               <span className="block text-[10px] font-bold tracking-[0.15em] text-surface/40">
                 {p.number}
               </span>
 
-              <h3 className="font-display text-headline-md text-surface mt-4 mb-3">
+              <h3 className="font-display text-headline-md text-[28px] text-surface mt-4 mb-2">
                 {p.title}
               </h3>
 
-              <p className="font-body-md font-semibold text-surface-variant mb-2">
+              <p className="font-body-md font-semibold text-surface-variant text-[24px] mb-2 ">
                 {p.tagline}
               </p>
 
-              <p className="font-body-md text-surface-variant opacity-80">
+              <p className="font-body-md text-surface-variant text-[18px] opacity-80 ">
                 {p.description}
               </p>
             </div>
