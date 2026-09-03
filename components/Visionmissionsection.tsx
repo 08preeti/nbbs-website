@@ -50,7 +50,7 @@ export default function VisionMissionSection() {
           >
             <div className="flex items-start gap-3">
               {/* Eyebrow */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center gap-3">
                 <span
                   className="
                     h-px w-9
@@ -62,7 +62,6 @@ export default function VisionMissionSection() {
                     sm:group-hover/vision:w-16
                   "
                 />
-              </div>
               <span
                 className="
                   whitespace-nowrap
@@ -77,6 +76,7 @@ export default function VisionMissionSection() {
               >
                 VISION
               </span>
+              </div>
             </div>
 
             <h2
@@ -152,7 +152,6 @@ export default function VisionMissionSection() {
                     sm:group-hover/mission:w-16
                   "
                 />
-              </div>
               <span
                 className="
                   whitespace-nowrap
@@ -167,6 +166,7 @@ export default function VisionMissionSection() {
               >
                 MISSION
               </span>
+              </div>
             </div>
 
             <h2
