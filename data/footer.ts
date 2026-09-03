@@ -8,8 +8,8 @@ export const footerData = {
 
   contact: {
     location: "Nashik, Maharashtra",
-    phone: "+91 98765 43210",
-    email: "hello@nbbs.in",
+    phone: " +91 9145789151",
+    email: " connect@nbbs.in",
   },
 
   solutions: [
