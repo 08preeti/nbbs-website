@@ -11,8 +11,5 @@ export const stats = [
     value: "20+ Years",
     label: "Experience",
   },
-  {
-    value: "6 mo.",
-    label: "To Sustainable Growth",
-  },
+ 
 ];

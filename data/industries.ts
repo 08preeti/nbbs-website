@@ -4,17 +4,13 @@
 
 export const industries: string[] = [
   "Agriculture  ",
-"Manufacturing ",
- "Pharmaceuticals & Healthcare I", 
- "T & SaaS · Logistics & Warehousing ",
- "FMCG  ",
- "Retail & Trading" ,
-" Professional Services",  
- "Jewellery  ",
- "Education & Training",  
- "Creative & Media ",
+  "Manufacturing ",
+  "Pharmaceuticals & Healthcare",
+  "IT & SaaS · Logistics & Warehousing ",
+  "FMCG  ",
+  "Retail & Trading",
+  " Professional Services",
+  "Jewellery  ",
+  "Education & Training",
+  "Creative & Media ",
 ];
-
-
-
-
