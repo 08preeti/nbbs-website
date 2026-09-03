@@ -92,7 +92,7 @@ export default function ContactSection() {
 
                   {/* Contact Text */}
                   <div>
-                    <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#141a32]/35">
+                    <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#141a32]">
                       Contact
                     </p>
 
@@ -145,7 +145,7 @@ export default function ContactSection() {
 
                   {/* Email Text */}
                   <div className="mb-5">
-                    <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#141a32]/35">
+                    <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#141a32]">
                       Email
                     </p>
 

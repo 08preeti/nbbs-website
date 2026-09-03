@@ -257,53 +257,53 @@ export default function Home() {
                     lg:justify-start
                   "
                 >
-                  <Link
-                    href="/#contact"
+                  <a
+                    href="/#services"
                     className="
-                      group
-                      inline-flex
-                      min-h-[48px]
-                      w-full
-                      max-w-[330px]
-                      items-center
-                      justify-center
-                      gap-3
-                      rounded-[6px]
-                      bg-[#172039]
-                      px-5
-                      py-3
-                      text-center
-                      text-[9px]
-                      font-bold
-                      tracking-[0.11em]
-                      text-white
-                      shadow-[0_12px_30px_rgba(23,32,57,0.12)]
-                      transition-all
-                      duration-300
-                      hover:-translate-y-0.5
-                      hover:bg-[#c9a86a]
-                      hover:text-[#172039]
-                      sm:w-auto
-                      sm:max-w-none
-                      sm:px-7
-                      sm:text-[11px]
-                    "
+    group
+    inline-flex
+    min-h-[48px]
+    w-full
+    max-w-[330px]
+    items-center
+    justify-center
+    gap-3
+    rounded-[6px]
+    bg-[#172039]
+    px-5
+    py-3
+    text-center
+    text-[9px]
+    font-bold
+    tracking-[0.11em]
+    text-white
+    shadow-[0_12px_30px_rgba(23,32,57,0.12)]
+    transition-all
+    duration-300
+    hover:-translate-y-0.5
+    hover:bg-[#c9a86a]
+    hover:text-[#172039]
+    sm:w-auto
+    sm:max-w-none
+    sm:px-7
+    sm:text-[11px]
+  "
                   >
                     <span>Explore NBBS Ecosystem</span>
 
                     <span
                       className="
-                        shrink-0
-                        text-[17px]
-                        leading-none
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                      "
+      shrink-0
+      text-[17px]
+      leading-none
+      transition-transform
+      duration-300
+      group-hover:translate-x-1
+    "
                     >
                       →
                     </span>
-                  </Link>
+                  </a>
                 </div>
 
                 {/* ==================================================
