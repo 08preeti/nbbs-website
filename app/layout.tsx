@@ -21,6 +21,8 @@ export const metadata: Metadata = {
   description: "Business Solutions Built Around What Matters.",
 };
 
+import QueryProvider from "@/src/providers/QueryProvider";
+
 export default function RootLayout({
   children,
 }: {
@@ -35,7 +37,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-surface text-on-surface font-sans antialiased overflow-x-hidden" suppressHydrationWarning>
-        {children}
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );
