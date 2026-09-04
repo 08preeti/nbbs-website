@@ -41,21 +41,19 @@ export default function ContactSection() {
           </h1>
 
           {/* ============================================================
-              TWO COLUMN LAYOUT
+              CONTACT INFO
           ============================================================ */}
 
           <div className="mx-auto max-w-2xl">
-            {/* ========================================================
-                CONTACT INFO
-            ======================================================== */}
-
             <div className="w-full">
+
               {/* ======================================================
                   CONTACT
               ====================================================== */}
 
               <a href="tel:+919145789151" className="group block py-2">
                 <div className="flex items-center gap-4">
+
                   {/* Phone Icon */}
                   <div
                     className="
@@ -99,8 +97,6 @@ export default function ContactSection() {
                     <p className="mt-1 text-[18px] font-semibold text-[#141a32]">
                       +91 9145789151
                     </p>
-
-                  
                   </div>
                 </div>
               </a>
@@ -111,6 +107,7 @@ export default function ContactSection() {
 
               <a href="mailto:connect@nbbs.in" className="group block py-2">
                 <div className="flex items-center gap-4">
+
                   {/* Email Icon */}
                   <div
                     className="
@@ -137,7 +134,13 @@ export default function ContactSection() {
                       strokeWidth="1.8"
                       className="h-5 w-5"
                     >
-                      <rect x="3" y="5" width="18" height="14" rx="2" />
+                      <rect
+                        x="3"
+                        y="5"
+                        width="18"
+                        height="14"
+                        rx="2"
+                      />
 
                       <path d="m3 7 9 6 9-6" />
                     </svg>
@@ -152,72 +155,77 @@ export default function ContactSection() {
                     <p className="mt-1 text-[18px] font-semibold text-[#141a32]">
                       connect@nbbs.in
                     </p>
-
-                  
                   </div>
-                  
                 </div>
               </a>
 
               {/* ======================================================
-                  LOCATION / GOOGLE MAP
+                  LOCATION
               ====================================================== */}
 
-   <a href="mailto:connect@nbbs.in" className="group block py-2">
-                <div className="flex items-center gap-4">
-                  {/* Email Icon */}
-                   <div className="flex items-center gap-3">
-                    {/* Location Icon */}
-                    <div
-                      className="
-                        flex
-                        h-9
-                        w-9
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-[#141a32]
-                        text-[#e9c176]
-                      "
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=8%2C%202nd%20Floor%2C%20Smita%20Apartment%202%20Patil%20Lane%2C%202%2C%20College%20Rd%2C%20opp.%20Magnum%20Hospital%2C%20Nashik%2C%20Maharashtra%20422005%2C%20India"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block py-2"
+              >
+                <div className="flex items-start gap-4">
+
+                  {/* Location Icon */}
+                  <div
+                    className="
+                      flex
+                      h-10
+                      w-10
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-[#141a32]
+                      text-[#e9c176]
+                      transition-all
+                      duration-300
+                      ease-out
+                      group-hover:scale-105
+                      group-hover:bg-[#e9c176]
+                      group-hover:text-[#141a32]
+                    "
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
                     >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        className="h-4 w-4"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"
-                        />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"
+                      />
 
-                        <circle cx="12" cy="9" r="2.2" />
-                      </svg>
-                    </div>
-
-                  
+                      <circle cx="12" cy="9" r="2.2" />
+                    </svg>
                   </div>
 
-
-                  {/* Email Text */}
+                  {/* Location Text */}
                   <div className="mb-5">
                     <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#141a32]">
                       Location
                     </p>
 
-                    <p className="mt-1 text-[18px] font-semibold text-[#141a32]">
-                      8, 2nd Floor, Smita Apartment 2 Patil Lane, 2, College Rd, opp. Magnum Hospital, Nashik, Maharashtra 422005, India
+                    <p className="mt-1 text-[18px] font-semibold leading-7 text-[#141a32]">
+                      8, 2nd Floor, Smita Apartment 2 Patil Lane, 2,
+                      College Rd, opp. Magnum Hospital, Nashik,
+                      Maharashtra 422005, India
                     </p>
-
-                  
                   </div>
-                  
                 </div>
               </a>
 
+              {/* ======================================================
+                  GOOGLE MAP
+              ====================================================== */}
 
               <div
                 className="
@@ -232,7 +240,7 @@ export default function ContactSection() {
                 {/* Google Map */}
                 <div className="h-64 w-full overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps?q=NB+Business+Solutions,+Nashik,+Maharashtra&output=embed"
+                    src="https://www.google.com/maps?q=8%2C%202nd%20Floor%2C%20Smita%20Apartment%202%20Patil%20Lane%2C%202%2C%20College%20Rd%2C%20opp.%20Magnum%20Hospital%2C%20Nashik%2C%20Maharashtra%20422005%2C%20India&output=embed"
                     width="100%"
                     height="100%"
                     style={{
@@ -247,10 +255,10 @@ export default function ContactSection() {
 
                 {/* Location Details */}
                 <div className="flex items-center justify-between gap-4 px-5 py-4">
-               
+
                   {/* View Map */}
                   <a
-                    href="https://www.google.com/maps/place/NB+Business+Solutions/@20.0057655,73.7690401"
+                    href="https://www.google.com/maps/search/?api=1&query=8%2C%202nd%20Floor%2C%20Smita%20Apartment%202%20Patil%20Lane%2C%202%2C%20College%20Rd%2C%20opp.%20Magnum%20Hospital%2C%20Nashik%2C%20Maharashtra%20422005%2C%20India"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
@@ -268,6 +276,7 @@ export default function ContactSection() {
                   </a>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
