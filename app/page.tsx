@@ -10,13 +10,6 @@ import IndustriesMarquee from "@/components/IndustriesMarquee";
 import VisionMissionSection from "@/components/Visionmissionsection";
 import ContactSection from "@/components/ContactSection";
 
-const stats = [
-  ["50+", "SMBs IN NASHIK"],
-  ["32%+", "AVG. 6-MO GROWTH"],
-  ["1.2Cr+", "CLIENT SAVINGS"],
-  ["6 mo.", "ROI TIMELINE"],
-];
-
 export default function Home() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-[#fbf9f8] text-[#172039] antialiased">

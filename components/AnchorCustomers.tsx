@@ -4,9 +4,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 
-import { customers } from "../data/customers";
+import { useAnchorCustomers } from "@/src/hooks";
 
 export default function AnchorCustomers() {
+  const { customers } = useAnchorCustomers();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -63,7 +64,7 @@ export default function AnchorCustomers() {
       timelineRef.current = null;
       ctx.revert();
     };
-  }, []);
+  }, [customers]);
 
   const moveToSlide = (slide: number) => {
     const targetSlide = Math.max(0, Math.min(customers.length - 1, slide));
@@ -97,6 +98,10 @@ export default function AnchorCustomers() {
   const previousSlide = () => {
     moveToSlide(currentSlide - 1);
   };
+
+  if (!customers || customers.length === 0) {
+    return null;
+  }
 
   return (
     <section ref={sectionRef} className="bg-paper py-6 md:py-8">
@@ -156,64 +161,70 @@ export default function AnchorCustomers() {
                       </div>
 
                       {/* CHALLENGE */}
-                      <div className="mt-10">
-                        <div className="mb-3 flex items-center gap-4">
-                          <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/50">
-                            Challenge
-                          </span>
+                      {customer.challenge ? (
+                        <div className="mt-10">
+                          <div className="mb-3 flex items-center gap-4">
+                            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/50">
+                              Challenge
+                            </span>
 
-                          <span className="h-px w-10 bg-navy/10" />
+                            <span className="h-px w-10 bg-navy/10" />
+                          </div>
+
+                          <p className="max-w-140 text-sm leading-6 text-navy/65 md:text-[15px] md:leading-7">
+                            {customer.challenge}
+                          </p>
                         </div>
-
-                        <p className="max-w-140 text-sm leading-6 text-navy/65 md:text-[15px] md:leading-7">
-                          {customer.challenge}
-                        </p>
-                      </div>
+                      ) : null}
 
                       {/* SOLUTION */}
-                      <div className="mt-7">
-                        <div className="mb-3 flex items-center gap-4">
-                          <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/50">
-                            Solution
-                          </span>
+                      {customer.solution ? (
+                        <div className="mt-7">
+                          <div className="mb-3 flex items-center gap-4">
+                            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/50">
+                              Solution
+                            </span>
 
-                          <span className="h-px w-10 bg-gold/40" />
+                            <span className="h-px w-10 bg-gold/40" />
+                          </div>
+
+                          <p className="max-w-140 text-sm font-medium leading-6 text-navy md:text-[15px] md:leading-7">
+                            {customer.solution}
+                          </p>
                         </div>
-
-                        <p className="max-w-140 text-sm font-medium leading-6 text-navy md:text-[15px] md:leading-7">
-                          {customer.solution}
-                        </p>
-                      </div>
+                      ) : null}
 
                       {/* RESULTS */}
-                     <div className="mt-6">
-                        <hr className="mb-3 text-primary/50" />
+                      {customer.results && customer.results.length > 0 ? (
+                        <div className="mt-6">
+                          <hr className="mb-3 text-primary/50" />
 
-                        <div className="grid grid-cols-3">
-                          {customer.results.map((result, resultIndex) => (
-                            <div
-                              key={`${result.label}-${resultIndex}`}
-                              className={`
-                                  ${
-                                    resultIndex > 0
-                                      ? "border-l border-navy/10 pl-4 sm:pl-5"
-                                      : ""
-                                  }
+                          <div className="grid grid-cols-3">
+                            {customer.results.map((result, resultIndex) => (
+                              <div
+                                key={`${result.label}-${resultIndex}`}
+                                className={`
+                                    ${
+                                      resultIndex > 0
+                                        ? "border-l border-navy/10 pl-4 sm:pl-5"
+                                        : ""
+                                    }
 
-                                  ${resultIndex < 2 ? "pr-4 sm:pr-5" : ""}
-                                `}
-                            >
-                              <div className="font-display text-2xl font-black leading-none tracking-tighter text-navy sm:text-3xl md:text-4xl">
-                                {result.value}
+                                    ${resultIndex < 2 ? "pr-4 sm:pr-5" : ""}
+                                  `}
+                              >
+                                <div className="font-display text-2xl font-black leading-none tracking-tighter text-navy sm:text-3xl md:text-4xl">
+                                  {result.value}
+                                </div>
+
+                                <p className="mt-2 max-w-32.5 text-[8px] font-bold uppercase leading-[1.45] tracking-[0.07em] text-navy/40 sm:text-[9px]">
+                                  {result.label}
+                                </p>
                               </div>
-
-                              <p className="mt-2 max-w-32.5 text-[8px] font-bold uppercase leading-[1.45] tracking-[0.07em] text-navy/40 sm:text-[9px]">
-                                {result.label}
-                              </p>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      ) : null}
                     </div>
 
                     {/* RIGHT QUOTE */}
@@ -247,7 +258,7 @@ export default function AnchorCustomers() {
 
                         {/* QUOTE */}
                         <blockquote className="mt-5 font-serif text-2xl italic leading-9 text-white sm:text-[26px]">
-                          {customer.quote}
+                          {customer.quote || "-"}
                         </blockquote>
 
                         {/* FOOTER */}
