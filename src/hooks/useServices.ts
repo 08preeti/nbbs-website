@@ -7,7 +7,6 @@ import {
   type ServiceIdentitySection,
   type ServiceItem,
 } from "@/src/types";
-// import { defaultServices } from "@/data/services";
 
 export const serviceKeys = {
   all: ["services"] as const,
@@ -159,7 +158,7 @@ export function useServicesQuery<TData = ServiceItem[]>(
 }
 
 /**
- * Convenience hook providing active services with seamless fallback to static data.
+ * Convenience hook providing active services from the API.
  */
 export function useServices() {
   const query = useServicesQuery();
@@ -169,6 +168,5 @@ export function useServices() {
   return {
     ...query,
     services: activeServices,
-    isUsingFallback: !query.data || query.data.length === 0,
   };
 }

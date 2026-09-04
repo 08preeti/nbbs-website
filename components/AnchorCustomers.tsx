@@ -99,6 +99,10 @@ export default function AnchorCustomers() {
     moveToSlide(currentSlide - 1);
   };
 
+  if (!customers || customers.length === 0) {
+    return null;
+  }
+
   return (
     <section ref={sectionRef} className="bg-paper py-6 md:py-8">
       {/* HEADER */}

@@ -55,5 +55,6 @@ export interface ServiceItem {
   points2?: string[];
   audience?: string;
   proof?: string;
+  title2?: string;
 }
 

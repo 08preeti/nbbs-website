@@ -217,10 +217,11 @@ export default function ServicesSection() {
           SOLUTIONS
       ========================================================= */}
 
-      <section id="solutions" className="bg-[#fbf9f8]">
-        {/* =========================================================
-            GSAP SERVICES
-        ========================================================= */}
+      {services.length > 0 && (
+        <section id="solutions" className="bg-[#fbf9f8]">
+          {/* =========================================================
+              GSAP SERVICES
+          ========================================================= */}
 
         <div
           ref={servicesSectionRef}
@@ -451,6 +452,7 @@ export default function ServicesSection() {
           </div>
         </div>
       </section>
+      )}
     </section>
   );
 }

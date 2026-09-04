@@ -4,16 +4,13 @@
 import { useMemo } from "react";
 import { LucideSparkles } from "lucide-react";
 import { useIndustryNamesQuery } from "@/src/hooks";
-import { industries as fallbackIndustries } from "@/data/industries";
 
 export default function IndustriesMarquee() {
   const { data: dynamicIndustries } = useIndustryNamesQuery();
 
   const currentIndustries = useMemo(() => {
-    const active =
-      dynamicIndustries && dynamicIndustries.length > 0
-        ? dynamicIndustries
-        : fallbackIndustries.map((item) => item.trim()).filter(Boolean);
+    const active = dynamicIndustries || [];
+    if (active.length === 0) return [];
 
     // Ensure the list has enough items to span large screens before duplication
     let extendedList = [...active];
@@ -22,6 +19,10 @@ export default function IndustriesMarquee() {
     }
     return extendedList;
   }, [dynamicIndustries]);
+
+  if (!currentIndustries || currentIndustries.length === 0) {
+    return null;
+  }
 
   return (
     <section className="w-full overflow-hidden border-y border-black/8 bg-primary py-8 md:py-10">
