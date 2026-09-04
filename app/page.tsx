@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import HeroScribble from "@/components/HeroScribble";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
-import Link from "next/link";
 import StatsSection from "@/components/StatsStatics";
 import IndustriesMarquee from "@/components/IndustriesMarquee";
 import VisionMissionSection from "@/components/Visionmissionsection";
@@ -23,7 +22,8 @@ export default function Home() {
     <div className="min-h-screen w-full overflow-x-hidden bg-[#fbf9f8] text-[#172039] antialiased">
       <Header />
 
-      <main className="w-full grow overflow-x-hidden ">
+      <main className="w-full grow overflow-x-hidden">
+
         {/* ============================================================
             HERO
         ============================================================ */}
@@ -32,7 +32,9 @@ export default function Home() {
           id="home"
           className="
             relative
+            isolate
             w-full
+            min-h-[760px]
             overflow-hidden
             border-y
             border-black/5
@@ -40,33 +42,42 @@ export default function Home() {
             mt-10
           "
         >
+
           {/* ==========================================================
-              DESKTOP SCRIBBLE / CIRCUIT
+              SCRIBBLE / CIRCUIT BACKGROUND
+
+              IMPORTANT:
+              The whole HeroScribble is now treated as ONE illustration.
+              It is NOT positioned only on the right side.
           ========================================================== */}
 
           <div
-            className="
-              pointer-events-none
-              absolute
-              right-[-80px]
-              top-1/2
-              z-10
-              hidden
-              w-[700px]
-              max-w-[55vw]
-              -translate-y-1/2
-              lg:block
-              xl:right-[-30px]
-              xl:w-[760px]
-              2xl:right-0
-              2xl:w-[850px]
-            "
-          >
-            <HeroScribble />
+  className="
+    pointer-events-none
+    absolute
+    inset-0
+    z-0
+    hidden
+    lg:block
+  "
+>
+  <div
+  className="
+    pointer-events-none
+    absolute
+    inset-0
+    z-0
+    hidden
+    lg:block
+  "
+>
+  <HeroScribble />
+</div>
           </div>
 
+
           {/* ==========================================================
-              HERO CONTENT CONTAINER
+              HERO CONTENT
           ========================================================== */}
 
           <div
@@ -74,305 +85,303 @@ export default function Home() {
               relative
               z-20
               mx-auto
+              flex
+              min-h-[760px]
               w-full
               max-w-[1500px]
+              items-start
+              justify-center
               px-5
               sm:px-8
               md:px-10
-              lg:min-h-[calc(100vh-72px)]
-              lg:px-[7%]
-              xl:px-[7.5%]
+              lg:px-[6%]
+              xl:px-[7%]
               2xl:px-[8%]
             "
           >
+
             <div
               className="
                 flex
-                min-h-[auto]
+                w-full
                 flex-col
-                justify-center
-                py-10
-                sm:py-12
-                md:py-14
-                lg:min-h-[calc(100vh-72px)]
-                lg:py-8
+                items-center
+                pt-16
+                sm:pt-18
+                md:pt-20
+                lg:pt-16
               "
             >
+
               {/* ======================================================
-                  LEFT TEXT CONTENT
+                  EYEBROW
               ====================================================== */}
 
               <div
                 className="
                   relative
                   z-30
+                  mb-6
+                  flex
                   w-full
-                  lg:w-[58%]
-                  xl:w-[56%]
-                  2xl:w-[54%]
+                  items-center
+                  justify-center
+                  gap-3
+                  sm:mb-7
+                  sm:gap-4
+                  md:mb-8
                 "
               >
-                {/* ==================================================
-                    EYEBROW
-                ================================================== */}
-
-                <div
+                <span
                   className="
-                    mb-5
-                    flex
-                    w-full
-                    items-center
-                    justify-center
-                    gap-2
-                    sm:mb-7
-                    sm:gap-3
-                    md:justify-start
-                    md:gap-4
+                    h-px
+                    w-8
+                    bg-[#c9a86a]
+                    sm:w-10
+                    md:w-14
                   "
-                >
-                  <span
-                    className="
-                      h-px
-                      w-6
-                      shrink-0
-                      bg-[#c9a86a]
-                      sm:w-9
-                      md:w-12
-                    "
-                  />
+                />
 
-                  <span
-                    className="
-                      whitespace-nowrap
-                      text-[7px]
-                      font-bold
-                      uppercase
-                      tracking-[0.16em]
-                      text-[#172039]
-                      sm:text-[9px]
-                      sm:tracking-[0.21em]
-                      md:text-[10px]
-                      md:tracking-[0.27em]
-                    "
-                  >
-                    INTEGRATED BUSINESS SOLUTIONS
-                  </span>
-
-                  <span
-                    className="
-                      h-px
-                      w-6
-                      shrink-0
-                      bg-[#c9a86a]
-                      sm:w-9
-                      md:w-12
-                    "
-                  />
-                </div>
-
-                {/* ==================================================
-                    MAIN HEADING
-                ================================================== */}
-
-                <h1
+                <span
                   className="
-                    relative
-                    z-20
-                    mx-auto
-                    max-w-[780px]
-                    text-center
-                    font-display
-                    text-[42px]
-                    font-semibold
-                    leading-[0.96]
-                    tracking-[-0.045em]
-                    text-[#172039]
-                    sm:text-[54px]
-                    sm:leading-[0.93]
-                    md:text-[62px]
-                    md:tracking-[-0.05em]
-                    lg:mx-0
-                    lg:text-left
-                    lg:text-[67px]
-                    xl:text-[76px]
-                    2xl:text-[84px]
-                  "
-                >
-                  <span>From </span>
-
-                  <span className="font-normal italic text-[#c9a86a]">
-                    Diagnosis
-                  </span>
-
-                  <br />
-
-                  <span>to Solution</span>
-
-                  <br />
-
-                  <span>Implementation.</span>
-                </h1>
-
-                {/* ==================================================
-                    DESCRIPTION
-                ================================================== */}
-
-                <p
-                  className="
-                    mx-auto
-                    mt-5
-                    max-w-[590px]
-                    text-center
-                    text-[13px]
-                    leading-[1.65]
-                    text-[#34415c]
-                    sm:mt-7
-                    sm:text-[14px]
-                    sm:leading-[1.7]
-                    md:mt-7
-                    md:max-w-[560px]
-                    md:text-[15px]
-                    lg:mx-0
-                    lg:text-left
-                  "
-                >
-                  NB Business Solutions helps MSME founders identify what is
-                  holding their business back, create clarity on what needs
-                  attention, and implement practical business solutions for
-                  sustainable growth.
-                </p>
-
-                {/* ==================================================
-                    CTA
-                ================================================== */}
-
-                <div
-                  className="
-                    mt-6
-                    flex
-                    w-full
-                    justify-center
-                    sm:mt-8
-                    md:mt-9
-                    lg:justify-start
-                  "
-                >
-                  <a
-                    href="/#services"
-                    className="
-    group
-    inline-flex
-    min-h-[48px]
-    w-full
-    max-w-[330px]
-    items-center
-    justify-center
-    gap-3
-    rounded-[6px]
-    bg-[#172039]
-    px-5
-    py-3
-    text-center
-    text-[9px]
-    font-bold
-    tracking-[0.11em]
-    text-white
-    shadow-[0_12px_30px_rgba(23,32,57,0.12)]
-    transition-all
-    duration-300
-    hover:-translate-y-0.5
-    hover:bg-[#c9a86a]
-    hover:text-[#172039]
-    sm:w-auto
-    sm:max-w-none
-    sm:px-7
-    sm:text-[11px]
-  "
-                  >
-                    <span>Explore NBBS Ecosystem</span>
-
-                    <span
-                      className="
-      shrink-0
-      text-[17px]
-      leading-none
-      transition-transform
-      duration-300
-      group-hover:translate-x-1
-    "
-                    >
-                      →
-                    </span>
-                  </a>
-                </div>
-
-                {/* ==================================================
-                    STRATEGY / EXECUTION / GROWTH
-                ================================================== */}
-
-                <div
-                  className="
-                    mt-6
-                    flex
-                    flex-wrap
-                    items-center
-                    justify-center
-                    gap-x-3
-                    gap-y-2
-                    text-center
-                    text-[9px]
+                    whitespace-nowrap
+                    text-[8px]
                     font-bold
-                    tracking-[0.08em]
-                    sm:mt-7
-                    sm:gap-x-4
-                    sm:text-[10px]
-                    md:text-[11px]
-                    lg:justify-start
-                    lg:text-left
+                    uppercase
+                    tracking-[0.22em]
+                    text-[#172039]
+                    sm:text-[9px]
+                    md:text-[10px]
+                    md:tracking-[0.27em]
                   "
                 >
-                  <span className="text-secondary">STRATEGY</span>
+                  INTEGRATED BUSINESS SOLUTIONS
+                </span>
 
-                  <span className="text-secondary/60">•</span>
-
-                  <span className="text-secondary">EXECUTION</span>
-
-                  <span className="text-secondary/60">•</span>
-
-                  <span className="text-secondary">GROWTH</span>
-                </div>
+                <span
+                  className="
+                    h-px
+                    w-8
+                    bg-[#c9a86a]
+                    sm:w-10
+                    md:w-14
+                  "
+                />
               </div>
 
+
               {/* ======================================================
-                  MOBILE / TABLET SCRIBBLE
+                  MAIN HEADING
+              ====================================================== */}
+
+              <h1
+                className="
+                  relative
+                  z-30
+                  mx-auto
+                  w-full
+                  max-w-[1000px]
+                  text-center
+                  font-display
+                  text-[42px]
+                  font-semibold
+                  leading-[0.94]
+                  tracking-[-0.045em]
+                  text-[#172039]
+                  sm:text-[50px]
+                  md:text-[60px]
+                  lg:text-[66px]
+                  xl:text-[76px]
+                  2xl:text-[82px]
+                "
+              >
+                <span>From </span>
+
+                <span className="font-normal italic text-[#c9a86a]">
+                  Diagnosis
+                </span>
+
+                <br />
+
+                <span>to Solution</span>
+
+                <br />
+
+                <span>Implementation.</span>
+              </h1>
+
+
+              {/* ======================================================
+                  DESCRIPTION
+              ====================================================== */}
+
+              <p
+                className="
+                  relative
+                  z-30
+                  mx-auto
+                  mt-7
+                  max-w-[760px]
+                  text-center
+                  text-[13px]
+                  leading-[1.7]
+                  text-[#34415c]
+                  sm:mt-8
+                  sm:text-[14px]
+                  md:mt-9
+                  md:text-[15px]
+                  lg:max-w-[760px]
+                "
+              >
+                NB Business Solutions helps MSME founders identify what is
+                holding their business back, create clarity on what needs
+                attention, and implement practical business solutions for
+                sustainable growth.
+              </p>
+
+
+              {/* ======================================================
+                  CTA
               ====================================================== */}
 
               <div
                 className="
                   relative
-                  z-10
+                  z-30
                   mt-8
                   flex
                   w-full
                   justify-center
-                  sm:mt-10
-                  md:mt-12
-                  lg:hidden
+                  sm:mt-9
+                  md:mt-10
                 "
               >
-                <div
+                <a
+                  href="/#services"
                   className="
-                    w-full
-                    max-w-[360px]
-                    sm:max-w-[500px]
-                    md:max-w-[620px]
+                    group
+                    inline-flex
+                    min-h-[50px]
+                    items-center
+                    justify-center
+                    gap-4
+                    rounded-[6px]
+                    bg-[#172039]
+                    px-7
+                    py-3
+                    text-center
+                    text-[10px]
+                    font-bold
+                    tracking-[0.1em]
+                    text-white
+                    shadow-[0_12px_30px_rgba(23,32,57,0.12)]
+                    transition-all
+                    duration-300
+                    hover:-translate-y-0.5
+                    hover:bg-[#c9a86a]
+                    hover:text-[#172039]
+                    sm:px-8
+                    sm:text-[11px]
                   "
                 >
-                  <HeroScribble />
-                </div>
+                  <span>Explore NBBS Ecosystem</span>
+
+                  <span
+                    className="
+                      shrink-0
+                      text-[18px]
+                      leading-none
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-1
+                    "
+                  >
+                    →
+                  </span>
+                </a>
               </div>
+
+
+              {/* ======================================================
+                  STRATEGY / EXECUTION / GROWTH
+
+                  Kept above the circuit illustration.
+              ====================================================== */}
+
+              <div
+                className="
+                  relative
+                  z-30
+                  mt-8
+                  flex
+                  items-center
+                  justify-center
+                  gap-x-4
+                  text-center
+                  text-[9px]
+                  font-bold
+                  tracking-[0.1em]
+                  sm:mt-9
+                  sm:gap-x-5
+                  sm:text-[10px]
+                  md:text-[11px]
+                "
+              >
+                <span className="text-[#c9a86a]">
+                  STRATEGY
+                </span>
+
+                <span className="text-[#c9a86a]/60">
+                  •
+                </span>
+
+                <span className="text-[#c9a86a]">
+                  EXECUTION
+                </span>
+
+                <span className="text-[#c9a86a]/60">
+                  •
+                </span>
+
+                <span className="text-[#c9a86a]">
+                  GROWTH
+                </span>
+              </div>
+
             </div>
           </div>
+
+
+          {/* ==========================================================
+              MOBILE SCRIBBLE
+
+              On mobile the illustration goes underneath the content
+              instead of being placed on the right.
+          ========================================================== */}
+
+          <div
+            className="
+              pointer-events-none
+              relative
+              z-0
+              mt-[-70px]
+              flex
+              w-full
+              justify-center
+              lg:hidden
+            "
+          >
+            <div
+              className="
+                w-[125%]
+                max-w-[700px]
+                translate-x-[-8%]
+              "
+            >
+              <HeroScribble />
+            </div>
+          </div>
+
 
           {/* ==========================================================
               BOTTOM DIVIDER
@@ -385,11 +394,14 @@ export default function Home() {
               bottom-0
               left-0
               right-0
+              z-40
               h-px
               bg-[#172039]/[0.06]
             "
           />
+
         </section>
+
 
         {/* ============================================================
             STATS
@@ -399,13 +411,15 @@ export default function Home() {
           <StatsSection />
         </section>
 
+
         {/* ============================================================
-            INDUSTRIES WE SERVE (auto-scrolling marquee)
+            INDUSTRIES
         ============================================================ */}
 
         <section className="w-full overflow-hidden">
           <IndustriesMarquee />
         </section>
+
 
         {/* ============================================================
             VISION & MISSION
@@ -415,28 +429,48 @@ export default function Home() {
           <VisionMissionSection />
         </section>
 
+
         {/* ============================================================
             SERVICES
         ============================================================ */}
 
-        <section id="services" className="w-full overflow-hidden">
+        <section
+          id="services"
+          className="w-full overflow-hidden"
+        >
           <ServicesSection />
         </section>
+
 
         {/* ============================================================
             ABOUT
         ============================================================ */}
 
-        <section id="about" className="w-full overflow-hidden">
+        <section
+          id="about"
+          className="w-full overflow-hidden"
+        >
           <AboutSection />
         </section>
 
-        <section>
+
+        {/* ============================================================
+            CONTACT
+        ============================================================ */}
+
+        <section className="w-full overflow-hidden">
           <ContactSection />
         </section>
+
       </main>
 
+
+      {/* ==============================================================
+          FOOTER
+      ============================================================== */}
+
       <Footer />
+
     </div>
   );
 }
