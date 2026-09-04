@@ -1,5 +1,6 @@
 // app/page.tsx
 
+import Image from "next/image";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HeroScribble from "@/components/HeroScribble";
@@ -16,7 +17,6 @@ export default function Home() {
       <Header />
 
       <main className="w-full grow overflow-x-hidden">
-
         {/* ============================================================
             HERO
         ============================================================ */}
@@ -35,7 +35,6 @@ export default function Home() {
             mt-10
           "
         >
-
           {/* ==========================================================
               SCRIBBLE / CIRCUIT BACKGROUND
 
@@ -68,7 +67,6 @@ export default function Home() {
 </div>
           </div> */}
 
-
           {/* ==========================================================
               HERO CONTENT
           ========================================================== */}
@@ -92,7 +90,6 @@ export default function Home() {
               2xl:px-[8%]
             "
           >
-
             <div
               className="
                 flex
@@ -105,7 +102,6 @@ export default function Home() {
                 lg:pt-16
               "
             >
-
               {/* ======================================================
                   EYEBROW
               ====================================================== */}
@@ -162,7 +158,6 @@ export default function Home() {
                 />
               </div>
 
-
               {/* ======================================================
                   MAIN HEADING
               ====================================================== */}
@@ -203,6 +198,46 @@ export default function Home() {
                 <span>Implementation.</span>
               </h1>
 
+              {/* ======================================================
+                  CHAOS TO CLARITY SCRIBBLE ILLUSTRATION
+              ====================================================== */}
+
+              {/* <div
+                className="
+                  relative
+                  z-30
+                  mx-auto
+                  my-6
+                  w-full
+                  max-w-[340px]
+                  px-2
+                  sm:my-8
+                  sm:max-w-[480px]
+                  md:my-10
+                  md:max-w-[640px]
+                  lg:my-12
+                  lg:max-w-[840px]
+                  xl:max-w-[980px]
+                  2xl:max-w-[1050px]
+                "
+              > */}
+              <div className="relative -top-[230px] -mb-[350px]">
+                <Image
+                  src="/scribble-main.png"
+                  alt="From Chaos to Clarity - Business Diagnosis and Solution Implementation"
+                  width={2075}
+                  height={758}
+                  priority
+                  className="
+                      h-auto
+                      w-full
+                      select-none
+                      object-contain
+                      pointer-events-none
+                    "
+                />
+              </div>
+              {/* </div> */}
 
               {/* ======================================================
                   DESCRIPTION
@@ -214,6 +249,7 @@ export default function Home() {
                   z-30
                   mx-auto
                   mt-7
+                  mr-36
                   max-w-[760px]
                   text-center
                   text-[13px]
@@ -231,7 +267,6 @@ export default function Home() {
                 attention, and implement practical business solutions for
                 sustainable growth.
               </p>
-
 
               {/* ======================================================
                   CTA
@@ -294,7 +329,6 @@ export default function Home() {
                 </a>
               </div>
 
-
               {/* ======================================================
                   STRATEGY / EXECUTION / GROWTH
 
@@ -320,30 +354,18 @@ export default function Home() {
                   md:text-[11px]
                 "
               >
-                <span className="text-[#c9a86a]">
-                  STRATEGY
-                </span>
+                <span className="text-[#c9a86a]">STRATEGY</span>
 
-                <span className="text-[#c9a86a]/60">
-                  •
-                </span>
+                <span className="text-[#c9a86a]/60">•</span>
 
-                <span className="text-[#c9a86a]">
-                  EXECUTION
-                </span>
+                <span className="text-[#c9a86a]">EXECUTION</span>
 
-                <span className="text-[#c9a86a]/60">
-                  •
-                </span>
+                <span className="text-[#c9a86a]/60">•</span>
 
-                <span className="text-[#c9a86a]">
-                  GROWTH
-                </span>
+                <span className="text-[#c9a86a]">GROWTH</span>
               </div>
-
             </div>
           </div>
-
 
           {/* ==========================================================
               MOBILE SCRIBBLE
@@ -364,7 +386,7 @@ export default function Home() {
               lg:hidden
             "
           > */}
-            {/* <div
+          {/* <div
               className="
                 w-[125%]
                 max-w-[700px]
@@ -374,7 +396,6 @@ export default function Home() {
               <HeroScribble />
             </div> */}
           {/* </div> */}
-
 
           {/* ==========================================================
               BOTTOM DIVIDER
@@ -392,9 +413,7 @@ export default function Home() {
               bg-[#172039]/[0.06]
             "
           />
-
         </section>
-
 
         {/* ============================================================
             STATS
@@ -404,7 +423,6 @@ export default function Home() {
           <StatsSection />
         </section>
 
-
         {/* ============================================================
             INDUSTRIES
         ============================================================ */}
@@ -412,7 +430,6 @@ export default function Home() {
         <section className="w-full overflow-hidden">
           <IndustriesMarquee />
         </section>
-
 
         {/* ============================================================
             VISION & MISSION
@@ -422,30 +439,21 @@ export default function Home() {
           <VisionMissionSection />
         </section>
 
-
         {/* ============================================================
             SERVICES
         ============================================================ */}
 
-        <section
-          id="services"
-          className="w-full overflow-hidden"
-        >
+        <section id="services" className="w-full overflow-hidden">
           <ServicesSection />
         </section>
-
 
         {/* ============================================================
             ABOUT
         ============================================================ */}
 
-        <section
-          id="about"
-          className="w-full overflow-hidden"
-        >
+        <section id="about" className="w-full overflow-hidden">
           <AboutSection />
         </section>
-
 
         {/* ============================================================
             CONTACT
@@ -454,16 +462,13 @@ export default function Home() {
         <section className="w-full overflow-hidden">
           <ContactSection />
         </section>
-
       </main>
-
 
       {/* ==============================================================
           FOOTER
       ============================================================== */}
 
       <Footer />
-
     </div>
   );
 }
