@@ -189,80 +189,296 @@
 
 
 /* ================================================================
-   HERO RESPONSIVE ADJUSTMENTS
+   HERO — fluid screen system (single source of truth)
+
+   Viewport reference: 375px → 1440px
+   Tokens live on .hero-section and cascade to all hero-* utilities.
+   Same weave pattern at every width. Text/spacing use clamp only.
+   Do not hardcode hero spacing/type in JSX — use these utilities only.
 ================================================================ */
 
-@media (max-width: 1023px) {
-  /* Keep the illustration from becoming too dominant */
-  section:first-of-type svg {
-    max-height: 500px;
-  }
-}
+@utility hero-section {
+  /* spacing — tighter on small screens */
+  --hero-pad-x: clamp(1.25rem, 0.6rem + 3.2vw, 7.5rem);
+  --hero-pad-y-top: clamp(2.5rem, 1.8rem + 2vw, 5rem);
+  --hero-pad-y-bottom: clamp(2.75rem, 2rem + 2.2vw, 6rem);
+  --hero-gap: clamp(1rem, 0.7rem + 1vw, 2.5rem);
+  --hero-gap-sm: clamp(0.5rem, 0.35rem + 0.55vw, 1.25rem);
 
-@media (max-width: 640px) {
-  section:first-of-type svg {
-    max-height: 390px;
-  }
-}
+  /* type — 375→1440 (px): title 28→82, body 13→16, eyebrow 8→10,
+     meta 9→11, cta 10→11 */
+  --hero-title-size: clamp(1.75rem, 0.562rem + 5.07vw, 5.125rem);
+  --hero-title-leading: 1.02;
+  --hero-body-size: clamp(0.8125rem, 0.746rem + 0.282vw, 1rem);
+  --hero-body-leading: clamp(1.55, 1.48 + 0.2vw, 1.7);
+  --hero-body-mt: clamp(0.5rem, 0.3rem + 0.7vw, 1.25rem);
+  --hero-body-px: clamp(0.5rem, 0.25rem + 1.2vw, 1rem);
+  --hero-eyebrow-size: clamp(0.5rem, 0.456rem + 0.188vw, 0.625rem);
+  --hero-meta-size: clamp(0.5625rem, 0.518rem + 0.188vw, 0.6875rem);
+  --hero-rule: clamp(1.75rem, 1rem + 2.2vw, 3.5rem);
+  --hero-eyebrow-track: clamp(0.18em, 0.15em + 0.08vw, 0.27em);
 
+  /* layout caps */
+  --hero-shell-max: 93.75rem;
+  --hero-title-max: min(100%, 62.5rem);
+  --hero-scribble-max: 65.625rem;
+  --hero-body-max: min(100%, 42rem);
 
-/* =========================================================
-   HERO DIAGRAM
-   ========================================================= */
+  /* scribble weave — light on mobile so title stays clear; full weave md+ */
+  --hero-scribble-pull: -8%;
+  --hero-scribble-collapse: -3%;
 
-.hero-diagram-wrapper {
-  position: absolute;
-  width: min(58vw, 760px);
-  height: 500px;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hero-diagram-svg {
-  display: block;
+  position: relative;
+  isolation: isolate;
   width: 100%;
+  overflow: hidden;
+  border-block: 1px solid rgb(0 0 0 / 0.05);
+  background-color: #fbf9f8;
+  margin-top: 2.5rem;
+  padding-bottom: var(--hero-pad-y-bottom);
+
+  @media (min-width: 768px) {
+    --hero-title-leading: 0.94;
+    --hero-scribble-pull: -20%;
+    --hero-scribble-collapse: -6%;
+  }
+}
+
+@utility hero-shell {
+  position: relative;
+  z-index: 20;
+  margin-inline: auto;
+  display: flex;
+  width: 100%;
+  max-width: var(--hero-shell-max);
+  align-items: flex-start;
+  justify-content: center;
+  padding-inline: var(--hero-pad-x);
+}
+
+@utility hero-stack {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding-top: var(--hero-pad-y-top);
+}
+
+@utility hero-eyebrow {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.75rem, 0.5rem + 1vw, 1rem);
+  margin-bottom: var(--hero-gap-sm);
+}
+
+@utility hero-eyebrow-rule {
+  height: 1px;
+  width: var(--hero-rule);
+  flex-shrink: 0;
+  background-color: #c9a86a;
+}
+
+@utility hero-eyebrow-label {
+  white-space: nowrap;
+  font-size: var(--hero-eyebrow-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--hero-eyebrow-track);
+  color: #172039;
+}
+
+@utility hero-title {
+  position: relative;
+  z-index: 30;
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--hero-title-max);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--hero-title-size);
+  font-weight: 600;
+  line-height: var(--hero-title-leading);
+  letter-spacing: -0.04em;
+  color: #172039;
+  margin-bottom: 3rem;
+}
+
+@utility hero-title-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@utility hero-title-accent {
+  font-weight: 400;
+  font-style: italic;
+  color: #c9a86a;
+}
+
+@utility hero-scribble {
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+  margin-inline: auto;
+  margin-top: var(--hero-scribble-pull);
+  margin-bottom: var(--hero-scribble-collapse);
+  aspect-ratio: 3 / 1;
+  width: 100%;
+  max-width: var(--hero-scribble-max);
+}
+
+@utility hero-scribble-img {
+  display: block;
   height: 100%;
-  overflow: visible;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  user-select: none;
+  pointer-events: none;
 }
 
-/* Desktop */
-@media (min-width: 1280px) {
-  .hero-diagram-wrapper {
-    width: 760px;
-    height: 500px;
-    right: -35px;
+@utility hero-body {
+  position: relative;
+  z-index: 30;
+  margin-inline: auto;
+  margin-top: var(--hero-body-mt);
+  width: 100%;
+  max-width: var(--hero-body-max);
+  padding-inline: var(--hero-body-px);
+  text-align: center;
+  font-size: var(--hero-body-size);
+  line-height: var(--hero-body-leading);
+  color: #34415c;
+  text-wrap: pretty;
+}
+
+@utility hero-cta {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: var(--hero-gap);
+}
+
+/* CTA uses plain CSS (not @utility vars) so mobile width/type always apply */
+.hero-cta-link {
+  display: inline-flex;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 12rem;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 6px;
+  background-color: #172039;
+  padding: 0.55rem 0.85rem;
+  text-align: center;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgb(23 32 57 / 0.12);
+  transition:
+    transform 300ms ease,
+    background-color 300ms ease,
+    color 300ms ease;
+}
+
+.hero-cta-label {
+  display: inline-block;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  white-space: normal;
+}
+
+.hero-cta-arrow {
+  flex-shrink: 0;
+  width: 0.875rem;
+  height: 0.875rem;
+  transition: transform 300ms ease;
+}
+
+.hero-cta-link:hover {
+  transform: translateY(-2px);
+  background-color: #c9a86a;
+  color: #172039;
+}
+
+.hero-cta-link:hover .hero-cta-arrow {
+  transform: translateX(0.25rem);
+}
+
+@media (min-width: 480px) {
+  .hero-cta-link {
+    max-width: 14.5rem;
+    min-height: 2.75rem;
+    gap: 0.5rem;
+    padding: 0.65rem 1.15rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-cta-arrow {
+    width: 1rem;
+    height: 1rem;
   }
 }
 
-/* Smaller desktop */
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .hero-diagram-wrapper {
-    width: 620px;
-    height: 430px;
-    right: -40px;
+@media (min-width: 768px) {
+  .hero-cta-link {
+    max-width: none;
+    min-height: 3.125rem;
+    gap: 1rem;
+    padding: 0.75rem 2rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-cta-label {
+    white-space: nowrap;
+  }
+
+  .hero-cta-arrow {
+    width: 1.125rem;
+    height: 1.125rem;
   }
 }
 
-/* Tablet */
-@media (max-width: 1023px) {
-  .hero-diagram-wrapper {
-    position: relative;
-    width: 100%;
-    height: 420px;
-    right: auto;
-    top: auto;
-    transform: none;
-    margin-top: 30px;
-  }
+@utility hero-meta {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.75rem, 0.5rem + 0.8vw, 1.25rem);
+  margin-top: var(--hero-gap);
+  text-align: center;
+  font-size: var(--hero-meta-size);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #c9a86a;
 }
 
-/* Mobile */
-@media (max-width: 640px) {
-  .hero-diagram-wrapper {
-    height: 300px;
-    margin-top: 15px;
-  }
+@utility hero-meta-dot {
+  color: rgb(201 168 106 / 0.6);
+}
+
+@utility hero-divider {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 40;
+  height: 1px;
+  background-color: rgb(23 32 57 / 0.06);
 }

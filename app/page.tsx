@@ -1,9 +1,9 @@
 // app/page.tsx
 
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import HeroScribble from "@/components/HeroScribble";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
 import StatsSection from "@/components/StatsStatics";
@@ -18,401 +18,70 @@ export default function Home() {
 
       <main className="w-full grow overflow-x-hidden">
         {/* ============================================================
-            HERO
+            HERO — uses hero-* utilities only (tokens in globals.css)
         ============================================================ */}
 
-        <section
-          id="home"
-          className="
-            relative
-            isolate
-            w-full
-            min-h-[760px]
-            overflow-hidden
-            border-y
-            border-black/5
-            bg-[#fbf9f8]
-            mt-10
-          "
-        >
-          {/* ==========================================================
-              SCRIBBLE / CIRCUIT BACKGROUND
-
-              IMPORTANT:
-              The whole HeroScribble is now treated as ONE illustration.
-              It is NOT positioned only on the right side.
-          ========================================================== */}
-
-          {/* <div
-  className="
-    pointer-events-none
-    absolute
-    inset-0
-    z-0
-    hidden
-    lg:block
-  "
->
-  <div
-  className="
-    pointer-events-none
-    absolute
-    inset-0
-    z-0
-    hidden
-    lg:block
-  "
->
-  <HeroScribble />
-</div>
-          </div> */}
-
-          {/* ==========================================================
-              HERO CONTENT
-          ========================================================== */}
-
-          <div
-            className="
-              relative
-              z-20
-              mx-auto
-              flex
-              min-h-[760px]
-              w-full
-              max-w-[1500px]
-              items-start
-              justify-center
-              px-5
-              sm:px-8
-              md:px-10
-              lg:px-[6%]
-              xl:px-[7%]
-              2xl:px-[8%]
-            "
-          >
-            <div
-              className="
-                flex
-                w-full
-                flex-col
-                items-center
-                pt-16
-                sm:pt-18
-                md:pt-20
-                lg:pt-16
-              "
-            >
-              {/* ======================================================
-                  EYEBROW
-              ====================================================== */}
-
-              <div
-                className="
-                  relative
-                  z-30
-                  mb-6
-                  flex
-                  w-full
-                  items-center
-                  justify-center
-                  gap-3
-                  sm:mb-7
-                  sm:gap-4
-                  md:mb-8
-                "
-              >
-                <span
-                  className="
-                    h-px
-                    w-8
-                    bg-[#c9a86a]
-                    sm:w-10
-                    md:w-14
-                  "
-                />
-
-                <span
-                  className="
-                    whitespace-nowrap
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.22em]
-                    text-[#172039]
-                    sm:text-[9px]
-                    md:text-[10px]
-                    md:tracking-[0.27em]
-                  "
-                >
+        <section id="home" className="hero-section">
+          <div className="hero-shell">
+            <div className="hero-stack">
+              <div className="hero-eyebrow">
+                <span className="hero-eyebrow-rule" />
+                <span className="hero-eyebrow-label">
                   INTEGRATED BUSINESS SOLUTIONS
                 </span>
-
-                <span
-                  className="
-                    h-px
-                    w-8
-                    bg-[#c9a86a]
-                    sm:w-10
-                    md:w-14
-                  "
-                />
+                <span className="hero-eyebrow-rule" />
               </div>
 
-              {/* ======================================================
-                  MAIN HEADING
-              ====================================================== */}
-
-              <h1
-                className="
-                  relative
-                  z-30
-                  mx-auto
-                  w-full
-                  max-w-[1000px]
-                  text-center
-                  font-display
-                  text-[42px]
-                  font-semibold
-                  leading-[0.94]
-                  tracking-[-0.045em]
-                  text-[#172039]
-                  sm:text-[50px]
-                  md:text-[60px]
-                  lg:text-[66px]
-                  xl:text-[76px]
-                  2xl:text-[82px]
-                "
-              >
-                <span>From </span>
-
-                <span className="font-normal italic text-[#c9a86a]">
-                  Diagnosis
+              <h1 className="hero-title">
+                <span className="hero-title-line">
+                  <span>From </span>
+                  <span className="hero-title-accent">Diagnosis</span>
                 </span>
-
                 <br />
-
-                <span>to Solution</span>
-
+                <span className="hero-title-line">to Solution</span>
                 <br />
-
-                <span>Implementation.</span>
+                <span className="hero-title-line">Implementation.</span>
               </h1>
-
-              {/* ======================================================
-                  CHAOS TO CLARITY SCRIBBLE ILLUSTRATION
-              ====================================================== */}
-
-              {/* <div
-                className="
-                  relative
-                  z-30
-                  mx-auto
-                  my-6
-                  w-full
-                  max-w-[340px]
-                  px-2
-                  sm:my-8
-                  sm:max-w-[480px]
-                  md:my-10
-                  md:max-w-[640px]
-                  lg:my-12
-                  lg:max-w-[840px]
-                  xl:max-w-[980px]
-                  2xl:max-w-[1050px]
-                "
-              > */}
-              <div className="relative -top-[230px] -mb-[350px]">
+              <div className="hero-scribble">
                 <Image
                   src="/scribble-main.png"
                   alt="From Chaos to Clarity - Business Diagnosis and Solution Implementation"
-                  width={2075}
-                  height={758}
+                  width={2172}
+                  height={724}
                   priority
-                  className="
-                      h-auto
-                      w-full
-                      select-none
-                      object-contain
-                      pointer-events-none
-                    "
+                  className="hero-scribble-img"
                 />
               </div>
-              {/* </div> */}
 
-              {/* ======================================================
-                  DESCRIPTION
-              ====================================================== */}
-
-              <p
-                className="
-                  relative
-                  z-30
-                  mx-auto
-                  mt-7
-                  mr-36
-                  max-w-[760px]
-                  text-center
-                  text-[13px]
-                  leading-[1.7]
-                  text-[#34415c]
-                  sm:mt-8
-                  sm:text-[14px]
-                  md:mt-9
-                  md:text-[15px]
-                  lg:max-w-[760px]
-                "
-              >
+              <p className="hero-body mt-10">
                 NB Business Solutions helps MSME founders identify what is
                 holding their business back, create clarity on what needs
                 attention, and implement practical business solutions for
                 sustainable growth.
               </p>
 
-              {/* ======================================================
-                  CTA
-              ====================================================== */}
-
-              <div
-                className="
-                  relative
-                  z-30
-                  mt-8
-                  flex
-                  w-full
-                  justify-center
-                  sm:mt-9
-                  md:mt-10
-                "
-              >
-                <a
-                  href="/#services"
-                  className="
-                    group
-                    inline-flex
-                    min-h-[50px]
-                    items-center
-                    justify-center
-                    gap-4
-                    rounded-[6px]
-                    bg-[#172039]
-                    px-7
-                    py-3
-                    text-center
-                    text-[10px]
-                    font-bold
-                    tracking-[0.1em]
-                    text-white
-                    shadow-[0_12px_30px_rgba(23,32,57,0.12)]
-                    transition-all
-                    duration-300
-                    hover:-translate-y-0.5
-                    hover:bg-[#c9a86a]
-                    hover:text-[#172039]
-                    sm:px-8
-                    sm:text-[11px]
-                  "
-                >
-                  <span>Explore NBBS Ecosystem</span>
-
-                  <span
-                    className="
-                      shrink-0
-                      text-[18px]
-                      leading-none
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                  >
-                    →
-                  </span>
+              <div className="hero-cta">
+                <a href="/#services" className="hero-cta-link">
+                  <span className="hero-cta-label">Explore NBBS Ecosystem</span>
+                  <ArrowRight
+                    className="hero-cta-arrow"
+                    aria-hidden="true"
+                    strokeWidth={2.25}
+                  />
                 </a>
               </div>
 
-              {/* ======================================================
-                  STRATEGY / EXECUTION / GROWTH
-
-                  Kept above the circuit illustration.
-              ====================================================== */}
-
-              <div
-                className="
-                  relative
-                  z-30
-                  mt-8
-                  flex
-                  items-center
-                  justify-center
-                  gap-x-4
-                  text-center
-                  text-[9px]
-                  font-bold
-                  tracking-[0.1em]
-                  sm:mt-9
-                  sm:gap-x-5
-                  sm:text-[10px]
-                  md:text-[11px]
-                "
-              >
-                <span className="text-[#c9a86a]">STRATEGY</span>
-
-                <span className="text-[#c9a86a]/60">•</span>
-
-                <span className="text-[#c9a86a]">EXECUTION</span>
-
-                <span className="text-[#c9a86a]/60">•</span>
-
-                <span className="text-[#c9a86a]">GROWTH</span>
+              <div className="hero-meta">
+                <span>STRATEGY</span>
+                <span className="hero-meta-dot">•</span>
+                <span>EXECUTION</span>
+                <span className="hero-meta-dot">•</span>
+                <span>GROWTH</span>
               </div>
             </div>
           </div>
 
-          {/* ==========================================================
-              MOBILE SCRIBBLE
-
-              On mobile the illustration goes underneath the content
-              instead of being placed on the right.
-          ========================================================== */}
-
-          {/* <div
-            className="
-              pointer-events-none
-              relative
-              z-0
-              mt-[-70px]
-              flex
-              w-full
-              justify-center
-              lg:hidden
-            "
-          > */}
-          {/* <div
-              className="
-                w-[125%]
-                max-w-[700px]
-                translate-x-[-8%]
-              "
-            >
-              <HeroScribble />
-            </div> */}
-          {/* </div> */}
-
-          {/* ==========================================================
-              BOTTOM DIVIDER
-          ========================================================== */}
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              bottom-0
-              left-0
-              right-0
-              z-40
-              h-px
-              bg-[#172039]/[0.06]
-            "
-          />
+          <div className="hero-divider" />
         </section>
 
         {/* ============================================================
