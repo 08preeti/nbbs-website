@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import HeroScribble from "@/components/HeroScribble";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
-import Link from "next/link";
 import StatsSection from "@/components/StatsStatics";
 import IndustriesMarquee from "@/components/IndustriesMarquee";
 import VisionMissionSection from "@/components/Visionmissionsection";
