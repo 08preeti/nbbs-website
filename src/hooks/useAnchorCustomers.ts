@@ -16,40 +16,39 @@ export const anchorCustomerKeys = {
 export function normalizeAnchorCustomer(item: AnchorCustomer): Customer {
   let parsedResults: AnchorCustomerResult[] = [];
 
-  // Support `metrics` (value & description)
-  if (Array.isArray(item.metrics) && item.metrics.length > 0) {
-    parsedResults = item.metrics.map((m) => ({
-      value: String(m?.value ?? ""),
-      label: String(m?.description ?? ""),
-    }));
-  } else if (Array.isArray(item.results) && item.results.length > 0) {
-    // Fallback: `results` (value & label)
+  if (Array.isArray(item.results)) {
     parsedResults = item.results.map((r) => ({
       value: String(r?.value ?? ""),
       label: String(r?.label ?? ""),
     }));
+  } else if (typeof item.results === "string") {
+    try {
+      const parsed = JSON.parse(item.results) as unknown;
+      if (Array.isArray(parsed)) {
+        parsedResults = parsed.map((entry) => {
+          const r = entry as Record<string, unknown>;
+          return {
+            value: String(r?.value ?? ""),
+            label: String(r?.label ?? ""),
+          };
+        });
+      }
+    } catch {
+      parsedResults = [];
+    }
   }
 
-  const founderText = [
-    item.representative_name || item.founder || item.founder_name,
-    item.founder_title,
-  ]
+  const founderText = [item.founder || item.founder_name, item.founder_title]
     .filter(Boolean)
     .join(", ");
 
   return {
-    company:
-      item.organization_name || item.company || item.company_name || "",
-    founder:
-      founderText ||
-      item.representative_name ||
-      item.founder ||
-      item.founder_name ||
-      "",
-    challenge: item.challenges || item.challenge || "",
-    solution: item.solutions || item.solution || "",
+    company: item.company || item.company_name || "",
+    founder: founderText || item.founder || item.founder_name || "",
+    challenge: item.challenge || "",
+    solution: item.solution || "",
     results: parsedResults,
-    quote: item.quotes || item.quote || item.testimonial || "",
+    quote: item.quote || item.testimonial || "",
   };
 }
 
@@ -87,3 +86,4 @@ export function useAnchorCustomers() {
     isUsingFallback: !query.data || query.data.length === 0,
   };
 }
+
