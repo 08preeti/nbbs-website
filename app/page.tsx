@@ -44,7 +44,7 @@ export default function Home() {
               It is NOT positioned only on the right side.
           ========================================================== */}
 
-          <div
+          {/* <div
   className="
     pointer-events-none
     absolute
@@ -66,7 +66,7 @@ export default function Home() {
 >
   <HeroScribble />
 </div>
-          </div>
+          </div> */}
 
 
           {/* ==========================================================
@@ -352,7 +352,7 @@ export default function Home() {
               instead of being placed on the right.
           ========================================================== */}
 
-          <div
+          {/* <div
             className="
               pointer-events-none
               relative
@@ -363,8 +363,8 @@ export default function Home() {
               justify-center
               lg:hidden
             "
-          >
-            <div
+          > */}
+            {/* <div
               className="
                 w-[125%]
                 max-w-[700px]
@@ -372,8 +372,8 @@ export default function Home() {
               "
             >
               <HeroScribble />
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
 
           {/* ==========================================================
