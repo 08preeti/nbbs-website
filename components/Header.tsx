@@ -71,7 +71,7 @@ export default function Header() {
             Vision
           </ScrollLink>
            <ScrollLink
-            to="mission"
+            to="vision"
             smooth={true}
             duration={700}
             offset={-80}
