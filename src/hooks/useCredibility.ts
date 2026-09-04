@@ -3,7 +3,6 @@
 import { useQuery, type UseQueryOptions } from "@tanstack/react-query";
 import { fetchCredibilityMetrics } from "@/src/apis";
 import { type CredibilityMetric, type StatItem } from "@/src/types";
-import { stats as defaultStats } from "@/data/stats";
 
 export const credibilityKeys = {
   all: ["credibility"] as const,
@@ -41,18 +40,16 @@ export function useCredibilityQuery<TData = StatItem[]>(
 }
 
 /**
- * Convenience hook providing active credibility stats with fallback to default stats.
+ * Convenience hook providing active credibility stats from the API.
  */
 export function useCredibility() {
   const query = useCredibilityQuery();
 
-  const activeStats =
-    query.data && query.data.length > 0 ? query.data : defaultStats;
+  const activeStats = query.data && query.data.length > 0 ? query.data : [];
 
   return {
     ...query,
     stats: activeStats,
-    isUsingFallback: !query.data || query.data.length === 0,
   };
 }
 
