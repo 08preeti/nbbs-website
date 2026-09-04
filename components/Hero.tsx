@@ -16,7 +16,7 @@ export default function Hero() {
           }}
         >
           We don’t just tell you what to do. We help you understand what needs
-          to change—and why.
+          to change and why.
         </h1>
         {/* Description */}
         <p className="font-body-lg text-body-lg text-primary/50 max-w-2xl leading-relaxed mb-6">
