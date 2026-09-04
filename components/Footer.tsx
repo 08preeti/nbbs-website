@@ -86,7 +86,7 @@ export default function Footer() {
                     href="/#service-02"
                     className="w-fit text-sm text-slate-300 transition-all duration-200 hover:translate-x-1 hover:text-white"
                   >
-                    Business OPD
+                    Business OPD™
                   </Link>
 
                   <Link
