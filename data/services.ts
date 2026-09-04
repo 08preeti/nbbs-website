@@ -118,7 +118,7 @@ export const defaultServices: ServiceItem[] = [
       "One-Page Business Diagnosis Report",
       "Actionable next-step roadmap",
     ],
-    identity1: "We Identify",
+    identity1: "",
     points2: [
       "Where you’re stuck",
       "What’s not working",
