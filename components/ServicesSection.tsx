@@ -271,14 +271,14 @@ export default function ServicesSection() {
 
                       <div className="order-1 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:justify-start lg:pr-10 xl:pr-20">
                         <h3
-                          className="mb-3 text-[34px] font-medium leading-[0.98] text-secondary sm:mt-4 sm:text-[40px] md:text-[48px] lg:mt-5 lg:text-[54px] xl:text-[52px]"
+                          className="mb-3 text-[34px] font-medium leading-[0.98] text-primary sm:mt-4 sm:text-[40px] md:text-[48px] lg:mt-5 lg:text-[54px] xl:text-[52px]"
                           style={{
                             fontFamily: "Bodoni Moda, serif",
                           }}
                         >
                           {service.category}
                         </h3>
-                        <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-primary sm:text-[10px] sm:tracking-[0.25em]">
+                        <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-secondary sm:text-[10px] sm:tracking-[0.25em]">
                           {service.subcategory || service.title1}
                         </span>
 
