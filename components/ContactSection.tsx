@@ -155,6 +155,7 @@ export default function ContactSection() {
 
                   
                   </div>
+                  
                 </div>
               </a>
 
@@ -162,35 +163,10 @@ export default function ContactSection() {
                   LOCATION / GOOGLE MAP
               ====================================================== */}
 
-              <div
-                className="
-                  mt-4
-                  overflow-hidden
-                  rounded-xl
-                  border
-                  border-[#c6c6ce]
-                  bg-white
-                "
-              >
-                {/* Google Map */}
-                <div className="h-64 w-full overflow-hidden">
-                  <iframe
-                    src="https://www.google.com/maps?q=NB+Business+Solutions,+Nashik,+Maharashtra&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{
-                      border: 0,
-                    }}
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="NB Business Solutions Location"
-                  />
-                </div>
-
-                {/* Location Details */}
-                <div className="flex items-center justify-between gap-4 px-5 py-4">
-                  <div className="flex items-center gap-3">
+   <a href="mailto:connect@nbbs.in" className="group block py-2">
+                <div className="flex items-center gap-4">
+                  {/* Email Icon */}
+                   <div className="flex items-center gap-3">
                     {/* Location Icon */}
                     <div
                       className="
@@ -222,18 +198,56 @@ export default function ContactSection() {
                       </svg>
                     </div>
 
-                    {/* Location Text */}
-                    <div>
-                      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#141a32]/35">
-                        Location
-                      </p>
-
-                      <p className="mt-1 text-sm font-semibold text-[#141a32]">
-                        Nashik, Maharashtra
-                      </p>
-                    </div>
+                  
                   </div>
 
+
+                  {/* Email Text */}
+                  <div className="mb-5">
+                    <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#141a32]">
+                      Location
+                    </p>
+
+                    <p className="mt-1 text-[18px] font-semibold text-[#141a32]">
+                      8, 2nd Floor, Smita Apartment 2 Patil Lane, 2, College Rd, opp. Magnum Hospital, Nashik, Maharashtra 422005, India
+                    </p>
+
+                  
+                  </div>
+                  
+                </div>
+              </a>
+
+
+              <div
+                className="
+                  mt-4
+                  overflow-hidden
+                  rounded-xl
+                  border
+                  border-[#c6c6ce]
+                  bg-white
+                "
+              >
+                {/* Google Map */}
+                <div className="h-64 w-full overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps?q=NB+Business+Solutions,+Nashik,+Maharashtra&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{
+                      border: 0,
+                    }}
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="NB Business Solutions Location"
+                  />
+                </div>
+
+                {/* Location Details */}
+                <div className="flex items-center justify-between gap-4 px-5 py-4">
+               
                   {/* View Map */}
                   <a
                     href="https://www.google.com/maps/place/NB+Business+Solutions/@20.0057655,73.7690401"
