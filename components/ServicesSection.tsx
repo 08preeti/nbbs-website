@@ -2,159 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import opd from "@/public/solution.jpg";
-import cash from "@/public/cashflow.jpg";
-import incentive from "@/public/incentives.jpg";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useServices } from "@/src/hooks";
 
-const services = [
-  {
-    number: "01",
-    category: "Business Clarity Workshop",
-    title: "Real Strategies, Actionable Tools.",
-    subtitle: "Know what is coming before it arrives.",
-    image: cash,
-    cta: "Explore Workshop",
-    ctaUrl: "https://workshop.nbbs.in/",
-    identity: "Key Takeaways",
-
-    title1:
-      "Most businesses don’t have a growth problem. They have a clarity problem.",
-
-    problem:
-      "The Business Clarity Workshop helps founders step back from daily firefighting, assess where their business truly stands, identify what’s holding it back, and know what to focus on next through our 8-Pillar Business Clarity Diagnostic.",
-
-    points: [
-      "8-Pillar Business Clarity Diagnostic",
-      "Business Frameworks",
-      "Clarity on What Matters Most",
-      "Visibility into Your Biggest Constraint",
-      "Personalised Clarity Report",
-    ],
-
-    audience:
-      "MSME owners who want clarity on where their business stands and what to do next.",
-
-    proof:
-      "An interactive 3-hour workshop built around practical business frameworks and an 8-Pillar Business Health Diagnostic.",
-  },
-
-  {
-    number: "02",
-    category: "The Business OPD™ ",
-    title: "A Structured Clarity Diagnosis for Founders & Entrepreneurs",
-    subtitle: "Diagnose before you prescribe.",
-    image: opd,
-    cta: "Book a Diagnostic",
-    ctaUrl: "https://businessopd.nbbs.in/",
-
-    title1:
-      "One focused diagnosis. A clear prescription. Actionable next steps.",
-
-    identity: "Key Takeaways",
-    identity1: "We Identify",
-
-    problem:
-      "In a focused 90-minute Business OPD™, we look beyond the symptoms to understand what’s really happening in your business, where the gaps are, and what deserves your attention first.",
-
-    points: [
-      " Business check-in & current situation analysis",
-      " Business symptom analysis",
-      " Root cause diagnosis",
-      " One-Page Business Diagnosis Report",
-      " Actionable next-step roadmap",
-    ],
-
-    title2:
-      "A focused diagnosis that moves you from understanding the problem to knowing what to do next.",
-
-    points2: [
-      "Where you’re stuck",
-      "What’s not working",
-      "What’s costing you",
-      "What needs fixing first",
-    ],
-
-    audience:
-      "MSME founders who need clarity on what’s holding their business back.",
-
-    proof: "150+ Business Diagnostics Delivered",
-  },
-
-  {
-    number: "03",
-    category: "Incentiwise",
-    title: "Incentives Made Intelligent",
-    subtitle:
-      "Track sales, tasks, targets, and incentive programs from one transparent platform - with live dashboards every role can trust.",
-    image: incentive,
-    cta: "Explore Incentiwise",
-    ctaUrl: "https://incentiwise.nbbs.in/",
-
-    identity: "Key Takeaways",
-
-    problem:
-      "Incentive management becomes complicated as teams, targets, rules, and payouts grow. Manual calculations and scattered data create errors, disputes, and a lack of visibility for both managers and employees.",
-
-    points: [
-      "Automated Incentive Calculations",
-      "Flexible Incentive Rule Builder",
-      "Goal & Performance Tracking",
-      "Employee & Channel Partner Management",
-      "Recovery & Clawback Management",
-      "Transparent Incentive Visibility",
-      "WhatsApp & Email Notifications",
-      "Live Dashboards & Analytics",
-      "Monthly Incentive Vouchers",
-      "Reports & Audit Trail",
-    ],
-
-    audience: "Built for founders and growing teams who value transparency",
-
-    proof:
-      "30% fewer incentive disputes. Save hours on complex incentive calculations.",
-  },
-];
-
-const stages = [
-  {
-    number: "01",
-    title: "Diagnostic",
-    text: "Identify your unique operational challenges in a focused 30-minute session.",
-  },
-  {
-    number: "02",
-    title: "Prescription",
-    text: "Turn the diagnosis into a practical roadmap built around your actual business.",
-  },
-  {
-    number: "03",
-    title: "Instrumentation",
-    text: "Introduce the systems, tools and workflows needed to make improvement measurable.",
-  },
-  {
-    number: "04",
-    title: "Scale",
-    text: "Build repeatable processes that reduce dependency and create controlled growth.",
-  },
-];
 
 export default function ServicesSection() {
+  const { services } = useServices();
   const servicesSectionRef = useRef<HTMLDivElement | null>(null);
 
   // Scrolls the pinned GSAP carousel to a specific service card by index,
   // since the cards are stacked (position: absolute) and normal anchor
   // scrolling can't reach them on its own.
-  //
-  // Note: each card's reveal animation is scheduled immediately after the
-  // previous one ends, so the scroll position where card N is "fully shown"
-  // is the exact same instant card N+1 starts sliding on top of it (higher
-  // z-index). We back off by a small buffer so we land solidly inside card
-  // N's visible window instead of right on that boundary, and we jump
-  // instantly (no native smooth-scroll) so it doesn't race with GSAP's own
-  // scrub animation.
   const scrollToServiceIndex = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetIndex: number,
@@ -165,7 +25,8 @@ export default function ServicesSection() {
     ScrollTrigger.refresh();
 
     const trigger = ScrollTrigger.getById("services-pin");
-    const targetId = `service-${services[targetIndex]?.number}`;
+    const targetService = services[targetIndex] || services[0];
+    const targetId = `service-${targetService?.number}`;
 
     if (trigger && services.length > 1) {
       const totalDuration = services.length - 1;
@@ -185,15 +46,6 @@ export default function ServicesSection() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      // The pinned "cards stack on top of each other" scroll-jack effect
-      // only makes sense when there's enough viewport height to show a
-      // full card. On phones/tablets it was forcing every card (title,
-      // points, image, Perfect For / Business Proof boxes) to be squashed
-      // into one screen-height box, which is why it only looked right at
-      // 80% browser zoom. So we scope the pin animation to lg (1024px)
-      // and up via matchMedia; below that, cards render in normal
-      // document flow (see JSX) and the browser scrolls through them
-      // naturally at full, unclipped size.
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 1024px)", () => {
@@ -254,7 +106,7 @@ export default function ServicesSection() {
     return () => {
       ctx.revert();
     };
-  }, []);
+  }, [services]);
 
   return (
     <section
@@ -426,21 +278,23 @@ export default function ServicesSection() {
                           {service.category}
                         </h3>
                         <span className="text-[8px] font-bold uppercase tracking-[0.2em] text-primary sm:text-[10px] sm:tracking-[0.25em]">
-                          {service.title1}
+                          {service.subcategory || service.title1}
                         </span>
 
-                        <Link
-                          href={service.ctaUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#141A32] px-5 py-3.5 text-[9px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#1d2642] sm:mt-7 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-[10px] sm:tracking-[0.18em] lg:mt-8"
-                        >
-                          {service.cta}
+                        {service.cta && service.ctaUrl && (
+                          <Link
+                            href={service.ctaUrl}
+                            target={service.ctaUrl.startsWith("http") ? "_blank" : undefined}
+                            rel={service.ctaUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                            className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#141A32] px-5 py-3.5 text-[9px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#1d2642] sm:mt-7 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-[10px] sm:tracking-[0.18em] lg:mt-8"
+                          >
+                            {service.cta}
 
-                          <span className="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-1 sm:text-[17px]">
-                            arrow_forward
-                          </span>
-                        </Link>
+                            <span className="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-1 sm:text-[17px]">
+                              arrow_forward
+                            </span>
+                          </Link>
+                        )}
                       </div>
 
                       {/* =================================================
@@ -454,19 +308,24 @@ export default function ServicesSection() {
                           {service.title}
                         </span>
 
-                        {/* PROBLEM */}
+                        {/* DESCRIPTION / PROBLEM */}
 
                         <p className="mt-3 text-[12px] leading-[1.5] text-[#62626a] sm:mt-4 sm:text-[14px] sm:leading-[1.65] md:text-[15px] lg:mt-5">
-                          {service.problem}
+                          {service.description || service.problem}
                         </p>
-                        {service.identity1 && (
+
+                        {/* SECONDARY IDENTITY (e.g. "We Identify") */}
+
+                        {(service.secondaryIdentity || service.identity1) && (
                           <>
-                              {/* <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:text-[10px] sm:tracking-[0.22em]">
-                                {service.identity1}
-                              </span> */}
+                            {(service.secondaryIdentity?.title || service.identity1) && (
+                              <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:text-[10px] sm:tracking-[0.22em]">
+                                {service.secondaryIdentity?.title || service.identity1}
+                              </span>
+                            )}
 
                             <div className="space-y-2 sm:space-y-2.5 mt-2 lg:space-y-3">
-                              {service.points2?.map((point) => (
+                              {(service.secondaryIdentity?.points || service.points2)?.map((point) => (
                                 <div
                                   key={point}
                                   className="flex items-start gap-2 sm:gap-3"
@@ -490,36 +349,34 @@ export default function ServicesSection() {
 
                         <div className="my-4 h-px w-10 bg-[#e9c176] sm:my-5 sm:w-16 lg:my-6" />
 
-                        {/* =================================================
-                            WE IDENTIFY
-                        ================================================= */}
+                        {/* PRIMARY IDENTITY (e.g. "Key Takeaways") */}
 
-                        {/* =================================================
-                            KEY TAKEAWAYS
-                        ================================================= */}
+                        {(service.primaryIdentity || service.identity) && (
+                          <>
+                            <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:mt-3 sm:text-[10px] sm:tracking-[0.22em] lg:mt-3">
+                              {service.primaryIdentity?.title || service.identity}
+                            </span>
 
-                        <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:mt-3 sm:text-[10px] sm:tracking-[0.22em] lg:mt-3">
-                          {service.identity}
-                        </span>
+                            <div className="space-y-2 sm:space-y-2.5 lg:space-y-3">
+                              {(service.primaryIdentity?.points || service.points)?.map((point) => (
+                                <div
+                                  key={point}
+                                  className="flex items-start gap-2 sm:gap-3"
+                                >
+                                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-5 sm:w-5">
+                                    <span className="material-symbols-outlined text-[9px] sm:text-[12px]">
+                                      check
+                                    </span>
+                                  </span>
 
-                        <div className="space-y-2 sm:space-y-2.5 lg:space-y-3">
-                          {service.points?.map((point) => (
-                            <div
-                              key={point}
-                              className="flex items-start gap-2 sm:gap-3"
-                            >
-                              <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-5 sm:w-5">
-                                <span className="material-symbols-outlined text-[9px] sm:text-[12px]">
-                                  check
-                                </span>
-                              </span>
-
-                              <span className="text-[10px] leading-[1.35] text-[#46464d] sm:text-[12px] sm:leading-[1.4] md:text-[13px]">
-                                {point}
-                              </span>
+                                  <span className="text-[10px] leading-[1.35] text-[#46464d] sm:text-[12px] sm:leading-[1.4] md:text-[13px]">
+                                    {point}
+                                  </span>
+                                </div>
+                              ))}
                             </div>
-                          ))}
-                        </div>
+                          </>
+                        )}
 
                         {/* Optional title2 */}
 
@@ -542,6 +399,7 @@ export default function ServicesSection() {
                             src={service.image}
                             alt={`${service.title} business solution`}
                             fill
+                            unoptimized={typeof service.image === "string"}
                             sizes="(max-width: 768px) 100vw, 500px"
                             className="object-cover transition-transform duration-700 ease-out hover:scale-105"
                           />
@@ -568,7 +426,7 @@ export default function ServicesSection() {
                             </span>
 
                             <p className="mt-1 text-[9px] font-medium leading-[1.4] text-[#141A32] sm:mt-2 sm:text-[10px] lg:text-[12px]">
-                              {service.audience}
+                              {service.perfectFor || service.audience}
                             </p>
                           </div>
 
@@ -580,7 +438,7 @@ export default function ServicesSection() {
                             </span>
 
                             <p className="mt-2 text-[9px] font-bold leading-[1.4] text-[#141A32] sm:text-[10px] lg:text-[12px]">
-                              {service.proof}
+                              {service.businessProof || service.proof}
                             </p>
                           </div>
                         </div>
