@@ -3,7 +3,7 @@
 export default function VisionMissionSection() {
   return (
     <section
-      id="vision-mission"
+      id="vision"
       className="w-full border-y border-black/5 bg-[#fbf9f8]"
     >
       <div

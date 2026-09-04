@@ -197,17 +197,7 @@ export default function ServicesSection() {
                 </span>
               </Link>
 
-              <Link
-                href="https://businessopd.nbbs.in/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#ffdea5] px-5 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-[#261900] transition-colors hover:bg-[#e9c176] sm:w-auto sm:px-6 sm:text-[12px] sm:tracking-widest"
-              >
-                EXPLORE The Business OPD™
-                <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">
-                  arrow_forward
-                </span>
-              </Link>
+         
             </div>
           </div>
         </div>
@@ -305,7 +295,7 @@ export default function ServicesSection() {
                       <div className="order-2 flex flex-col justify-start py-2 lg:order-none lg:col-span-4 lg:max-h-full lg:overflow-y-auto lg:border-l lg:border-r lg:border-[#c6c6ce] lg:px-8 lg:py-6 lg:scrollbar-hide xl:px-14">
                         {/* TITLE */}
 
-                        <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-[#b08b4d] sm:text-[10px] sm:tracking-[0.22em]">
+                        <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-primary sm:text-[10px] sm:tracking-[0.22em]">
                           {service.title}
                         </span>
 
