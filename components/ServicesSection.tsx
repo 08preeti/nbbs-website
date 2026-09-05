@@ -72,9 +72,11 @@ export default function ServicesSection() {
             start: "top top",
             end: `+=${sections.length * 100}%`,
             pin: true,
+            pinSpacing: true,
             scrub: 1,
             anticipatePin: 1,
             invalidateOnRefresh: true,
+            fastScrollEnd: true,
           },
         });
 
@@ -103,7 +105,18 @@ export default function ServicesSection() {
       ScrollTrigger.refresh();
     }, servicesSectionRef);
 
+    // Service card images/fonts finishing after mount change this
+    // section's height, which silently invalidates the pin's start/end
+    // math and is the main cause of the neighbouring section flashing
+    // through it when scrolling back up fast. Re-measure once loaded.
+    const handleLoad = () => ScrollTrigger.refresh();
+    window.addEventListener("load", handleLoad);
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => ScrollTrigger.refresh());
+    }
+
     return () => {
+      window.removeEventListener("load", handleLoad);
       ctx.revert();
     };
   }, [services]);
@@ -111,7 +124,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="bg-[#fbf9f8] text-[#1a1b22] antialiased font-sans"
+      className="relative isolate z-0 bg-[#fbf9f8] text-[#1a1b22] antialiased font-sans"
     >
       {/* =========================================================
           HERO

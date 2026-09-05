@@ -30,9 +30,11 @@ export default function AnchorCustomers() {
           start: "top top",
           end: () => `+=${(totalCards - 1) * window.innerHeight}`,
           pin: true,
+          pinSpacing: true,
           scrub: 1,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          fastScrollEnd: true,
 
           onUpdate: (self) => {
             const slide = Math.min(
@@ -59,8 +61,19 @@ export default function AnchorCustomers() {
       ScrollTrigger.refresh();
     }, 150);
 
+    // Images/fonts finishing after the initial mount change section
+    // heights, which silently invalidates the start/end math above and
+    // is the main cause of the overlap flash when scrolling back up.
+    // Re-measure once everything has actually finished loading.
+    const handleLoad = () => ScrollTrigger.refresh();
+    window.addEventListener("load", handleLoad);
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => ScrollTrigger.refresh());
+    }
+
     return () => {
       clearTimeout(refreshTimer);
+      window.removeEventListener("load", handleLoad);
       timelineRef.current = null;
       ctx.revert();
     };
@@ -104,7 +117,10 @@ export default function AnchorCustomers() {
   }
 
   return (
-    <section ref={sectionRef} className="bg-paper py-6 md:py-8">
+    <section
+      ref={sectionRef}
+      className="relative isolate z-10 bg-paper py-6 md:py-8"
+    >
       {/* HEADER */}
       <div className="w-full px-5 sm:px-8 md:px-10 lg:px-12">
         <div className="flex items-center gap-3">
