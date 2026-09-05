@@ -56,26 +56,41 @@ function ReviewCard({ review }: { review: ReviewItem }) {
       "
     >
       {/* QUOTE MARK */}
-      <div className="font-serif text-3xl font-bold leading-none text-[#93a2d6]">
+      <div
+        className="font-serif text-3xl font-bold leading-none"
+        style={{
+          color: "#0f172a",
+        }}
+      >
         &rdquo;
       </div>
 
       {/* REVIEW TEXT */}
-      <p className="mt-4 text-[15px] leading-7 text-white/80">
+      <p
+        className="mt-4 text-[15px] leading-7"
+        style={{
+          fontFamily: "Inter, sans-serif",
+          color: "#0f172a",
+        }}
+      >
         {review.review}
       </p>
 
       {/* FOOTER */}
       <div className="mt-8 flex items-end justify-between gap-4">
         <div>
-          <p className="text-[15px] font-bold text-white">{review.name}</p>
+          <p
+            className="text-[15px] font-bold"
+            style={{
+              fontFamily: "Inter, sans-serif",
+              color: "#0f172a",
+            }}
+          >
+            {review.name}
+          </p>
         </div>
 
-        <div className="flex items-center gap-0.5">
-          {Array.from({ length: review.rating }).map((_, i) => (
-            <Star key={i} size={12} className="fill-[#e9c176] text-[#e9c176]" />
-          ))}
-        </div>
+      
       </div>
     </article>
   );
@@ -98,29 +113,20 @@ export default function GoogleReview() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#141a32] py-16 md:py-20">
+    <section className="relative overflow-hidden bg-[#1b1b1d] py-16 md:py-20">
       {/* HEADER */}
       <div className="mx-auto w-full max-w-3xl px-5 text-center">
         <div className="flex items-center justify-center gap-2">
           <GoogleLogo />
-          <span className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#93a2d6] sm:text-xs">
+
+          <span
+            className="text-[11px] font-bold uppercase tracking-[0.28em] sm:text-xs"
+            style={{
+              fontFamily: "Oswald, sans-serif",
+              color: "#0f172a",
+            }}
+          >
             Google Reviews
-          </span>
-        </div>
-
-        <h2
-          className="mt-4 text-3xl leading-tight text-white sm:text-4xl md:text-[2.75rem]"
-          style={{ fontFamily: "Bodoni Moda, serif" }}
-        >
-          Trusted by businesses like yours.
-        </h2>
-
-        <div className="mt-4 flex items-center justify-center gap-1">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} size={16} className="fill-[#e9c176] text-[#e9c176]" />
-          ))}
-          <span className="ml-2 text-sm text-white/60">
-            Rated by our clients
           </span>
         </div>
       </div>
@@ -139,14 +145,20 @@ export default function GoogleReview() {
           {/* Track 1 */}
           <div className="flex shrink-0 items-stretch" aria-hidden={false}>
             {reviews.map((review) => (
-              <ReviewCard key={`track-1-${review.id}`} review={review} />
+              <ReviewCard
+                key={`track-1-${review.id}`}
+                review={review}
+              />
             ))}
           </div>
 
-          {/* Track 2 (exact duplicate for seamless continuous loop) */}
+          {/* Track 2 */}
           <div className="flex shrink-0 items-stretch" aria-hidden="true">
             {reviews.map((review) => (
-              <ReviewCard key={`track-2-${review.id}`} review={review} />
+              <ReviewCard
+                key={`track-2-${review.id}`}
+                review={review}
+              />
             ))}
           </div>
         </div>
