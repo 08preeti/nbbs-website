@@ -147,7 +147,7 @@ export default function GoogleReview() {
           text-center
         "
       >
-        <div
+        {/* <div
           className="
             flex
             items-center
@@ -172,7 +172,7 @@ export default function GoogleReview() {
           >
             Google Reviews
           </span>
-        </div>
+        </div> */}
       </div>
 
       {/* =====================================================
