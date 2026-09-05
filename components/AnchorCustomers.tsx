@@ -104,18 +104,19 @@ export default function AnchorCustomers() {
   }
 
   return (
-    <section ref={sectionRef} className="bg-paper py-6 md:py-8">
+    <section ref={sectionRef} className="bg-paper section-y">
       {/* HEADER */}
-      <div className="w-full px-5 sm:px-8 md:px-10 lg:px-12">
+      <div className="page-x w-full">
         <div className="flex items-center gap-3">
           <span className="h-px w-10 bg-gold" />
         </div>
 
         <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h2 className="font-medium max-w-3xl text-3xl font-black leading-[0.92] tracking-[-0.045em] text-navy sm:text-4xl md:text-5xl"
-           style={{
-                fontFamily: "Bodoni Moda, serif",
-              }}
+          <h2
+            className="text-display max-w-3xl font-medium tracking-[-0.045em] text-navy"
+            style={{
+              fontFamily: "Bodoni Moda, serif",
+            }}
           >
             Anchor Customers
           </h2>
@@ -129,7 +130,7 @@ export default function AnchorCustomers() {
             {customers.map((customer, index) => (
               <div
                 key={`${customer.company}-${index}`}
-                className="w-full shrink-0 px-1"
+                className="page-x w-full shrink-0"
               >
                 <article
                   className="
@@ -147,15 +148,18 @@ export default function AnchorCustomers() {
                     {/* LEFT CONTENT */}
                     <div className="flex flex-col px-7 pb-8 pt-8 sm:px-9 sm:pt-9 md:px-11 md:pb-10 md:pt-10">
                       {/* COMPANY */}
-                      <h3 className="mt-7 max-w-150 font-medium text-3xl font-black leading-[0.98] tracking-[-0.04em] text-navy sm:text-4xl md:text-[2.8rem]"  style={{
-                fontFamily: "Bodoni Moda, serif",
-              }}>
+                      <h3
+                        className="text-headline-lg mt-7 max-w-150 font-medium tracking-[-0.04em] text-navy"
+                        style={{
+                          fontFamily: "Bodoni Moda, serif",
+                        }}
+                      >
                         {customer.company}
                       </h3>
 
                       {/* FOUNDER */}
                       <div className="mt-4 flex items-center gap-3">
-                        <span className="text-left text-[14px] font-bold uppercase tracking-[0.18em] text-secondary">
+                        <span className="text-eyebrow text-left text-secondary">
                           {customer.founder}
                         </span>
                       </div>
@@ -164,14 +168,14 @@ export default function AnchorCustomers() {
                       {customer.challenge ? (
                         <div className="mt-10">
                           <div className="mb-3 flex items-center gap-4">
-                            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/50">
+                            <span className="text-eyebrow text-primary/50">
                               Challenge
                             </span>
 
                             <span className="h-px w-10 bg-navy/10" />
                           </div>
 
-                          <p className="max-w-140 text-sm leading-6 text-navy/65 md:text-[15px] md:leading-7">
+                          <p className="text-body-md max-w-140 text-navy/65">
                             {customer.challenge}
                           </p>
                         </div>
@@ -181,14 +185,14 @@ export default function AnchorCustomers() {
                       {customer.solution ? (
                         <div className="mt-7">
                           <div className="mb-3 flex items-center gap-4">
-                            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/50">
+                            <span className="text-eyebrow text-primary/50">
                               Solution
                             </span>
 
                             <span className="h-px w-10 bg-gold/40" />
                           </div>
 
-                          <p className="max-w-140 text-sm font-medium leading-6 text-navy md:text-[15px] md:leading-7">
+                          <p className="text-body-md max-w-140 font-medium text-navy">
                             {customer.solution}
                           </p>
                         </div>
@@ -213,11 +217,11 @@ export default function AnchorCustomers() {
                                     ${resultIndex < 2 ? "pr-4 sm:pr-5" : ""}
                                   `}
                               >
-                                <div className="font-display text-2xl font-black leading-none tracking-tighter text-navy sm:text-3xl md:text-4xl">
+                                <div className="text-headline-lg font-display font-black tracking-tighter text-navy">
                                   {result.value}
                                 </div>
 
-                                <p className="mt-2 max-w-32.5 text-[8px] font-bold uppercase leading-[1.45] tracking-[0.07em] text-navy/40 sm:text-[9px]">
+                                <p className="text-eyebrow mt-2 max-w-32.5 text-navy/40">
                                   {result.label}
                                 </p>
                               </div>
@@ -228,13 +232,12 @@ export default function AnchorCustomers() {
                     </div>
 
                     {/* RIGHT QUOTE */}
-                    <div className="flex items-center justify-center bg-[#f4f0e8] px-6 h-[500px] sm:px-9 md:px-10">
+                    <div className="card-min-h flex items-center justify-center bg-[#f4f0e8] px-6 sm:px-9 md:px-10">
                       <div
                         className="
                           relative
                           w-full
                           max-w-102.5
-                          
                           rounded-[20px]
                           bg-[#141a32]
                           px-7
@@ -252,12 +255,12 @@ export default function AnchorCustomers() {
                         <span className="absolute bottom-7 left-0 top-7 w-0.75 bg-[#e9c176]" />
 
                         {/* QUOTE MARK */}
-                        <div className="font-serif text-6xl leading-none text-[#e9c176]">
+                        <div className="text-display font-serif leading-none text-[#e9c176]">
                           “
                         </div>
 
                         {/* QUOTE */}
-                        <blockquote className="mt-5 font-serif text-2xl italic leading-9 text-white sm:text-[26px]">
+                        <blockquote className="text-headline-md mt-5 font-serif italic text-white">
                           {customer.quote || "-"}
                         </blockquote>
 
@@ -282,9 +285,7 @@ export default function AnchorCustomers() {
         </div>
 
         {/* SLIDER CONTROLS */}
-        <div className="mt-8 flex items-center justify-between">
-         
-
+        <div className="page-x mt-8 flex items-center justify-between">
           {/* CONTROLS */}
           <div className="flex items-center gap-3">
             {/* PROGRESS */}
@@ -311,8 +312,6 @@ export default function AnchorCustomers() {
               ))}
             </div>
           </div>
-
-         
         </div>
       </div>
     </section>

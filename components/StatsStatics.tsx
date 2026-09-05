@@ -72,11 +72,11 @@ export default function StatsSection() {
               ${getItemBorder(index)}
             `}
           >
-            <span className="mb-2 text-4xl font-display text-secondary">
+            <span className="text-headline-lg mb-2 font-display text-secondary">
               {value}
             </span>
 
-            <span className="text-xs font-sans font-medium uppercase tracking-widest text-white">
+            <span className="text-eyebrow font-sans text-white">
               {label}
             </span>
           </div>

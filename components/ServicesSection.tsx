@@ -117,7 +117,7 @@ export default function ServicesSection() {
           HERO
       ========================================================= */}
 
-      <section className="relative overflow-hidden bg-[#141A32] py-14 sm:py-16 md:py-20">
+      <section className="relative overflow-hidden bg-[#141A32] section-y">
         {/* Grid Background */}
 
         <div
@@ -139,24 +139,24 @@ export default function ServicesSection() {
           }}
         />
 
-        <div className="relative z-10 mx-auto max-w-[1280px] px-5 sm:px-8 md:px-12 lg:px-16">
+        <div className="relative z-10 container page-x">
           <div className="flex max-w-4xl flex-col items-start">
             {/* Label */}
 
             <div className="mb-5 flex items-center gap-3 sm:mb-7 sm:gap-4">
-              <span className="h-px w-7 bg-[#e9c176] sm:w-12" />
+              <span className="eyebrow-rule text-[#e9c176]" />
 
-              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white sm:text-[10px] sm:tracking-[0.25em]">
+              <span className="text-eyebrow text-white">
                 Our Services
               </span>
 
-              <span className="h-px w-7 bg-[#e9c176] sm:w-12" />
+              <span className="eyebrow-rule text-[#e9c176]" />
             </div>
 
             {/* Heading */}
 
             <h1
-              className="text-[44px] font-medium leading-[1.05] tracking-tight text-white xs:text-[48px] sm:text-[56px] md:text-[72px]"
+              className="font-medium text-display tracking-tight text-white"
               style={{
                 fontFamily: "Bodoni Moda, serif",
               }}
@@ -167,7 +167,7 @@ export default function ServicesSection() {
             {/* Subheading */}
 
             <p
-              className="mt-5 max-w-4xl text-[30px] font-medium leading-[1.15] text-[#e8e7f0] sm:mt-6 sm:text-[36px] md:text-[48px]"
+              className="mt-5 max-w-4xl font-medium text-headline-lg text-[#e8e7f0] sm:mt-6"
               style={{
                 fontFamily: "Bodoni Moda, serif",
               }}
@@ -177,7 +177,7 @@ export default function ServicesSection() {
 
             {/* Description */}
 
-            <p className="mt-6 max-w-3xl text-[15px] leading-[1.65] text-[#c0c5e5] sm:mt-7 sm:text-[17px] md:text-[18px]">
+            <p className="mt-6 max-w-3xl text-body-lg text-[#c0c5e5] sm:mt-7">
               We look beyond symptoms to understand the real challenge, identify
               the right priorities, and connect strategy with practical
               implementation for sustainable business growth.
@@ -189,10 +189,10 @@ export default function ServicesSection() {
               <Link
                 href="/#service-02"
                 onClick={(e) => scrollToServiceIndex(e, 1)}
-                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-[#261900] transition-colors hover:bg-gray-300 sm:w-auto sm:px-6 sm:text-[12px] sm:tracking-widest"
+                className="group flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-4 text-button text-[#261900] transition-colors hover:bg-gray-300 sm:w-auto sm:px-6"
               >
                 Not sure where to start?
-                <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">
+                <span className="material-symbols-outlined icon-sm transition-transform group-hover:translate-x-1">
                   arrow_forward
                 </span>
               </Link>
@@ -236,7 +236,7 @@ export default function ServicesSection() {
                 ================================================= */}
 
                 <div className="absolute left-5 top-5 z-20 sm:left-8 sm:top-7 md:left-10 md:top-8 lg:left-16">
-                  <span className="text-[8px] uppercase tracking-[0.2em] text-[#8a8a91] sm:text-[10px] sm:tracking-[0.25em]">
+                  <span className="text-eyebrow text-[#8a8a91]">
                     Service
                   </span>
 
@@ -247,8 +247,8 @@ export default function ServicesSection() {
                     MAIN CONTENT
                 ================================================= */}
 
-                <div className="w-full px-5 pb-14 pt-16 sm:px-8 sm:pb-14 sm:pt-20 md:px-10 lg:h-full lg:px-16">
-                  <div className="mx-auto flex w-full max-w-[1600px] items-start lg:h-full lg:items-center">
+                <div className="w-full page-x pb-14 pt-16 sm:pb-14 sm:pt-20 lg:h-full">
+                  <div className="flex w-full container-wide items-start lg:h-full lg:items-center">
                     <div className="grid w-full grid-cols-1 gap-8 sm:gap-10 lg:max-h-[calc(100vh-130px)] lg:grid-cols-12 lg:gap-0 lg:overflow-hidden">
                       {/* =================================================
                           LEFT COLUMN — `order-1` pins it to the top of
@@ -261,14 +261,14 @@ export default function ServicesSection() {
 
                       <div className="order-1 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:justify-start lg:pr-10 xl:pr-20">
                         <h3
-                          className="mb-3 text-[34px] font-medium leading-[0.98] text-primary sm:mt-4 sm:text-[40px] md:text-[48px] lg:mt-5 lg:text-[54px] xl:text-[52px]"
+                          className="mb-3 font-medium text-headline-md text-primary sm:mt-4 lg:mt-5"
                           style={{
                             fontFamily: "Bodoni Moda, serif",
                           }}
                         >
                           {service.category}
                         </h3>
-                        <span className="text-[8px] font-bold tracking-[0.2em] text-secondary sm:text-[10px] sm:tracking-[0.25em]">
+                        <span className="text-eyebrow text-secondary">
                           {service.subcategory || service.title1}
                         </span>
 
@@ -277,11 +277,11 @@ export default function ServicesSection() {
                             href={service.ctaUrl}
                             target={service.ctaUrl.startsWith("http") ? "_blank" : undefined}
                             rel={service.ctaUrl.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#141A32] px-5 py-3.5 text-[9px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#1d2642] sm:mt-7 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-[10px] sm:tracking-[0.18em] lg:mt-8"
+                            className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#141A32] px-5 py-3.5 text-button text-white transition-all hover:bg-[#1d2642] sm:mt-7 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 lg:mt-8"
                           >
                             {service.cta}
 
-                            <span className="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-1 sm:text-[17px]">
+                            <span className="material-symbols-outlined icon-sm transition-transform group-hover:translate-x-1">
                               arrow_forward
                             </span>
                           </Link>
@@ -295,13 +295,13 @@ export default function ServicesSection() {
                       <div className="order-2 flex flex-col justify-start py-2 lg:order-none lg:col-span-4 lg:max-h-full lg:overflow-y-auto lg:border-l lg:border-r lg:border-[#c6c6ce] lg:px-8 lg:py-6 lg:scrollbar-hide xl:px-14">
                         {/* TITLE */}
 
-                        <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-primary sm:text-[10px] sm:tracking-[0.22em]">
+                        <span className="text-eyebrow text-primary">
                           {service.title}
                         </span>
 
                         {/* DESCRIPTION / PROBLEM */}
 
-                        <p className="mt-3 text-[12px] leading-[1.5] text-[#62626a] sm:mt-4 sm:text-[14px] sm:leading-[1.65] md:text-[15px] lg:mt-5">
+                        <p className="mt-3 text-body-md text-[#62626a] sm:mt-4 lg:mt-5">
                           {service.description || service.problem}
                         </p>
 
@@ -310,7 +310,7 @@ export default function ServicesSection() {
                         {(service.secondaryIdentity || service.identity1) && (
                           <>
                             {(service.secondaryIdentity?.title || service.identity1) && (
-                              <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:text-[10px] sm:tracking-[0.22em]">
+                              <span className="mb-1 mt-2 block text-eyebrow text-[#141A32] sm:mb-3">
                                 {service.secondaryIdentity?.title || service.identity1}
                               </span>
                             )}
@@ -321,13 +321,13 @@ export default function ServicesSection() {
                                   key={point}
                                   className="flex items-start gap-2 sm:gap-3"
                                 >
-                                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-5 sm:w-5">
-                                    <span className="material-symbols-outlined text-[9px] sm:text-[12px]">
+                                  <span className="icon-sm flex shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32]">
+                                    <span className="material-symbols-outlined icon-xs">
                                       check
                                     </span>
                                   </span>
 
-                                  <span className="text-[10px] leading-[1.35] text-[#46464d] sm:text-[12px] sm:leading-[1.4] md:text-[13px]">
+                                  <span className="text-body-sm text-[#46464d]">
                                     {point.replace("✓ ", "")}
                                   </span>
                                 </div>
@@ -338,13 +338,13 @@ export default function ServicesSection() {
 
                         {/* GOLD DIVIDER */}
 
-                        <div className="my-4 h-px w-10 bg-[#e9c176] sm:my-5 sm:w-16 lg:my-6" />
+                        <div className="my-4 eyebrow-rule text-[#e9c176] sm:my-5 lg:my-6" />
 
                         {/* PRIMARY IDENTITY (e.g. "Key Takeaways") */}
 
                         {(service.primaryIdentity || service.identity) && (
                           <>
-                            <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:mt-3 sm:text-[10px] sm:tracking-[0.22em] lg:mt-3">
+                            <span className="mb-1 mt-2 block text-eyebrow text-[#141A32] sm:mb-3 sm:mt-3 lg:mt-3">
                               {service.primaryIdentity?.title || service.identity}
                             </span>
 
@@ -354,13 +354,13 @@ export default function ServicesSection() {
                                   key={point}
                                   className="flex items-start gap-2 sm:gap-3"
                                 >
-                                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-5 sm:w-5">
-                                    <span className="material-symbols-outlined text-[9px] sm:text-[12px]">
+                                  <span className="icon-sm flex shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32]">
+                                    <span className="material-symbols-outlined icon-xs">
                                       check
                                     </span>
                                   </span>
 
-                                  <span className="text-[10px] leading-[1.35] text-[#46464d] sm:text-[12px] sm:leading-[1.4] md:text-[13px]">
+                                  <span className="text-body-sm text-[#46464d]">
                                     {point}
                                   </span>
                                 </div>
@@ -372,7 +372,7 @@ export default function ServicesSection() {
                         {/* Optional title2 */}
 
                         {service.title2 && (
-                          <p className="mt-6 text-[11px] leading-[1.5] text-[#62626a] sm:mt-7 sm:text-[13px] sm:leading-[1.6]">
+                          <p className="mt-6 text-body-sm text-[#62626a] sm:mt-7">
                             {service.title2}
                           </p>
                         )}
@@ -385,7 +385,7 @@ export default function ServicesSection() {
                       <div className="order-3 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:pl-8 xl:pl-14">
                         {/* IMAGE */}
 
-                        <div className="relative h-36 w-full overflow-hidden border border-[#c6c6ce] bg-[#fbf9f8] sm:h-48 md:h-56 lg:h-[330px] xl:h-[380px]">
+                        <div className="relative media-frame w-full overflow-hidden border border-[#c6c6ce] bg-[#fbf9f8]">
                           <Image
                             src={service.image}
                             alt={`${service.title} business solution`}
@@ -398,8 +398,8 @@ export default function ServicesSection() {
                           <div className="absolute inset-0 bg-gradient-to-t from-[#141A32]/50 via-transparent to-transparent" />
 
                           <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between sm:bottom-5 sm:left-5 sm:right-5">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-10 sm:w-10">
-                              <span className="material-symbols-outlined text-[15px] sm:text-[18px]">
+                            <div className="icon-lg flex items-center justify-center rounded-full bg-[#e9c176] text-[#141A32]">
+                              <span className="material-symbols-outlined icon-md">
                                 north_east
                               </span>
                             </div>
@@ -412,11 +412,11 @@ export default function ServicesSection() {
                           {/* PERFECT FOR */}
 
                           <div className="border border-[#c6c6ce] bg-[#fbf9f8] p-3 sm:p-4 lg:p-5">
-                            <span className="block text-[7px] font-bold uppercase tracking-[0.12em] text-[#8a8a91] sm:text-[8px] sm:tracking-[0.16em]">
+                            <span className="block text-eyebrow text-[#8a8a91]">
                               Perfect For
                             </span>
 
-                            <p className="mt-1 text-[9px] font-medium leading-[1.4] text-[#141A32] sm:mt-2 sm:text-[10px] lg:text-[12px]">
+                            <p className="mt-1 text-body-sm font-medium text-[#141A32] sm:mt-2">
                               {service.perfectFor || service.audience}
                             </p>
                           </div>
@@ -424,11 +424,11 @@ export default function ServicesSection() {
                           {/* BUSINESS PROOF */}
 
                           <div className="border border-[#c6c6ce] bg-[#fbf9f8] p-3 sm:p-4 lg:p-5">
-                            <span className="block text-[7px] font-bold uppercase tracking-[0.12em] text-[#8a8a91] sm:text-[8px] sm:tracking-[0.16em]">
+                            <span className="block text-eyebrow text-[#8a8a91]">
                               Business Proof
                             </span>
 
-                            <p className="mt-2 text-[9px] font-bold leading-[1.4] text-[#141A32] sm:text-[10px] lg:text-[12px]">
+                            <p className="mt-2 text-body-sm font-bold text-[#141A32]">
                               {service.businessProof || service.proof}
                             </p>
                           </div>

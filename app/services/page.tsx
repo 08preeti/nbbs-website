@@ -160,7 +160,7 @@ export default function ServicesPage() {
       <Header />
 
       <main className="grow">
-        <section className="bg-[#141A32] relative overflow-hidden py-12 sm:py-14 md:py-18 lg:py-20">
+        <section className="bg-[#141A32] relative overflow-hidden section-y">
           <div
             className="absolute inset-0 pointer-events-none opacity-20"
             style={{
@@ -180,27 +180,17 @@ export default function ServicesPage() {
             }}
           />
 
-          <div className="mx-auto px-5 sm:px-8 md:px-12 lg:px-16 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
+          <div className="container page-x relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-9 lg:col-span-8 flex flex-col items-start space-y-6 sm:space-y-8">
-              <h1
-                className="text-[34px] xs:text-[40px] sm:text-[52px] md:text-[62px] lg:text-[72px] leading-[1.1] font-semibold text-white tracking-tight"
-                style={{
-                  fontFamily: "Bodoni Moda, serif",
-                }}
-              >
+              <h1 className="text-display font-display font-semibold text-white tracking-tight">
                 NBBS Ecosystem
               </h1>
 
-              <p
-                className="text-[26px] xs:text-[30px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[1.2] font-medium text-[#e8e7f0] md:w-4/5"
-                style={{
-                  fontFamily: "Bodoni Moda, serif",
-                }}
-              >
+              <p className="text-headline-lg font-display font-medium text-[#e8e7f0] md:w-4/5">
                 One connected journey. From diagnosis to implementation.
               </p>
 
-              <p className="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.6] text-[#c0c5e5] md:w-4/5 lg:w-3/4">
+              <p className="text-body-lg text-[#c0c5e5] md:w-4/5 lg:w-3/4">
                 We look beyond symptoms to understand the real challenge,
                 identify the right priorities, and connect strategy with
                 practical implementation for sustainable business growth.
@@ -209,17 +199,17 @@ export default function ServicesPage() {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 w-full sm:w-auto">
                 <Link
                   href="/contacts"
-                  className="bg-[#ffdea5] text-[#261900] text-[11px] sm:text-[12px] leading-none rounded-xl tracking-widest font-bold uppercase px-6 py-3.5 sm:py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
+                  className="bg-[#ffdea5] text-[#261900] text-button rounded-xl px-6 py-3.5 sm:py-4 hover:bg-[#e9c176] transition-colors flex items-center justify-center gap-2 group"
                 >
                   EXPLORE The Business OPD™
-                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
+                  <span className="material-symbols-outlined icon-sm group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
                 </Link>
 
                 <Link
                   href="#solutions"
-                  className="border border-[#c7c5ce] text-white text-[11px] sm:text-[12px] leading-none tracking-widest font-bold uppercase px-6 rounded-xl py-3.5 sm:py-4 hover:bg-white hover:text-[#141a32] transition-colors flex items-center justify-center"
+                  className="border border-[#c7c5ce] text-white text-button rounded-xl px-6 py-3.5 sm:py-4 hover:bg-white hover:text-[#141a32] transition-colors flex items-center justify-center"
                 >
                   Explore Solutions
                 </Link>
@@ -230,14 +220,9 @@ export default function ServicesPage() {
 
         {/* solution  */}
         <section id="solutions" className="bg-[#fbf9f8]">
-          <div className="max-w-320 mx-auto px-5 sm:px-8 md:px-10 lg:px-16 pt-12 sm:pt-14 md:pt-16 lg:pt-20 pb-10 sm:pb-12">
+          <div className="container-wide page-x pt-[var(--fluid-section-y)] pb-10 sm:pb-12">
             <div className="max-w-3xl">
-              <h2
-                className="text-[#141A32] text-[32px] xs:text-[36px] sm:text-[44px] md:text-[54px] lg:text-[64px] xl:text-[68px] leading-[1.05]"
-                style={{
-                  fontFamily: "Bodoni Moda, serif",
-                }}
-              >
+              <h2 className="text-display font-display text-[#141A32]">
                 Business problems.
                 <br />
                 <span className="text-[#c49b55] italic">
@@ -245,7 +230,7 @@ export default function ServicesPage() {
                 </span>
               </h2>
 
-              <p className="mt-5 sm:mt-7 max-w-2xl text-[14.5px] sm:text-[16px] md:text-[18px] leading-[1.65] sm:leading-[1.7] text-[#4b4b54]">
+              <p className="mt-5 sm:mt-7 max-w-2xl text-body-lg text-[#4b4b54]">
                 We diagnose how your business works today, identify where things
                 break down, and build practical systems that help you operate,
                 decide and grow better.
@@ -273,34 +258,34 @@ export default function ServicesPage() {
                     <div className="sticky top-0 left-0 right-0 h-0.75 bg-[#e9c176] z-30" />
 
                     {/* Service Number */}
-                    <div className="pt-7 sm:pt-8 px-5 sm:px-8 md:px-10 lg:px-16 lg:absolute lg:top-8 lg:left-16 lg:pt-0  z-20 flex items-center justify-between lg:block">
+                    <div className="pt-7 sm:pt-8 page-x lg:absolute lg:inset-x-0 lg:top-8 lg:pt-0 z-20 flex items-center justify-between lg:block">
                       <div>
-                        <span className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-semibold text-[#5c5c68]">
+                        <span className="text-eyebrow font-semibold text-[#5c5c68]">
                           Service
                         </span>
 
                         <div className="mt-2 flex items-center gap-3">
-                          <span className="text-[12px] sm:text-[13px] font-bold text-[#141A32]">
+                          <span className="text-body-sm font-bold text-[#141A32]">
                             {service.number}
                           </span>
 
-                          <span className="w-8 h-px bg-[#e9c176]" />
+                          <span className="eyebrow-rule text-[#e9c176]" />
 
-                          <span className="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-bold text-[#141A32]">
+                          <span className="text-eyebrow text-[#141A32]">
                             {service.category}
                           </span>
                         </div>
                       </div>
 
                       {/* Top Right Label (inline on mobile/tablet, absolute on lg) */}
-                      <span className="hidden sm:inline-block lg:absolute lg:top-8 lg:right-16 text-[8px] sm:text-[9px] tracking-[0.2em] uppercase font-medium text-[#5c5c68]">
+                      <span className="hidden sm:inline-block lg:absolute lg:top-0 lg:right-[var(--fluid-page-x)] text-eyebrow font-medium text-[#5c5c68]">
                         NBBS BUSINESS SOLUTIONS
                       </span>
                     </div>
 
                     {/* Main Content */}
-                    <div className="w-full lg:h-full flex items-start lg:items-center px-5 sm:px-8 md:px-10 lg:px-16 pt-6 sm:pt-8 lg:pt-20 pb-10 sm:pb-12">
-                      <div className="w-full lg:h-full max-w-400 mx-auto flex items-center">
+                    <div className="w-full lg:h-full flex items-start lg:items-center page-x pt-6 sm:pt-8 lg:pt-20 pb-10 sm:pb-12">
+                      <div className="w-full lg:h-full container-wide flex items-center">
                         <div className="grid grid-cols-1 lg:grid-cols-12 w-full gap-8 sm:gap-10 lg:gap-0">
                           {/* LEFT */}
                           <div
@@ -315,85 +300,32 @@ export default function ServicesPage() {
                             lg:py-8
                           "
                           >
-                            <span className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase font-bold text-[#a3763a]">
+                            <span className="text-eyebrow text-[#a3763a]">
                               {service.category}
                             </span>
 
-                            <h3
-                              className="
-                              mt-4
-                              sm:mt-5
-                              text-[32px]
-                              xs:text-[36px]
-                              sm:text-[44px]
-                              md:text-[50px]
-                              lg:text-[54px]
-                              xl:text-[64px]
-                              leading-[1.05]
-                              lg:leading-none
-                              text-[#141A32]
-                            "
-                              style={{
-                                fontFamily: "Bodoni Moda, serif",
-                              }}
-                            >
+                            <h3 className="mt-4 sm:mt-5 text-display font-display text-[#141A32]">
                               {service.title}
                             </h3>
 
-                            <p
-                              className="
-                              mt-5
-                              sm:mt-7
-                              text-[16px]
-                              sm:text-[18px]
-                              md:text-[20px]
-                              lg:text-[20px]
-                              xl:text-[22px]
-                              leading-normal
-                              font-medium
-                              text-[#1f2333]
-                              max-w-xl
-                            "
-                            >
+                            <p className="mt-5 sm:mt-7 text-body-lg font-medium text-[#1f2333] max-w-xl">
                               {service.subtitle}
                             </p>
 
                             <div className="mt-6 sm:mt-8 flex items-center gap-3">
                               <span className="w-2 h-2 rounded-full bg-[#e9c176] shrink-0" />
 
-                              <span className="text-[9px] sm:text-[10px] tracking-[0.18em] uppercase font-semibold text-[#4b4b58]">
+                              <span className="text-eyebrow font-semibold text-[#4b4b58]">
                                 Business Solution
                               </span>
                             </div>
 
                             <Link
                               href="/contacts"
-                              className="
-                              mt-7
-                              sm:mt-10
-                              inline-flex
-                              items-center
-                              gap-3
-                              w-fit
-                              px-5
-                              sm:px-6
-                              py-3.5
-                              sm:py-4
-                              rounded-xl
-                              bg-[#141A32]
-                              text-white
-                              text-[9px]
-                              sm:text-[10px]
-                              tracking-[0.18em]
-                              uppercase
-                              font-bold
-                              hover:bg-[#1d2642]
-                              transition-all
-                              group
-                            "
+                              className="btn-primary mt-7 sm:mt-10 w-fit bg-[#141A32] hover:bg-[#1d2642] hover:text-white shadow-none group"
                             >
                               Book a Diagnostic
-                              <span className="material-symbols-outlined text-[16px] sm:text-[17px] group-hover:translate-x-1 transition-transform">
+                              <span className="material-symbols-outlined icon-md group-hover:translate-x-1 transition-transform">
                                 arrow_forward
                               </span>
                             </Link>
@@ -420,42 +352,17 @@ export default function ServicesPage() {
                             lg:py-8
                           "
                           >
-                            <span className="text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.22em] uppercase font-bold text-[#a3763a]">
+                            <span className="text-eyebrow text-[#a3763a]">
                               The Business Problem
                             </span>
 
-                            <p
-                              className="
-                              mt-5
-                              sm:mt-6
-                              text-[15px]
-                              sm:text-[16px]
-                              md:text-[17px]
-                              lg:text-[18px]
-                              leading-[1.7]
-                              sm:leading-[1.75]
-                              text-[#3a3d4b]
-                            "
-                            >
+                            <p className="mt-5 sm:mt-6 text-body-lg text-[#3a3d4b]">
                               {service.problem}
                             </p>
 
-                            <div className="w-16 h-px bg-[#e9c176] my-6 sm:my-8" />
+                            <div className="eyebrow-rule text-[#e9c176] my-6 sm:my-8" />
 
-                            <span
-                              className="
-                              block
-                              text-[9px]
-                              sm:text-[10px]
-                              tracking-[0.2em]
-                              sm:tracking-[0.22em]
-                              uppercase
-                              font-bold
-                              text-[#141A32]
-                              mb-5
-                              sm:mb-6
-                            "
-                            >
+                            <span className="block text-eyebrow text-[#141A32] mb-5 sm:mb-6">
                               What changes
                             </span>
 
@@ -465,26 +372,13 @@ export default function ServicesPage() {
                                   key={point}
                                   className="flex items-start gap-3"
                                 >
-                                  <span
-                                    className="
-                                    flex
-                                    shrink-0
-                                    items-center
-                                    justify-center
-                                    w-5
-                                    h-5
-                                    rounded-full
-                                    bg-[#e9c176]
-                                    text-[#141A32]
-                                    mt-0.5
-                                  "
-                                  >
-                                    <span className="material-symbols-outlined text-[12px]">
+                                  <span className="flex shrink-0 items-center justify-center icon-sm rounded-full bg-[#e9c176] text-[#141A32] mt-0.5">
+                                    <span className="material-symbols-outlined icon-xs">
                                       check
                                     </span>
                                   </span>
 
-                                  <span className="text-[13px] md:text-[14px] leading-normal text-[#2c2f3c] font-medium">
+                                  <span className="text-body-sm font-medium text-[#2c2f3c]">
                                     {point}
                                   </span>
                                 </div>
@@ -511,23 +405,7 @@ export default function ServicesPage() {
                           "
                           >
                             {/* Image */}
-                            <div
-                              className="
-                              relative
-                              w-full
-                              h-50
-                              xs:h-[230px]
-                              sm:h-65
-                              md:h-75
-                              lg:h-75
-                              xl:h-90
-                              overflow-hidden
-                              rounded-lg
-                              bg-[#fbf9f8]
-                              border
-                              border-[#b7bad0]
-                            "
-                            >
+                            <div className="relative w-full media-frame overflow-hidden rounded-lg bg-[#fbf9f8] border border-[#b7bad0]">
                               <Image
                                 src={service.image}
                                 alt={`${service.title} business solution`}
@@ -554,39 +432,12 @@ export default function ServicesPage() {
                               />
 
                               <div className="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 right-4 sm:right-5 flex items-center justify-between">
-                                <span
-                                  className="
-                                  px-2.5
-                                  sm:px-3
-                                  py-1.5
-                                  bg-[#141A32]
-                                  text-white
-                                  text-[7px]
-                                  sm:text-[8px]
-                                  tracking-[0.16em]
-                                  uppercase
-                                  font-bold
-                                "
-                                >
+                                <span className="px-2.5 sm:px-3 py-1.5 bg-[#141A32] text-white text-eyebrow">
                                   NBBS Solution
                                 </span>
 
-                                <div
-                                  className="
-                                  w-9
-                                  h-9
-                                  sm:w-10
-                                  sm:h-10
-                                  rounded-full
-                                  bg-[#e9c176]
-                                  flex
-                                  items-center
-                                  justify-center
-                                  text-[#141A32]
-                                  shrink-0
-                                "
-                                >
-                                  <span className="material-symbols-outlined text-[16px] sm:text-[18px]">
+                                <div className="icon-lg rounded-full bg-[#e9c176] flex items-center justify-center text-[#141A32] shrink-0">
+                                  <span className="material-symbols-outlined icon-md">
                                     north_east
                                   </span>
                                 </div>
@@ -596,61 +447,21 @@ export default function ServicesPage() {
                             {/* Information */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 mt-4 sm:mt-5">
                               <div className="p-4 sm:p-5 bg-white rounded-lg border border-[#c3c6d6]">
-                                <span
-                                  className="
-                                  block
-                                  text-[7px]
-                                  sm:text-[8px]
-                                  tracking-[0.16em]
-                                  uppercase
-                                  text-[#5c5c68]
-                                  font-bold
-                                "
-                                >
+                                <span className="block text-eyebrow text-[#5c5c68]">
                                   Perfect For
                                 </span>
 
-                                <p
-                                  className="
-                                  mt-2.5
-                                  sm:mt-3
-                                  text-[11.5px]
-                                  sm:text-[12px]
-                                  leading-normal
-                                  font-medium
-                                  text-[#141A32]
-                                "
-                                >
+                                <p className="mt-2.5 sm:mt-3 text-body-sm font-medium text-[#141A32]">
                                   {service.audience}
                                 </p>
                               </div>
 
                               <div className="p-4 sm:p-5 bg-white rounded-lg border border-[#c3c6d6]">
-                                <span
-                                  className="
-                                  block
-                                  text-[7px]
-                                  sm:text-[8px]
-                                  tracking-[0.16em]
-                                  uppercase
-                                  text-[#5c5c68]
-                                  font-bold
-                                "
-                                >
+                                <span className="block text-eyebrow text-[#5c5c68]">
                                   Business Proof
                                 </span>
 
-                                <p
-                                  className="
-                                  mt-2.5
-                                  sm:mt-3
-                                  text-[11.5px]
-                                  sm:text-[12px]
-                                  leading-normal
-                                  font-bold
-                                  text-[#141A32]
-                                "
-                                >
+                                <p className="mt-2.5 sm:mt-3 text-body-sm font-bold text-[#141A32]">
                                   {service.proof}
                                 </p>
                               </div>
@@ -661,8 +472,8 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Bottom Progress */}
-                    <div className="relative left-0 right-0 px-5 sm:px-8 md:px-10 lg:px-16 py-4 border-t border-[#b7bad0] flex flex-col sm:flex-row gap-2 sm:gap-0 items-center justify-between">
-                      <p className="text-[8px] sm:text-[9px] tracking-[0.14em] sm:tracking-[0.16em] uppercase font-medium text-[#4b4b58] text-center sm:text-left">
+                    <div className="relative left-0 right-0 page-x py-4 border-t border-[#b7bad0] flex flex-col sm:flex-row gap-2 sm:gap-0 items-center justify-between">
+                      <p className="text-eyebrow font-medium text-[#4b4b58] text-center sm:text-left">
                         Diagnose
                         <span className="mx-2 text-[#c49b55]">→</span>
                         Design
@@ -670,7 +481,7 @@ export default function ServicesPage() {
                         Implement
                       </p>
 
-                      <p className="text-[8px] sm:text-[9px] tracking-[0.14em] sm:tracking-[0.16em] uppercase font-medium text-[#5c5c68]">
+                      <p className="text-eyebrow font-medium text-[#5c5c68]">
                         {service.number} / {service.category}
                       </p>
                     </div>
@@ -682,18 +493,10 @@ export default function ServicesPage() {
         </section>
         {/* cta  */}
         <section
-          className="
-            bg-[#fbf9f8]
-            py-12
-            sm:py-14
-            md:py-18
-            lg:py-20
-            border-t
-            border-[#c7c5ce]
-          "
+          className="bg-[#fbf9f8] section-y border-t border-[#c7c5ce]"
           id="diagnostic"
         >
-          <div className="max-w-320 mx-auto px-5 sm:px-8 md:px-16 flex justify-center">
+          <div className="container page-x flex justify-center">
             <div
               className="
                 border
@@ -710,47 +513,18 @@ export default function ServicesPage() {
               "
             >
               <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-7">
-                <span className="w-8 sm:w-10 h-px bg-[#e9c176]" />
+                <span className="eyebrow-rule text-[#e9c176]" />
 
-                <span className="text-[8px] sm:text-[9px] tracking-[0.18em] sm:tracking-[0.2em] uppercase font-bold text-[#141A32]">
-                  Start Here
-                </span>
+                <span className="text-eyebrow text-[#141A32]">Start Here</span>
 
-                <span className="w-8 sm:w-10 h-px bg-[#e9c176]" />
+                <span className="eyebrow-rule text-[#e9c176]" />
               </div>
 
-              <h2
-                className="
-                  text-[30px]
-                  xs:text-[34px]
-                  sm:text-[40px]
-                  md:text-[48px]
-                  leading-[1.2]
-                  font-medium
-                  text-[#141a32]
-                  mb-5
-                  sm:mb-6
-                "
-                style={{
-                  fontFamily: "Bodoni Moda, serif",
-                }}
-              >
+              <h2 className="text-headline-lg font-display font-medium text-[#141a32] mb-5 sm:mb-6">
                 Start with clarity.
               </h2>
 
-              <p
-                className="
-                  text-[15px]
-                  sm:text-[17px]
-                  md:text-[18px]
-                  leading-[1.6]
-                  text-[#3a3d4b]
-                  mb-8
-                  sm:mb-10
-                  mx-auto
-                  max-w-lg
-                "
-              >
+              <p className="text-body-lg text-[#3a3d4b] mb-8 sm:mb-10 mx-auto max-w-lg">
                 A focused 30-minute conversation to understand your current
                 operational friction and determine if our ecosystem is the right
                 fit.
@@ -758,40 +532,10 @@ export default function ServicesPage() {
 
               <Link
                 href="/contacts"
-                className="
-                  bg-[#141A32]
-                  text-white
-                  rounded-xl
-                  px-5
-                  sm:px-6
-                  py-3.5
-                  sm:py-4
-                  text-[10px]
-                  sm:text-[12px]
-                  leading-none
-                  tracking-widest
-                  font-bold
-                  uppercase
-                  hover:bg-[#1d2642]
-                  transition-all
-                  inline-flex
-                  items-center
-                  justify-center
-                  gap-2
-                  group
-                  w-full
-                  sm:w-auto
-                "
+                className="btn-primary bg-[#141A32] hover:bg-[#1d2642] hover:text-white shadow-none group w-full sm:w-auto"
               >
                 Book Your Business Diagnostic
-                <span
-                  className="
-                    material-symbols-outlined
-                    text-sm
-                    group-hover:translate-x-1
-                    transition-transform
-                  "
-                >
+                <span className="material-symbols-outlined icon-sm group-hover:translate-x-1 transition-transform">
                   arrow_forward
                 </span>
               </Link>
