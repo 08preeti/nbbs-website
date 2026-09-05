@@ -1,15 +1,12 @@
 // components/GoogleReview.tsx
 "use client";
 
-import { Star } from "lucide-react";
-
 import { useAnchorCustomers } from "@/src/hooks";
 
 interface ReviewItem {
   id: string;
   name: string;
   review: string;
-  rating: number;
 }
 
 function GoogleLogo() {
@@ -47,8 +44,10 @@ function ReviewCard({
     <article
       className="
         mr-5
+        flex
         w-[300px]
         shrink-0
+        flex-col
         rounded-2xl
         border
         border-white/[0.06]
@@ -90,38 +89,21 @@ function ReviewCard({
         {review.review}
       </p>
 
-      {/* FOOTER */}
-      <div className="mt-8 flex items-end justify-between gap-4">
-        <div>
-          <p
-            className="
-              text-[15px]
-              font-bold
-              text-white
-            "
-            style={{
-              fontFamily: "Inter, sans-serif",
-            }}
-          >
-            {review.name}
-          </p>
-        </div>
-
-        {/* STARS */}
-        <div className="flex items-center gap-0.5">
-          {Array.from({
-            length: review.rating,
-          }).map((_, i) => (
-            <Star
-              key={i}
-              size={12}
-              className="
-                fill-[#e9c176]
-                text-[#e9c176]
-              "
-            />
-          ))}
-        </div>
+      {/* FOUNDER NAME */}
+      <div className="mt-auto pt-8">
+        <p
+          className="
+            whitespace-nowrap
+            text-[15px]
+            font-bold
+            text-white
+          "
+          style={{
+            fontFamily: "Inter, sans-serif",
+          }}
+        >
+          {review.name}
+        </p>
       </div>
     </article>
   );
@@ -136,7 +118,6 @@ export default function GoogleReview() {
       id: `${customer.company || "customer"}-${index}`,
       name: customer.founder,
       review: customer.quote,
-      rating: 5,
     }));
 
   if (!reviews || reviews.length === 0) {
@@ -206,12 +187,6 @@ export default function GoogleReview() {
           w-full
           overflow-hidden
         "
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
-          WebkitMaskImage:
-            "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
-        }}
       >
         <div
           className="
