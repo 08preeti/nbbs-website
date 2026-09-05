@@ -131,7 +131,7 @@ export default function Home() {
         {/* SERVICES */}
         <section id="services" className="w-full overflow-hidden">
           <ServicesSection />
-        </section>
+        </section>  
 
         {/* ABOUT */}
         <section id="about" className="w-full overflow-hidden">

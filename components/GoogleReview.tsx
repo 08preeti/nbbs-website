@@ -35,11 +35,7 @@ function GoogleLogo() {
   );
 }
 
-function ReviewCard({
-  review,
-}: {
-  review: ReviewItem;
-}) {
+function ReviewCard({ review }: { review: ReviewItem }) {
   return (
     <article
       className="
@@ -138,41 +134,52 @@ export default function GoogleReview() {
           HEADER
       ====================================================== */}
 
+      {/* =====================================================
+    HEADER
+====================================================== */}
       <div
         className="
-          mx-auto
-          w-full
-          max-w-3xl
-          px-5
-          text-center
-        "
+    mx-auto
+    w-full
+    max-w-4xl
+    px-5
+    text-center
+  "
       >
-        {/* <div
+        {/* SMALL HEADING */}
+        <p
           className="
-            flex
-            items-center
-            justify-center
-            gap-2
-          "
+      text-sm
+      font-semibold
+      tracking-[0.08em]
+      text-[#111827]
+      sm:text-base
+    "
+          style={{
+            fontFamily: "Inter, sans-serif",
+          }}
         >
-          <GoogleLogo />
+          What Founders Say
+        </p>
 
-          <span
-            className="
-              text-[11px]
-              font-bold
-              uppercase
-              tracking-[0.28em]
-              text-[#0f172a]
-              sm:text-xs
-            "
-            style={{
-              fontFamily: "Oswald, sans-serif",
-            }}
-          >
-            Google Reviews
-          </span>
-        </div> */}
+        {/* MAIN HEADING */}
+        <h2
+          className="
+      mt-3
+      text-3xl
+      font-bold
+      leading-tight
+      tracking-[-0.03em]
+      text-[#111827]
+      sm:text-4xl
+      md:text-5xl
+    "
+          style={{
+            fontFamily: "Inter, sans-serif",
+          }}
+        >
+          Trusted by businessmen like you.
+        </h2>
       </div>
 
       {/* =====================================================
@@ -210,10 +217,7 @@ export default function GoogleReview() {
             aria-hidden={false}
           >
             {reviews.map((review) => (
-              <ReviewCard
-                key={`track-1-${review.id}`}
-                review={review}
-              />
+              <ReviewCard key={`track-1-${review.id}`} review={review} />
             ))}
           </div>
 
@@ -231,10 +235,7 @@ export default function GoogleReview() {
             aria-hidden="true"
           >
             {reviews.map((review) => (
-              <ReviewCard
-                key={`track-2-${review.id}`}
-                review={review}
-              />
+              <ReviewCard key={`track-2-${review.id}`} review={review} />
             ))}
           </div>
         </div>
