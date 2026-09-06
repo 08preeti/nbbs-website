@@ -283,9 +283,9 @@ export default function ServicesSection() {
                           </h3>
                           <span
                             className="text-[14px] font-bold tracking-[0.1em] text-[#7a5c28] sm:text-[16px] sm:tracking-[0.12em]"
-                            style={{
-                              fontFamily: "Bodoni Moda, serif",
-                            }}
+                             style={{
+                               fontFamily: "Inter, serif",
+                             }}
                           >
                             {service.subcategory || service.title1}
                           </span>
