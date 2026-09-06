@@ -85,7 +85,7 @@ export default function Home() {
                 </div>
 
                 {/* META */}
-                <div className="mt-7 flex items-center gap-2 text-[9px] font-medium tracking-[0.16em] text-[#34415c]/70 sm:text-[10px]">
+                <div className="mt-7 flex items-center gap-2 text-[9px] font-medium tracking-[0.16em] text-primary sm:text-[10px]">
                   <span>STRATEGY</span>
                   <span>•</span>
                   <span>EXECUTION</span>
