@@ -282,7 +282,7 @@ export default function ServicesSection() {
                             {service.category}
                           </h3>
                           <span
-                            className="text-[12px] font-bold tracking-[0.1em] text-[#7a5c28] sm:text-[16px] sm:tracking-[0.12em]"
+                            className="text-[12px] font-bold tracking-[0.1em] text-secondary sm:text-[16px] sm:tracking-[0.12em]"
                              style={{
                                fontFamily: "Inter, serif",
                              }}
