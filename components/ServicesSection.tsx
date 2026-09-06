@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -281,7 +281,7 @@ export default function ServicesSection() {
                         >
                           {service.category}
                         </h3>
-                        <span className="text-[8px] font-bold tracking-[0.2em] text-secondary sm:text-[10px] sm:tracking-[0.25em]">
+                        <span className="text-[8px] font-bold tracking-[0.2em] text-[#7a5c28] sm:text-[10px] sm:tracking-[0.25em]">
                           {service.subcategory || service.title1}
                         </span>
 
