@@ -282,13 +282,14 @@ export default function ServicesSection() {
                             {service.category}
                           </h3>
                           <span
-                            className="text-[8px] font-bold tracking-[0.2em] text-[#7a5c28] sm:text-[10px] sm:tracking-[0.25em]"
-                             style={{
+                            className="text-[14px] font-bold tracking-[0.1em] text-[#7a5c28] sm:text-[16px] sm:tracking-[0.12em]"
+                            style={{
                               fontFamily: "Bodoni Moda, serif",
                             }}
                           >
                             {service.subcategory || service.title1}
                           </span>
+
 
 
                           {service.cta && service.ctaUrl && (
