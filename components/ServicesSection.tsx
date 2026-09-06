@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -210,7 +210,7 @@ export default function ServicesSection() {
                 </span>
               </Link>
 
-         
+
             </div>
           </div>
         </div>
@@ -226,44 +226,44 @@ export default function ServicesSection() {
               GSAP SERVICES
           ========================================================= */}
 
-        <div
-          ref={servicesSectionRef}
-          className="services-scroll relative w-full"
-        >
-          <div className="relative overflow-visible lg:h-screen lg:overflow-hidden">
-            {services.map((service, index) => (
-              <article
-                key={service.number}
-                id={`service-${service.number}`}
-                className="service-panel relative mb-10 w-full overflow-visible bg-[#EEF0F3] last:mb-0 lg:absolute lg:inset-0 lg:mb-0 lg:h-screen lg:overflow-hidden"
-                style={{
-                  zIndex: index + 1,
-                }}
-              >
-                {/* TOP GOLD LINE */}
+          <div
+            ref={servicesSectionRef}
+            className="services-scroll relative w-full"
+          >
+            <div className="relative overflow-visible lg:h-screen lg:overflow-hidden">
+              {services.map((service, index) => (
+                <article
+                  key={service.number}
+                  id={`service-${service.number}`}
+                  className="service-panel relative mb-10 w-full overflow-visible bg-[#EEF0F3] last:mb-0 lg:absolute lg:inset-0 lg:mb-0 lg:h-screen lg:overflow-hidden"
+                  style={{
+                    zIndex: index + 1,
+                  }}
+                >
+                  {/* TOP GOLD LINE */}
 
-                <div className="absolute left-0 right-0 top-0 h-0.5 bg-[#e9c176] sm:h-0.75" />
+                  <div className="absolute left-0 right-0 top-0 h-0.5 bg-[#e9c176] sm:h-0.75" />
 
-                {/* =================================================
+                  {/* =================================================
                     TOP LEFT
                 ================================================= */}
 
-                <div className="absolute left-5 top-5 z-20 sm:left-8 sm:top-7 md:left-10 md:top-8 lg:left-16">
-                  <span className="text-[8px] uppercase tracking-[0.2em] text-[#8a8a91] sm:text-[10px] sm:tracking-[0.25em]">
-                    Service
-                  </span>
+                  <div className="absolute left-5 top-5 z-20 sm:left-8 sm:top-7 md:left-10 md:top-8 lg:left-16">
+                    <span className="text-[8px] uppercase tracking-[0.2em] text-[#8a8a91] sm:text-[10px] sm:tracking-[0.25em]">
+                      Service
+                    </span>
 
-                  <div className="mt-1.5 flex items-center gap-2 sm:mt-2 sm:gap-3" />
-                </div>
+                    <div className="mt-1.5 flex items-center gap-2 sm:mt-2 sm:gap-3" />
+                  </div>
 
-                {/* =================================================
+                  {/* =================================================
                     MAIN CONTENT
                 ================================================= */}
 
-                <div className="w-full px-5 pb-14 pt-16 sm:px-8 sm:pb-14 sm:pt-20 md:px-10 lg:h-full lg:px-16">
-                  <div className="mx-auto flex w-full max-w-[1600px] items-start lg:h-full lg:items-center">
-                    <div className="grid w-full grid-cols-1 gap-8 sm:gap-10 lg:max-h-[calc(100vh-130px)] lg:grid-cols-12 lg:gap-0 lg:overflow-hidden">
-                      {/* =================================================
+                  <div className="w-full px-5 pb-14 pt-16 sm:px-8 sm:pb-14 sm:pt-20 md:px-10 lg:h-full lg:px-16">
+                    <div className="mx-auto flex w-full max-w-[1600px] items-start lg:h-full lg:items-center">
+                      <div className="grid w-full grid-cols-1 gap-8 sm:gap-10 lg:max-h-[calc(100vh-130px)] lg:grid-cols-12 lg:gap-0 lg:overflow-hidden">
+                        {/* =================================================
                           LEFT COLUMN — `order-1` pins it to the top of
                           the mobile stack. On lg+ it keeps its original
                           side-by-side width (col-span-4), just top-
@@ -272,189 +272,195 @@ export default function ServicesSection() {
                           of the column instead of vertically centered.
                       ================================================= */}
 
-                      <div className="order-1 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:justify-start lg:pr-10 xl:pr-20">
-                        <h3
-                          className="mb-3 text-[34px] font-medium leading-[0.98] text-primary sm:mt-4 sm:text-[40px] md:text-[48px] lg:mt-5 lg:text-[54px] xl:text-[52px]"
-                          style={{
-                            fontFamily: "Bodoni Moda, serif",
-                          }}
-                        >
-                          {service.category}
-                        </h3>
-                        <span className="text-[8px] font-bold tracking-[0.2em] text-[#7a5c28] sm:text-[10px] sm:tracking-[0.25em]">
-                          {service.subcategory || service.title1}
-                        </span>
-
-                        {service.cta && service.ctaUrl && (
-                          <Link
-                            href={service.ctaUrl}
-                            target={service.ctaUrl.startsWith("http") ? "_blank" : undefined}
-                            rel={service.ctaUrl.startsWith("http") ? "noopener noreferrer" : undefined}
-                            className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#141A32] px-5 py-3.5 text-[9px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#1d2642] sm:mt-7 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-[10px] sm:tracking-[0.18em] lg:mt-8"
+                        <div className="order-1 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:justify-start lg:pr-10 xl:pr-20">
+                          <h3
+                            className="mb-3 text-[34px] font-medium leading-[0.98] text-primary sm:mt-4 sm:text-[40px] md:text-[48px] lg:mt-5 lg:text-[54px] xl:text-[52px]"
+                            style={{
+                              fontFamily: "Bodoni Moda, serif",
+                            }}
                           >
-                            {service.cta}
+                            {service.category}
+                          </h3>
+                          <span
+                            className="text-[8px] font-bold tracking-[0.2em] text-[#7a5c28] sm:text-[10px] sm:tracking-[0.25em]"
+                             style={{
+                              fontFamily: "Bodoni Moda, serif",
+                            }}
+                          >
+                            {service.subcategory || service.title1}
+                          </span>
 
-                            <span className="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-1 sm:text-[17px]">
-                              arrow_forward
-                            </span>
-                          </Link>
-                        )}
-                      </div>
 
-                      {/* =================================================
+                          {service.cta && service.ctaUrl && (
+                            <Link
+                              href={service.ctaUrl}
+                              target={service.ctaUrl.startsWith("http") ? "_blank" : undefined}
+                              rel={service.ctaUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                              className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#141A32] px-5 py-3.5 text-[9px] font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-[#1d2642] sm:mt-7 sm:w-fit sm:gap-3 sm:px-6 sm:py-4 sm:text-[10px] sm:tracking-[0.18em] lg:mt-8"
+                            >
+                              {service.cta}
+
+                              <span className="material-symbols-outlined text-[15px] transition-transform group-hover:translate-x-1 sm:text-[17px]">
+                                arrow_forward
+                              </span>
+                            </Link>
+                          )}
+                        </div>
+
+                        {/* =================================================
                           MIDDLE COLUMN
                       ================================================= */}
 
-                      <div className="order-2 flex flex-col justify-start py-2 lg:order-none lg:col-span-4 lg:max-h-full lg:overflow-y-auto lg:border-l lg:border-r lg:border-[#c6c6ce] lg:px-8 lg:py-6 lg:scrollbar-hide xl:px-14">
-                        {/* TITLE */}
+                        <div className="order-2 flex flex-col justify-start py-2 lg:order-none lg:col-span-4 lg:max-h-full lg:overflow-y-auto lg:border-l lg:border-r lg:border-[#c6c6ce] lg:px-8 lg:py-6 lg:scrollbar-hide xl:px-14">
+                          {/* TITLE */}
 
-                        <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-primary sm:text-[10px] sm:tracking-[0.22em]">
-                          {service.title}
-                        </span>
+                          <span className="text-[8px] font-bold uppercase tracking-[0.18em] text-primary sm:text-[10px] sm:tracking-[0.22em]">
+                            {service.title}
+                          </span>
 
-                        {/* DESCRIPTION / PROBLEM */}
+                          {/* DESCRIPTION / PROBLEM */}
 
-                        <p className="mt-3 text-[12px] leading-[1.5] text-[#62626a] sm:mt-4 sm:text-[14px] sm:leading-[1.65] md:text-[15px] lg:mt-5">
-                          {service.description || service.problem}
-                        </p>
-
-                        {/* SECONDARY IDENTITY (e.g. "We Identify") */}
-
-                        {(service.secondaryIdentity || service.identity1) && (
-                          <>
-                            {(service.secondaryIdentity?.title || service.identity1) && (
-                              <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:text-[10px] sm:tracking-[0.22em]">
-                                {service.secondaryIdentity?.title || service.identity1}
-                              </span>
-                            )}
-
-                            <div className="space-y-2 sm:space-y-2.5 mt-2 lg:space-y-3">
-                              {(service.secondaryIdentity?.points || service.points2)?.map((point) => (
-                                <div
-                                  key={point}
-                                  className="flex items-start gap-2 sm:gap-3"
-                                >
-                                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-5 sm:w-5">
-                                    <span className="material-symbols-outlined text-[9px] sm:text-[12px]">
-                                      check
-                                    </span>
-                                  </span>
-
-                                  <span className="text-[10px] leading-[1.35] text-[#46464d] sm:text-[12px] sm:leading-[1.4] md:text-[13px]">
-                                    {point.replace("✓ ", "")}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        )}
-
-                        {/* GOLD DIVIDER */}
-
-                        <div className="my-4 h-px w-10 bg-[#e9c176] sm:my-5 sm:w-16 lg:my-6" />
-
-                        {/* PRIMARY IDENTITY (e.g. "Key Takeaways") */}
-
-                        {(service.primaryIdentity || service.identity) && (
-                          <>
-                            <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:mt-3 sm:text-[10px] sm:tracking-[0.22em] lg:mt-3">
-                              {service.primaryIdentity?.title || service.identity}
-                            </span>
-
-                            <div className="space-y-2 sm:space-y-2.5 lg:space-y-3">
-                              {(service.primaryIdentity?.points || service.points)?.map((point) => (
-                                <div
-                                  key={point}
-                                  className="flex items-start gap-2 sm:gap-3"
-                                >
-                                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-5 sm:w-5">
-                                    <span className="material-symbols-outlined text-[9px] sm:text-[12px]">
-                                      check
-                                    </span>
-                                  </span>
-
-                                  <span className="text-[10px] leading-[1.35] text-[#46464d] sm:text-[12px] sm:leading-[1.4] md:text-[13px]">
-                                    {point}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          </>
-                        )}
-
-                        {/* Optional title2 */}
-
-                        {service.title2 && (
-                          <p className="mt-6 text-[11px] leading-[1.5] text-[#62626a] sm:mt-7 sm:text-[13px] sm:leading-[1.6]">
-                            {service.title2}
+                          <p className="mt-3 text-[12px] leading-[1.5] text-[#62626a] sm:mt-4 sm:text-[14px] sm:leading-[1.65] md:text-[15px] lg:mt-5">
+                            {service.description || service.problem}
                           </p>
-                        )}
-                      </div>
 
-                      {/* =================================================
+                          {/* SECONDARY IDENTITY (e.g. "We Identify") */}
+
+                          {(service.secondaryIdentity || service.identity1) && (
+                            <>
+                              {(service.secondaryIdentity?.title || service.identity1) && (
+                                <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:text-[10px] sm:tracking-[0.22em]">
+                                  {service.secondaryIdentity?.title || service.identity1}
+                                </span>
+                              )}
+
+                              <div className="space-y-2 sm:space-y-2.5 mt-2 lg:space-y-3">
+                                {(service.secondaryIdentity?.points || service.points2)?.map((point) => (
+                                  <div
+                                    key={point}
+                                    className="flex items-start gap-2 sm:gap-3"
+                                  >
+                                    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-5 sm:w-5">
+                                      <span className="material-symbols-outlined text-[9px] sm:text-[12px]">
+                                        check
+                                      </span>
+                                    </span>
+
+                                    <span className="text-[10px] leading-[1.35] text-[#46464d] sm:text-[12px] sm:leading-[1.4] md:text-[13px]">
+                                      {point.replace("✓ ", "")}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            </>
+                          )}
+
+                          {/* GOLD DIVIDER */}
+
+                          <div className="my-4 h-px w-10 bg-[#e9c176] sm:my-5 sm:w-16 lg:my-6" />
+
+                          {/* PRIMARY IDENTITY (e.g. "Key Takeaways") */}
+
+                          {(service.primaryIdentity || service.identity) && (
+                            <>
+                              <span className="mb-1 mt-2 block text-[8px] font-bold uppercase tracking-[0.18em] text-[#141A32] sm:mb-3 sm:mt-3 sm:text-[10px] sm:tracking-[0.22em] lg:mt-3">
+                                {service.primaryIdentity?.title || service.identity}
+                              </span>
+
+                              <div className="space-y-2 sm:space-y-2.5 lg:space-y-3">
+                                {(service.primaryIdentity?.points || service.points)?.map((point) => (
+                                  <div
+                                    key={point}
+                                    className="flex items-start gap-2 sm:gap-3"
+                                  >
+                                    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-5 sm:w-5">
+                                      <span className="material-symbols-outlined text-[9px] sm:text-[12px]">
+                                        check
+                                      </span>
+                                    </span>
+
+                                    <span className="text-[10px] leading-[1.35] text-[#46464d] sm:text-[12px] sm:leading-[1.4] md:text-[13px]">
+                                      {point}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            </>
+                          )}
+
+                          {/* Optional title2 */}
+
+                          {service.title2 && (
+                            <p className="mt-6 text-[11px] leading-[1.5] text-[#62626a] sm:mt-7 sm:text-[13px] sm:leading-[1.6]">
+                              {service.title2}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* =================================================
                           RIGHT COLUMN
                       ================================================= */}
 
-                      <div className="order-3 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:pl-8 xl:pl-14">
-                        {/* IMAGE */}
+                        <div className="order-3 flex flex-col justify-center py-2 lg:order-none lg:col-span-4 lg:pl-8 xl:pl-14">
+                          {/* IMAGE */}
 
-                        <div className="relative h-36 w-full overflow-hidden border border-[#c6c6ce] bg-[#fbf9f8] sm:h-48 md:h-56 lg:h-[330px] xl:h-[380px]">
-                          <Image
-                            src={service.image}
-                            alt={`${service.title} business solution`}
-                            fill
-                            unoptimized={typeof service.image === "string"}
-                            sizes="(max-width: 768px) 100vw, 500px"
-                            className="object-cover transition-transform duration-700 ease-out hover:scale-105"
-                          />
+                          <div className="relative h-36 w-full overflow-hidden border border-[#c6c6ce] bg-[#fbf9f8] sm:h-48 md:h-56 lg:h-[330px] xl:h-[380px]">
+                            <Image
+                              src={service.image}
+                              alt={`${service.title} business solution`}
+                              fill
+                              unoptimized={typeof service.image === "string"}
+                              sizes="(max-width: 768px) 100vw, 500px"
+                              className="object-cover transition-transform duration-700 ease-out hover:scale-105"
+                            />
 
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#141A32]/50 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#141A32]/50 via-transparent to-transparent" />
 
-                          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between sm:bottom-5 sm:left-5 sm:right-5">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-10 sm:w-10">
-                              <span className="material-symbols-outlined text-[15px] sm:text-[18px]">
-                                north_east
-                              </span>
+                            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between sm:bottom-5 sm:left-5 sm:right-5">
+                              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#e9c176] text-[#141A32] sm:h-10 sm:w-10">
+                                <span className="material-symbols-outlined text-[15px] sm:text-[18px]">
+                                  north_east
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
 
-                        {/* INFORMATION */}
+                          {/* INFORMATION */}
 
-                        <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-3 lg:mt-5 lg:gap-4">
-                          {/* PERFECT FOR */}
+                          <div className="mt-3 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-3 lg:mt-5 lg:gap-4">
+                            {/* PERFECT FOR */}
 
-                          <div className="border border-[#c6c6ce] bg-[#fbf9f8] p-3 sm:p-4 lg:p-5">
-                            <span className="block text-[7px] font-bold uppercase tracking-[0.12em] text-[#8a8a91] sm:text-[8px] sm:tracking-[0.16em]">
-                              Perfect For
-                            </span>
+                            <div className="border border-[#c6c6ce] bg-[#fbf9f8] p-3 sm:p-4 lg:p-5">
+                              <span className="block text-[7px] font-bold uppercase tracking-[0.12em] text-[#8a8a91] sm:text-[8px] sm:tracking-[0.16em]">
+                                Perfect For
+                              </span>
 
-                            <p className="mt-1 text-[9px] font-medium leading-[1.4] text-[#141A32] sm:mt-2 sm:text-[10px] lg:text-[12px]">
-                              {service.perfectFor || service.audience}
-                            </p>
-                          </div>
+                              <p className="mt-1 text-[9px] font-medium leading-[1.4] text-[#141A32] sm:mt-2 sm:text-[10px] lg:text-[12px]">
+                                {service.perfectFor || service.audience}
+                              </p>
+                            </div>
 
-                          {/* BUSINESS PROOF */}
+                            {/* BUSINESS PROOF */}
 
-                          <div className="border border-[#c6c6ce] bg-[#fbf9f8] p-3 sm:p-4 lg:p-5">
-                            <span className="block text-[7px] font-bold uppercase tracking-[0.12em] text-[#8a8a91] sm:text-[8px] sm:tracking-[0.16em]">
-                              Business Proof
-                            </span>
+                            <div className="border border-[#c6c6ce] bg-[#fbf9f8] p-3 sm:p-4 lg:p-5">
+                              <span className="block text-[7px] font-bold uppercase tracking-[0.12em] text-[#8a8a91] sm:text-[8px] sm:tracking-[0.16em]">
+                                Business Proof
+                              </span>
 
-                            <p className="mt-2 text-[9px] font-bold leading-[1.4] text-[#141A32] sm:text-[10px] lg:text-[12px]">
-                              {service.businessProof || service.proof}
-                            </p>
+                              <p className="mt-2 text-[9px] font-bold leading-[1.4] text-[#141A32] sm:text-[10px] lg:text-[12px]">
+                                {service.businessProof || service.proof}
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       )}
     </section>
   );
